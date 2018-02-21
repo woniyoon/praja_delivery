@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum Country {
+enum country {
     case CAN
 }
 
-enum Province {
+enum province {
     case AB
     case BC
 }
@@ -21,11 +21,11 @@ class Address {
     private(set) public var address_1 : String
     private(set) public var address_2 : String
     private(set) public var city : String
-    private(set) public var province : Province
+    private(set) public var province : province
     private(set) public var postalCode : String
-    private(set) public var country : Country
+    private(set) public var country : country
     
-    init (add1 : String, add2 : String, city : String, province : Province, postalCode : String, country : Country) {
+    init (add1 : String, add2 : String, city : String, province : province, postalCode : String, country : country) {
         self.address_1 = add1
         self.address_2 = add2
         self.city = city
