@@ -19,6 +19,7 @@
 		911A4AFE203D32C800D03889 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A4AFD203D32C800D03889 /* Product.swift */; };
 		911A4B00203D331B00D03889 /* DeliveryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A4AFF203D331B00D03889 /* DeliveryInfo.swift */; };
 		86D47220203D2D8900624E1F /* Accout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4721F203D2D8900624E1F /* Accout.swift */; };
+		86D47220203D2D8900624E1F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4721F203D2D8900624E1F /* Account.swift */; };
 		86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47221203D2F7100624E1F /* OrderDetail.swift */; };
 		86D47224203D2FDB00624E1F /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47223203D2FDB00624E1F /* Payment.swift */; };
 		86D47226203D2FFA00624E1F /* TempPassCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47225203D2FFA00624E1F /* TempPassCode.swift */; };
@@ -54,6 +55,7 @@
 		911A4AFD203D32C800D03889 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		911A4AFF203D331B00D03889 /* DeliveryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryInfo.swift; sourceTree = "<group>"; };
 		86D4721F203D2D8900624E1F /* Accout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accout.swift; sourceTree = "<group>"; };
+		86D4721F203D2D8900624E1F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		86D47221203D2F7100624E1F /* OrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
 		86D47223203D2FDB00624E1F /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		86D47225203D2FFA00624E1F /* TempPassCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPassCode.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				911A4AFD203D32C800D03889 /* Product.swift */,
 				911A4AFF203D331B00D03889 /* DeliveryInfo.swift */,
 				86D4721F203D2D8900624E1F /* Accout.swift */,
+				86D4721F203D2D8900624E1F /* Account.swift */,
 				86D47221203D2F7100624E1F /* OrderDetail.swift */,
 				86D47223203D2FDB00624E1F /* Payment.swift */,
 				86D47225203D2FFA00624E1F /* TempPassCode.swift */,
@@ -262,7 +265,7 @@
 				911A4B00203D331B00D03889 /* DeliveryInfo.swift in Sources */,
 				86D47226203D2FFA00624E1F /* TempPassCode.swift in Sources */,
 				522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */,
-				86D47220203D2D8900624E1F /* Accout.swift in Sources */,
+				86D47220203D2D8900624E1F /* Account.swift in Sources */,
 				86D47224203D2FDB00624E1F /* Payment.swift in Sources */,
 				86D47228203D301E00624E1F /* EventItem.swift in Sources */,
 				522B6298203D2975004B3560 /* Branch.swift in Sources */,
