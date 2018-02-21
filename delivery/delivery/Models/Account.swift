@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Accout {
+class Account {
     var email: String
     var password: String
     var token: String
