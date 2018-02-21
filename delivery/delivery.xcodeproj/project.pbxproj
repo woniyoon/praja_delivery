@@ -13,6 +13,11 @@
 		522B6298203D2975004B3560 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6292203D2974004B3560 /* Branch.swift */; };
 		522B6299203D2975004B3560 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6293203D2975004B3560 /* SubCategory.swift */; };
 		522B629A203D2975004B3560 /* BranchInvetory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6294203D2975004B3560 /* BranchInvetory.swift */; };
+		86D47220203D2D8900624E1F /* Accout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D4721F203D2D8900624E1F /* Accout.swift */; };
+		86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47221203D2F7100624E1F /* OrderDetail.swift */; };
+		86D47224203D2FDB00624E1F /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47223203D2FDB00624E1F /* Payment.swift */; };
+		86D47226203D2FFA00624E1F /* TempPassCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47225203D2FFA00624E1F /* TempPassCode.swift */; };
+		86D47228203D301E00624E1F /* EventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D47227203D301E00624E1F /* EventItem.swift */; };
 		BBA54ABC203D178D00D69954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA54ABB203D178D00D69954 /* AppDelegate.swift */; };
 		BBA54ABE203D178D00D69954 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA54ABD203D178D00D69954 /* ViewController.swift */; };
 		BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA54ABF203D178D00D69954 /* Main.storyboard */; };
@@ -38,6 +43,11 @@
 		522B6292203D2974004B3560 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		522B6293203D2975004B3560 /* SubCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
 		522B6294203D2975004B3560 /* BranchInvetory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchInvetory.swift; sourceTree = "<group>"; };
+		86D4721F203D2D8900624E1F /* Accout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accout.swift; sourceTree = "<group>"; };
+		86D47221203D2F7100624E1F /* OrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
+		86D47223203D2FDB00624E1F /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		86D47225203D2FFA00624E1F /* TempPassCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPassCode.swift; sourceTree = "<group>"; };
+		86D47227203D301E00624E1F /* EventItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItem.swift; sourceTree = "<group>"; };
 		BBA54AB8203D178D00D69954 /* delivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = delivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA54ABB203D178D00D69954 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBA54ABD203D178D00D69954 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +87,11 @@
 				522B6291203D2974004B3560 /* ShoppingCart.swift */,
 				522B6293203D2975004B3560 /* SubCategory.swift */,
 				522B628F203D2974004B3560 /* WishList.swift */,
+				86D4721F203D2D8900624E1F /* Accout.swift */,
+				86D47221203D2F7100624E1F /* OrderDetail.swift */,
+				86D47223203D2FDB00624E1F /* Payment.swift */,
+				86D47225203D2FFA00624E1F /* TempPassCode.swift */,
+				86D47227203D301E00624E1F /* EventItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -228,9 +243,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				522B6299203D2975004B3560 /* SubCategory.swift in Sources */,
+				86D47226203D2FFA00624E1F /* TempPassCode.swift in Sources */,
 				522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */,
+				86D47220203D2D8900624E1F /* Accout.swift in Sources */,
+				86D47224203D2FDB00624E1F /* Payment.swift in Sources */,
+				86D47228203D301E00624E1F /* EventItem.swift in Sources */,
 				522B6298203D2975004B3560 /* Branch.swift in Sources */,
 				BBA54ABE203D178D00D69954 /* ViewController.swift in Sources */,
+				86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */,
 				BBA54ABC203D178D00D69954 /* AppDelegate.swift in Sources */,
 				522B629A203D2975004B3560 /* BranchInvetory.swift in Sources */,
 				522B6295203D2975004B3560 /* WishList.swift in Sources */,
