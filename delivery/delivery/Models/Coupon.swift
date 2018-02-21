@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum discountType {
+enum DiscountType {
     case cash
     case percentage
 }
@@ -20,9 +20,9 @@ class Coupon {
     public let startDate : Date
     public let endDate : Date
     public let discountValue : Int
-    public let discountType : discountType
+    public let discountType : DiscountType
     
-    init(couponId : String, description : String, code : String, startDate : Date, endDate : Date, discountValue : Int, discountType : discountType) {
+    init(couponId : String, description : String, code : String, startDate : Date, endDate : Date, discountValue : Int, discountType : DiscountType) {
         self.couponId = couponId
         self.description = description
         self.code = code
