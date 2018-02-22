@@ -9,7 +9,7 @@ import Foundation
 
 struct SubCategory {
     
-    public let name : String
-    public let category : Category
+    public let name: String
+    public let category: Category
     
 }
