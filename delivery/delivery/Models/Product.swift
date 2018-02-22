@@ -9,13 +9,13 @@
 import Foundation
 
 class Product {
-    private(set) public var name : String
-    private(set) public var description : String
-    private(set) public var price : Double
-    private(set) public var brand : String
-    private(set) public var discountPercent : Int? = nil
-    private(set) public var subCategory : SubCategory
-    private(set) public var image : [String]
+    private(set) public var name: String
+    private(set) public var description: String
+    private(set) public var price: Double
+    private(set) public var brand: String
+    private(set) public var discountPercent: Int? = nil
+    private(set) public var subCategory: SubCategory
+    private(set) public var image: [String]
     
     init(name : String, description: String, price : Double, brand : String, discountPercent : Int, subCategory : SubCategory, image : [String]) {
         self.name = name

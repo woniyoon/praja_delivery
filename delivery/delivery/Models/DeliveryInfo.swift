@@ -9,10 +9,10 @@
 import Foundation
 
 class DeliveryInfo {
-    private let confirmedDate : Date? = nil
-    private let packedDate : Date? = nil
-    private let shippingDate : Date? = nil
-    private let deliveredDate : Date? = nil
-    private let canceledDate : Date? = nil
+    private let confirmedDate: Date? = nil
+    private let packedDate: Date? = nil
+    private let shippingDate: Date? = nil
+    private let deliveredDate: Date? = nil
+    private let canceledDate: Date? = nil
 }
 
