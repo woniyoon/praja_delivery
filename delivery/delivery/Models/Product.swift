@@ -17,7 +17,7 @@ class Product {
     private(set) public var subCategory: SubCategory
     private(set) public var image: [String]
     
-    init(name : String, description: String, price : Double, brand : String, discountPercent : Int, subCategory : SubCategory, image : [String]) {
+    init(name: String, description: String, price: Double, brand: String, discountPercent: Int, subCategory: SubCategory, image: [String]) {
         self.name = name
         self.description = description
         self.price = price

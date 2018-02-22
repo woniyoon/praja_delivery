@@ -9,11 +9,11 @@
 import Foundation
 
 class UserCoupon {
-    private let coupon : Coupon
+    private let coupon: Coupon
     //change the type to User
-    private let userId : String
+    private let userId: String
     
-    init(coupon : Coupon, userId : String) {
+    init(coupon: Coupon, userId: String) {
         self.coupon = coupon
         self.userId = userId
     }

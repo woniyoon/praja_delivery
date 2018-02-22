@@ -22,7 +22,7 @@ class Coupon {
     public let discountValue: Int
     public let discountType: DiscountType
     
-    init(couponId : String, description : String, code : String, startDate : Date, endDate : Date, discountValue : Int, discountType : DiscountType) {
+    init(couponId: String, description: String, code: String, startDate: Date, endDate: Date, discountValue: Int, discountType: DiscountType) {
         self.couponId = couponId
         self.description = description
         self.code = code
