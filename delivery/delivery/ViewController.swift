@@ -21,6 +21,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func didClickButton(_ sender: Any) {
+        print("yoyoyo")
+        let storyboard = UIStoryboard(name: "ProductDetail", bundle: nil)
+        let next = storyboard.instantiateInitialViewController() as! ProductDetailViewController
+        present(next, animated: true, completion: nil)
+    }
+    
 }
 
