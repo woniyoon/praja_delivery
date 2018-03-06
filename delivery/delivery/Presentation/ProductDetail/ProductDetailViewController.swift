@@ -25,6 +25,7 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ProductDetailViewModel()
+        // Bind views and variables
         viewModel.name().bind(to: nameLabel.rx.text).disposed(by: disposeBag)
         viewModel.price().bind(to: priceLabel.rx.text).disposed(by: disposeBag)
         viewModel.originalPrice().bind(to: originalPriceLabel.rx.text).disposed(by: disposeBag)
@@ -32,11 +33,5 @@ class ProductDetailViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         viewModel.setSampleData()
-    }
-}
-
-extension ProductDetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

@@ -14,7 +14,14 @@ protocol ProductDetailViewModelProtocol{
     func fetchProductDetail(_ id: String)
 }
 
-class ProductDetailViewModel {
+class ProductDetailViewModel: ProductDetailViewModelProtocol {
+    
+    //    init(useCase: ProductListUseCaseProtocol) {
+    //        self.useCase = useCase
+    //    }
+    
+    // TODO should be injected
+    private let useCase: ProductDetailUseCaseProtocol? = nil
     
     private var nameVariable = Variable<String>("")
     private var priceVariable = Variable<String>("")
@@ -43,15 +50,6 @@ class ProductDetailViewModel {
         originalPriceVariable.value = "$15.00"
     }
     
-    //    init(useCase: ProductListUseCaseProtocol) {
-    //        self.useCase = useCase
-    //    }
-    
-    private let useCase: ProductDetailUseCaseProtocol? = nil
-}
-
-extension ProductDetailViewModel: ProductDetailViewModelProtocol {
-
     func fetchProductDetail(_ id: String) {
         
     }

@@ -12,7 +12,7 @@ protocol ProductDetailUseCaseProtocol {
     func fetchProductDetail(_ id: String) -> ProductDetailModel
 }
 
-class ProductDetailUseCase {
+class ProductDetailUseCase: ProductDetailUseCaseProtocol {
     
     internal let repository: ProductDetailRepositoryProtocol
     internal let translator: ProductDetailTranslator
@@ -21,9 +21,7 @@ class ProductDetailUseCase {
         self.repository = repository
         self.translator = translator
     }
-}
-
-extension ProductDetailUseCase: ProductDetailUseCaseProtocol {
+    
     func fetchProductDetail(_ id: String) -> ProductDetailModel {
         let entity = repository.fetchProductDetail(id)
         return translator.translate(entity)
