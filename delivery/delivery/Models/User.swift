@@ -1,0 +1,20 @@
+//
+//  User.swift
+//  delivery
+//
+//  Created by Bacelar on 2018-02-21.
+//  Copyright © 2018 CICCC. All rights reserved.
+//
+
+import Foundation
+
+struct User {
+    
+    public let firstName: String
+    public let lastName: String
+    public let mobileNumber: String
+    public let dateOfBirth: Date
+    public let hasAccount: Bool
+    public let account: Account
+    
+}
