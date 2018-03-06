@@ -9,5 +9,5 @@ import Foundation
 
 struct Category {
     
-    public let name : String
+    public let name: String
 }

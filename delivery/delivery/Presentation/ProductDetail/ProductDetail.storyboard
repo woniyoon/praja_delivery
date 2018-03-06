@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2j-LS-lSz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Product Detail View Controller-->
+        <scene sceneID="kIj-6R-fqn">
+            <objects>
+                <viewController id="t2j-LS-lSz" customClass="ProductDetailViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekx-si-dSp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="sourpatch" translatesAutoresizingMaskIntoConstraints="NO" id="zqH-1Q-Jgc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4W-Hp-iOO">
+                                <rect key="frame" x="313" y="20" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="ItR-ks-WA3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="mayanard’s wed beer. 100g and some of other thing of text …. mayanard’s wed beer. 100g" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-O3-a3Y">
+                                <rect key="frame" x="16" y="308" width="343" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="01q-td-ISI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$2.79" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pug-Sw-Hb0">
+                                <rect key="frame" x="16" y="380" width="61" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2C9-Ey-tzh">
+                                <rect key="frame" x="85" y="384" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pug-Sw-Hb0" firstAttribute="leading" secondItem="eDn-q4-3n7" secondAttribute="leading" constant="16" id="F0F-aJ-n1q"/>
+                            <constraint firstItem="2C9-Ey-tzh" firstAttribute="top" secondItem="WJk-O3-a3Y" secondAttribute="bottom" constant="12" id="FvD-xF-aR1"/>
+                            <constraint firstItem="pug-Sw-Hb0" firstAttribute="top" secondItem="WJk-O3-a3Y" secondAttribute="bottom" constant="8" id="Kbk-Ts-qQ8"/>
+                            <constraint firstItem="zqH-1Q-Jgc" firstAttribute="top" secondItem="ekx-si-dSp" secondAttribute="top" id="TJ3-DE-RON"/>
+                            <constraint firstItem="WJk-O3-a3Y" firstAttribute="leading" secondItem="eDn-q4-3n7" secondAttribute="leading" constant="16" id="bvj-0R-MGE"/>
+                            <constraint firstItem="x4W-Hp-iOO" firstAttribute="top" secondItem="eDn-q4-3n7" secondAttribute="top" id="e5b-dg-67a"/>
+                            <constraint firstItem="2C9-Ey-tzh" firstAttribute="leading" secondItem="pug-Sw-Hb0" secondAttribute="trailing" constant="8" id="ezb-xG-pDa"/>
+                            <constraint firstItem="eDn-q4-3n7" firstAttribute="trailing" secondItem="x4W-Hp-iOO" secondAttribute="trailing" constant="16" id="gK5-i0-gbC"/>
+                            <constraint firstItem="eDn-q4-3n7" firstAttribute="bottom" secondItem="pug-Sw-Hb0" secondAttribute="bottom" constant="259" id="gNK-tK-xho"/>
+                            <constraint firstItem="WJk-O3-a3Y" firstAttribute="top" secondItem="zqH-1Q-Jgc" secondAttribute="bottom" constant="8" id="kUa-HC-Gsd"/>
+                            <constraint firstItem="zqH-1Q-Jgc" firstAttribute="leading" secondItem="eDn-q4-3n7" secondAttribute="leading" id="mkw-OI-C2V"/>
+                            <constraint firstItem="zqH-1Q-Jgc" firstAttribute="trailing" secondItem="eDn-q4-3n7" secondAttribute="trailing" id="n3p-dE-RW9"/>
+                            <constraint firstItem="eDn-q4-3n7" firstAttribute="trailing" secondItem="WJk-O3-a3Y" secondAttribute="trailing" constant="16" id="pvj-hy-7uw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eDn-q4-3n7"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="WJk-O3-a3Y" id="V8G-UT-3xg"/>
+                        <outlet property="originalPriceLabel" destination="2C9-Ey-tzh" id="fLl-us-EzD"/>
+                        <outlet property="priceLabel" destination="pug-Sw-Hb0" id="CR4-9E-Oe7"/>
+                        <outlet property="productImage" destination="zqH-1Q-Jgc" id="JXD-s5-C6D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRe-eM-lor" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447.19999999999999" y="-22.03898050974513"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sourpatch" width="860" height="860"/>
+    </resources>
+</document>
