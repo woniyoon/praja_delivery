@@ -6,7 +6,6 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 import Foundation
-import Firebase
 
 class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     

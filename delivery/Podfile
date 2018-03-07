@@ -10,6 +10,7 @@ target 'delivery' do
 
   # Firebase
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 end
 
 target 'deliveryTests' do
