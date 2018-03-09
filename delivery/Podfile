@@ -8,6 +8,9 @@ target 'delivery' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
 
+  # Swinject
+  pod 'Swinject'
+
   # Firebase
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
