@@ -10,11 +10,11 @@ import Foundation
 
 class EventItem{
     
-    var eventId: String
+    var event: Event
     var productId: String
     
-    init(eventId: String, productId: String) {
-        self.eventId = eventId
+    init(event: Event, productId: String) {
+        self.event = event
         self.productId = productId
     }
 }
