@@ -10,6 +10,7 @@ import Foundation
 class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     
     func fetchProductDetail(_ id: String) -> ProductDetailEntity {
+        print("REEEEEEEEACH! TO DATA STAOREEEEEEEEEEEEEEEEE \(id)")
         return ProductDetailEntity()
     }
 }

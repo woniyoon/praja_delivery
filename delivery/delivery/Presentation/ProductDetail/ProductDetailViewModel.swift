@@ -10,18 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol ProductDetailViewModelProtocol{
-    func fetchProductDetail(_ id: String)
-}
-
-class ProductDetailViewModel: ProductDetailViewModelProtocol {
+class ProductDetailViewModel {
     
-    //    init(useCase: ProductListUseCaseProtocol) {
-    //        self.useCase = useCase
-    //    }
+    init(useCase: ProductDetailUseCaseProtocol) {
+        self.useCase = useCase
+    }
     
-    // TODO should be injected
-    private let useCase: ProductDetailUseCaseProtocol? = nil
+    private let useCase: ProductDetailUseCaseProtocol
     
     private var nameVariable = Variable<String>("")
     private var priceVariable = Variable<String>("")
@@ -51,6 +46,6 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol {
     }
     
     func fetchProductDetail(_ id: String) {
-        
+        useCase.fetchProductDetail(id)
     }
 }

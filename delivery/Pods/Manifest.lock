@@ -62,6 +62,7 @@ PODS:
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - Swinject (2.1.1)
 
 DEPENDENCIES:
   - Firebase/Core
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - Swinject
 
 SPEC CHECKSUMS:
   BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
@@ -90,7 +92,8 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  Swinject: afea49fd95f392b41171669f165842879c48fad6
 
-PODFILE CHECKSUM: 58bd90fa66ece6d39c96bf3129a3fa141ebb0e5a
+PODFILE CHECKSUM: 48a5506144a9c2f68c28682eb1eaa61e286d317a
 
 COCOAPODS: 1.4.0
