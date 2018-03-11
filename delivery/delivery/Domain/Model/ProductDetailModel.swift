@@ -7,4 +7,8 @@
 //
 
 struct ProductDetailModel {
+    public let name: String
+    public let price: Double
+    public let originalPrice: Double
+    public let image: String?
 }

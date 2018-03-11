@@ -10,7 +10,10 @@ import Foundation
 class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     
     func fetchProductDetail(_ id: String) -> ProductDetailEntity {
-        print("REEEEEEEEACH! TO DATA STAOREEEEEEEEEEEEEEEEE \(id)")
-        return ProductDetailEntity()
+        return ProductDetailEntity(
+            name: "Sour Patch Kids Sweet and Sour Gummy Candy (Strawberry, 10 Ounce Bag, Pack of 12)",
+            price: 13.87,
+            originalPrice: 15.00,
+            image: "")
     }
 }

@@ -9,5 +9,8 @@
 import Foundation
 
 struct ProductDetailEntity {
-    
+    public let name: String?
+    public let price: Double
+    public let originalPrice: Double
+    public let image: String?
 }

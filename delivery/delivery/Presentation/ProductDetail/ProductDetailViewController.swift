@@ -18,9 +18,9 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
     
-    private let disposeBag: DisposeBag = DisposeBag()
-    
     private var viewModel: ProductDetailViewModel!
+    
+    private let disposeBag: DisposeBag = DisposeBag()
     
     static func createInstance(viewModel: ProductDetailViewModel) -> ProductDetailViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductDetailViewController.self)
@@ -31,16 +31,21 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        viewModel.fetchProductDetail("test")
     }
     
     private func bindView() {
-        viewModel.name().bind(to: nameLabel.rx.text).disposed(by: disposeBag)
-        viewModel.price().bind(to: priceLabel.rx.text).disposed(by: disposeBag)
-        viewModel.originalPrice().bind(to: originalPriceLabel.rx.text).disposed(by: disposeBag)
+        viewModel.name.asObservable()
+            .bind(to: nameLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.price.asObservable()
+            .bind(to: priceLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.originalPrice.asObservable()
+            .bind(to: originalPriceLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.setSampleData()
+        viewModel.fetchProductDetail("test")
     }
 }

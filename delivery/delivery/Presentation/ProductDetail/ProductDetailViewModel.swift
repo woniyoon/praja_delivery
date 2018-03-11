@@ -12,40 +12,21 @@ import RxCocoa
 
 class ProductDetailViewModel {
     
+    var name = BehaviorRelay(value: "")
+    var price = BehaviorRelay(value: "")
+    var originalPrice = BehaviorRelay(value: "")
+    var image = BehaviorRelay(value: "")
+    
+    private let useCase: ProductDetailUseCaseProtocol
+    
     init(useCase: ProductDetailUseCaseProtocol) {
         self.useCase = useCase
     }
     
-    private let useCase: ProductDetailUseCaseProtocol
-    
-    private var nameVariable = Variable<String>("")
-    private var priceVariable = Variable<String>("")
-    private var originalPriceVariable = Variable<String>("")
-    private var imageVariable = Variable<String>("")
-    
-    func name() -> Observable<String> {
-        return self.nameVariable.asObservable()
-    }
-    
-    func price() -> Observable<String> {
-        return self.priceVariable.asObservable()
-    }
-    
-    func originalPrice() -> Observable<String> {
-        return self.originalPriceVariable.asObservable()
-    }
-    
-    func image() -> Observable<String> {
-        return self.imageVariable.asObservable()
-    }
-    
-    func setSampleData() {
-        nameVariable.value = "Sour Patch Kids Sweet and Sour Gummy Candy (Strawberry, 10 Ounce Bag, Pack of 12)"
-        priceVariable.value = "$13.87"
-        originalPriceVariable.value = "$15.00"
-    }
-    
     func fetchProductDetail(_ id: String) {
-        useCase.fetchProductDetail(id)
+        let model = useCase.fetchProductDetail(id)
+        name.accept(model.name)
+        price.accept("$\(model.price)")
+        originalPrice.accept("$\(model.originalPrice)")
     }
 }
