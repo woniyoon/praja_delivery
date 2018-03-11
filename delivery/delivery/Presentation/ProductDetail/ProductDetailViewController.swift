@@ -22,10 +22,19 @@ class ProductDetailViewController: UIViewController {
     
     private var viewModel: ProductDetailViewModel!
     
+    static func createInstance(viewModel: ProductDetailViewModel) -> ProductDetailViewController? {
+        let instance = UIViewController.initialViewControllerFromStoryBoard(ProductDetailViewController.self)
+        instance?.viewModel = viewModel
+        return instance
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ProductDetailViewModel()
-        // Bind views and variables
+        bindView()
+        viewModel.fetchProductDetail("test")
+    }
+    
+    private func bindView() {
         viewModel.name().bind(to: nameLabel.rx.text).disposed(by: disposeBag)
         viewModel.price().bind(to: priceLabel.rx.text).disposed(by: disposeBag)
         viewModel.originalPrice().bind(to: originalPriceLabel.rx.text).disposed(by: disposeBag)
