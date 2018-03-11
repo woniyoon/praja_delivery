@@ -6,5 +6,5 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
-class ProductDetailModel {
+struct ProductDetailModel {
 }
