@@ -22,10 +22,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didClickButton(_ sender: Any) {
-        print("didClickButton")
-        let storyboard = UIStoryboard(name: "ProductDetail", bundle: nil)
         let next = resolver.resolve(ProductDetailViewController.self)!
-//        let next = storyboard.instantiateInitialViewController() as! ProductDetailViewController
         present(next, animated: true, completion: nil)
     }
     
