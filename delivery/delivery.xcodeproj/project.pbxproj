@@ -58,7 +58,6 @@
 		D7AAD0BF2042375800D2971C /* TranslatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0BE2042375800D2971C /* TranslatorProtocol.swift */; };
 		D7AAD0C32042396200D2971C /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0C22042396200D2971C /* Extention.swift */; };
 		D7AAD0C6204239B300D2971C /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0C5204239B300D2971C /* FirebaseAnalytics.swift */; };
-		D7E238C920552A9000BA973F /* FirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E238C820552A9000BA973F /* FirebaseDataStore.swift */; };
 		D7E238CB205556A100BA973F /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E238CA205556A100BA973F /* ReviewEntity.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,7 +130,6 @@
 		D7AAD0BE2042375800D2971C /* TranslatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorProtocol.swift; sourceTree = "<group>"; };
 		D7AAD0C22042396200D2971C /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		D7AAD0C5204239B300D2971C /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
-		D7E238C820552A9000BA973F /* FirebaseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataStore.swift; sourceTree = "<group>"; };
 		D7E238CA205556A100BA973F /* ReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntity.swift; sourceTree = "<group>"; };
 		DEB44EDD65BC1EED8833ECEF /* Pods_deliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_deliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,7 +216,6 @@
 		BBA54ABA203D178D00D69954 /* delivery */ = {
 			isa = PBXGroup;
 			children = (
-				D7E238C720552A7B00BA973F /* Slide */,
 				D7569D2E2052B04400C6D6E4 /* DI */,
 				D7AAD09F2041943100D2971C /* Presentation */,
 				D7AAD0A42041943100D2971C /* Domain */,
@@ -373,14 +370,6 @@
 				D7AAD0A92041943100D2971C /* ProductDetailModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		D7E238C720552A7B00BA973F /* Slide */ = {
-			isa = PBXGroup;
-			children = (
-				D7E238C820552A9000BA973F /* FirebaseDataStore.swift */,
-			);
-			path = Slide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,7 +631,6 @@
 				522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */,
 				D7E238CB205556A100BA973F /* ReviewEntity.swift in Sources */,
 				D7569D3A2052B18600C6D6E4 /* DataStoreAssembly.swift in Sources */,
-				D7E238C920552A9000BA973F /* FirebaseDataStore.swift in Sources */,
 				86D47220203D2D8900624E1F /* Account.swift in Sources */,
 				D7569D382052B0FB00C6D6E4 /* RepositoryAssembly.swift in Sources */,
 				86D47224203D2FDB00624E1F /* Payment.swift in Sources */,
