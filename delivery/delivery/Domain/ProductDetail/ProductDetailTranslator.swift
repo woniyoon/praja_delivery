@@ -9,11 +9,11 @@
 import Foundation
 
 class ProductDetailTranslator: TranslatorProtocol {
-    func translate(_ entity: ProductDetailEntity) -> ProductDetailModel {
+    func translate(_ entity: ProductEntity) -> ProductDetailModel {
         return ProductDetailModel(
             name: entity.name ?? "",
             price: entity.price,
             originalPrice: entity.originalPrice,
-            image: entity.image)
+            images: entity.images)
     }
 }
