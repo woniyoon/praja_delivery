@@ -10,7 +10,7 @@ import Swinject
 
 final class DataStoreAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(ProductDetailDataStoreProtocol.self) { _ in
+        container.register(ProductDetailDataStoreProtocol.self, name: "") { _ in
             ProductDetailFirebaseDataStore()
         }
     }
