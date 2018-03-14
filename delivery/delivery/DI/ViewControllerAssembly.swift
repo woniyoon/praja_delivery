@@ -20,6 +20,15 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ProductDetailViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        container.register(OrderViewController.self) { _ in
+            let dataStore  = container.resolve(OrderDataStoreProtocol.self)
+            let repository = container.resolve(OrderRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(OrderTranslator.self)
+            let usecase    = container.resolve(OrderUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(OrderViewModel.self, argument: usecase!)
+            let vc         = OrderViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
         container.register(AccountViewController.self) { _ in
             let dataStore  = container.resolve(AccountDataStoreProtocol.self)
             let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
@@ -29,7 +38,6 @@ final class ViewControllerAssembly: Assembly {
             let vc         = AccountViewController.createInstance(viewModel: viewModel!)
              return vc!
         }
-        
         container.register(HomeViewController.self) { _ in
             let dataStore = container.resolve(HomeDataStoreProtocol.self)
             let repository = container.resolve(HomeRepositoryProtocol.self, argument: dataStore!)
@@ -47,7 +55,6 @@ final class ViewControllerAssembly: Assembly {
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(UserViewModel.self, argument: usecase!)
             let vc         = UserViewController.createInstance(viewModel: viewModel!)
-
             return vc!
         }
     }

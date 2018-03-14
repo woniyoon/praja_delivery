@@ -13,17 +13,20 @@ final class RepositoryAssembly: Assembly {
         container.register(ProductDetailRepositoryProtocol.self) { (_, dataStore: ProductDetailDataStoreProtocol) in
             ProductDetailRepository(dataStore: dataStore)
         }
-
-
+        
+        container.register(OrderRepositoryProtocol.self) { (_, dataStore: OrderDataStoreProtocol) in
+            OrderRepository(dataStore: dataStore)
+        }
+        
         container.register(AccountRepositoryProtocol.self) { (_, dataStore: AccountDataStoreProtocol) in
             AccountRepository(dataStore: dataStore)
         }
         
         container.register(HomeRepositoryProtocol.self){ (_, dataStore: HomeDataStoreProtocol) in
             HomeRepository(dataStore: dataStore)
-          }
+        }
         container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
             UserRepository(dataStore: dataStore)
-          }
+        }
     }
 }
