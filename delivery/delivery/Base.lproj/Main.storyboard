@@ -29,6 +29,14 @@
                                     <action selector="didClickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wts-hp-7xp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhW-Eh-Ako">
+                                <rect key="frame" x="156" y="225" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="go Home"/>
+                                <connections>
+                                    <action selector="goHome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Viz-Vd-iyk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

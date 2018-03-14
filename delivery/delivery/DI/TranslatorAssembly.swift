@@ -13,5 +13,9 @@ final class TranslatorAssembly: Assembly {
         container.register(ProductDetailTranslator.self) { _ in
             ProductDetailTranslator()
         }
+        
+        container.register(HomeTranslator.self) { _ in
+            HomeTranslator()
+        }
     }
 }

@@ -20,5 +20,16 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ProductDetailViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        container.register(HomeViewController.self) { _ in
+            let dataStore = container.resolve(HomeDataStoreProtocol.self)
+            let repository = container.resolve(HomeRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(HomeTranslator.self)
+            let usecase = container.resolve(HomeUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel = container.resolve(HomeViewModel.self,
+                                              argument: usecase!)
+            let vc = HomeViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }

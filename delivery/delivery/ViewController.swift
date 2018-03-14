@@ -26,5 +26,11 @@ class ViewController: UIViewController {
         present(next, animated: true, completion: nil)
     }
     
+    
+    @IBAction func goHome(_ sender: Any) {
+        print("called!")
+        let next = resolver.resolve(HomeViewController.self)!
+        present(next, animated: true, completion: nil)
+    }
 }
 
