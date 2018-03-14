@@ -24,14 +24,14 @@ class ViewController: UIViewController {
 
     
     @IBAction func didClickButton(_ sender: Any) {
-        let next = resolver.resolve(ProductDetailViewController.self)!
-        present(next, animated: true, completion: nil)
-    }
-    
-    @IBAction func didOrderbutton(_ sender: Any) {
         let next = resolver.resolve(OrderViewController.self)!
         present(next, animated: true, completion: nil)
     }
     
+    @IBAction func goHome(_ sender: Any) {
+        print("called!")
+        let next = resolver.resolve(HomeViewController.self)!
+        present(next, animated: true, completion: nil)
+    }
 }
 
