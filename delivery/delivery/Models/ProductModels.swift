@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProductModel {
+class ProductModels {
     private(set) public var name: String
     private(set) public var description: String
     private(set) public var price: Double
