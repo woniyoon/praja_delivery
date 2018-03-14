@@ -25,5 +25,9 @@ final class TranslatorAssembly: Assembly {
         container.register(UserTranslator.self) { _ in
             UserTranslator()
         }
+        
+        container.register(ProductListTranslator.self) { _ in
+            ProductListTranslator()
+        }
     }
 }

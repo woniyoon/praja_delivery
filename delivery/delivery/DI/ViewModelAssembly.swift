@@ -25,5 +25,9 @@ final class ViewModelAssembly: Assembly {
         container.register(UserViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             UserViewModel(useCase: useCase)
         }
+        
+        container.register(ProductListViewModel.self) { (_, useCase: ProductListUseCaseProtocol) in
+            ProductListViewModel(useCase: useCase)
+        }
     }
 }
