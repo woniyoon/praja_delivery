@@ -25,7 +25,7 @@ class ViewController: UIViewController{
 
     
     @IBAction func didClickButton(_ sender: Any) {
-        let next = resolver.resolve(OrderViewController.self)!
+        let next = resolver.resolve(ProductListViewController.self)!
         present(next, animated: true, completion: nil)
     }
     
