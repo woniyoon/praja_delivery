@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // hello I'm Kento
@@ -21,8 +22,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
     @IBAction func didClickButton(_ sender: Any) {
         let next = resolver.resolve(ProductDetailViewController.self)!
+        present(next, animated: true, completion: nil)
+    }
+    
+    @IBAction func didOrderbutton(_ sender: Any) {
+        let next = resolver.resolve(OrderViewController.self)!
         present(next, animated: true, completion: nil)
     }
     
