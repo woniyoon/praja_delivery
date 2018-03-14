@@ -13,5 +13,10 @@ final class DataStoreAssembly: Assembly {
         container.register(ProductDetailDataStoreProtocol.self) { _ in
             ProductDetailFirebaseDataStore()
         }
+        
+        container.register(HomeDataStoreProtocol.self) { _
+            in
+            HomeFirebaseDataStore()
+        }
     }
 }
