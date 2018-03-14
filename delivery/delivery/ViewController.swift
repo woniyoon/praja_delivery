@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didClickButton(_ sender: Any) {
-        let next = resolver.resolve(AccountViewController.self)!
+        let next = resolver.resolve(UserViewController.self)!
         present(next, animated: true, completion: nil)
     }
     
