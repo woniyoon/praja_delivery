@@ -10,5 +10,4 @@ import Foundation
 
 protocol ProductListDataStoreProtocol {
     func fetchProductList() -> [ProductEntity]
-    func addNewProduct(product: ProductEntity)
 }

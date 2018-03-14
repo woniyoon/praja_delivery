@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ProductDetailDataStoreProtocol {
-    func fetchProductDetail(_ id: String) -> ProductDetailEntity
+    func fetchProductDetail(_ id: String) -> ProductEntity
 }

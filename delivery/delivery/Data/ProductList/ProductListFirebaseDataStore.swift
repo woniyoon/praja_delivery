@@ -9,7 +9,8 @@
 import Foundation
 import Firebase
 
-class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
+class ProductListFirebaseDataStore: ProductListDataStoreProtocol {    
+
     let db = Firestore.firestore()
     
     func fetchProductList() -> [ProductEntity] {
@@ -32,14 +33,16 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
                         let subCategory = dataProduct["subCategory"]
                         let price = dataProduct["price"]
                         let images = dataProduct["images"]
+                        let originalPrice = dataProduct["originalPrice"]
                         
-                        let product = ProductEntity(name: name as! String, description: description as! String, price: price as! Double, brand: brand as! String, discountPercent: discountPercent as! Int, subCategory: subCategory as! SubCategory, images: [images as! String])
+                        let product = ProductEntity(name: name as! String, brand: brand as! String, price: price as! Double, originalPrice: originalPrice as! Double, discountPercent: Double(discountPercent as! Int), images: [images as! String], averageRating: 10.0, fiveStarsCount: 0, fourStarsCount: 4, threeStarsCount: 2, twoStarsCount: 2, oneStarCount: 1, description: "dgasyjdgasydgasdajy" , category: "Food", subCategory: "Chicken" as! String)
+                        
+                        
+                        print("Product name \(product.name)")
                         
                         products.append(product)
                         
                     }
-                                       
-//                    print("\(document.documentID) => \(document.data())")
                 }
             }
         }
@@ -47,30 +50,30 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
         return products
     }
     
-    func addNewProduct(product: ProductEntity){
-        
-        print("Creating Product")
+//    func addNewProduct(product: ProductEntity){
+//
+//        print("Creating Product")
+//
+//        let docData: [String: Any] = [
+//            "name": product.name!,
+//            "description": product.description!,
+//            "price": product.price!,
+//            "brand": product.brand!,
+//            "discountPercent": product.discountPercent!,
+//            "images": product.images!,
+//            "subCategory": [
+//                "name": product.subCategory!.name,
+//                "category": [
+//                    "name": product.subCategory!.category.name
+//                ]
+//            ]
+//        ]
+//        db.collection("product").document(product.name!).setData(docData) { err in
+//            if let err = err {
+//                print("Error writing document: \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
 
-        let docData: [String: Any] = [
-            "name": product.name!,
-            "description": product.description!,
-            "price": product.price!,
-            "brand": product.brand!,
-            "discountPercent": product.discountPercent!,
-            "images": product.images!,
-            "subCategory": [
-                "name": product.subCategory!.name,
-                "category": [
-                    "name": product.subCategory!.category.name
-                ]
-            ]
-        ]
-        db.collection("product").document(product.name!).setData(docData) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-    }
 }

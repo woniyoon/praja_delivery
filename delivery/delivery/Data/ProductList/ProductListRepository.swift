@@ -10,7 +10,6 @@ import Foundation
 
 protocol ProductListRepositoryProtocol{
     func fetchProductList() -> [ProductEntity]
-    func addNewProduct(product: ProductEntity)
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
@@ -25,7 +24,4 @@ class ProductListRepository: ProductListRepositoryProtocol {
         return dataStore.fetchProductList()
     }
     
-    func addNewProduct(product: ProductEntity) {
-        dataStore.addNewProduct(product: product)
-    }
 }
