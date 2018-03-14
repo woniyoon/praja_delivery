@@ -13,5 +13,8 @@ final class UsecaseAssembly: Assembly {
         container.register(ProductDetailUseCaseProtocol.self) { (_, repository: ProductDetailRepositoryProtocol, translator: ProductDetailTranslator) in
             ProductDetailUseCase(repository: repository, translator: translator)
         }
+        container.register(AccountUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: AccountTranslator) in
+            AccountUseCase(repository: repository, translator: translator)
+        }
     }
 }
