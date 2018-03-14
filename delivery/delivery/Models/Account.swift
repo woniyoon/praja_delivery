@@ -6,16 +6,17 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
-import Foundation
+//import Foundation
+//
+//class Account {
+//    var email: String
+//    var password: String
+//    var token: String
+//
+//    init(email: String, password: String, token: String) {
+//        self.email = email
+//        self.password = password
+//        self.token = token
+//    }
+//}
 
-class Account {
-    var email: String
-    var password: String
-    var token: String
-    
-    init(email: String, password: String, token: String) {
-        self.email = email
-        self.password = password
-        self.token = token
-    }
-}

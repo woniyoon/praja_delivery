@@ -15,6 +15,6 @@ struct User {
     public let mobileNumber: String
     public let dateOfBirth: Date
     public let hasAccount: Bool
-    public let account: Account
+    //public let account: Account
     
 }
