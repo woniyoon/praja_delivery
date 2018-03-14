@@ -13,6 +13,11 @@ final class ViewModelAssembly: Assembly {
         container.register(ProductDetailViewModel.self) { (_, useCase: ProductDetailUseCaseProtocol) in
             ProductDetailViewModel(useCase: useCase)
         }
+<<<<<<< HEAD
+        
+        container.register(ProductListViewModel.self) { (_, useCase: ProductListUseCaseProtocol) in
+            ProductListViewModel(useCase: useCase)
+=======
         container.register(OrderViewModel.self) { (_, useCase: OrderUseCaseProtocol) in
             OrderViewModel(useCase: useCase)
         }
@@ -24,10 +29,7 @@ final class ViewModelAssembly: Assembly {
         }
         container.register(UserViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             UserViewModel(useCase: useCase)
-        }
-        
-        container.register(ProductListViewModel.self) { (_, useCase: ProductListUseCaseProtocol) in
-            ProductListViewModel(useCase: useCase)
+>>>>>>> develop
         }
     }
 }

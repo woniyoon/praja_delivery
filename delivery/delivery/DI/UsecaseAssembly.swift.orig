@@ -13,6 +13,11 @@ final class UsecaseAssembly: Assembly {
         container.register(ProductDetailUseCaseProtocol.self) { (_, repository: ProductDetailRepositoryProtocol, translator: ProductDetailTranslator) in
             ProductDetailUseCase(repository: repository, translator: translator)
         }
+<<<<<<< HEAD
+        
+        container.register(ProductListUseCaseProtocol.self) { (_, repository: ProductListRepositoryProtocol, translator: ProductListTranslator) in
+            ProductListUseCase(repository: repository, translator: translator)
+=======
         container.register(OrderUseCaseProtocol.self) { (_, repository: OrderRepositoryProtocol, translator: OrderTranslator) in
             OrderUseCase(repository: repository, translator: translator)
         }
@@ -25,10 +30,7 @@ final class UsecaseAssembly: Assembly {
         }
         container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
                 UserUseCase(repository: repository, translator: translator)
-        }
-        
-        container.register(ProductListUseCaseProtocol.self) { (_, repository: ProductListRepositoryProtocol, translator: ProductListTranslator) in
-            ProductListUseCase(repository: repository, translator: translator)
+>>>>>>> develop
         }
     }
 }

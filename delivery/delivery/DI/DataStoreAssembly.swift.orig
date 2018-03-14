@@ -13,6 +13,11 @@ final class DataStoreAssembly: Assembly {
         container.register(ProductDetailDataStoreProtocol.self) { _ in
             ProductDetailFirebaseDataStore()
         }
+<<<<<<< HEAD
+        
+        container.register(ProductListDataStoreProtocol.self) { _ in
+            ProductListFirebaseDataStore()
+=======
         container.register(OrderDataStoreProtocol.self) { _ in
             OrderFirebaseDataStore()
         }
@@ -24,10 +29,7 @@ final class DataStoreAssembly: Assembly {
         }
         container.register(UserDataStoreProtocol.self) { _ in
             UserFirebaseDataStore()
-        }
-        
-        container.register(ProductListDataStoreProtocol.self) { _ in
-            ProductListFirebaseDataStore()
+>>>>>>> develop
         }
     }
 }

@@ -14,6 +14,10 @@ final class RepositoryAssembly: Assembly {
             ProductDetailRepository(dataStore: dataStore)
         }
         
+<<<<<<< HEAD
+        container.register(ProductListRepositoryProtocol.self) { (_, dataStore: ProductListDataStoreProtocol) in
+            ProductListRepository(dataStore: dataStore)
+=======
         container.register(OrderRepositoryProtocol.self) { (_, dataStore: OrderDataStoreProtocol) in
             OrderRepository(dataStore: dataStore)
         }
@@ -27,10 +31,7 @@ final class RepositoryAssembly: Assembly {
         }
         container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
             UserRepository(dataStore: dataStore)
-        }
-        
-        container.register(ProductListRepositoryProtocol.self) { (_, dataStore: ProductListDataStoreProtocol) in
-            ProductListRepository(dataStore: dataStore)
+>>>>>>> develop
         }
     }
 }
