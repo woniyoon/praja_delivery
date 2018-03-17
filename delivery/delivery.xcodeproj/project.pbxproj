@@ -87,6 +87,7 @@
 		D716B27E205D03730089E312 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716B27D205D03730089E312 /* LocalCollection.swift */; };
 		D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */; };
 		D7529E20205D0662003CFD5A /* SampleProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1F205D0662003CFD5A /* SampleProductModel.swift */; };
+		D7529E22205DC39E003CFD5A /* NomnomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E21205DC39E003CFD5A /* NomnomError.swift */; };
 		D7569D302052B08400C6D6E4 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D2F2052B08400C6D6E4 /* Container.swift */; };
 		D7569D322052B0C800C6D6E4 /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D312052B0C800C6D6E4 /* ViewControllerAssembly.swift */; };
 		D7569D342052B0E200C6D6E4 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D332052B0E200C6D6E4 /* ViewModelAssembly.swift */; };
@@ -209,6 +210,7 @@
 		D716B27D205D03730089E312 /* LocalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
 		D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductEntity.swift; sourceTree = "<group>"; };
 		D7529E1F205D0662003CFD5A /* SampleProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductModel.swift; sourceTree = "<group>"; };
+		D7529E21205DC39E003CFD5A /* NomnomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomnomError.swift; sourceTree = "<group>"; };
 		D7569D2F2052B08400C6D6E4 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		D7569D312052B0C800C6D6E4 /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		D7569D332052B0E200C6D6E4 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				D7AAD0C42042398900D2971C /* Analytics */,
 				D7AAD0C12042395300D2971C /* Extention */,
 				D716B27D205D03730089E312 /* LocalCollection.swift */,
+				D7529E21205DC39E003CFD5A /* NomnomError.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				8603A7D92057856B00CB7E5E /* UserUseCase.swift in Sources */,
 				2C3BA6BE205783B900C438C0 /* OrderFirebaseDataStore.swift in Sources */,
 				D7AAD0BC204235BE00D2971C /* ProductEntity.swift in Sources */,
+				D7529E22205DC39E003CFD5A /* NomnomError.swift in Sources */,
 				911A4B00203D331B00D03889 /* DeliveryInfo.swift in Sources */,
 				5281FD682058C13400412663 /* ProductListViewModel.swift in Sources */,
 				D716B27E205D03730089E312 /* LocalCollection.swift in Sources */,

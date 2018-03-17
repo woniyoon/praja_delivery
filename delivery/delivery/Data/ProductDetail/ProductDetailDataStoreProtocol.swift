@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ProductDetailDataStoreProtocol {
-    func fetchProductDetail(_ id: String, _ err: (Error) -> Void, callback: @escaping (SampleProductEntity) -> Void)
+    func fetchProductDetail(_ id: String) -> Single<SampleProductEntity>
 }

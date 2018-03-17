@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ProductDetailUseCaseProtocol {
-    func fetchProductDetail(_ id: String, error err: (Error) -> Void, callback: @escaping (SampleProductModel) -> Void)
+    func fetchProductDetail(_ id: String) -> Single<SampleProductModel>
 }
 
 class ProductDetailUseCase: ProductDetailUseCaseProtocol {
@@ -22,10 +23,10 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchProductDetail(_ id: String, error err: (Error) -> Void, callback: @escaping (SampleProductModel) -> Void) {
-        repository.fetchProductDetail(id, err) { entity in
-            let model = self.translator.translate(entity)
-            callback(model)
-        }
+    func fetchProductDetail(_ id: String) -> Single<SampleProductModel> {
+        return repository.fetchProductDetail(id)
+            .map({ entity in
+                self.translator.translate(entity)
+        })
     }
 }
