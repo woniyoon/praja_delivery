@@ -13,6 +13,8 @@ import RxCocoa
 
 class ProductDetailViewController: UIViewController {
     
+    var id: String!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -46,6 +48,6 @@ class ProductDetailViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail("xzMjRiKcVFgMLW1lnOmc")
+        viewModel.fetchProductDetail(id)
     }
 }
