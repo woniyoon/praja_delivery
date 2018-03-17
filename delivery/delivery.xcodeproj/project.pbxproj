@@ -510,10 +510,10 @@
 			children = (
 				911A281920577926007B8084 /* Home */,
 				5281FD59205780B300412663 /* ProductList */,
+				D7AAD0A02041943100D2971C /* ProductDetail */,
 				2C3BA6C620578BB700C438C0 /* Order */,
 				BA475A8A20589DF900F3A0B5 /* Account */,
 				8603A7D22057788F00CB7E5E /* User */,
-				D7AAD0A02041943100D2971C /* ProductDetail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -531,14 +531,14 @@
 		D7AAD0A42041943100D2971C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D7E238C62054EDA100BA973F /* Model */,
+				D7AAD0BD2042374E00D2971C /* Common */,
+				91E3C9F320577CBA00017A0F /* Home */,
+				5281FD602058B70200412663 /* ProductList */,
+				D7AAD0A52041943100D2971C /* ProductDetail */,
 				2C3BA6C1205787A700C438C0 /* Order */,
 				BA475A8520589DD800F3A0B5 /* Account */,
-				5281FD602058B70200412663 /* ProductList */,
 				8603A7D72057854900CB7E5E /* User */,
-				D7E238C62054EDA100BA973F /* Model */,
-				91E3C9F320577CBA00017A0F /* Home */,
-				D7AAD0BD2042374E00D2971C /* Common */,
-				D7AAD0A52041943100D2971C /* ProductDetail */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -555,13 +555,13 @@
 		D7AAD0AA2041943100D2971C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D7E238C52054ED9000BA973F /* Entity */,
+				91E3C9F820577E0000017A0F /* Home */,
 				523D3A8A204F9CB200B63193 /* ProductList */,
+				D7AAD0AB2041943100D2971C /* ProductDetail */,
 				2C3BA6B8205781DB00C438C0 /* Order */,
 				BA475A7E20589D9D00F3A0B5 /* Account */,
 				8603A7DE2057A70300CB7E5E /* User */,
-				D7E238C52054ED9000BA973F /* Entity */,
-				91E3C9F820577E0000017A0F /* Home */,
-				D7AAD0AB2041943100D2971C /* ProductDetail */,
 			);
 			path = Data;
 			sourceTree = "<group>";
