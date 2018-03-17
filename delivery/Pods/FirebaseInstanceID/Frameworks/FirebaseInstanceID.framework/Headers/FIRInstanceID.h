@@ -1,12 +1,22 @@
 #import <Foundation/Foundation.h>
 
+// NS_SWIFT_NAME can only translate factory methods before the iOS 9.3 SDK.
+// Wrap it in our own macro if it's a non-compatible SDK.
+#ifndef FIR_SWIFT_NAME
+#ifdef __IPHONE_9_3
+#define FIR_SWIFT_NAME(X) NS_SWIFT_NAME(X)
+#else
+#define FIR_SWIFT_NAME(X)  // Intentionally blank.
+#endif  // #ifdef __IPHONE_9_3
+#endif  // #ifndef FIR_SWIFT_NAME
+
 /**
  *  @memberof FIRInstanceID
  *
  *  The scope to be used when fetching/deleting a token for Firebase Messaging.
  */
 FOUNDATION_EXPORT NSString * __nonnull const kFIRInstanceIDScopeFirebaseMessaging
-    NS_SWIFT_NAME(InstanceIDScopeFirebaseMessaging);
+    FIR_SWIFT_NAME(InstanceIDScopeFirebaseMessaging);
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 /**
@@ -18,7 +28,7 @@ FOUNDATION_EXPORT NSString * __nonnull const kFIRInstanceIDScopeFirebaseMessagin
  *  to control the rate of token updates on application servers.
  */
 FOUNDATION_EXPORT const NSNotificationName __nonnull kFIRInstanceIDTokenRefreshNotification
-    NS_SWIFT_NAME(InstanceIDTokenRefresh);
+    FIR_SWIFT_NAME(InstanceIDTokenRefresh);
 #else
 /**
  *  Called when the system determines that tokens need to be refreshed.
@@ -29,7 +39,7 @@ FOUNDATION_EXPORT const NSNotificationName __nonnull kFIRInstanceIDTokenRefreshN
  *  to control the rate of token updates on application servers.
  */
 FOUNDATION_EXPORT NSString * __nonnull const kFIRInstanceIDTokenRefreshNotification
-    NS_SWIFT_NAME(InstanceIDTokenRefreshNotification);
+    FIR_SWIFT_NAME(InstanceIDTokenRefreshNotification);
 #endif  // defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 
 /**
@@ -45,7 +55,7 @@ FOUNDATION_EXPORT NSString * __nonnull const kFIRInstanceIDTokenRefreshNotificat
  *               description.
  */
 typedef void(^FIRInstanceIDTokenHandler)( NSString * __nullable token, NSError * __nullable error)
-    NS_SWIFT_NAME(InstanceIDTokenHandler);
+    FIR_SWIFT_NAME(InstanceIDTokenHandler);
 
 
 /**
@@ -58,7 +68,7 @@ typedef void(^FIRInstanceIDTokenHandler)( NSString * __nullable token, NSError *
  *               See the error codes below for a more detailed description.
  */
 typedef void(^FIRInstanceIDDeleteTokenHandler)(NSError * __nullable error)
-    NS_SWIFT_NAME(InstanceIDDeleteTokenHandler);
+    FIR_SWIFT_NAME(InstanceIDDeleteTokenHandler);
 
 /**
  *  @related FIRInstanceID
@@ -71,7 +81,7 @@ typedef void(^FIRInstanceIDDeleteTokenHandler)(NSError * __nullable error)
  *  @param error    The error if fetching the identity fails else nil.
  */
 typedef void(^FIRInstanceIDHandler)(NSString * __nullable identity, NSError * __nullable error)
-    NS_SWIFT_NAME(InstanceIDHandler);
+    FIR_SWIFT_NAME(InstanceIDHandler);
 
 /**
  *  @related FIRInstanceID
@@ -83,7 +93,7 @@ typedef void(^FIRInstanceIDHandler)(NSString * __nullable identity, NSError * __
  *               it fails else nil.
  */
 typedef void(^FIRInstanceIDDeleteHandler)(NSError * __nullable error)
-    NS_SWIFT_NAME(InstanceIDDeleteHandler);
+    FIR_SWIFT_NAME(InstanceIDDeleteHandler);
 
 /**
  * Public errors produced by InstanceID.
@@ -112,7 +122,7 @@ typedef NS_ENUM(NSUInteger, FIRInstanceIDError) {
 
   /// InvalidRequest -- Some parameters of the request were invalid.
   FIRInstanceIDErrorInvalidRequest = 7,
-} NS_SWIFT_NAME(InstanceIDError);
+} FIR_SWIFT_NAME(InstanceIDError);
 
 /**
  *  The APNS token type for the app. If the token type is set to `UNKNOWN`
@@ -126,7 +136,7 @@ typedef NS_ENUM(NSInteger, FIRInstanceIDAPNSTokenType) {
   FIRInstanceIDAPNSTokenTypeSandbox,
   /// Production token type.
   FIRInstanceIDAPNSTokenTypeProd,
-} NS_SWIFT_NAME(InstanceIDAPNSTokenType)
+} FIR_SWIFT_NAME(InstanceIDAPNSTokenType)
     __deprecated_enum_msg("Use FIRMessaging's APNSToken property instead.");
 
 /**
@@ -144,7 +154,7 @@ typedef NS_ENUM(NSInteger, FIRInstanceIDAPNSTokenType) {
  *  services associated with the app, call
  *  `[FIRInstanceID tokenWithAuthorizedEntity:scope:options:handler]`.
  */
-NS_SWIFT_NAME(InstanceID)
+FIR_SWIFT_NAME(InstanceID)
 @interface FIRInstanceID : NSObject
 
 /**
@@ -152,7 +162,7 @@ NS_SWIFT_NAME(InstanceID)
  *
  *  @return A shared instance of FIRInstanceID.
  */
-+ (nonnull instancetype)instanceID NS_SWIFT_NAME(instanceID());
++ (nonnull instancetype)instanceID FIR_SWIFT_NAME(instanceID());
 
 /**
  *  Unavailable. Use +instanceID instead.
@@ -261,7 +271,7 @@ NS_SWIFT_NAME(InstanceID)
  *                 application instance.
  */
 - (void)getIDWithHandler:(nonnull FIRInstanceIDHandler)handler
-    NS_SWIFT_NAME(getID(handler:));
+    FIR_SWIFT_NAME(getID(handler:));
 
 /**
  *  Resets Instance ID and revokes all tokens.
@@ -271,6 +281,6 @@ NS_SWIFT_NAME(InstanceID)
  *  ready.
  */
 - (void)deleteIDWithHandler:(nonnull FIRInstanceIDDeleteHandler)handler
-    NS_SWIFT_NAME(deleteID(handler:));
+    FIR_SWIFT_NAME(deleteID(handler:));
 
 @end

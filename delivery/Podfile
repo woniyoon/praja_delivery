@@ -10,7 +10,6 @@ target 'delivery' do
 
   # Swinject
   pod 'Swinject'
-#  pod 'SwinjectStoryboard'
 
   # Firebase
   pod 'Firebase/Core'

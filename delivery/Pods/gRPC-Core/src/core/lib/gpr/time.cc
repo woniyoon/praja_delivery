@@ -81,9 +81,8 @@ static gpr_timespec to_seconds_from_sub_second_time(int64_t time_in_units,
                     units_per_sec) -
                    1;
     }
-    out.tv_nsec =
-        static_cast<int32_t>((time_in_units - out.tv_sec * units_per_sec) *
-                             GPR_NS_PER_SEC / units_per_sec);
+    out.tv_nsec = (int32_t)((time_in_units - out.tv_sec * units_per_sec) *
+                            GPR_NS_PER_SEC / units_per_sec);
     out.clock_type = type;
   }
   return out;
@@ -217,13 +216,12 @@ int32_t gpr_time_to_millis(gpr_timespec t) {
        care?) */
     return -2147483647;
   } else {
-    return static_cast<int32_t>(t.tv_sec * GPR_MS_PER_SEC +
-                                t.tv_nsec / GPR_NS_PER_MS);
+    return (int32_t)(t.tv_sec * GPR_MS_PER_SEC + t.tv_nsec / GPR_NS_PER_MS);
   }
 }
 
 double gpr_timespec_to_micros(gpr_timespec t) {
-  return static_cast<double>(t.tv_sec) * GPR_US_PER_SEC + t.tv_nsec * 1e-3;
+  return (double)t.tv_sec * GPR_US_PER_SEC + t.tv_nsec * 1e-3;
 }
 
 gpr_timespec gpr_convert_clock_type(gpr_timespec t, gpr_clock_type clock_type) {
