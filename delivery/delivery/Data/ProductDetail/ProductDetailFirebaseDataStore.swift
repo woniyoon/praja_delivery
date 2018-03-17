@@ -9,14 +9,16 @@ import Foundation
 import Firebase
 
 class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
+    let db = Firestore.firestore()
     
-    func fetchProductDetail(_ id: String, callback: (ProductEntity, Error) -> Void) {
-        let db = Firestore.firestore()
+    func fetchProductDetail(_ id: String, _ err: (Error) -> Void, callback: @escaping (SampleProductEntity) -> Void) {
         db.collection("sample_product")
             .document(id)
             .getDocument { (document, error) in
-                print(error)
-                print(document!)
+                guard let product = SampleProductEntity(dictionary: (document?.data())!) else {
+                    return
+                }
+                callback(product)
         }
     }
 }

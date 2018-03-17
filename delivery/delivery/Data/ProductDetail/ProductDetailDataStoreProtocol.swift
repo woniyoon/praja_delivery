@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ProductDetailDataStoreProtocol {
-    func fetchProductDetail(_ id: String, callback: (ProductEntity, Error) -> Void)
+    func fetchProductDetail(_ id: String, _ err: (Error) -> Void, callback: @escaping (SampleProductEntity) -> Void)
 }

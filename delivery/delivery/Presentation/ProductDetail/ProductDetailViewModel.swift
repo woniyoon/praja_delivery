@@ -24,10 +24,11 @@ class ProductDetailViewModel {
     }
     
     func fetchProductDetail(_ id: String) {
-        useCase.fetchProductDetail(id) { (model, error) in
-            name.accept(model.name)
-            price.accept("$\(model.price)")
-            originalPrice.accept("$\(model.originalPrice)")
+        useCase.fetchProductDetail(id, error: { e in print(e.localizedDescription) })
+        { model in
+            self.name.accept(model.name)
+            self.price.accept("$\(model.price)")
+            self.originalPrice.accept("$\(model.originalPrice)")
         }
     }
 }
