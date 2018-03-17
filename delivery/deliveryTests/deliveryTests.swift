@@ -8,12 +8,14 @@
 
 import XCTest
 @testable import delivery
+import Firebase
 
 class deliveryTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+     
     }
     
     override func tearDown() {
@@ -31,6 +33,23 @@ class deliveryTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testFirebaseAddProduct() {
+        
+        FirebaseApp.configure()
+        
+        var product: ProductEntity! = ProductEntity()
+        product.name = "diet Pepsi 100ml"
+        product.description = "Pepsi description"
+        product.brand = "Pepsi"
+        product.discountPercent = 0
+        product.price = 4.00
+        
+        
+        let data = ProductListFirebaseDataStore.init()
+        data.addNewProduct(product: product)
+        
     }
     
 }

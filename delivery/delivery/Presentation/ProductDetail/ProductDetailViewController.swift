@@ -18,7 +18,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
     
-    private var viewModel: ProductDetailViewModel!
+    public var viewModel: ProductDetailViewModel!
     
     private let disposeBag: DisposeBag = DisposeBag()
     
