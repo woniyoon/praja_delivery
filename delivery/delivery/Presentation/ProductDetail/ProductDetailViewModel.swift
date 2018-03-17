@@ -31,9 +31,10 @@ class ProductDetailViewModel {
                 onSuccess: { model in
                     self.name.accept(model.name)
                     self.price.accept("$\(model.price)")
-                    self.originalPrice.accept("$\(model.originalPrice)")
-            }) { error in
-                print(error.localizedDescription)
-        }.disposed(by: disposeBag)
+                    self.originalPrice.accept("$\(model.originalPrice)") },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }
