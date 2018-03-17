@@ -24,9 +24,10 @@ class ProductDetailViewModel {
     }
     
     func fetchProductDetail(_ id: String) {
-        let model = useCase.fetchProductDetail(id)
-        name.accept(model.name)
-        price.accept("$\(model.price)")
-        originalPrice.accept("$\(model.originalPrice)")
+        useCase.fetchProductDetail(id) { (model, error) in
+            name.accept(model.name)
+            price.accept("$\(model.price)")
+            originalPrice.accept("$\(model.originalPrice)")
+        }
     }
 }

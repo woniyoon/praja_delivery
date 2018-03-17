@@ -46,6 +46,6 @@ class ProductDetailViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail("test")
+        viewModel.fetchProductDetail("xzMjRiKcVFgMLW1lnOmc")
     }
 }

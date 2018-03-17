@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ProductDetailRepositoryProtocol{
-    func fetchProductDetail(_ id: String) -> ProductEntity
+    func fetchProductDetail(_ id: String, callback: (ProductEntity, Error) -> Void)
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
@@ -20,7 +20,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchProductDetail(_ id: String) -> ProductEntity {
-        return dataStore.fetchProductDetail(id)
+    func fetchProductDetail(_ id: String, callback: (ProductEntity, Error) -> Void) {
+        dataStore.fetchProductDetail(id, callback: callback)
     }
 }

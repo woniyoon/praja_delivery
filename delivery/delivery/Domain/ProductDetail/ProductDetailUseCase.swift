@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ProductDetailUseCaseProtocol {
-    func fetchProductDetail(_ id: String) -> ProductDetailModel
+    func fetchProductDetail(_ id: String, callback: (ProductDetailModel, Error) -> Void)
 }
 
 class ProductDetailUseCase: ProductDetailUseCaseProtocol {
@@ -22,8 +22,10 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchProductDetail(_ id: String) -> ProductDetailModel {
-        let entity = repository.fetchProductDetail(id)
-        return translator.translate(entity)
+    func fetchProductDetail(_ id: String, callback: (ProductDetailModel, Error) -> Void) {
+        repository.fetchProductDetail(id) { (entity, error) in
+            let model = translator.translate(entity)
+            callback(model, error)
+        }
     }
 }
