@@ -16,11 +16,11 @@
  *
  */
 
-/* Platform-independent features for gpr threads. */
-
-#include "src/core/lib/gpr/thd.h"
+/* Posix implementation for gpr threads. */
 
 #include <string.h>
+
+#include <grpc/support/thd.h>
 
 enum { GPR_THD_JOINABLE = 1 };
 

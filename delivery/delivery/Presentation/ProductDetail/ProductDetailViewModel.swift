@@ -19,14 +19,22 @@ class ProductDetailViewModel {
     
     private let useCase: ProductDetailUseCaseProtocol
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     init(useCase: ProductDetailUseCaseProtocol) {
         self.useCase = useCase
     }
     
     func fetchProductDetail(_ id: String) {
-        let model = useCase.fetchProductDetail(id)
-        name.accept(model.name)
-        price.accept("$\(model.price)")
-        originalPrice.accept("$\(model.originalPrice)")
+        useCase.fetchProductDetail(id)
+            .subscribe(
+                onSuccess: { model in
+                    self.name.accept(model.name)
+                    self.price.accept("$\(model.price)")
+                    self.originalPrice.accept("$\(model.originalPrice)") },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }

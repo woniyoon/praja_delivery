@@ -42,10 +42,7 @@ static NSError *ErrorForBadProto(id proto, Class expectedClass, NSError *parsing
                          userInfo:info];
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation ProtoRPC {
-#pragma clang diagnostic pop
   id<GRXWriteable> _responseWriteable;
 }
 

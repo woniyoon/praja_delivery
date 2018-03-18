@@ -84,6 +84,10 @@
 		BBA54AC3203D178D00D69954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA54AC2203D178D00D69954 /* Assets.xcassets */; };
 		BBA54AC6203D178D00D69954 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA54AC4203D178D00D69954 /* LaunchScreen.storyboard */; };
 		BBA54AD1203D178D00D69954 /* deliveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA54AD0203D178D00D69954 /* deliveryTests.swift */; };
+		D716B27E205D03730089E312 /* LocalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D716B27D205D03730089E312 /* LocalCollection.swift */; };
+		D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */; };
+		D7529E20205D0662003CFD5A /* SampleProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1F205D0662003CFD5A /* SampleProductModel.swift */; };
+		D7529E22205DC39E003CFD5A /* NomnomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E21205DC39E003CFD5A /* NomnomError.swift */; };
 		D7569D302052B08400C6D6E4 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D2F2052B08400C6D6E4 /* Container.swift */; };
 		D7569D322052B0C800C6D6E4 /* ViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D312052B0C800C6D6E4 /* ViewControllerAssembly.swift */; };
 		D7569D342052B0E200C6D6E4 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D332052B0E200C6D6E4 /* ViewModelAssembly.swift */; };
@@ -203,6 +207,10 @@
 		BBA54AD0203D178D00D69954 /* deliveryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deliveryTests.swift; sourceTree = "<group>"; };
 		BBA54AD2203D178D00D69954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA514D1F64799F11FB4DEDD3 /* Pods-deliveryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-deliveryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests.release.xcconfig"; sourceTree = "<group>"; };
+		D716B27D205D03730089E312 /* LocalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCollection.swift; sourceTree = "<group>"; };
+		D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductEntity.swift; sourceTree = "<group>"; };
+		D7529E1F205D0662003CFD5A /* SampleProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductModel.swift; sourceTree = "<group>"; };
+		D7529E21205DC39E003CFD5A /* NomnomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomnomError.swift; sourceTree = "<group>"; };
 		D7569D2F2052B08400C6D6E4 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		D7569D312052B0C800C6D6E4 /* ViewControllerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAssembly.swift; sourceTree = "<group>"; };
 		D7569D332052B0E200C6D6E4 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
@@ -589,6 +597,8 @@
 			children = (
 				D7AAD0C42042398900D2971C /* Analytics */,
 				D7AAD0C12042395300D2971C /* Extention */,
+				D716B27D205D03730089E312 /* LocalCollection.swift */,
+				D7529E21205DC39E003CFD5A /* NomnomError.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -618,6 +628,7 @@
 				2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */,
 				D7E238CA205556A100BA973F /* ReviewEntity.swift */,
 				8603A7DC20578BB900CB7E5E /* UserEntity.swift */,
+				D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -630,6 +641,7 @@
 				D7AAD0A92041943100D2971C /* ProductDetailModel.swift */,
 				91E3C9FF205780A500017A0F /* ProductModel.swift */,
 				8603A7D02057759E00CB7E5E /* UserModel.swift */,
+				D7529E1F205D0662003CFD5A /* SampleProductModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -909,12 +921,15 @@
 				91E3C9FC20577E7100017A0F /* HomeDataStoreProtocol.swift in Sources */,
 				D7AAD0B32041943100D2971C /* ProductDetailTranslator.swift in Sources */,
 				911A4AFC203D328600D03889 /* UserCoupon.swift in Sources */,
+				D7529E20205D0662003CFD5A /* SampleProductModel.swift in Sources */,
 				2C3BA6C3205787BE00C438C0 /* OrderTranslator.swift in Sources */,
 				8603A7D92057856B00CB7E5E /* UserUseCase.swift in Sources */,
 				2C3BA6BE205783B900C438C0 /* OrderFirebaseDataStore.swift in Sources */,
 				D7AAD0BC204235BE00D2971C /* ProductEntity.swift in Sources */,
+				D7529E22205DC39E003CFD5A /* NomnomError.swift in Sources */,
 				911A4B00203D331B00D03889 /* DeliveryInfo.swift in Sources */,
 				5281FD682058C13400412663 /* ProductListViewModel.swift in Sources */,
+				D716B27E205D03730089E312 /* LocalCollection.swift in Sources */,
 				528E987F203E891700E8338C /* User.swift in Sources */,
 				D7569D362052B0EF00C6D6E4 /* UsecaseAssembly.swift in Sources */,
 				8603A7D12057759E00CB7E5E /* UserModel.swift in Sources */,
@@ -950,6 +965,7 @@
 				2C3BA6CE20578F6800C438C0 /* OrderViewModel.swift in Sources */,
 				D7AAD0BF2042375800D2971C /* TranslatorProtocol.swift in Sources */,
 				BA475A8220589D9E00F3A0B5 /* AccountFirebaseDataStore.swift in Sources */,
+				D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */,
 				8603A7E22057A7A900CB7E5E /* UserDataStoreProtocol.swift in Sources */,
 				528E9887203E8D4200E8338C /* ProductImage.swift in Sources */,
 				8603A7E02057A74400CB7E5E /* UserRepository.swift in Sources */,
