@@ -8,29 +8,24 @@
 
 import Foundation
 
-enum Country {
-    case can
-}
-
-enum Province {
-    case ab
-    case bc
-}
-
-class Address {
-    private(set) public var address_1: String
-    private(set) public var address_2: String
-    private(set) public var city: String
-    private(set) public var province: Province
-    private(set) public var postalCode: String
-    private(set) public var country: Country
+struct Address {
+    public let receiver: String
+    public let address1: String
+    public let address2: String
+    public let city: String
+    public let province: String
+    public let postalCode: String
+    public let country: String
     
-    init (add1: String, add2: String, city: String, province: Province, postalCode: String, country: Country) {
-        self.address_1 = add1
-        self.address_2 = add2
-        self.city = city
-        self.province = province
-        self.postalCode = postalCode
-        self.country = country
+    var dictionary: [String: Any] {
+        return [
+            "receiver": receiver,
+            "address1": address1,
+            "address2": address2,
+            "city": city,
+            "province": province,
+            "postalCode": postalCode,
+            "country": country
+        ]
     }
 }

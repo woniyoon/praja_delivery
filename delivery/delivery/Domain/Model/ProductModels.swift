@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductModel {
+struct ProductModels {
     public let name: String
     public let price: Double
     public let originalPrice: Double

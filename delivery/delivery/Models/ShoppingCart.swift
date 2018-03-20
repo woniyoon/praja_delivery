@@ -8,9 +8,6 @@
 import Foundation
 
 struct ShoppingCart {
-    
-    private(set) public var quantity: String
-    private(set) public var user: String
-    private(set) public var product: String
-
+    public var user: User
+    public var product: [ProductModel]
 }

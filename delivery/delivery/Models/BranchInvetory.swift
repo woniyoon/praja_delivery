@@ -8,9 +8,6 @@
 import Foundation
 
 struct BranchInvetory {
-    
     public let quantity: Int
-    public let product: String
-    public let branch: Branch
-    
+    public let name: String
 }

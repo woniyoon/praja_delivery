@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeliveryInfo {
+struct DeliveryInfo {
     private let confirmedDate: Date? = nil
     private let packedDate: Date? = nil
     private let shippingDate: Date? = nil
