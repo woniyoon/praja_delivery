@@ -7,23 +7,29 @@
 //
 
 import Foundation
-
-import Foundation
 import RxSwift
 import RxCocoa
 
 class ProductListViewModel {
+//    var name = BehaviorRelay(value: "")
+//    var price = BehaviorRelay(value: "")
+//    var oldPrice = BehaviorRelay(value: "")
     
-    var productName = BehaviorRelay(value: "")
-    
-    private let useCase: ProductListUseCaseProtocol
-    
-    init(useCase: ProductListUseCaseProtocol) {
+    private var useCase: ProductListUseCaseProtocol
+        
+    init(useCase: ProductListUseCaseProtocol ) {
         self.useCase = useCase
     }
     
-    func fetchProductList() {
-        let model = useCase.fetchProductList()
-        productName.accept("Bruno")
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func fetchProductList()->[SampleProductModel]{
+        return useCase.fetchProductList()
+    }
+    
+    func fetchProductCount() -> Int {
+       return useCase.fetchProductList().count
     }
 }

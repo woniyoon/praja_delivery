@@ -15,6 +15,6 @@ class OrderTranslator: TranslatorProtocol {
         name: entity.name ?? "",
         price: entity.price,
         originalPrice: entity.originalPrice,
-        images: entity.images)
+        images: [""])
     }
 }

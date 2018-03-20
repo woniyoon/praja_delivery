@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ProductDetailRepositoryProtocol{
-    func fetchProductDetail(_ id: String) -> ProductEntity
+    func fetchProductDetail(_ id: String) -> Single<SampleProductEntity>
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
@@ -20,7 +21,7 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchProductDetail(_ id: String) -> ProductEntity {
+    func fetchProductDetail(_ id: String) -> Single<SampleProductEntity>{
         return dataStore.fetchProductDetail(id)
     }
 }

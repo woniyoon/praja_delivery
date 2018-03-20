@@ -88,16 +88,15 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
               "Connect string mismatch: expected '%c' (%d) got '%c' (%d) "
               "at byte %d",
               GRPC_CHTTP2_CLIENT_CONNECT_STRING[t->deframe_state],
-              static_cast<int>(static_cast<uint8_t>(
-                  GRPC_CHTTP2_CLIENT_CONNECT_STRING[t->deframe_state])),
-              *cur, static_cast<int>(*cur), t->deframe_state);
+              (int)(uint8_t)GRPC_CHTTP2_CLIENT_CONNECT_STRING[t->deframe_state],
+              *cur, (int)*cur, t->deframe_state);
           err = GRPC_ERROR_CREATE_FROM_COPIED_STRING(msg);
           gpr_free(msg);
           return err;
         }
         ++cur;
-        t->deframe_state = static_cast<grpc_chttp2_deframe_transport_state>(
-            1 + static_cast<int>(t->deframe_state));
+        t->deframe_state =
+            (grpc_chttp2_deframe_transport_state)(1 + (int)t->deframe_state);
       }
       if (cur == end) {
         return GRPC_ERROR_NONE;
@@ -106,7 +105,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     dts_fh_0:
     case GRPC_DTS_FH_0:
       GPR_ASSERT(cur < end);
-      t->incoming_frame_size = (static_cast<uint32_t>(*cur)) << 16;
+      t->incoming_frame_size = ((uint32_t)*cur) << 16;
       if (++cur == end) {
         t->deframe_state = GRPC_DTS_FH_1;
         return GRPC_ERROR_NONE;
@@ -114,7 +113,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FH_1:
       GPR_ASSERT(cur < end);
-      t->incoming_frame_size |= (static_cast<uint32_t>(*cur)) << 8;
+      t->incoming_frame_size |= ((uint32_t)*cur) << 8;
       if (++cur == end) {
         t->deframe_state = GRPC_DTS_FH_2;
         return GRPC_ERROR_NONE;
@@ -146,7 +145,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FH_5:
       GPR_ASSERT(cur < end);
-      t->incoming_stream_id = ((static_cast<uint32_t>(*cur)) & 0x7f) << 24;
+      t->incoming_stream_id = (((uint32_t)*cur) & 0x7f) << 24;
       if (++cur == end) {
         t->deframe_state = GRPC_DTS_FH_6;
         return GRPC_ERROR_NONE;
@@ -154,7 +153,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FH_6:
       GPR_ASSERT(cur < end);
-      t->incoming_stream_id |= (static_cast<uint32_t>(*cur)) << 16;
+      t->incoming_stream_id |= ((uint32_t)*cur) << 16;
       if (++cur == end) {
         t->deframe_state = GRPC_DTS_FH_7;
         return GRPC_ERROR_NONE;
@@ -162,7 +161,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FH_7:
       GPR_ASSERT(cur < end);
-      t->incoming_stream_id |= (static_cast<uint32_t>(*cur)) << 8;
+      t->incoming_stream_id |= ((uint32_t)*cur) << 8;
       if (++cur == end) {
         t->deframe_state = GRPC_DTS_FH_8;
         return GRPC_ERROR_NONE;
@@ -170,7 +169,7 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FH_8:
       GPR_ASSERT(cur < end);
-      t->incoming_stream_id |= (static_cast<uint32_t>(*cur));
+      t->incoming_stream_id |= ((uint32_t)*cur);
       t->deframe_state = GRPC_DTS_FRAME;
       err = init_frame_parser(t);
       if (err != GRPC_ERROR_NONE) {
@@ -206,20 +205,20 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
     /* fallthrough */
     case GRPC_DTS_FRAME:
       GPR_ASSERT(cur < end);
-      if (static_cast<uint32_t>(end - cur) == t->incoming_frame_size) {
-        err = parse_frame_slice(
-            t,
-            grpc_slice_sub_no_ref(slice, static_cast<size_t>(cur - beg),
-                                  static_cast<size_t>(end - beg)),
-            1);
+      if ((uint32_t)(end - cur) == t->incoming_frame_size) {
+        err =
+            parse_frame_slice(t,
+                              grpc_slice_sub_no_ref(slice, (size_t)(cur - beg),
+                                                    (size_t)(end - beg)),
+                              1);
         if (err != GRPC_ERROR_NONE) {
           return err;
         }
         t->deframe_state = GRPC_DTS_FH_0;
         t->incoming_stream = nullptr;
         return GRPC_ERROR_NONE;
-      } else if (static_cast<uint32_t>(end - cur) > t->incoming_frame_size) {
-        size_t cur_offset = static_cast<size_t>(cur - beg);
+      } else if ((uint32_t)(end - cur) > t->incoming_frame_size) {
+        size_t cur_offset = (size_t)(cur - beg);
         err = parse_frame_slice(
             t,
             grpc_slice_sub_no_ref(slice, cur_offset,
@@ -232,15 +231,15 @@ grpc_error* grpc_chttp2_perform_read(grpc_chttp2_transport* t,
         t->incoming_stream = nullptr;
         goto dts_fh_0; /* loop */
       } else {
-        err = parse_frame_slice(
-            t,
-            grpc_slice_sub_no_ref(slice, static_cast<size_t>(cur - beg),
-                                  static_cast<size_t>(end - beg)),
-            0);
+        err =
+            parse_frame_slice(t,
+                              grpc_slice_sub_no_ref(slice, (size_t)(cur - beg),
+                                                    (size_t)(end - beg)),
+                              0);
         if (err != GRPC_ERROR_NONE) {
           return err;
         }
-        t->incoming_frame_size -= static_cast<uint32_t>(end - cur);
+        t->incoming_frame_size -= (uint32_t)(end - cur);
         return GRPC_ERROR_NONE;
       }
       GPR_UNREACHABLE_CODE(return nullptr);
@@ -326,7 +325,7 @@ static grpc_error* init_skip_frame_parser(grpc_chttp2_transport* t,
     t->hpack_parser.on_header = skip_header;
     t->hpack_parser.on_header_user_data = nullptr;
     t->hpack_parser.is_boundary = is_eoh;
-    t->hpack_parser.is_eof = static_cast<uint8_t>(is_eoh ? t->header_eof : 0);
+    t->hpack_parser.is_eof = (uint8_t)(is_eoh ? t->header_eof : 0);
   } else {
     t->parser = skip_parser;
   }
@@ -393,10 +392,11 @@ error_handler:
 static void free_timeout(void* p) { gpr_free(p); }
 
 static void on_initial_header(void* tp, grpc_mdelem md) {
-  GPR_TIMER_SCOPE("on_initial_header", 0);
-
-  grpc_chttp2_transport* t = static_cast<grpc_chttp2_transport*>(tp);
+  grpc_chttp2_transport* t = (grpc_chttp2_transport*)tp;
   grpc_chttp2_stream* s = t->incoming_stream;
+
+  GPR_TIMER_BEGIN("on_initial_header", 0);
+
   GPR_ASSERT(s != nullptr);
 
   if (grpc_http_trace.enabled()) {
@@ -430,8 +430,7 @@ static void on_initial_header(void* tp, grpc_mdelem md) {
       }
       if (GRPC_MDELEM_IS_INTERNED(md)) {
         /* store the result */
-        cached_timeout =
-            static_cast<grpc_millis*>(gpr_malloc(sizeof(grpc_millis)));
+        cached_timeout = (grpc_millis*)gpr_malloc(sizeof(grpc_millis));
         *cached_timeout = timeout;
         grpc_mdelem_set_user_data(md, free_timeout, cached_timeout);
       }
@@ -471,13 +470,16 @@ static void on_initial_header(void* tp, grpc_mdelem md) {
       }
     }
   }
+
+  GPR_TIMER_END("on_initial_header", 0);
 }
 
 static void on_trailing_header(void* tp, grpc_mdelem md) {
-  GPR_TIMER_SCOPE("on_trailing_header", 0);
-
-  grpc_chttp2_transport* t = static_cast<grpc_chttp2_transport*>(tp);
+  grpc_chttp2_transport* t = (grpc_chttp2_transport*)tp;
   grpc_chttp2_stream* s = t->incoming_stream;
+
+  GPR_TIMER_BEGIN("on_trailing_header", 0);
+
   GPR_ASSERT(s != nullptr);
 
   if (grpc_http_trace.enabled()) {
@@ -524,6 +526,8 @@ static void on_trailing_header(void* tp, grpc_mdelem md) {
       GRPC_MDELEM_UNREF(md);
     }
   }
+
+  GPR_TIMER_END("on_trailing_header", 0);
 }
 
 static grpc_error* init_header_frame_parser(grpc_chttp2_transport* t,
@@ -636,7 +640,7 @@ static grpc_error* init_header_frame_parser(grpc_chttp2_transport* t,
   }
   t->hpack_parser.on_header_user_data = t;
   t->hpack_parser.is_boundary = is_eoh;
-  t->hpack_parser.is_eof = static_cast<uint8_t>(is_eoh ? t->header_eof : 0);
+  t->hpack_parser.is_eof = (uint8_t)(is_eoh ? t->header_eof : 0);
   if (!is_continuation &&
       (t->incoming_frame_flags & GRPC_CHTTP2_FLAG_HAS_PRIORITY)) {
     grpc_chttp2_hpack_parser_set_has_priority(&t->hpack_parser);

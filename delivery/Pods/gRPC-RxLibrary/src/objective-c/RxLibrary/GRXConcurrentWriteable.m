@@ -64,25 +64,21 @@
 }
 
 - (void)enqueueSuccessfulCompletion {
-  __weak typeof(self) weakSelf = self;
   dispatch_async(_writeableQueue, ^{
-    typeof(self) strongSelf = weakSelf;
-    if (strongSelf) {
-      BOOL finished = NO;
-      @synchronized (self) {
-        if (!strongSelf->_alreadyFinished) {
-          strongSelf->_alreadyFinished = YES;
-        } else {
-          finished = YES;
-        }
+    BOOL finished = NO;
+    @synchronized (self) {
+      if (!_alreadyFinished) {
+        _alreadyFinished = YES;
+      } else {
+        finished = YES;
       }
-      if (!finished) {
-        // Cancellation is now impossible. None of the other three blocks can run concurrently with
-        // this one.
-        [self.writeable writesFinishedWithError:nil];
-        // Skip any possible message to the wrapped writeable enqueued after this one.
-        self.writeable = nil;
-      }
+    }
+    if (!finished) {
+      // Cancellation is now impossible. None of the other three blocks can run concurrently with
+      // this one.
+      [self.writeable writesFinishedWithError:nil];
+      // Skip any possible message to the wrapped writeable enqueued after this one.
+      self.writeable = nil;
     }
   });
 }
