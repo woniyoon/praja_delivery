@@ -47,5 +47,4 @@ class ProductListUseCase: ProductListUseCaseProtocol {
     func fetchProduct(product: SampleProductModel) -> SampleProductModel {
         return product
     }
-    
 }

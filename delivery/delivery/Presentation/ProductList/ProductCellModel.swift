@@ -17,7 +17,6 @@ class ProductCellModel: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
 
-    
     func updateViews(product: SampleProductModel) {
 
         name.text = product.name

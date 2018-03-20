@@ -18,7 +18,6 @@ class ProductListViewController: UIViewController, UITableViewDataSource, UITabl
     
     private var viewModel: ProductListViewModel!
     
-    
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)
         instance?.viewModel = viewModel

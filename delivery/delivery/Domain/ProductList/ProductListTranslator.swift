@@ -18,7 +18,7 @@ class ProductListTranslator: TranslatorProtocol {
             
             productList.append(product)
         }
-    
+        
         return productList
     }
 }

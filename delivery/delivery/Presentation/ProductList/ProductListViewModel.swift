@@ -20,10 +20,7 @@ class ProductListViewModel {
     init(useCase: ProductListUseCaseProtocol ) {
         self.useCase = useCase
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     func fetchProductList()->[SampleProductModel]{
         return useCase.fetchProductList()
