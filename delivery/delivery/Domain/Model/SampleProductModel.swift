@@ -9,6 +9,7 @@
 import Foundation
 
 struct SampleProductModel {
+    public let id: String
     public let name: String
     public let price: Double
     public let originalPrice: Double

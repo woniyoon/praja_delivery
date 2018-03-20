@@ -8,15 +8,16 @@
 
 import Foundation
 import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 
-class ProductListViewController: UIViewController {
+
+class ProductListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var productList: UITableView!
     
     private var viewModel: ProductListViewModel!
-    private let disposeBag: DisposeBag = DisposeBag()
+    
     
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)
@@ -26,14 +27,27 @@ class ProductListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindView()
-        viewModel.fetchProductList()
+        productList.dataSource = self
+        productList.delegate = self
     }
 
-    private func bindView() {
-        viewModel.productName.asObservable()
-            .bind(to: productName.rx.text)
-            .disposed(by: disposeBag)
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.fetchProductCount()
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell") as? ProductCellModel {
+                        
+            let product = viewModel.fetchProductList()[indexPath.row]
+            
+            cell.updateViews(product: product)
+            
+            return cell
+        } else {
+            return ProductCellModel()
+        }
+    }
+    
     
 }

@@ -11,7 +11,7 @@ import Foundation
 class ProductDetailTranslator: TranslatorProtocol {
     func translate(_ entity: SampleProductEntity) -> SampleProductModel {
         return SampleProductModel(
-            name: entity.name ?? "",
+            id: entity.id, name: entity.name ?? "",
             price: entity.price,
             originalPrice: entity.originalPrice,
             description: entity.description)
