@@ -10,7 +10,7 @@ target 'delivery' do
 
   # Swinject
   pod 'Swinject'
-#  pod 'SwinjectStoryboard'
+  pod 'SwinjectStoryboard'
 
   # Firebase
   pod 'Firebase/Core'
@@ -22,6 +22,7 @@ target 'deliveryTests' do
     # Pods for testing
     pod 'RxBlocking', '~> 4.0'
     pod 'RxTest',     '~> 4.0'
+
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
 end
