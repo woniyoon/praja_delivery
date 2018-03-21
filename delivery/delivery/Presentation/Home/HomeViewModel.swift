@@ -15,6 +15,7 @@ class HomeViewModel {
     var name = BehaviorRelay(value: "")
     var price = BehaviorRelay(value: "")
     var originalPrice = BehaviorRelay(value: "")
+    var product = BehaviorRelay(value: [])
 
     private let useCase: HomeUseCaseProtocol
 
@@ -28,4 +29,16 @@ class HomeViewModel {
         price.accept("$\(model.price)")
         originalPrice.accept("$\(model.originalPrice)")
     }
+}
+
+extension HomeViewModel: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items[section].rowCount
+    }
+    
 }

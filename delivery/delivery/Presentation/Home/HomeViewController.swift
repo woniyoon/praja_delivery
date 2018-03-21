@@ -18,6 +18,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var originalPrice: UILabel!
     
+<<<<<<< Updated upstream
+=======
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var viewModel: HomeViewModel!
+>>>>>>> Stashed changes
     
     private var viewModel: HomeViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -57,6 +63,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         bindView()
         viewModel.fetchProducts()
+        tableView.dataSource = viewModel
     }
 
 }
