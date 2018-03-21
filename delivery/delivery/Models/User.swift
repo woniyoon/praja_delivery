@@ -9,12 +9,28 @@
 import Foundation
 
 struct User {
-    
     public let firstName: String
     public let lastName: String
     public let mobileNumber: String
     public let dateOfBirth: Date
     public let hasAccount: Bool
-    //public let account: Account
+    public let email: String
+    public let totalPoint: Int
+    public let address: [Address]
+    public let payment: [Payment]
+    public let coupon: [String : Bool]
     
+    var dictionary: [String: Any] {
+        return [
+            "firstName": firstName,
+            "lastName": lastName,
+            "mobileNumber": mobileNumber,
+            "dateOfBirth": dateOfBirth,
+            "hasAccount": hasAccount,
+            "email": email,
+            "address": address,
+            "payment": payment,
+            "coupon": coupon
+        ]
+    }    
 }

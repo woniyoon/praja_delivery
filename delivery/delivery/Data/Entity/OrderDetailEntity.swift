@@ -1,14 +1,14 @@
 //
-//  OrderDetail.swift
+//  OrderDetailEntity.swift
 //  delivery
 //
-//  Created by Sara N on 2018-02-20.
+//  Created by Jaewon Yoon on 2018-03-19.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 
-struct OrderDetail{
+struct OrderDetailEntity{
     var pricePerItem: Double
     var quantity: Int
     var productId: String
@@ -25,5 +25,15 @@ struct OrderDetail{
             "quantity": quantity,
             "productId": productId
         ]
+    }
+    
+    init?(dictionary: [String: Any]) {
+        guard let pricePerItem = dictionary["pricePerItem"] as? Double,
+            let quantity = dictionary["quantity"] as? Int,
+            let productId = dictionary["productId"] as? String else { return nil }
+        
+        self.pricePerItem = pricePerItem
+        self.quantity = quantity
+        self.productId = productId
     }
 }

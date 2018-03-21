@@ -8,29 +8,24 @@
 
 import Foundation
 
-enum DiscountType {
-    case cash
-    case percentage
-}
-
-class Coupon {
+struct Coupon {
     public let couponId: String
     public let description: String
     public let code: String
     public let startDate: Date
     public let endDate: Date
     public let discountValue: Int
-    public let discountType: DiscountType
+    public let discountType: String
     
-    init(couponId: String, description: String, code: String, startDate: Date, endDate: Date, discountValue: Int, discountType: DiscountType) {
-        self.couponId = couponId
-        self.description = description
-        self.code = code
-        self.startDate = startDate
-        self.endDate = endDate
-        self.discountValue = discountValue
-        self.discountType = discountType
-        
-    }
+//    init(couponId: String, description: String, code: String, startDate: Date, endDate: Date, discountValue: Int, discountType: DiscountType) {
+//        self.couponId = couponId
+//        self.description = description
+//        self.code = code
+//        self.startDate = startDate
+//        self.endDate = endDate
+//        self.discountValue = discountValue
+//        self.discountType = discountType
+//
+//    }
     
 }

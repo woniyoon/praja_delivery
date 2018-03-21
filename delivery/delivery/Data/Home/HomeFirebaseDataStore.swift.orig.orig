@@ -14,6 +14,10 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
     
     func fetchProducts() -> ProductEntity {
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+>>>>>>> develop
         let result = db.collection("productFromSpreadSheet").whereField("name", isEqualTo: "pepsi6 250ml")
         print("loading...")
         print(result)
@@ -25,6 +29,10 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
                                 "originalPrice": 1.50] as [String : Any]
         
         return ProductEntity(dictionary: product)!
+<<<<<<< HEAD
+
+    }
+=======
 =======
 //        let result = db.collection("productFromSpreadSheet").whereField("name", isEqualTo: "pepsi6 250ml")
 //        print("loading...")
@@ -96,4 +104,5 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
 //    }
 //}
 
+>>>>>>> develop
 }

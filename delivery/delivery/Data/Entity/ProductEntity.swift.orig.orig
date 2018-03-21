@@ -8,6 +8,28 @@
 
 import Foundation
 
+<<<<<<< HEAD
+struct ProductEntity {
+=======
+//struct ProductEntity {
+//    public let name: String
+//    public let brand: String
+//    public let price: Double
+//    public let originalPrice: Double
+//    public let discountPercent: Double
+//    public let images: [String]?
+//    public let averageRating: Float
+//    public let fiveStarsCount: Int
+//    public let fourStarsCount: Int
+//    public let threeStarsCount: Int
+//    public let twoStarsCount: Int
+//    public let oneStarCount: Int
+//    public let description: String
+//
+//    public let category: String
+//    public let subCategory: String
+//}
+
 struct ProductEntity {
 <<<<<<< HEAD
     
@@ -47,6 +69,7 @@ struct ProductEntity {
 //    public let subCategory: String
 //
 =======
+>>>>>>> develop
     public let averageRating: Double
     public let branch: [String : BranchInvetory]
     public let brand: String
@@ -99,6 +122,9 @@ struct ProductEntity {
 //            self.images = images
 //        }
 
+<<<<<<< HEAD
+=======
 >>>>>>> 11c8083f2862c9ed482d30204ab1cc432482a6d7
+>>>>>>> develop
 }
 
