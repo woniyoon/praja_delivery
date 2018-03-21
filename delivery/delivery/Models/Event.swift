@@ -9,9 +9,7 @@
 import Foundation
 
 struct Event {
-    
     public let name: String
-    public let startDate: Date
-    public let endDate: Date
-    
+    public let dateStart: Date
+    public let dateEnd: Date
 }

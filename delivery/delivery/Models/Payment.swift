@@ -7,17 +7,17 @@
 //
 
 import Foundation
-class Payment{
+
+struct Payment {
+    public let cardNumber: String
+    public let holderName: String
+    public let expiryDate: Date
     
-    var cardNumber: Int
-    var holderName: String
-    var expiryDate: Date
-    var userId: String
-    
-    init(cardNumber: Int, holderName: String, expiryDate: Date, userId: String) {
-        self.cardNumber = cardNumber
-        self.holderName = holderName
-        self.expiryDate = expiryDate
-        self.userId = userId
+    var dictionary: [String: Any] {
+        return [
+            "cardNumber": cardNumber,
+            "holderName": holderName,
+            "expiryDate": expiryDate,
+        ]
     }
 }

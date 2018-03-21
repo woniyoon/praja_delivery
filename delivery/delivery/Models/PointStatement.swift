@@ -8,11 +8,7 @@
 
 import Foundation
 
-struct PointStatement {
-    
+struct PointStatement {    
     public let earnedPoints: Int
     public let consumedPoints: Int
-    public let order: Int
-    public let user: User
-    
 }
