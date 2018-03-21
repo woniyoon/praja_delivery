@@ -12,7 +12,6 @@ import RxSwift
 
 protocol ProductListUseCaseProtocol {
     func fetchProductList() -> [SampleProductModel]
-    func fetchProductCount() -> Int
     func fetchProduct(product: SampleProductModel) -> SampleProductModel
 }
 
@@ -29,19 +28,9 @@ class ProductListUseCase: ProductListUseCaseProtocol {
     func fetchProductList() -> [SampleProductModel] {
         
         let entity = repository.fetchProductList()
-        var productList = [SampleProductModel]()
         
-        entity.forEach { product in
-            let product = SampleProductModel(id: product.id, name: product.name, price: product.price, originalPrice: product.originalPrice, description: product.description)
-            
-                productList.append(product)
-        }
+        return translator.translate(entity)
         
-        return productList
-    }
-    
-    func fetchProductCount() -> Int {
-        return fetchProductList().count
     }
     
     func fetchProduct(product: SampleProductModel) -> SampleProductModel {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController{
 
@@ -27,7 +28,7 @@ class ViewController: UIViewController{
     
     @IBAction func productListButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ProductListViewController.self)!
-        present(next, animated: true, completion: nil)
+        present(next, animated: true, completion: nil)        
     }
     
     @IBAction func productDetailButtonPressed(_ sender: Any) {

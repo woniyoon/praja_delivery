@@ -13,17 +13,24 @@ import RxSwift
 
 class ProductCellModel: UITableViewCell {
     
+    static var Identifier = "ProductCellModel"
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
 
-    func updateViews(product: SampleProductModel) {
+    var sampleProductModel: SampleProductModel? {
+        didSet {
+            guard let sampleProductModel = sampleProductModel else { return }
+            name.text = sampleProductModel.name
+            price.text = String(format:"%.2f", sampleProductModel.price)
+            oldPrice.text = String(format:"%.2f", sampleProductModel.originalPrice)
 
-        name.text = product.name
-        price.text = String(format:"%.2f", product.price)
-        oldPrice.text = String(format:"%.2f", product.originalPrice)
-
+            }
     }
     
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
+

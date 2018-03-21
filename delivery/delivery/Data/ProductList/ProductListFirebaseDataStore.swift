@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import RxSwift
 
-class ProductListFirebaseDataStore: ProductListDataStoreProtocol {    
+class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
 
     let db = Firestore.firestore()
     
@@ -18,12 +18,12 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
         
         var products:[SampleProductEntity] = []
         
-        db.collection("product")
+        db.collection("sample_product")
             .getDocuments() { (document, error) in
                 if let error = error {
+                   print(error)
                     return
                 }
-                
                 for document in document!.documents {
                     if (document.data() as? Dictionary<String, AnyObject>) != nil {
                         guard let product = SampleProductEntity(dictionary: document.data()) else { return }
@@ -33,6 +33,7 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
                     
                 }
         }
+        
         return products
     }
 }

@@ -12,9 +12,10 @@ import RxCocoa
 import RxSwift
 
 
-class ProductListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProductListViewController: UIViewController {
     
     @IBOutlet weak var productList: UITableView!
+    private let disposeBag: DisposeBag = DisposeBag()
     
     private var viewModel: ProductListViewModel!
     
@@ -26,27 +27,27 @@ class ProductListViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productList.dataSource = self
-        productList.delegate = self
-    }
-
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.fetchProductCount()
+        configureTableView()
+        bind()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell") as? ProductCellModel {
-                        
-            let product = viewModel.fetchProductList()[indexPath.row]
-            
-            cell.updateViews(product: product)
-            
-            return cell
-        } else {
-            return ProductCellModel()
-        }
+    private func registerCell() {
+        let nib = UINib(nibName: ProductCellModel.Identifier, bundle: nil)
+        productList.register(nib, forCellReuseIdentifier: ProductCellModel.Identifier)
     }
     
+    private func configureTableView() {
+        registerCell()
+        productList.rowHeight = 156
+    }
+    
+    private func bind() {
+        
+        viewModel.productList.asObservable()
+            .bind(to: productList.rx.items(cellIdentifier: ProductCellModel.Identifier, cellType: ProductCellModel.self))                           {
+                row, sampleProductModel, cell in
+                cell.sampleProductModel = sampleProductModel
+            }.disposed(by: disposeBag)
+    }
     
 }
