@@ -10,9 +10,6 @@ import Foundation
 
 class HomeTranslator: TranslatorProtocol {
     func translate(_ entity: ProductEntity) -> ProductModel {
-        return ProductModel(
-            name: entity.name ?? "",
-            price: entity.price,
-            originalPrice: entity.originalPrice)
+        return ProductModel(name: entity.name, price: entity.price, originalPrice: entity.price)
     }
 }

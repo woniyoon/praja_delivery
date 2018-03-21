@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Firebase
 
 class HomeViewController: UIViewController {
     
@@ -17,8 +18,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var originalPrice: UILabel!
     
-    private var viewModel: HomeViewModel!
     
+    private var viewModel: HomeViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
     static func createInstance(viewModel: HomeViewModel) -> HomeViewController? {
@@ -26,6 +27,19 @@ class HomeViewController: UIViewController {
         instance?.viewModel = viewModel
         return instance
     }
+    
+    @IBAction func dbTest(_ sender: Any) {
+        
+//        let orderBuilder = OrderBuilder(userId: "userId", dateOfPurchase: Date(), deliveryFee: 5.0, totalPrice: 25.0).setRemark(remark: "fragile!")
+//
+//        let test = Order(builder: orderBuilder)
+//
+//        if let t = test {
+//            print(t.remark)
+//        }
+    }
+    
+
     
     private func bindView() {
         viewModel.name.asObservable()
