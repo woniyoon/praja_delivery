@@ -11,8 +11,7 @@ import Foundation
 struct BranchEntity {
     public let address: String
     public let city: String
-    public let latitude: Float
-    public let longitude: Float
+    public let coordinate: Coordinate
     public let name: String
     public let phoneNumber: String
     public let postalCode: String
@@ -21,8 +20,7 @@ struct BranchEntity {
     init?(dictionary: [String: Any]) {
         guard let address = dictionary["address"] as? String,
             let city = dictionary["city"] as? String,
-            let latitude = dictionary["latitude"] as? Float, //this part...?
-            let longitude = dictionary["longitude"] as? Float, // and this part.....!
+            let coordinate = dictionary["coordinate"] as? Coordinate,
             let name = dictionary["name"] as? String,
             let phoneNumber = dictionary["phoneNumber"] as? String,
             let postalCode = dictionary["postalCode"] as? String,
@@ -30,8 +28,7 @@ struct BranchEntity {
         
         self.address = address
         self.city = city
-        self.latitude = latitude
-        self.longitude = longitude
+        self.coordinate = coordinate
         self.name = name
         self.phoneNumber = phoneNumber
         self.postalCode = postalCode
