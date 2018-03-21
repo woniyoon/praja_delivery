@@ -1,0 +1,30 @@
+//
+//  HomeFirebaseDataStore.swift
+//  delivery
+//
+//  Created by Jaewon Yoon on 2018-03-12.
+//  Copyright © 2018 CICCC. All rights reserved.
+//
+
+import Foundation
+import Firebase
+
+class HomeFirebaseDataStore: HomeDataStoreProtocol {
+    let db = Firestore.firestore()
+    
+    func fetchProducts() -> ProductEntity {
+
+        let result = db.collection("productFromSpreadSheet").whereField("name", isEqualTo: "pepsi6 250ml")
+        print("loading...")
+        print(result)
+
+        var product: Dictionary<String, Any> = [:]
+        
+        product = ["name": "Salad",
+                                "price": 2.19,
+                                "originalPrice": 1.50] as [String : Any]
+        
+        return ProductEntity(dictionary: product)!
+
+    }
+}
