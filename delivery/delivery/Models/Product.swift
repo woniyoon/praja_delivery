@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct ProductModel {
+struct Product {
     public let averageRating: Double
-    public let branch: BranchInvetory
+    public let branch: [BranchInvetoryEntity]
     public let brand: String
     public let description: String
-    public let discountPercent: Int?
-    public let event: EventEntity?
+    public let discountPercent: Int
+    public let events: [String : Bool]
     public let images: [String]
     public let name: String
     public let originalPrice: Double
@@ -28,8 +28,8 @@ struct ProductModel {
             "branch": branch,
             "brand": brand,
             "description": description,
-            "discountPercent": discountPercent as Any,
-            "event": event as Any,
+            "discountPercent": discountPercent,
+            "event": events,
             "images": images,
             "name": name,
             "originalPrice": originalPrice,

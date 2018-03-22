@@ -34,7 +34,7 @@ struct CouponEntity {
             let dateStart = dictionary["dateStart"] as? Date, //this part...?
             let dateEnd = dictionary["dateEnd"] as? Date, // and this part.....!
             let discount = dictionary["name"] as? Int,
-            let discountType = dictionary["phoneNumber"] as? String else { return nil }
+            let discountType = dictionary["discountType"] as? String else { return nil }
         
         self.name = name
         self.code = code
