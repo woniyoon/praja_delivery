@@ -13,7 +13,7 @@ struct UserEntity {
     public let firstName: String
     public let lastName: String
     public let mobileNumber: String
-    public let dateOfBirth: Date
+    public let dateOfBirth: Date?
     public let hasAccount: Bool
     public let totalPoint: Int
     public let email: String
@@ -25,13 +25,14 @@ struct UserEntity {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
             let mobileNumber = dictionary["mobileNumber"] as? String, //this part...?
-            let dateOfBirth = dictionary["dateOfBirth"] as? Date, // and this part.....!
             let hasAccount = dictionary["hasAccount"] as? Bool,
-            let totalPoint = dictionary["totalPoint"] as? Int,
             let email = dictionary["email"] as? String,
-            let coupon = dictionary["coupon"] as? [String : Bool],
             let address = dictionary["address"] as? [Address],
+            let totalPoint = dictionary["totalPoint"] as? Int,
             let payment = dictionary["payment"] as? [Payment] else { return nil }
+        
+        let dateOfBirth = dictionary["dateOfBirth"] as? Date ?? nil
+        let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
         
         self.firstName = firstName
         self.lastName = lastName
@@ -50,7 +51,7 @@ struct UserEntity {
             "firstName": firstName,
             "lastName": lastName,
             "mobileNumber": mobileNumber,
-            "dateOfBirth": dateOfBirth,
+            "dateOfBirth": dateOfBirth as Any,
             "hasAccount": hasAccount,
             "email": email,
             "address": address,
