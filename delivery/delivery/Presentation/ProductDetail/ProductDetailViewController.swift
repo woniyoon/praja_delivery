@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: BaseViewController {
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -47,10 +47,7 @@ class ProductDetailViewController: UIViewController {
 
         viewModel.alertMessage.asObservable()
             .subscribe(
-                onNext: { alertError in
-                    let alert = UIAlertController(title: alertError.title, message: alertError.message, preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Sorry...Kento sama", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)}
+                onNext: { alertError in self.showAlert(alertError) }
             ).disposed(by: disposeBag)
     }
     
