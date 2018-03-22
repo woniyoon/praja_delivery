@@ -44,6 +44,14 @@ class ProductDetailViewController: UIViewController {
         viewModel.originalPrice.asObservable()
             .bind(to: originalPriceLabel.rx.text)
             .disposed(by: disposeBag)
+
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in
+                    let alert = UIAlertController(title: alertError.title, message: alertError.message, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Sorry...Kento sama", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)}
+            ).disposed(by: disposeBag)
     }
     
     @IBAction func buttonPressed(_ sender: Any) {

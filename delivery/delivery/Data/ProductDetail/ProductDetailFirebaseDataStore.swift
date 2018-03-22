@@ -18,10 +18,11 @@ class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
                 .document(id)
                 .getDocument { (document, error) in
                     if let error = error {
-                        observer(.error(error))
+                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
                         return
                     }
                     guard let product = ProductEntity(dictionary: (document?.data())!) else {
+                        observer(.error(NomnomError.alert(message: "Parse Failure")))
                         return
                     }
                     observer(.success(product))
