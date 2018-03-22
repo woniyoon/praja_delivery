@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: BaseViewController {
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +19,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var originalPriceLabel: UILabel!
     
     public var viewModel: ProductDetailViewModel!
+    public var productId: String!
     
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -43,9 +44,14 @@ class ProductDetailViewController: UIViewController {
         viewModel.originalPrice.asObservable()
             .bind(to: originalPriceLabel.rx.text)
             .disposed(by: disposeBag)
+
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail("test")
+        viewModel.fetchProductDetail(productId)
     }
 }

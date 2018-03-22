@@ -23,7 +23,12 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         self.translator = translator
     }
     
+    var counter: Int = 0
     func fetchProductDetail(_ id: String) -> Single<Product> {
+        if counter > 0 {
+            return Single.error(NomnomError.alert(message: "Don't press twice...!!"))
+        }
+        counter = counter + 1
         return repository.fetchProductDetail(_: id)
             .map({ entity in
                 self.translator.translate(entity)
