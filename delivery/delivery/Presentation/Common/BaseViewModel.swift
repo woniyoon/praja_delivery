@@ -13,7 +13,7 @@ import RxCocoa
 class BaseViewModel {
     var alertMessage = BehaviorRelay(value: AlertError(message: ""))
     
-    func showError(_ error: Error) {
+    func setError(_ error: Error) {
         switch error {
         case let NomnomError.alert(message):
             self.alertMessage.accept(AlertError(message: message))

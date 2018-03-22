@@ -32,7 +32,7 @@ class ProductDetailViewModel : BaseViewModel {
                     self.name.accept("$\(model.name)")
                     self.price.accept("$\(model.price)")
                     self.originalPrice.accept("$\(model.originalPrice)") },
-                onError: { error in self.showError(error)}
+                onError: { error in self.setError(error)}
             ).disposed(by: disposeBag)
     }
 }

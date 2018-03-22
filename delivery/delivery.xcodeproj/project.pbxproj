@@ -665,8 +665,8 @@
 		D7E259EC2063A75F007ADB37 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				D7E259ED2063A771007ADB37 /* BaseViewModel.swift */,
 				D703592F2063B5A700787198 /* BaseViewController.swift */,
+				D7E259ED2063A771007ADB37 /* BaseViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
