@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AccountUseCaseProtocol {
-    func fetchAccount(_ id: Int) -> AccountModel
+    func fetchAccount(_ id: Int)
 }
 
 class AccountUseCase: AccountUseCaseProtocol {
@@ -22,8 +22,8 @@ class AccountUseCase: AccountUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchAccount(_ id: Int) -> AccountModel {
-        let entity = repository.fetchAccount(id)
-        return translator.translate(entity)
+    func fetchAccount(_ id: Int) {
+//        let entity = repository.fetchAccount(id)
+//        return translator.translate(entity)
     }
 }

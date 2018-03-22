@@ -17,6 +17,8 @@ class ProductDetailViewModel {
     var originalPrice = BehaviorRelay(value: "")
     var image = BehaviorRelay(value: "")
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     private let useCase: ProductDetailUseCaseProtocol
     
     init(useCase: ProductDetailUseCaseProtocol) {
@@ -24,9 +26,15 @@ class ProductDetailViewModel {
     }
     
     func fetchProductDetail(_ id: String) {
-        let model = useCase.fetchProductDetail(id)
-        name.accept(model.name)
-        price.accept("$\(model.price)")
-        originalPrice.accept("$\(model.originalPrice)")
+        useCase.fetchProductDetail(id)
+            .subscribe(
+                onSuccess: { model in
+                    self.name.accept("$\(model.name)")
+                    self.price.accept("$\(model.price)")
+                    self.originalPrice.accept("$\(model.originalPrice)") },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }

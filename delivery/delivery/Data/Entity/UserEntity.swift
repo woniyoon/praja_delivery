@@ -17,8 +17,8 @@ struct UserEntity {
     public let hasAccount: Bool
     public let totalPoint: Int
     public let email: String
-    public let address: [AddressEntity]
-    public let payment: [PaymentEntity]
+    public let address: [Address]
+    public let payment: [Payment]
     public let coupon: [String : Bool]
 
     init?(dictionary: [String: Any]) {
@@ -30,8 +30,8 @@ struct UserEntity {
             let totalPoint = dictionary["totalPoint"] as? Int,
             let email = dictionary["email"] as? String,
             let coupon = dictionary["coupon"] as? [String : Bool],
-            let address = dictionary["address"] as? [AddressEntity],
-            let payment = dictionary["payment"] as? [PaymentEntity] else { return nil }
+            let address = dictionary["address"] as? [Address],
+            let payment = dictionary["payment"] as? [Payment] else { return nil }
         
         self.firstName = firstName
         self.lastName = lastName

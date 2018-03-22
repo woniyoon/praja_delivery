@@ -8,35 +8,28 @@
 
 import Foundation
 import Firebase
+import RxSwift
 
 class OrderFirebaseDataStore: OrderDataStoreProtocol {
-    //slet db = Firestore.firestore()
+    let db = Firestore.firestore()
     
-    func fetchOrder(_ id: String) -> ProductEntity{
-//            let productRef = db.collection("productFromSpreadSheet").document("Sour Patch Kids Sweet and Sour Gummy Candy (Strawberry, 10 Ounce Bag, Pack of 12)")
+    func fetchOrder(_ id: String) -> Single<OrderEntity>{
         
-            return ProductEntity( //OrderEntity(
-            name: "Sour Patch Kids Sweet and Sour Gummy Candy (Strawberry, 10 Ounce Bag, Pack of 12)",
-            brand: "",
-            price: 13.87,
-            originalPrice: 15.00,
-            discountPercent: 10,
-            images: [""],
-            averageRating: 3,
-            fiveStarsCount: 2,
-            fourStarsCount: 3,
-            threeStarsCount: 8,
-            twoStarsCount: 3,
-            oneStarCount: 2,
-            description:
-            """
-            Are you tired of slow, inefficient charging with too many wires that get tangled with each other?
-
-            If you are, we have just the solution for you!
-
-            Combining super-fast charging and wireless technology, Ivolks is proud to present…
-            """,
-            category: "Food",
-            subCategory: "Sweet")
+        return Single<OrderEntity>.create { observer -> Disposable in
+            self.db.collection("order")
+                .whereField("userId", isEqualTo: id)
+                .getDocuments() { (document, error) in
+                    if let error = error {
+                        observer(.error(error))
+                        return
+                    }
+                    guard let product = OrderEntity(dictionary: (document?.documents[0].data())!) else {
+                        observer(.error(error!))
+                        return
+                    }
+                    observer(.success(product))
+            }
+            return Disposables.create()
+        }
     }
 }

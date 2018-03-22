@@ -9,6 +9,6 @@
 import Foundation
 
 protocol AccountDataStoreProtocol {
-    func fetchAccount(_ id: Int) -> AccountEntity
+    func fetchAccount(_ id: Int)
 }
 

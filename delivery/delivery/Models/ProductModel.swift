@@ -10,7 +10,7 @@ import Foundation
 
 struct ProductModel {
     public let averageRating: Double
-    public let branch: [String : BranchInvetory]
+    public let branch: BranchInvetory
     public let brand: String
     public let description: String
     public let discountPercent: Int?

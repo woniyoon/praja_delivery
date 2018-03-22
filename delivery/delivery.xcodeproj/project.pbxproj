@@ -55,6 +55,8 @@
 		911A4AFA203D321600D03889 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A4AF9203D321600D03889 /* Address.swift */; };
 		911A4AFE203D32C800D03889 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A4AFD203D32C800D03889 /* ProductModel.swift */; };
 		911A4B00203D331B00D03889 /* DeliveryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A4AFF203D331B00D03889 /* DeliveryInfo.swift */; };
+		911B2D47206348E600E2ACC6 /* CoordinateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */; };
+		911B2D492063494200E2ACC6 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B2D482063494200E2ACC6 /* Coordinate.swift */; };
 		911E2674205D047D00FB3639 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2673205D047D00FB3639 /* Order.swift */; };
 		911E2677205E4AD900FB3639 /* BranchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2676205E4AD900FB3639 /* BranchEntity.swift */; };
 		911E2679205E4C3A00FB3639 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2678205E4C3A00FB3639 /* EventEntity.swift */; };
@@ -170,6 +172,8 @@
 		911A4AF9203D321600D03889 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		911A4AFD203D32C800D03889 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		911A4AFF203D331B00D03889 /* DeliveryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryInfo.swift; sourceTree = "<group>"; };
+		911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateEntity.swift; sourceTree = "<group>"; };
+		911B2D482063494200E2ACC6 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		911E2673205D047D00FB3639 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		911E2676205E4AD900FB3639 /* BranchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchEntity.swift; sourceTree = "<group>"; };
 		911E2678205E4C3A00FB3639 /* EventEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				528E9882203E8C1100E8338C /* Review.swift */,
 				522B6291203D2974004B3560 /* ShoppingCart.swift */,
 				528E987E203E891700E8338C /* User.swift */,
+				911B2D482063494200E2ACC6 /* Coordinate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,8 +362,8 @@
 		8603A7D72057854900CB7E5E /* User */ = {
 			isa = PBXGroup;
 			children = (
-				8603A7D82057856B00CB7E5E /* UserUseCase.swift */,
 				8603A7DA2057858600CB7E5E /* UserTranslator.swift */,
+				8603A7D82057856B00CB7E5E /* UserUseCase.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 				D7AAD0BB204235BE00D2971C /* ProductEntity.swift */,
 				D7E238CA205556A100BA973F /* ReviewEntity.swift */,
 				8603A7DC20578BB900CB7E5E /* UserEntity.swift */,
+				911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -932,6 +938,7 @@
 				911E267F205E5B3800FB3639 /* PaymentEntity.swift in Sources */,
 				BA475A8320589D9E00F3A0B5 /* AccountRepository.swift in Sources */,
 				2C3BA6C820578DD000C438C0 /* OrderUseCase.swift in Sources */,
+				911B2D47206348E600E2ACC6 /* CoordinateEntity.swift in Sources */,
 				5281FD642058B74F00412663 /* ProductListUseCase.swift in Sources */,
 				911E2674205D047D00FB3639 /* Order.swift in Sources */,
 				2C3BA6C02057863F00C438C0 /* OrderEntity.swift in Sources */,
@@ -968,6 +975,7 @@
 				D7569D3C2052B2E700C6D6E4 /* TranslatorAssembly.swift in Sources */,
 				D7569D3E2052BA1100C6D6E4 /* UIExtension.swift in Sources */,
 				911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */,
+				911B2D492063494200E2ACC6 /* Coordinate.swift in Sources */,
 				2C3BA6BA2057829500C438C0 /* OrderRepository.swift in Sources */,
 				8603A7DB2057858600CB7E5E /* UserTranslator.swift in Sources */,
 				BA475A8920589DD800F3A0B5 /* AccountUseCase.swift in Sources */,
