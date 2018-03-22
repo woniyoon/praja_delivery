@@ -49,7 +49,7 @@ class ViewController: UIViewController{
     
     @IBAction func productDetailButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ProductDetailViewController.self)!
-        next.id = "xzMjRiKcVFgMLW1lnOmc"
+        next.productId = "oVhTC6TXjU1a3bG8EabF"
         present(next, animated: true, completion: nil)
     }
     

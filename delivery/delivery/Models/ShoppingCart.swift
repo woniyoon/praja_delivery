@@ -9,5 +9,5 @@ import Foundation
 
 struct ShoppingCart {
     public var user: User
-    public var product: [ProductModel]
+    public var product: [Product]
 }

@@ -23,7 +23,6 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
                         return
                     }
                     guard let product = ProductEntity(dictionary: (document?.data())!) else {
-                        print(document?.data()!)
                         observer(.error(error!))
                         return
                     }
@@ -32,32 +31,4 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
             return Disposables.create()
         }
     }
-    
-//    func fetchProducts() -> ProductEntity {
-//        return ProductEntity(
-//            name: "Salad",
-//            brand: "",
-//            price: 9.00,
-//            originalPrice: 10.00,
-//            discountPercent: 10,
-//            images: [""],
-//            averageRating: 3,
-//            fiveStarsCount: 2,
-//            fourStarsCount: 3,
-//            threeStarsCount: 8,
-//            twoStarsCount: 3,
-//            oneStarCount: 2,
-//            description:
-//            """
-//            Are you tired of slow, inefficient charging with too many wires that get tangled with each other?
-//
-//            If you are, we have just the solution for you!
-//
-//            Combining super-fast charging and wireless technology, Ivolks is proud to present…
-//            """,
-//            category: "Food",
-//            subCategory: "Sweet")
-//    }
-//}
-
 }

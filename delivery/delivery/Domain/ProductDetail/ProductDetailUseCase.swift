@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ProductDetailUseCaseProtocol {
-    func fetchProductDetail(_ id: String) -> Single<ProductModel>
+    func fetchProductDetail(_ id: String) -> Single<Product>
 }
 
 class ProductDetailUseCase: ProductDetailUseCaseProtocol {
@@ -23,7 +23,12 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchProductDetail(_ id: String) -> Single<ProductModel> {
+    var counter: Int = 0
+    func fetchProductDetail(_ id: String) -> Single<Product> {
+        if counter > 0 {
+            return Single.error(NomnomError.alert(message: "Don't press twice...!!"))
+        }
+        counter = counter + 1
         return repository.fetchProductDetail(_: id)
             .map({ entity in
                 self.translator.translate(entity)

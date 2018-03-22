@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ProductDetailViewModel {
+class ProductDetailViewModel : BaseViewModel {
     
     var name = BehaviorRelay(value: "")
     var price = BehaviorRelay(value: "")
@@ -34,9 +34,7 @@ class ProductDetailViewModel {
                     self.name.accept("$\(model.name)")
                     self.price.accept("$\(model.price)")
                     self.originalPrice.accept("$\(model.originalPrice)") },
-                onError: { error in
-                    print(error.localizedDescription) }
-            )
-            .disposed(by: disposeBag)
+                onError: { error in self.setError(error)}
+            ).disposed(by: disposeBag)
     }
 }

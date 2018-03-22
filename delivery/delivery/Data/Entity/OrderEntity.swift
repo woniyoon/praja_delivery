@@ -20,7 +20,7 @@ enum Status : String{
 struct OrderEntity {
     public let orderNumber: String
     public let trackingNumber: String
-    public let dateOfPurchase: Date
+//    public let dateOfPurchase: Date
     public let scheduledDeliveryDate: Date
     public let totalPrice: Double
     public let shippingAddress: Address
@@ -29,7 +29,7 @@ struct OrderEntity {
     public let cancelReason: String
     public let userId: String
     public let orderDetail: [OrderDetail] //not sure...
-    public let deliveryInfo: DeliveryInfo //not sure..
+    public let dateInfo: [String : Date] //not sure..
     public let pointStatement: PointStatement
     public let remark: String
 
@@ -37,22 +37,24 @@ struct OrderEntity {
     init?(dictionary: [String: Any]) {
         guard let orderNumber = dictionary["orderNumber"] as? String,
             let trackingNumber = dictionary["trackingNumber"] as? String,
-            let dateOfPurchase = dictionary["dateOfPurchase"] as? Date,
+//            let dateOfPurchase = dictionary["dateOfPurchase"] as? Date,
             let scheduledDeliveryDate = dictionary["scheduledDeliveryDate"] as? Date,
             let totalPrice = dictionary["totalPrice"] as? Double,
             let shippingAddress = dictionary["shippingAddress"] as? Address,
             let deliveryFee = dictionary["deliveryFee"] as? Double,
             let status = dictionary["status"] as? String,
-            let cancelReason = dictionary["cancelReason"] as? String,
             let userId = dictionary["userId"] as? String,
             let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
-            let deliveryInfo = dictionary["deliveryInfo"] as? DeliveryInfo,
-            let pointStatement = dictionary["pointStatement"] as? PointStatement,
-            let remark = dictionary["remark"] as? String else { return nil }
+            let dateInfo = dictionary["dateInfo"] as? [String : Date],
+            let pointStatement = dictionary["pointStatement"] as? PointStatement else { return nil }
+        
+        
+        let remark = dictionary["remark"] as? String ?? ""
+        let cancelReason = dictionary["cancelReason"] as? String ?? ""
         
         self.orderNumber = orderNumber
         self.trackingNumber = trackingNumber
-        self.dateOfPurchase = dateOfPurchase
+//        self.dateOfPurchase = dateOfPurchase
         self.scheduledDeliveryDate = scheduledDeliveryDate
         self.totalPrice = totalPrice
         self.shippingAddress = shippingAddress
@@ -61,7 +63,7 @@ struct OrderEntity {
         self.cancelReason = cancelReason
         self.userId = userId
         self.orderDetail = orderDetail
-        self.deliveryInfo = deliveryInfo
+        self.dateInfo = dateInfo
         self.pointStatement = pointStatement
         self.remark = remark
     }
@@ -70,7 +72,7 @@ struct OrderEntity {
         return [
             "orderNumber": orderNumber,
             "trackingNumber": trackingNumber,
-            "dateOfPurchase": dateOfPurchase,
+//            "dateOfPurchase": dateOfPurchase,
             "scheduledDeliveryDate": scheduledDeliveryDate,
             "totalPrice": totalPrice,
             "shippingAddress": shippingAddress,
@@ -79,7 +81,7 @@ struct OrderEntity {
             "cancelReason": cancelReason,
             "userId": userId,
             "orderDetail": orderDetail,
-            "deliveryInfo": deliveryFee,
+            "dateInfo": dateInfo,
             "pointStatement": pointStatement,
             "remark": remark
         ]

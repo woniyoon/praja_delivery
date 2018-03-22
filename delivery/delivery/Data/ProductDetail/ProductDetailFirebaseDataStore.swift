@@ -14,17 +14,15 @@ class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     
     func fetchProductDetail(_ id: String) -> Single<ProductEntity> {
         return Single<ProductEntity>.create { observer -> Disposable in
-            self.db.collection("sample_product")
-                .document("xzMjRiKcVFgMLW1lnOmc")
+            self.db.collection("products")
+                .document(id)
                 .getDocument { (document, error) in
                     if let error = error {
-                        print("error")
-                        observer(.error(error))
+                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
                         return
                     }
                     guard let product = ProductEntity(dictionary: (document?.data())!) else {
-                        print("???")
-                        observer(.error(error!))
+                        observer(.error(NomnomError.alert(message: "Parse Failure")))
                         return
                     }
                     observer(.success(product))
