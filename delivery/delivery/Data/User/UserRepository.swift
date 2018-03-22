@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol UserRepositoryProtocol {
-    func fetchUser(_ id: String) -> UserEntity
+    func fetchUser(_ id: String) -> Single<UserEntity>
 }
 
 class UserRepository: UserRepositoryProtocol {
@@ -20,7 +21,7 @@ class UserRepository: UserRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchUser(_ id: String) -> UserEntity {
+    func fetchUser(_ id: String) -> Single<UserEntity> {
         return dataStore.fetchUser(id)
     }
 }

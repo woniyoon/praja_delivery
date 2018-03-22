@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 
 protocol UserUseCaseProtocol {
-    func fetchUser(_ id: String) -> UserModel
+    func fetchUser(_ id: String) -> Single<User>
 }
 
 class UserUseCase: UserUseCaseProtocol {
@@ -23,9 +24,11 @@ class UserUseCase: UserUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchUser(_ id: String) -> UserModel {
-        let entity = repository.fetchUser(id)
-        return translator.translate(entity)
+    func fetchUser(_ id: String) -> Single<User> {
+        return repository.fetchUser(id)
+            .map({ entity in
+                self.translator.translate(entity)
+            })
     }
 }
 

@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol HomeUseCaseProtocol {
-    func fetchProducts() -> ProductModel
+    func fetchProducts() -> Single<ProductModel>
 }
 
 class HomeUseCase: HomeUseCaseProtocol {
@@ -22,9 +23,13 @@ class HomeUseCase: HomeUseCaseProtocol {
         self.translator = translator
     }
 
-    func fetchProducts() -> ProductModel {
-        let result = repository.fetchProducts()
-        
-        return translator.translate(result)
+    func fetchProducts() -> Single<ProductModel> {
+//        let result = repository.fetchProducts()
+//
+//        return translator.translate(result)
+        return repository.fetchProducts()
+            .map({ entity in
+                self.translator.translate(entity)
+            })
     }
 }

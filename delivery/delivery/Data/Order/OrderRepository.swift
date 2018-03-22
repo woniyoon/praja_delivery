@@ -7,11 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol OrderRepositoryProtocol{
-    func fetchOrder(_ id : String) ->
-//    OrderEntity
-    ProductEntity
+    func fetchOrder(_ id : String) -> Single<OrderEntity>
 }
 
 class OrderRepository : OrderRepositoryProtocol{
@@ -21,7 +20,7 @@ class OrderRepository : OrderRepositoryProtocol{
         self.dataStore = dataStore
     }
 
-    func fetchOrder(_ id: String) -> ProductEntity {
+    func fetchOrder(_ id: String) -> Single<OrderEntity> {
         return dataStore.fetchOrder(id)
     }
 }

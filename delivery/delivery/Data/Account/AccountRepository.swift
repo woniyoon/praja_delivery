@@ -9,7 +9,7 @@
 import Foundation
 
 protocol AccountRepositoryProtocol{
-    func fetchAccount(_ id: Int) -> AccountEntity
+    func fetchAccount(_ id: Int)
 }
 
 class AccountRepository: AccountRepositoryProtocol {
@@ -20,7 +20,7 @@ class AccountRepository: AccountRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchAccount(_ id: Int) -> AccountEntity {
-        return dataStore.fetchAccount(id)
+    func fetchAccount(_ id: Int) {
+//        return dataStore.fetchAccount(id)
     }
 }

@@ -24,11 +24,11 @@ class AccountViewModel {
     }
     
     func fetchAccount(_ id: Int) {
-        let model = useCase.fetchAccount(id)
-        accountId.accept(model.accountId)
-        email.accept(model.email)
-        password.accept(model.password)
-        token.accept(model.token)
+//        let model = useCase.fetchAccount(id)
+//        accountId.accept(model.accountId)
+//        email.accept(model.email)
+//        password.accept(model.password)
+//        token.accept(model.token)
     }
 }
 

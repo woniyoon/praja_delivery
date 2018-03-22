@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol OrderUseCaseProtocol {
-    func fetchOrder(_ id: String) -> OrderModel
+    func fetchOrder(_ id: String) -> Single<Order>
 }
 
 class OrderUseCase: OrderUseCaseProtocol {
@@ -22,8 +23,10 @@ class OrderUseCase: OrderUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchOrder(_ id: String) -> OrderModel {
-        let entity = repository.fetchOrder(id)
-        return translator.translate(entity)
+    func fetchOrder(_ id: String) -> Single<Order> {
+        return repository.fetchOrder(id)
+            .map({ entity in
+                self.translator.translate(entity)
+            })
     }
 }

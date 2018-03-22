@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol OrderDataStoreProtocol {
-    func fetchOrder(_ id: String) -> ProductEntity //OrderEntity
+    func fetchOrder(_ id: String) -> Single<OrderEntity> //OrderEntity
 }

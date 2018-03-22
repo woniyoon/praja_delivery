@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol UserDataStoreProtocol {
-    func fetchUser(_ id: String) -> UserEntity
+    func fetchUser(_ id: String) -> Single<UserEntity>
 }

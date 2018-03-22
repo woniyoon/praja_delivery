@@ -23,14 +23,14 @@ struct OrderEntity {
     public let dateOfPurchase: Date
     public let scheduledDeliveryDate: Date
     public let totalPrice: Double
-    public let shippingAddress: AddressEntity
+    public let shippingAddress: Address
     public let deliveryFee: Double
     public let status: Status
     public let cancelReason: String
     public let userId: String
-    public let orderDetail: [OrderDetailEntity] //not sure...
-    public let deliveryInfo: DeliveryInfoEntity //not sure..
-    public let pointStatement: PointStatementEntity
+    public let orderDetail: [OrderDetail] //not sure...
+    public let deliveryInfo: DeliveryInfo //not sure..
+    public let pointStatement: PointStatement
     public let remark: String
 
     
@@ -40,14 +40,14 @@ struct OrderEntity {
             let dateOfPurchase = dictionary["dateOfPurchase"] as? Date,
             let scheduledDeliveryDate = dictionary["scheduledDeliveryDate"] as? Date,
             let totalPrice = dictionary["totalPrice"] as? Double,
-            let shippingAddress = dictionary["shippingAddress"] as? AddressEntity,
+            let shippingAddress = dictionary["shippingAddress"] as? Address,
             let deliveryFee = dictionary["deliveryFee"] as? Double,
             let status = dictionary["status"] as? String,
             let cancelReason = dictionary["cancelReason"] as? String,
             let userId = dictionary["userId"] as? String,
-            let orderDetail = dictionary["orderDetail"] as? [OrderDetailEntity],
-            let deliveryInfo = dictionary["deliveryInfo"] as? DeliveryInfoEntity,
-            let pointStatement = dictionary["pointStatement"] as? PointStatementEntity,
+            let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
+            let deliveryInfo = dictionary["deliveryInfo"] as? DeliveryInfo,
+            let pointStatement = dictionary["pointStatement"] as? PointStatement,
             let remark = dictionary["remark"] as? String else { return nil }
         
         self.orderNumber = orderNumber
@@ -61,7 +61,7 @@ struct OrderEntity {
         self.cancelReason = cancelReason
         self.userId = userId
         self.orderDetail = orderDetail
-        self.deliveryInfo = deliveryInfo as! [String : Date]
+        self.deliveryInfo = deliveryInfo
         self.pointStatement = pointStatement
         self.remark = remark
     }

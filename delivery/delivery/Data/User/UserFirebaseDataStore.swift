@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import RxSwift
 
 //class UserFirebaseDataStore: UserDataStoreProtocol {
 //    let db = Firestore.firestore()
@@ -24,10 +25,24 @@ import Firebase
 class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
     
-    func fetchUser(_ id: String) ->UserEntity {
+    func fetchUser(_ id: String) -> Single<UserEntity> {
         
-        return UserEntity(firstName:"sara")
-        
+            return Single<UserEntity>.create { observer -> Disposable in
+                self.db.collection("users")
+                    .document("Ljk5vGaGSMkYzviKx68B")
+                    .getDocument() { (document, error) in
+                        if let error = error {
+                            observer(.error(error))
+                            return
+                        }
+                        guard let user = UserEntity(dictionary: (document?.data())!) else {
+                            observer(.error(error!))
+                            return
+                        }
+                        observer(.success(user))
+                }
+                return Disposables.create()
+        }
     }
 }
 

@@ -29,7 +29,7 @@ import Foundation
 
 struct ProductEntity {
     public let averageRating: Double
-    public let branch: [String : BranchInvetory]
+    public let branch: BranchInvetoryEntity
     public let brand: String
     public let description: String
     public let discountPercent: Int?
@@ -43,21 +43,33 @@ struct ProductEntity {
 
 
     init?(dictionary: [String: Any]) {
-        guard let averageRating = dictionary["averageRating"] as? Double,
-            let branch = dictionary["branch"],
-            let brand = dictionary["brand"] as? String,
-            let description = dictionary["description"] as? String,
-            let discountPercent = dictionary["discountPercent"] as? Int,
-            let event = dictionary["event"] as? EventEntity,
-            let images = dictionary["images"] as? [String],
-            let name = dictionary["name"] as? String,
-            let originalPrice = dictionary["originalPrice"] as? Double,
-            let price = dictionary["price"] as? Double,
-            let subCategory = dictionary["subCategory"] as? String,
-            let category = dictionary["category"] as? String else { return nil }
+        print("dictionary======================")
+        guard let name = dictionary["name"] as? String else { return nil }
+        print("=== \(name)")
+        self.branch = BranchInvetoryEntity(dictionary: (dictionary["branch"] as? [String : Any])!)!
+        print("=== \(branch)")
+        let averageRating = dictionary["averageRating"] as? Double ?? 0.0
+        print("=== \(averageRating)")
+            guard let brand = dictionary["brand"] as? String else { return nil }
+        print("=== \(brand)")
+            guard let description = dictionary["description"] as? String else { return nil }
+        print("=== \(description)")
+            guard let discountPercent = dictionary["discountPercent"] as? Int else { return nil }
+        print("=== \(discountPercent)")
+            guard let event = dictionary["event"] as? EventEntity else { return nil }
+        print("=== \(event)")
+            guard let images = dictionary["images"] as? [String] else { return nil }
+        print(images)
+            guard let originalPrice = dictionary["originalPrice"] as? Double else { return nil }
+        print(originalPrice)
+            guard let price = dictionary["price"] as? Double else { return nil }
+        print(price)
+            guard let subCategory = dictionary["subCategory"] as? String else { return nil }
+        print(subCategory)
+            guard let category = dictionary["category"] as? String else { return nil }
+        print(category)
         
         self.averageRating = averageRating
-        self.branch = branch as! [String : BranchInvetory]
         self.brand = brand
         self.description = description
         self.discountPercent = discountPercent
