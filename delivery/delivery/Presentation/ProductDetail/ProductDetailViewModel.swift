@@ -17,6 +17,8 @@ class ProductDetailViewModel {
     var originalPrice = BehaviorRelay(value: "")
     var image = BehaviorRelay(value: "")
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     private let useCase: ProductDetailUseCaseProtocol
     
     private let disposeBag: DisposeBag = DisposeBag()
@@ -29,7 +31,7 @@ class ProductDetailViewModel {
         useCase.fetchProductDetail(id)
             .subscribe(
                 onSuccess: { model in
-                    self.name.accept(model.name)
+                    self.name.accept("$\(model.name)")
                     self.price.accept("$\(model.price)")
                     self.originalPrice.accept("$\(model.originalPrice)") },
                 onError: { error in

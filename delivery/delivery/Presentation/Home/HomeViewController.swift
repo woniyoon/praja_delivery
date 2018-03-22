@@ -29,14 +29,19 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func dbTest(_ sender: Any) {
+        let db = Firestore.firestore()
         
-//        let orderBuilder = OrderBuilder(userId: "userId", dateOfPurchase: Date(), deliveryFee: 5.0, totalPrice: 25.0).setRemark(remark: "fragile!")
-//
-//        let test = Order(builder: orderBuilder)
-//
-//        if let t = test {
-//            print(t.remark)
-//        }
+        db.collection("products").document("oVhTC6TXjU1a3bG8EabF").getDocument { (querySnapshot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                if let qs = querySnapshot {
+                    print(qs.data()!["name"])
+                }
+            }
+        }
+        
+        viewModel.fetchProducts()
     }
     
 
@@ -56,7 +61,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        viewModel.fetchProducts()
+//        viewModel.fetchProducts()
     }
 
 }

@@ -9,8 +9,7 @@ import Foundation
 
 struct Branch {
     public let name: String
-    public let latitude: Float
-    public let longitude: Float
+    public let coordinate: Coordinate
     public let address: String
     public let city: String
     public let province: String

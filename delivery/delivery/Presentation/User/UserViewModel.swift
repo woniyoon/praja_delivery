@@ -19,6 +19,8 @@ class UserViewModel{
     var hasAccount = BehaviorRelay(value: "")
    // var account = BehaviorRelay(value: "")
     
+    private let disposeBag: DisposeBag = DisposeBag()
+
     private let useCase: UserUseCaseProtocol
     
     init(useCase: UserUseCaseProtocol) {
@@ -26,8 +28,18 @@ class UserViewModel{
     }
     
     func fetchUser(_ id: String) {
-        let model = useCase.fetchUser(id)
-        firstName.accept(model.firstName)
-        
+        useCase.fetchUser(id)
+            .subscribe(
+                onSuccess: { model in
+                    self.firstName.accept("$\(model.firstName)")
+                    self.lastName.accept("$\(model.lastName)")
+                    self.mobileNumber.accept("$\(model.mobileNumber)")
+                    self.dateOfBirth.accept("$\(model.dateOfBirth)")
+                    self.hasAccount.accept("$\(model.hasAccount)")
+            },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }

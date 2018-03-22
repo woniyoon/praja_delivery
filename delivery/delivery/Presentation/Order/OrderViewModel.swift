@@ -17,6 +17,8 @@ class OrderViewModel {
     var originalPrice = BehaviorRelay(value: "")
     var image = BehaviorRelay(value: "")
     
+    private let disposeBag: DisposeBag = DisposeBag()
+    
     private let useCase: OrderUseCaseProtocol
     
     init(useCase: OrderUseCaseProtocol) {
@@ -24,9 +26,16 @@ class OrderViewModel {
     }
     
     func fetchOrder(_ id: String) {
-        let model = useCase.fetchOrder(id)
-        name.accept(model.name)
-        price.accept("$\(model.price)")
-        originalPrice.accept("$\(model.originalPrice)")
+        useCase.fetchOrder(id)
+            .subscribe(
+                onSuccess: { model in
+                    self.name.accept(model.remark)
+                    self.price.accept("$\(model.deliveryFee)")
+                    self.originalPrice.accept("$\(model.totalPrice)")
+            },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }

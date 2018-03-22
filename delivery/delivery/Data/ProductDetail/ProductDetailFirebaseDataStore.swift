@@ -12,17 +12,19 @@ import RxSwift
 class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     let db = Firestore.firestore()
     
-    func fetchProductDetail(_ id: String) -> Single<SampleProductEntity> {
-        return Single<SampleProductEntity>.create { observer -> Disposable in
+    func fetchProductDetail(_ id: String) -> Single<ProductEntity> {
+        return Single<ProductEntity>.create { observer -> Disposable in
             self.db.collection("sample_product")
-                .document(id)
+                .document("xzMjRiKcVFgMLW1lnOmc")
                 .getDocument { (document, error) in
                     if let error = error {
+                        print("error")
                         observer(.error(error))
                         return
                     }
-                    guard let product = SampleProductEntity(dictionary: (document?.data())!) else {
-                        observer(.error(NomnomError.failedParse))
+                    guard let product = ProductEntity(dictionary: (document?.data())!) else {
+                        print("???")
+                        observer(.error(error!))
                         return
                     }
                     observer(.success(product))
