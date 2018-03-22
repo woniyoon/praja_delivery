@@ -19,6 +19,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var originalPriceLabel: UILabel!
     
     public var viewModel: ProductDetailViewModel!
+    public var productId: String!
     
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -46,6 +47,6 @@ class ProductDetailViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail("test")
+        viewModel.fetchProductDetail(productId)
     }
 }
