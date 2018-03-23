@@ -54,4 +54,10 @@ class ProductDetailViewController: BaseViewController {
     @IBAction func buttonPressed(_ sender: Any) {
         viewModel.fetchProductDetail(productId)
     }
+    
+    @IBAction func reviewListButtonPressed(_ sender: Any) {
+        let next = resolver.resolve(ReviewListViewController.self)!
+        next.productId = "oVhTC6TXjU1a3bG8EabF"
+        present(next, animated: true, completion: nil)
+    }
 }

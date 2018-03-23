@@ -17,7 +17,21 @@
                     <view key="view" contentMode="scaleToFill" id="RWV-ke-VrI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to ReviewList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6i-9w-aUx">
+                                <rect key="frame" x="99" y="323" width="177" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fkb-NN-82n" firstAttribute="bottom" secondItem="c6i-9w-aUx" secondAttribute="bottom" constant="323" id="W7c-AV-yce"/>
+                            <constraint firstItem="c6i-9w-aUx" firstAttribute="top" secondItem="Fkb-NN-82n" secondAttribute="top" constant="303" id="lHd-Cb-bUj"/>
+                            <constraint firstItem="Fkb-NN-82n" firstAttribute="trailing" secondItem="c6i-9w-aUx" secondAttribute="trailing" constant="99" id="naN-Ak-9T5"/>
+                            <constraint firstItem="c6i-9w-aUx" firstAttribute="leading" secondItem="Fkb-NN-82n" secondAttribute="leading" constant="99" id="xnJ-SI-H2W"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fkb-NN-82n"/>
                     </view>
                 </viewController>
