@@ -17,9 +17,8 @@ class ProductDetailViewModel : BaseViewModel {
     var originalPrice = BehaviorRelay(value: "")
     var image = BehaviorRelay(value: "")
     
-    private let disposeBag: DisposeBag = DisposeBag()
-    
     private let useCase: ProductDetailUseCaseProtocol
+    private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: ProductDetailUseCaseProtocol) {
         self.useCase = useCase
