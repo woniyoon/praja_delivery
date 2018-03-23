@@ -104,6 +104,7 @@
 		D775FF8B2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF8A2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift */; };
 		D775FF8D2065B005002180F7 /* ReviewListFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF8C2065B005002180F7 /* ReviewListFirebaseDataStore.swift */; };
 		D775FF8F2065B01E002180F7 /* ReviewListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF8E2065B01E002180F7 /* ReviewListTranslator.swift */; };
+		D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D775FF902065B86F002180F7 /* ReviewList.storyboard */; };
 		D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */; };
 		D78F2E74204DE6100017AA05 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */; };
 		D78F2E76204DE63F0017AA05 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */; };
@@ -237,6 +238,7 @@
 		D775FF8A2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListDataStoreProtocol.swift; sourceTree = "<group>"; };
 		D775FF8C2065B005002180F7 /* ReviewListFirebaseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListFirebaseDataStore.swift; sourceTree = "<group>"; };
 		D775FF8E2065B01E002180F7 /* ReviewListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListTranslator.swift; sourceTree = "<group>"; };
+		D775FF902065B86F002180F7 /* ReviewList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewList.storyboard; sourceTree = "<group>"; };
 		D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
 		D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		D775FF7F2065AD0A002180F7 /* ReviewList */ = {
 			isa = PBXGroup;
 			children = (
+				D775FF902065B86F002180F7 /* ReviewList.storyboard */,
 				D775FF822065AD70002180F7 /* ReviewListViewController.swift */,
 				D775FF842065AE03002180F7 /* ReviewListViewModel.swift */,
 			);
@@ -817,6 +820,7 @@
 				BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */,
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				8650FC902058C6250042640E /* User.storyboard in Resources */,
+				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
