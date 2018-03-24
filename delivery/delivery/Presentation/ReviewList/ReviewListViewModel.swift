@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 
 class ReviewListViewModel: BaseViewModel {
+    var reviewList = BehaviorRelay<[Review]>(value: [])
+    
     private let useCase: ReviewListUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -19,10 +21,11 @@ class ReviewListViewModel: BaseViewModel {
     }
     
     func fetchReviewList(productId: String) {
-        useCase.fetchReviewList(productId: productId)
-            .subscribe(
-                onSuccess: { model in },
-                onError: { error in self.setError(error)}
-        ).disposed(by: disposeBag)
+        reviewList.accept([Review(userId: "123", userName: "Kento", title: "Hello", comment: "This is test", rating: 3.4, productId: "aaa", date: Date.init())])
+//        useCase.fetchReviewList(productId: productId)
+//            .subscribe(
+//                onSuccess: { model in },
+//                onError: { error in self.setError(error)}
+//        ).disposed(by: disposeBag)
     }
 }

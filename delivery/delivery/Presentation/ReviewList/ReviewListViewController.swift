@@ -13,6 +13,7 @@ import RxCocoa
 
 class ReviewListViewController: BaseViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     var productId: String!
     
     private var viewModel: ReviewListViewModel!
@@ -27,9 +28,25 @@ class ReviewListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
+        configureTableView()
         viewModel.fetchReviewList(productId: productId)
     }
     
     private func bindView() {
+        viewModel.reviewList.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: ReviewCell.Identifier, cellType: ReviewCell.self))
+            { row, review, cell in
+                cell.review = review
+            }.disposed(by: disposeBag)
+    }
+    
+    private func registerCell() {
+        let nib = UINib(nibName: ReviewCell.Identifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: ReviewCell.Identifier)
+    }
+    
+    private func configureTableView() {
+        registerCell()
+        tableView.rowHeight = 90
     }
 }

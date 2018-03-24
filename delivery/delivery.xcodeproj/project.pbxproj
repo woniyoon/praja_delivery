@@ -105,6 +105,8 @@
 		D775FF8D2065B005002180F7 /* ReviewListFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF8C2065B005002180F7 /* ReviewListFirebaseDataStore.swift */; };
 		D775FF8F2065B01E002180F7 /* ReviewListTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF8E2065B01E002180F7 /* ReviewListTranslator.swift */; };
 		D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D775FF902065B86F002180F7 /* ReviewList.storyboard */; };
+		D775FF942065C20C002180F7 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF922065C20C002180F7 /* ReviewCell.swift */; };
+		D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D775FF932065C20C002180F7 /* ReviewCell.xib */; };
 		D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */; };
 		D78F2E74204DE6100017AA05 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */; };
 		D78F2E76204DE63F0017AA05 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */; };
@@ -239,6 +241,8 @@
 		D775FF8C2065B005002180F7 /* ReviewListFirebaseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListFirebaseDataStore.swift; sourceTree = "<group>"; };
 		D775FF8E2065B01E002180F7 /* ReviewListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListTranslator.swift; sourceTree = "<group>"; };
 		D775FF902065B86F002180F7 /* ReviewList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewList.storyboard; sourceTree = "<group>"; };
+		D775FF922065C20C002180F7 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		D775FF932065C20C002180F7 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
 		D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -558,6 +562,15 @@
 			path = ReviewList;
 			sourceTree = "<group>";
 		};
+		D775FF962065C8B6002180F7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D775FF922065C20C002180F7 /* ReviewCell.swift */,
+				D775FF932065C20C002180F7 /* ReviewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D7AAD09F2041943100D2971C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,6 +726,7 @@
 		D7E259EC2063A75F007ADB37 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D775FF962065C8B6002180F7 /* Cell */,
 				D703592F2063B5A700787198 /* BaseViewController.swift */,
 				D7E259ED2063A771007ADB37 /* BaseViewModel.swift */,
 			);
@@ -815,6 +829,7 @@
 				BBA54AC3203D178D00D69954 /* Assets.xcassets in Resources */,
 				D7AAD0BA2041943D00D2971C /* GoogleService-Info.plist in Resources */,
 				911A281B20577948007B8084 /* Home.storyboard in Resources */,
+				D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */,
 				BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */,
 				2C3BA6CA20578F2600C438C0 /* Order.storyboard in Resources */,
 				BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */,
@@ -1054,6 +1069,7 @@
 				D7AAD0BF2042375800D2971C /* TranslatorProtocol.swift in Sources */,
 				8603A7E02057A74400CB7E5E /* UserRepository.swift in Sources */,
 				D78F2E74204DE6100017AA05 /* ProductDetailViewController.swift in Sources */,
+				D775FF942065C20C002180F7 /* ReviewCell.swift in Sources */,
 				D7569D3C2052B2E700C6D6E4 /* TranslatorAssembly.swift in Sources */,
 				D7569D3E2052BA1100C6D6E4 /* UIExtension.swift in Sources */,
 				911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */,
