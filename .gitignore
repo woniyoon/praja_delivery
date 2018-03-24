@@ -172,4 +172,5 @@ playground.xcworkspace
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+.idea/*
 # End of https://www.gitignore.io/api/osx,xcode,swift,carthage,fastlane,cocoapods,objective-c
