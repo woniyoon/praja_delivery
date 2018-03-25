@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Cosmos
 
 class ProductDetailViewController: BaseViewController {
     
@@ -17,6 +18,11 @@ class ProductDetailViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var ratingStars: CosmosView!
+    
+    // Review
+    @IBOutlet weak var reviewRatingStars: CosmosView!
     
     public var viewModel: ProductDetailViewModel!
     public var productId: String!
@@ -31,7 +37,11 @@ class ProductDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         bindView()
+    }
+    
+    private func setup() {
     }
     
     private func bindView() {
@@ -43,6 +53,17 @@ class ProductDetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         viewModel.originalPrice.asObservable()
             .bind(to: originalPriceLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.reviewAverage.asObservable()
+            .bind(to: ratingStars.rx_rating)
+            .disposed(by: disposeBag)
+        viewModel.description.asObservable()
+            .bind(to: descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        // Review
+        viewModel.reviewAverage.asObservable()
+            .bind(to: reviewRatingStars.rx_rating)
             .disposed(by: disposeBag)
 
         viewModel.alertMessage.asObservable()
