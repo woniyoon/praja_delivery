@@ -42,6 +42,7 @@ class ProductDetailViewController: BaseViewController {
     }
     
     private func setup() {
+        viewModel.fetchProductDetail(productId)
     }
     
     private func bindView() {
@@ -73,7 +74,6 @@ class ProductDetailViewController: BaseViewController {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail(productId)
     }
     
     @IBAction func reviewListButtonPressed(_ sender: Any) {
