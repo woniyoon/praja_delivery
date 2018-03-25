@@ -21,7 +21,9 @@ class ReviewListViewModel: BaseViewModel {
     }
     
     func fetchReviewList(productId: String) {
-        reviewList.accept([Review(userId: "123", userName: "Kento", title: "Hello", comment: "This is test", rating: 3.4, productId: "aaa", date: Date.init())])
+        reviewList.accept([
+            Review(userId: "123", userName: "Kento Uchida", title: "Hello", comment: "No – one gets an iron – clad guarantee of success. Certainly, factors like opportunity, luck and timing are important. But the backbone of success is usually found in old – fashioned, basic concepts like hard work, determination, good planning and perseverance.", rating: 3.4, productId: "aaa", date: Date.init()),
+            Review(userId: "123", userName: "Kento Uchida", title: "Short one", comment: "It's really short comment!", rating: 3.4, productId: "aaa", date: Date.init())])
 //        useCase.fetchReviewList(productId: productId)
 //            .subscribe(
 //                onSuccess: { model in },

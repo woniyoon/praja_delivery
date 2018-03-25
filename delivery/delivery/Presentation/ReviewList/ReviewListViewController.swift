@@ -47,6 +47,7 @@ class ReviewListViewController: BaseViewController {
     
     private func configureTableView() {
         registerCell()
-        tableView.rowHeight = 90
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 }
