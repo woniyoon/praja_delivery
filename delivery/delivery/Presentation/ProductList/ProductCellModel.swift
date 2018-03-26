@@ -11,26 +11,31 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ProductCellModel: UITableViewCell {
+class ProductCellModel {
     
     static var Identifier = "ProductCellModel"
+    
+    private var useCase: ProductListUseCaseProtocol
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
-
-    var sampleProductModel: SampleProductModel? {
-        didSet {
-            guard let sampleProductModel = sampleProductModel else { return }
-            name.text = sampleProductModel.name
-            price.text = String(format:"%.2f", sampleProductModel.price)
-            oldPrice.text = String(format:"%.2f", sampleProductModel.originalPrice)
-
-            }
+    
+    private(set) lazy var products : Single<[Product]> =
+        self.useCase.fetchProductList()
+            .observeOn(MainScheduler.instance)
+    
+    init(useCase: ProductListUseCaseProtocol) {
+        self.useCase = useCase
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var product: Product? {
+        didSet {
+            guard let product = product else { return }
+            self.name.text = product.name
+            self.price.text = String(format:"%.2f", product.price)
+            self.oldPrice.text = String(format:"%.2f", product.originalPrice)
+        }
     }
 }
 

@@ -1,8 +1,8 @@
 //
-//  ProductListFirebaseDataStore.swift
+//  HomeFirebaseDataStore.swift
 //  delivery
 //
-//  Created by Bacelar on 2018-03-06.
+//  Created by Jaewon Yoon on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -14,57 +14,56 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
 
     let db = Firestore.firestore()
     
-    func fetchProductList() -> [SampleProductEntity] {
+    func fetchProductList2() -> [ProductEntity] {
         
-        var products:[SampleProductEntity] = []
-        
-<<<<<<< HEAD
-        db.collection("product")
-            .getDocuments() { (document, error) in
+        var products = [ProductEntity]()
+        db.collection("products")
+            .getDocuments(completion: { (document, error) in
                 if let error = error {
-                   print(error)
                     return
                 }
                 for document in document!.documents {
                     if (document.data() as? Dictionary<String, AnyObject>) != nil {
-                        guard let product = SampleProductEntity(dictionary: document.data()) else { return }
-                        print("Product name \(product.name)")
+                        guard let product = ProductEntity(dictionary: document.data()) else {
+                            return
+                        }
+                        print("Product name from storyboard: \(product.name)")
                         products.append(product)
                     }
                     
                 }
-        }
-=======
-//        db.collection("product").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//            
-//                for document in querySnapshot!.documents {
-//                    if let dataProduct = document.data() as? Dictionary<String, AnyObject> {
-//                        
-//                        let name = dataProduct["name"]
-//                        let brand = dataProduct["brand"]
-//                        let description = dataProduct["description"]
-//                        let discountPercent = dataProduct["discountPercent"]
-//                        let subCategory = dataProduct["subCategory"]
-//                        let price = dataProduct["price"]
-//                        let images = dataProduct["images"]
-//                        let originalPrice = dataProduct["originalPrice"]
-//                        
-//                        let product = ProductEntity(name: name as! String, brand: brand as! String, price: price as! Double, originalPrice: originalPrice as! Double, discountPercent: Double(discountPercent as! Int), images: [images as! String], averageRating: 10.0, fiveStarsCount: 0, fourStarsCount: 4, threeStarsCount: 2, twoStarsCount: 2, oneStarCount: 1, description: "dgasyjdgasydgasdajy" , category: "Food", subCategory: "Chicken" as! String)
-//                        
-//                        
-//                        print("Product name \(product.name)")
-//                        
-//                        products.append(product)
-//                        
-//                    }
-//                }
-//            }
-//        }
+            })
         
->>>>>>> 11c8083f2862c9ed482d30204ab1cc432482a6d7
         return products
+    }
+    
+    
+    func fetchProductList() -> Single<[ProductEntity]> {
+        
+        var products = [ProductEntity]()
+        return Single<[ProductEntity]>.create { observer -> Disposable in
+            self.db.collection("products")
+                .getDocuments(completion: { (document, error) in
+                    if let error = error {
+                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
+                        return
+                    }
+
+                    for document in document!.documents {
+                        if (document.data() as? Dictionary<String, AnyObject>) != nil {
+                            guard let product = ProductEntity(dictionary: document.data()) else {
+                                observer(.error(NomnomError.alert(message: "Parse Failure")))
+                                return
+                            }
+                            print("Product name from storyboard: \(product.name)")
+                            products.append(product)
+                        }
+                        
+                        observer(.success(products))
+                    }
+                })
+
+            return Disposables.create()
+        }
     }
 }

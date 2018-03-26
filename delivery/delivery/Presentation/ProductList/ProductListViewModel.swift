@@ -11,13 +11,23 @@ import RxSwift
 import RxCocoa
 
 class ProductListViewModel: NSObject {
-
-    private var useCase: ProductListUseCaseProtocol
-    let productList = Variable<[SampleProductModel]>([])
     
-    init(useCase: ProductListUseCaseProtocol ) {
+    private var useCase: ProductListUseCaseProtocol
+    var products = BehaviorRelay(value: [Product]())
+    private let disposeBag: DisposeBag = DisposeBag()
+    
+    init(useCase: ProductListUseCaseProtocol) {
         self.useCase = useCase
-        productList.value = useCase.fetchProductList()
+    }
+    
+    func fetchProductList(){
+        useCase.fetchProductList()
+            .subscribe(
+                onSuccess: { (product) in
+                self.products.accept(product)
+            }, onError: { (error) in
+                print(error.localizedDescription)}
+            ) .disposed(by: disposeBag)
     }
     
 }

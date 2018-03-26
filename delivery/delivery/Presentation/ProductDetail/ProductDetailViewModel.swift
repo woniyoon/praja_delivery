@@ -21,8 +21,6 @@ class ProductDetailViewModel : BaseViewModel {
     
     private let useCase: ProductDetailUseCaseProtocol
     
-    private let disposeBag: DisposeBag = DisposeBag()
-    
     init(useCase: ProductDetailUseCaseProtocol) {
         self.useCase = useCase
     }

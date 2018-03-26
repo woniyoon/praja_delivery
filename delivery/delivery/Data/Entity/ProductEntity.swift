@@ -54,7 +54,7 @@ struct ProductEntity {
             let category = dictionary["category"] as? String else { return nil }
 
         var temp: [BranchInvetoryEntity]  = []
-        for branch in dictionary["branch_arr"] as! [Any] {
+        for branch in dictionary["branch"] as! [Any] {
             temp.append(BranchInvetoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
         }
         self.branch = temp

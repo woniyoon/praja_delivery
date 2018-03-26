@@ -27,24 +27,24 @@ class ViewController: UIViewController{
     }
     
     @IBAction func productListButtonPressed(_ sender: Any) {
-//        let next = resolver.resolve(ProductListViewController.self)!
-//        present(next, animated: true, completion: nil)
-        
-        let db = Firestore.firestore()
-        db.collection("sample_product")
-            .getDocuments() { (document, error) in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                for document in document!.documents {
-                    if (document.data() as? Dictionary<String, AnyObject>) != nil {
-                        guard let product = SampleProductEntity(dictionary: document.data()) else { return }
-                        print("Product name \(product.name)")
-                    }
-                    
-                }
-        }
+        let next = resolver.resolve(ProductListViewController.self)!
+        present(next, animated: true, completion: nil)
+//
+//        let db = Firestore.firestore()
+//        db.collection("products")
+//            .getDocuments() { (document, error) in
+//                if let error = error {
+//                    print(error)
+//                    return
+//                }
+//                for document in document!.documents {
+//                    if (document.data() as? Dictionary<String, AnyObject>) != nil {
+//                        guard let product = SampleProductEntity(dictionary: document.data()) else { return }
+//                        print("Product name \(product.name)")
+//                    }
+//
+//                }
+//        }
     }
     
     @IBAction func productDetailButtonPressed(_ sender: Any) {

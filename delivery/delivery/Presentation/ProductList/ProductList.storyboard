@@ -103,6 +103,11 @@
                                                 <outlet property="price" destination="eMj-Vh-4Zj" id="wiQ-fT-gqw"/>
                                             </connections>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="MQF-Va-y6k" id="7Yo-LO-9fR"/>
+                                            <outlet property="oldPrice" destination="O0h-qf-F2j" id="wM7-Wu-WPU"/>
+                                            <outlet property="price" destination="eMj-Vh-4Zj" id="01v-f1-pa8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -119,6 +124,9 @@
                                     <constraint firstAttribute="width" constant="46" id="MAQ-bA-8s7"/>
                                 </constraints>
                                 <state key="normal" title="GRID"/>
+                                <connections>
+                                    <action selector="pressed:" destination="diD-ja-UvS" eventType="touchUpInside" id="FhZ-yp-M6u"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-ON-rq4">
                                 <rect key="frame" x="16" y="68" width="60" height="30"/>
