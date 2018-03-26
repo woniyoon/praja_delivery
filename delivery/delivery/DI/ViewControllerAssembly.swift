@@ -10,7 +10,6 @@ import Swinject
 
 final class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
-        
         container.register(ProductDetailViewController.self) { _ in
             let dataStore  = container.resolve(ProductDetailDataStoreProtocol.self)
             let repository = container.resolve(ProductDetailRepositoryProtocol.self, argument: dataStore!)
@@ -57,7 +56,6 @@ final class ViewControllerAssembly: Assembly {
             let vc         = UserViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
-        
         container.register(ProductListViewController.self) { _ in
             let dataStore  = container.resolve(ProductListDataStoreProtocol.self)
             let repository = container.resolve(ProductListRepositoryProtocol.self, argument: dataStore!)
@@ -67,6 +65,14 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ProductListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
-
+        container.register(ReviewListViewController.self) { _ in
+            let dataStore  = container.resolve(ReviewListDataStoreProtocol.self)
+            let repository = container.resolve(ReviewListRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(ReviewListTranslator.self)
+            let usecase    = container.resolve(ReviewListUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(ReviewListViewModel.self, argument: usecase!)
+            let vc         = ReviewListViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }
