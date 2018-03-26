@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Cosmos
+import RxSwift
+import RxCocoa
 
 public extension UIViewController {
     
@@ -19,5 +22,13 @@ public extension UIViewController {
         let object = UIStoryboard(name: name, bundle: bundle).instantiateInitialViewController()
         guard let ret = object as? T else { return nil }
         return ret
+    }
+}
+
+public extension CosmosView {
+    public var rx_rating: AnyObserver<Double> {
+        return Binder(self) { view, rating in
+            view.rating = rating
+            }.asObserver()
     }
 }

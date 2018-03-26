@@ -5,6 +5,7 @@ PODS:
   - BoringSSL/Implementation (9.2):
     - BoringSSL/Interface (= 9.2)
   - BoringSSL/Interface (9.2)
+  - Cosmos (15.0.0)
   - Firebase/Auth (4.8.2):
     - Firebase/Core
     - FirebaseAuth (= 4.4.2)
@@ -82,6 +83,7 @@ PODS:
     - Swinject (~> 2.1)
 
 DEPENDENCIES:
+  - Cosmos (~> 15.0)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
@@ -94,6 +96,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
+  Cosmos: a6dbd3d0baa0cc8f51f8598f7508d5a09d0a9ade
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
@@ -116,6 +119,6 @@ SPEC CHECKSUMS:
   Swinject: afea49fd95f392b41171669f165842879c48fad6
   SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
 
-PODFILE CHECKSUM: d5d7641b29a43cca48d71ce5f6d06291c5c3c84c
+PODFILE CHECKSUM: 4732ebfba3c33407c3e768fb7674935fcc40daa2
 
 COCOAPODS: 1.4.0

@@ -16,6 +16,9 @@ target 'delivery' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  
+  # View
+  pod 'Cosmos', '~> 15.0'
 end
 
 target 'deliveryTests' do
