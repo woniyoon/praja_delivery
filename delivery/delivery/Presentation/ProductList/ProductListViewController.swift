@@ -13,13 +13,12 @@ import RxSwift
 import Firebase
 
 
-class ProductListViewController: UIViewController {
+class ProductListViewController: BaseViewController {
     
     @IBOutlet weak var productList: UITableView!
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var viewModel: ProductListViewModel!
-    private var cellView: ProductCellModel!
 
     @IBAction func pressed(_ sender: Any) {
 
@@ -47,35 +46,29 @@ class ProductListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindView()
         configureTableView()
-        bind()
+        viewModel.fetchProductList()
+    }
+    
+    private func bindView() {
+        viewModel.productsList.asObservable()
+            .bind(to: productList.rx.items(cellIdentifier: ProductsCell.Identifier, cellType: ProductsCell.self))
+            { row, product, cell in
+                cell.product = product
+            }.disposed(by: disposeBag)
     }
     
     private func registerCell() {
-        let nib = UINib(nibName: ProductCellModel.Identifier, bundle: nil)
-        productList.register(nib, forCellReuseIdentifier: ProductCellModel.Identifier)
+        let nib = UINib(nibName: ProductsCell.Identifier, bundle: nil)
+        productList.register(nib, forCellReuseIdentifier: ProductsCell.Identifier)
     }
     
     private func configureTableView() {
         registerCell()
+        productList.showsVerticalScrollIndicator = false
         productList.rowHeight = 156
     }
     
-    private func bind() {
-        
-//        viewModel.products.asObservable()
-//            .bind(to: productList.rx.items(cellIdentifier: ProductCellModel.Identifier, cellType: ProductCellModel.self))                           {
-//                                row, product, cell in
-//                                cell.product = product
-//                            }.disposed(by: disposeBag)
-        
-//        viewModel.productList.asObservable()
-//            .bind(to: productList.rx.items(cellIdentifier: ProductCellModel.Identifier, cellType: ProductCellModel.self))                           {
-//                row, product, cell in
-//                cell.product = product
-//            }.disposed(by: disposeBag)
-        
-        
-    }
     
 }

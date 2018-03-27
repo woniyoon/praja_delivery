@@ -10,10 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ProductListViewModel: NSObject {
+class ProductListViewModel: BaseViewModel {
     
     private var useCase: ProductListUseCaseProtocol
-    var products = BehaviorRelay(value: [Product]())
+
+    var productsList = BehaviorRelay<[Product]>(value: [])
     private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: ProductListUseCaseProtocol) {
@@ -24,7 +25,7 @@ class ProductListViewModel: NSObject {
         useCase.fetchProductList()
             .subscribe(
                 onSuccess: { (product) in
-                self.products.accept(product)
+                self.productsList.accept(product)
             }, onError: { (error) in
                 print(error.localizedDescription)}
             ) .disposed(by: disposeBag)

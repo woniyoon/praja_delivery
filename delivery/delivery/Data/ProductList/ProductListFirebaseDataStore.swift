@@ -39,30 +39,21 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
     
     
     func fetchProductList() -> Single<[ProductEntity]> {
-        
-        var products = [ProductEntity]()
+        var arr = [ProductEntity]()
         return Single<[ProductEntity]>.create { observer -> Disposable in
-            self.db.collection("products")
-                .getDocuments(completion: { (document, error) in
-                    if let error = error {
-                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
-                        return
+            self.db.collection("products").getDocuments { (documents, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                if let docs = documents?.documents {
+                    for doc in docs {
+                        let product = ProductEntity(dictionary: (doc.data()))
+                        arr.append(product!)
                     }
-
-                    for document in document!.documents {
-                        if (document.data() as? Dictionary<String, AnyObject>) != nil {
-                            guard let product = ProductEntity(dictionary: document.data()) else {
-                                observer(.error(NomnomError.alert(message: "Parse Failure")))
-                                return
-                            }
-                            print("Product name from storyboard: \(product.name)")
-                            products.append(product)
-                        }
-                        
-                        observer(.success(products))
-                    }
-                })
-
+                }
+                observer(.success(arr))
+            }
             return Disposables.create()
         }
     }

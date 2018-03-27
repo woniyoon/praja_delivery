@@ -11,22 +11,18 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ProductCellModel {
+class ProductCell: UITableViewCell {
     
-    static var Identifier = "ProductCellModel"
-    
-    private var useCase: ProductListUseCaseProtocol
-    
+    static var Identifier = "ProductCell"
+        
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
-    
-    private(set) lazy var products : Single<[Product]> =
-        self.useCase.fetchProductList()
-            .observeOn(MainScheduler.instance)
-    
-    init(useCase: ProductListUseCaseProtocol) {
-        self.useCase = useCase
+
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
     var product: Product? {
@@ -36,6 +32,11 @@ class ProductCellModel {
             self.price.text = String(format:"%.2f", product.price)
             self.oldPrice.text = String(format:"%.2f", product.originalPrice)
         }
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        // Configure the view for the selected state
     }
 }
 

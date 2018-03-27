@@ -5,6 +5,7 @@ PODS:
   - BoringSSL/Implementation (10.0):
     - BoringSSL/Interface (= 10.0)
   - BoringSSL/Interface (10.0)
+  - Cosmos (15.0.0)
   - Firebase/Auth (4.8.2):
     - Firebase/Core
     - FirebaseAuth (= 4.4.2)
@@ -63,6 +64,7 @@ PODS:
     - gRPC-Core (= 1.10.0)
     - gRPC-RxLibrary (= 1.10.0)
   - GTMSessionFetcher/Core (1.1.14)
+  - Kingfisher (4.6.3)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -82,9 +84,11 @@ PODS:
     - Swinject (~> 2.1)
 
 DEPENDENCIES:
+  - Cosmos (~> 15.0)
   - Firebase/Auth (= 4.8.2)
   - Firebase/Core (= 4.8.2)
   - Firebase/Firestore (= 4.8.2)
+  - Kingfisher (~> 4.0)
   - RxBlocking (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
@@ -94,6 +98,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
+  Cosmos: a6dbd3d0baa0cc8f51f8598f7508d5a09d0a9ade
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
@@ -106,6 +111,7 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: 22712b23eb1bda656a59715fa5c1da0ea1493ea4
   gRPC-RxLibrary: a41a4652d220f230ba1c0491a94ce2ee04c6180a
   GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
@@ -116,6 +122,6 @@ SPEC CHECKSUMS:
   Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
   SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
 
-PODFILE CHECKSUM: 04acf48b781c8c977e7edabbbd2f8aab43ef707b
+PODFILE CHECKSUM: cd313b496ee28065393d030a13a16ec1c1550fdb
 
 COCOAPODS: 1.4.0
