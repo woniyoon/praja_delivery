@@ -39,10 +39,7 @@ class HomeViewController: BaseViewController {
                 cell.item = item
             }.disposed(by: disposeBag)
        
-//        viewModel.arr.asObservable().bind(to: collectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self)){ row, item, cell in
-//                        cell.item = item
-//                    }.disposed(by: disposeBag)
-        
+
         viewModel.arr.asObservable().bind(to: youMayLikeCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
         { row, item, cell in
             cell.item = item
