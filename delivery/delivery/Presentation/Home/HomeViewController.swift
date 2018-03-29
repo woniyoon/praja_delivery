@@ -10,14 +10,11 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-import Firebase
 
-class HomeViewController: UIViewController {
-    
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var originalPrice: UILabel!
-    
+class HomeViewController: BaseViewController {
+
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var youMayLikeCollectionView: UICollectionView!
     
     private var viewModel: HomeViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -28,40 +25,59 @@ class HomeViewController: UIViewController {
         return instance
     }
     
-    @IBAction func dbTest(_ sender: Any) {
-        let db = Firestore.firestore()
-        
-        db.collection("products").document("oVhTC6TXjU1a3bG8EabF").getDocument { (querySnapshot, err) in
-            if let err = err {
-                print(err)
-            } else {
-                if let qs = querySnapshot {
-                    print(qs.data()!["name"])
-                }
-            }
-        }
-        
-        viewModel.fetchProducts()
-    }
     
-
-    
-    private func bindView() {
-        viewModel.name.asObservable()
-            .bind(to: name.rx.text)
-            .disposed(by: disposeBag)
-        viewModel.price.asObservable()
-            .bind(to: price.rx.text)
-            .disposed(by: disposeBag)
-        viewModel.originalPrice.asObservable()
-            .bind(to: originalPrice.rx.text)
-            .disposed(by: disposeBag)
+    private func bindView(viewModel: HomeViewModel) {
+//        viewModel.arr.asObservable()
+//            .bind(to: tableView.rx.items(cellIdentifier: HomeCell.Identifier, cellType: HomeCell.self))
+//            { row, item, cell in
+//                cell.item = item
+//            }.disposed(by: disposeBag)
+//
+        viewModel.arr.asObservable()
+            .bind(to: collectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+            { row, item, cell in
+                cell.item = item
+            }.disposed(by: disposeBag)
+       
+//        viewModel.arr.asObservable().bind(to: collectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self)){ row, item, cell in
+//                        cell.item = item
+//                    }.disposed(by: disposeBag)
+        
+        viewModel.arr.asObservable().bind(to: youMayLikeCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+        { row, item, cell in
+            cell.item = item
+            }.disposed(by: disposeBag)
+        
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+        ).disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindView()
-//        viewModel.fetchProducts()
+        bindView(viewModel: viewModel)
+        configureTableView()
+        viewModel.fetchArrayOfProduct()
     }
 
+    
+    @IBAction func getArray(_ sender: Any) {
+        viewModel.fetchArrayOfProduct()
+    }
+
+    private func registerCell() {
+        let nib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        
+        youMayLikeCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+
+    }
+
+    private func configureTableView() {
+        registerCell()
+//        tableView.rowHeight = 150
+    }
 }
+
+

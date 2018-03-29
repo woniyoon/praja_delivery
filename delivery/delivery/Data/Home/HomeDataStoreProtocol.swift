@@ -11,4 +11,5 @@ import RxSwift
 
 protocol HomeDataStoreProtocol {
     func fetchProducts() -> Single<ProductEntity>
+    func fetchArrayOfProduct() -> Single<[ProductEntity]>
 }

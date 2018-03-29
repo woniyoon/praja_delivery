@@ -11,6 +11,7 @@ import RxSwift
 
 protocol HomeRepositoryProtocol{
     func fetchProducts() -> Single<ProductEntity>
+    func fetchArrayOfProduct() -> Single<[ProductEntity]>
 }
 
 class HomeRepository: HomeRepositoryProtocol {
@@ -23,5 +24,9 @@ class HomeRepository: HomeRepositoryProtocol {
     
     func fetchProducts() -> Single<ProductEntity> {
         return dataStore.fetchProducts()
+    }
+    
+    func fetchArrayOfProduct() -> Single<[ProductEntity]> {
+        return dataStore.fetchArrayOfProduct()
     }
 }

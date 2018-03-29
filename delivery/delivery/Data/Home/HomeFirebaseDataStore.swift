@@ -16,7 +16,7 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
     func fetchProducts() -> Single<ProductEntity> {
         return Single<ProductEntity>.create { observer -> Disposable in
             self.db.collection("products")
-                .document("oVhTC6TXjU1a3bG8EabF")
+                .document("icfXqPvflmrFFjQQAijp")
                 .getDocument { (document, error) in
                     if let error = error {
                         observer(.error(error))
@@ -27,6 +27,27 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
                         return
                     }
                     observer(.success(product))
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func fetchArrayOfProduct() -> Single<[ProductEntity]> {
+        var arr = [ProductEntity]()
+        return Single<[ProductEntity]>.create { observer -> Disposable in
+            self.db.collection("product").getDocuments { (documents, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                if let docs = documents?.documents {
+                    for doc in docs {
+                        let product = ProductEntity(dictionary: (doc.data()))
+                        print(product?.name)
+                        arr.append(product!)
+                    }
+                }
+                observer(.success(arr))
             }
             return Disposables.create()
         }
