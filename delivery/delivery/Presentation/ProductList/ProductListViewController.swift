@@ -15,29 +15,17 @@ import Firebase
 
 class ProductListViewController: BaseViewController {
     
-    @IBOutlet weak var productList: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var viewModel: ProductListViewModel!
 
-    @IBAction func pressed(_ sender: Any) {
-
-        let db = Firestore.firestore()
-        db.collection("products")
-            .getDocuments() { (document, error) in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                for document in document!.documents {
-                    if (document.data() as? Dictionary<String, AnyObject>) != nil {
-                        guard let product = ProductEntity(dictionary: document.data()) else { return }
-                        print("Product name \(product.name)")
-                    }
-
-                }
-        }
-    }
+    var gridLayout: GridLayout!
+    lazy var listLayout: ListLayout = {
+        var listLayout = ListLayout(itemHeight: 280)
+        return listLayout }()
+    
+    
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)
         instance?.viewModel = viewModel
@@ -46,29 +34,42 @@ class ProductListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindView()
-        configureTableView()
+        bindTableView()
         viewModel.fetchProductList()
+        
+        gridLayout = GridLayout(numberOfColumns: 2)
+        collectionView.collectionViewLayout = gridLayout
+        collectionView.reloadData()
     }
     
-    private func bindView() {
+    private func bindTableView() {
         viewModel.productsList.asObservable()
-            .bind(to: productList.rx.items(cellIdentifier: ProductsCell.Identifier, cellType: ProductsCell.self))
+            .bind(to: collectionView.rx.items(cellIdentifier: ProductsCell.Identifier, cellType: ProductsCell.self))
             { row, product, cell in
                 cell.product = product
             }.disposed(by: disposeBag)
     }
+
     
-    private func registerCell() {
-        let nib = UINib(nibName: ProductsCell.Identifier, bundle: nil)
-        productList.register(nib, forCellReuseIdentifier: ProductsCell.Identifier)
+    @IBAction func gridPressed(_ sender: Any) {
+        if collectionView.collectionViewLayout == gridLayout {
+            // list layout
+            UIView.animate(withDuration: 0.1, animations: {
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.setCollectionViewLayout(self.listLayout, animated: false)
+            })
+        } else {
+            // grid layout
+            UIView.animate(withDuration: 0.1, animations: {
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.collectionView.setCollectionViewLayout(self.gridLayout, animated: false)
+            })
+        }
     }
     
-    private func configureTableView() {
-        registerCell()
-        productList.showsVerticalScrollIndicator = false
-        productList.rowHeight = 156
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
-    
     
 }

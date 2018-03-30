@@ -17,7 +17,7 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
     func fetchProductList2() -> [ProductEntity] {
         
         var products = [ProductEntity]()
-        db.collection("products")
+        db.collection("product")
             .getDocuments(completion: { (document, error) in
                 if let error = error {
                     return
@@ -41,7 +41,7 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
     func fetchProductList() -> Single<[ProductEntity]> {
         var arr = [ProductEntity]()
         return Single<[ProductEntity]>.create { observer -> Disposable in
-            self.db.collection("products").getDocuments { (documents, error) in
+            self.db.collection("product").getDocuments { (documents, error) in
                 if let error = error {
                     observer(.error(error))
                     return
