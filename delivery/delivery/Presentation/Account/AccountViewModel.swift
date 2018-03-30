@@ -12,23 +12,40 @@ import RxCocoa
 
 class AccountViewModel {
     
-    var accountId = BehaviorRelay(value: 0)
+    var firstName = BehaviorRelay(value: "")
+    var lastName = BehaviorRelay(value: "")
+    var dateOfBirth = BehaviorRelay(value: "")
+    var mobileNumber = BehaviorRelay(value: "")
     var email = BehaviorRelay(value: "")
-    var password = BehaviorRelay(value: "")
-    var token = BehaviorRelay(value: "")
+    var totalPoint = BehaviorRelay(value: "")
+    
+    var address = BehaviorRelay<[Address]>(value: [])
+    var payment = BehaviorRelay<[Payment]>(value: [])
+
     
     private let useCase: AccountUseCaseProtocol
+    private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: AccountUseCaseProtocol) {
         self.useCase = useCase
     }
     
-    func fetchAccount(_ id: Int) {
-//        let model = useCase.fetchAccount(id)
-//        accountId.accept(model.accountId)
-//        email.accept(model.email)
-//        password.accept(model.password)
-//        token.accept(model.token)
+    func fetchAccount(_ id: String) {
+        useCase.fetchAccount(id)
+            .subscribe(
+                onSuccess: { model in
+                    self.firstName.accept("$\(model.firstName)")
+                    self.lastName.accept("$\(model.lastName)")
+                    self.dateOfBirth.accept("$\(model.dateOfBirth)")
+                    self.mobileNumber.accept("$\(model.mobileNumber)")
+                    self.email.accept("$\(model.email)")
+                    self.totalPoint.accept("$\(model.totalPoint)")
+                    self.address.accept([Address(receiver: "", address1: "", address2: "", city: "", province: "", postalCode: "", country: "")])
+                    self.payment.accept([Payment(cardNumber: "", holderName: "", expiryDate: Date.init())])
+            },
+                onError: { error in
+                    print(error.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
     }
 }
-

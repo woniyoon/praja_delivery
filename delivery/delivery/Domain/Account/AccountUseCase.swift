@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol AccountUseCaseProtocol {
-    func fetchAccount(_ id: Int)
+    func fetchAccount(_ id: String) -> Single<Account>
 }
 
 class AccountUseCase: AccountUseCaseProtocol {
@@ -22,8 +24,15 @@ class AccountUseCase: AccountUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchAccount(_ id: Int) {
-//        let entity = repository.fetchAccount(id)
-//        return translator.translate(entity)
+    var counter: Int = 0
+    func fetchAccount(_ id: String) -> Single<Account> {
+        if counter > 0 {
+            return Single.error(NomnomError.alert(message: "Don't press twice...!!"))
+        }
+        counter = counter + 1
+        return repository.fetchAccount(_: id)
+            .map({ entity in
+                self.translator.translate(entity)
+            })
     }
 }

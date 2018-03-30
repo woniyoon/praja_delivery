@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol AccountRepositoryProtocol{
-    func fetchAccount(_ id: Int)
+    func fetchAccount(_ id: String) -> Single<AccountEntity>
 }
 
 class AccountRepository: AccountRepositoryProtocol {
@@ -20,7 +22,7 @@ class AccountRepository: AccountRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchAccount(_ id: Int) {
-//        return dataStore.fetchAccount(id)
+    func fetchAccount(_ id: String) -> Single<AccountEntity>{
+        return dataStore.fetchAccount(id)
     }
 }

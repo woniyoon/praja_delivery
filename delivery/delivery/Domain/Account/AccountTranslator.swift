@@ -7,17 +7,20 @@
 //
 
 import Foundation
-//
-//class AccountTranslator: TranslatorProtocol {
-//    func translate(_ entity: AccountEntity) -> AccountModel {
-//        return AccountModel(
-//            accountId: entity.accountId ?? 0,
-//            email: entity.email,
-//            password: entity.password,
-//            token: entity.token)
-//    }
-//}
 
-class AccountTranslator {
-    
+
+class AccountTranslator: TranslatorProtocol {
+    func translate(_ entity: AccountEntity) -> Account {
+        return Account(
+            firstName: entity.firstName,
+            lastName: entity.lastName,
+            dateOfBirth: entity.dateOfBirth,
+            mobileNumber: entity.mobileNumber,
+            email: entity.email,
+            totalPoint: entity.totalPoint,
+            address: entity.address,
+            payment: entity.payment,
+            token: entity.token)
+    }
 }
+

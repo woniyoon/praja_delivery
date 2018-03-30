@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol AccountDataStoreProtocol {
-    func fetchAccount(_ id: Int)
+    func fetchAccount(_ id: String) -> Single<AccountEntity>
 }
 
