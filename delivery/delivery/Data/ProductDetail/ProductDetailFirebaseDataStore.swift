@@ -14,7 +14,7 @@ class ProductDetailFirebaseDataStore: ProductDetailDataStoreProtocol {
     
     func fetchProductDetail(_ id: String) -> Single<ProductEntity> {
         return Single<ProductEntity>.create { observer -> Disposable in
-            self.db.collection("products")
+            self.db.collection("product")
                 .document(id)
                 .getDocument { (document, error) in
                     if let error = error {
