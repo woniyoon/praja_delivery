@@ -80,6 +80,11 @@
 		BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */; };
 		BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA475A8D20589DF900F3A0B5 /* Account.storyboard */; };
 		BA475A9220589F9A00F3A0B5 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A9120589F9900F3A0B5 /* AccountModel.swift */; };
+		BA858990206ECFB600714E8F /* AccountPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA858988206ECFB500714E8F /* AccountPaymentCell.xib */; };
+		BA858991206ECFB600714E8F /* AccountShippingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA858989206ECFB600714E8F /* AccountShippingCell.xib */; };
+		BA858993206ECFB600714E8F /* AccountPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */; };
+		BA858995206ECFB600714E8F /* AccountShippingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85898D206ECFB600714E8F /* AccountShippingCell.swift */; };
+		BA858999206ED13000714E8F /* AccountEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA858998206ED13000714E8F /* AccountEntity.swift */; };
 		BBA54ABC203D178D00D69954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA54ABB203D178D00D69954 /* AppDelegate.swift */; };
 		BBA54ABE203D178D00D69954 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA54ABD203D178D00D69954 /* ViewController.swift */; };
 		BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA54ABF203D178D00D69954 /* Main.storyboard */; };
@@ -211,6 +216,11 @@
 		BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BA475A8D20589DF900F3A0B5 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		BA475A9120589F9900F3A0B5 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		BA858988206ECFB500714E8F /* AccountPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountPaymentCell.xib; sourceTree = "<group>"; };
+		BA858989206ECFB600714E8F /* AccountShippingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountShippingCell.xib; sourceTree = "<group>"; };
+		BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPaymentCell.swift; sourceTree = "<group>"; };
+		BA85898D206ECFB600714E8F /* AccountShippingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountShippingCell.swift; sourceTree = "<group>"; };
+		BA858998206ED13000714E8F /* AccountEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEntity.swift; sourceTree = "<group>"; };
 		BBA54AB8203D178D00D69954 /* delivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = delivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA54ABB203D178D00D69954 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBA54ABD203D178D00D69954 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +467,10 @@
 				BA475A8D20589DF900F3A0B5 /* Account.storyboard */,
 				BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */,
 				BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */,
+				BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */,
+				BA858988206ECFB500714E8F /* AccountPaymentCell.xib */,
+				BA85898D206ECFB600714E8F /* AccountShippingCell.swift */,
+				BA858989206ECFB600714E8F /* AccountShippingCell.xib */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -684,6 +698,7 @@
 		D7E238C52054ED9000BA973F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				BA858998206ED13000714E8F /* AccountEntity.swift */,
 				911E267C205E5B0600FB3639 /* AddressEntity.swift */,
 				911E2676205E4AD900FB3639 /* BranchEntity.swift */,
 				911E269C2060AFBE00FB3639 /* BranchInventoryEntity.swift */,
@@ -789,7 +804,7 @@
 				TargetAttributes = {
 					BBA54AB7203D178D00D69954 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 2N6ML2B9P7;
+						DevelopmentTeam = WXA6Q3K753;
 						ProvisioningStyle = Automatic;
 					};
 					BBA54ACB203D178D00D69954 = {
@@ -831,11 +846,13 @@
 				911A281B20577948007B8084 /* Home.storyboard in Resources */,
 				D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */,
 				BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */,
+				BA858990206ECFB600714E8F /* AccountPaymentCell.xib in Resources */,
 				2C3BA6CA20578F2600C438C0 /* Order.storyboard in Resources */,
 				BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */,
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				8650FC902058C6250042640E /* User.storyboard in Resources */,
 				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
+				BA858991206ECFB600714E8F /* AccountShippingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1026,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA858999206ED13000714E8F /* AccountEntity.swift in Sources */,
 				911E267B205E4CC300FB3639 /* CouponEntity.swift in Sources */,
 				911E26992060984F00FB3639 /* OrderDetailEntity.swift in Sources */,
 				523D3A93204FA25B00B63193 /* ProductListRepository.swift in Sources */,
@@ -1020,6 +1038,7 @@
 				8603A7D92057856B00CB7E5E /* UserUseCase.swift in Sources */,
 				D775FF872065AF30002180F7 /* ReviewListUseCase.swift in Sources */,
 				2C3BA6BE205783B900C438C0 /* OrderFirebaseDataStore.swift in Sources */,
+				BA858993206ECFB600714E8F /* AccountPaymentCell.swift in Sources */,
 				D7AAD0BC204235BE00D2971C /* ProductEntity.swift in Sources */,
 				5281FD682058C13400412663 /* ProductListViewModel.swift in Sources */,
 				528E987F203E891700E8338C /* User.swift in Sources */,
@@ -1085,6 +1104,7 @@
 				BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */,
 				911A281D2057796C007B8084 /* HomeViewController.swift in Sources */,
 				91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */,
+				BA858995206ECFB600714E8F /* AccountShippingCell.swift in Sources */,
 				911A4AF8203D310400D03889 /* Coupon.swift in Sources */,
 				911A4AFE203D32C800D03889 /* Product.swift in Sources */,
 				D775FF8F2065B01E002180F7 /* ReviewListTranslator.swift in Sources */,
@@ -1253,7 +1273,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2N6ML2B9P7;
+				DEVELOPMENT_TEAM = WXA6Q3K753;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Core/Sources",
@@ -1280,7 +1300,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2N6ML2B9P7;
+				DEVELOPMENT_TEAM = WXA6Q3K753;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Core/Sources",
