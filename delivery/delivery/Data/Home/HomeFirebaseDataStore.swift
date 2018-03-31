@@ -22,7 +22,7 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
                         observer(.error(error))
                         return
                     }
-                    guard let product = ProductEntity(dictionary: (document?.data())!) else {
+                    guard let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!) else {
                         observer(.error(error!))
                         return
                     }
@@ -42,8 +42,8 @@ class HomeFirebaseDataStore: HomeDataStoreProtocol {
                 }
                 if let docs = documents?.documents {
                     for doc in docs {
-                        let product = ProductEntity(dictionary: (doc.data()))
-                        print(product?.name)
+                        let product = ProductEntity(docId: doc.documentID, dictionary: (doc.data()))
+//                        print(product?.name)
                         arr.append(product!)
                     }
                 }

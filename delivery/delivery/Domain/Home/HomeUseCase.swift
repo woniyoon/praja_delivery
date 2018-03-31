@@ -40,5 +40,4 @@ class HomeUseCase: HomeUseCaseProtocol {
                 self.translator.translate(entity)
             })
     }
-    
 }

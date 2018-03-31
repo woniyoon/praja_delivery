@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var youMayLikeCollectionView: UICollectionView!
@@ -57,6 +57,15 @@ class HomeViewController: BaseViewController {
         configureTableView()
         viewModel.fetchArrayOfProduct()
     }
+    
+    func tap(sender: UITapGestureRecognizer){
+        if let indexPath = collectionView?.indexPathForItem(at: sender.location(in: collectionView)) {
+            let cell = collectionView?.cellForItem(at: indexPath)
+            print("you can do something with the cell or index path here")
+        } else {
+            print("collection view was tapped")
+        }
+    }
 
     
     @IBAction func getArray(_ sender: Any) {
@@ -69,14 +78,14 @@ class HomeViewController: BaseViewController {
         
         youMayLikeCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
 
+        collectionView.delegate = self
     }
 
     private func configureTableView() {
         registerCell()
-        let cellSize = CGSize(width:180 , height:220)
+        let cellSize = CGSize(width:180 , height:200)
         
         let layout = UICollectionViewFlowLayout()
-        
         layout.scrollDirection = .horizontal
         layout.itemSize = cellSize
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -86,6 +95,15 @@ class HomeViewController: BaseViewController {
         youMayLikeCollectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.reloadData()
         youMayLikeCollectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        print(cell.item!.productId)
+        
+        let next = resolver.resolve(ProductDetailViewController.self)!
+        next.productId = cell.item!.productId
+        present(next, animated: true, completion: nil)
     }
 }
 

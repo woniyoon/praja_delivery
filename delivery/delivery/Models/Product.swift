@@ -21,6 +21,7 @@ struct Product {
     public let price: Double
     public let category: String
     public let subCategory: String
+    public let productId: String
     
     var dictionary: [String: Any] {
         return [
@@ -35,7 +36,8 @@ struct Product {
             "originalPrice": originalPrice,
             "price": price,
             "subCategory": subCategory,
-            "category": category
+            "category": category,
+            "productId": productId
         ]
     }
 }
