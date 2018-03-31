@@ -73,7 +73,19 @@ class HomeViewController: BaseViewController {
 
     private func configureTableView() {
         registerCell()
-//        tableView.rowHeight = 150
+        let cellSize = CGSize(width:180 , height:220)
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.scrollDirection = .horizontal
+        layout.itemSize = cellSize
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 1.0
+        layout.minimumInteritemSpacing = 1.0
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        youMayLikeCollectionView.setCollectionViewLayout(layout, animated: true)
+        collectionView.reloadData()
+        youMayLikeCollectionView.reloadData()
     }
 }
 
