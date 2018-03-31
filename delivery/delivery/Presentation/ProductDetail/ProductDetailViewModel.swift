@@ -12,7 +12,7 @@ import RxCocoa
 
 class ProductDetailViewModel : BaseViewModel {
     
-    var image = BehaviorRelay(value: "")
+    var images = BehaviorRelay<[String]>(value: [])
     var name = BehaviorRelay(value: "")
     var price = BehaviorRelay(value: "")
     var originalPrice = BehaviorRelay(value: "")
@@ -33,6 +33,7 @@ class ProductDetailViewModel : BaseViewModel {
         useCase.fetchProductDetail(id)
             .subscribe(
                 onSuccess: { model in
+                    self.images.accept(model.images)
                     self.name.accept(model.name)
                     self.price.accept(String(format: "$%0.2f", model.price))
                     self.originalPrice.accept(String(format: "$%0.2f", model.originalPrice))
