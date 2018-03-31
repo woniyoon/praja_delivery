@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductImageCell: UICollectionViewCell {
     static var Identifier = "ProductImageCell"
@@ -15,6 +16,10 @@ class ProductImageCell: UICollectionViewCell {
     
     var imageUrl: String? {
         didSet {
+            guard let imageUrl = imageUrl else { return }
+            let url: URL = URL(string: imageUrl)!
+            let resource = ImageResource(downloadURL: url, cacheKey: imageUrl)
+            self.imageView.kf.setImage(with: resource)
         }
     }
     override func awakeFromNib() {

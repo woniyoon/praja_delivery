@@ -44,10 +44,31 @@ class ProductDetailViewController: BaseViewController {
         super.viewDidLoad()
         setup()
         bindView()
+        configureCollectionView()
     }
+    
+    var mainImageCellHeight: CGFloat {
+        return view.frame.width
+    }
+    
+    private lazy var mainImageCollectionViewlayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 380)
+        layout.minimumLineSpacing = 0
+        return layout
+    }()
     
     private func setup() {
         viewModel.fetchProductDetail(productId)
+        
+        imageCollection.isPagingEnabled = true
+        imageCollection.showsHorizontalScrollIndicator = false
+        imageCollection.setCollectionViewLayout(mainImageCollectionViewlayout, animated: false)
+        
+//        layout.scrollDirection = .horizontal
+//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: mainImageCellHeight)
+//        layout.minimumLineSpacing = 0
     }
     
     private func bindView() {
@@ -88,7 +109,7 @@ class ProductDetailViewController: BaseViewController {
         imageCollection.register(nib, forCellWithReuseIdentifier: ProductImageCell.Identifier)
     }
     
-    private func configureTableView() {
+    private func configureCollectionView() {
         registerCell()
 //        imageCollection.estimatedRowHeight = 100
 //        imageCollection.rowHeight = UITableViewAutomaticDimension
