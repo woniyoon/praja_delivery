@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ProductListRepositoryProtocol{
-    func fetchProductList() -> Single<[ProductEntity]>
+    func fetchProductList(with keyword: String) -> Single<[ProductEntity]>
     func fetchProductList2() -> [ProductEntity]
 }
 
@@ -26,7 +26,7 @@ class ProductListRepository: ProductListRepositoryProtocol {
         return dataStore.fetchProductList2()
     }
     
-    func fetchProductList() -> Single<[ProductEntity]> {
-        return dataStore.fetchProductList()
+    func fetchProductList(with keyword: String) -> Single<[ProductEntity]> {
+        return dataStore.fetchProductList(with: keyword)
     }
 }

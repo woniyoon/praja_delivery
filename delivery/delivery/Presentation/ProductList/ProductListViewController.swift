@@ -35,7 +35,7 @@ class ProductListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
-        viewModel.fetchProductList()
+        viewModel.fetchProductList(with: "")
         
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout

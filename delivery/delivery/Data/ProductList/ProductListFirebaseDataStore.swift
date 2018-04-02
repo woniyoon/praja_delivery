@@ -11,7 +11,6 @@ import Firebase
 import RxSwift
 
 class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
-
     let db = Firestore.firestore()
     
     func fetchProductList2() -> [ProductEntity] {
@@ -38,18 +37,29 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
     }
     
     
-    func fetchProductList() -> Single<[ProductEntity]> {
+    func fetchProductList(with keyword: String) -> Single<[ProductEntity]> {
         var arr = [ProductEntity]()
         return Single<[ProductEntity]>.create { observer -> Disposable in
-            self.db.collection("product").getDocuments { (documents, error) in
+                let products = self.db.collection("product")
+
+                products.getDocuments { (documents, error) in
                 if let error = error {
                     observer(.error(error))
                     return
                 }
                 if let docs = documents?.documents {
                     for doc in docs {
-                        let product = ProductEntity(dictionary: (doc.data()))
-                        arr.append(product!)
+                        let name = doc.data()["name"] as! String
+                        
+                        if keyword != "" {
+                            if name.lowercased().range(of:keyword.lowercased()) != nil {
+                                let product = ProductEntity(dictionary: (doc.data()))
+                                arr.append(product!)
+                            }
+                        } else {
+                            let product = ProductEntity(dictionary: (doc.data()))
+                            arr.append(product!)
+                        }
                     }
                 }
                 observer(.success(arr))
