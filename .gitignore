@@ -176,4 +176,4 @@ playground.xcworkspace
 # End of https://www.gitignore.io/api/osx,xcode,swift,carthage,fastlane,cocoapods,objective-c
 
 ### Kingfisher ###
-delivery/Carthage/Checkouts/Kingfisher/Demo
+Carthage/
