@@ -117,6 +117,10 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         self.pageControls.currentPage = (Int(collectionView.contentOffset.x) / Int(collectionView.frame.width))
     }
     
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     @IBAction func buttonPressed(_ sender: Any) {
     }
     

@@ -43,8 +43,17 @@
                                                             <action selector="buttonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="a7s-6t-N4D"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfs-zx-9IN">
+                                                        <rect key="frame" x="20" y="10" width="39" height="30"/>
+                                                        <state key="normal" title="Close"/>
+                                                        <connections>
+                                                            <action selector="closeButtonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="dsN-Sb-xxF"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="Cfs-zx-9IN" firstAttribute="centerY" secondItem="5NC-M9-Ryc" secondAttribute="centerY" id="9od-Cf-4tw"/>
+                                                    <constraint firstItem="Cfs-zx-9IN" firstAttribute="leading" secondItem="5NC-M9-Ryc" secondAttribute="leading" constant="20" symbolic="YES" id="MRP-0g-aXi"/>
                                                     <constraint firstAttribute="trailing" secondItem="JYX-bt-vzw" secondAttribute="trailing" constant="20" symbolic="YES" id="vQU-cc-GNY"/>
                                                     <constraint firstAttribute="height" constant="50" id="x4O-V5-E86"/>
                                                     <constraint firstItem="JYX-bt-vzw" firstAttribute="centerY" secondItem="5NC-M9-Ryc" secondAttribute="centerY" id="yCh-vL-BdO"/>
