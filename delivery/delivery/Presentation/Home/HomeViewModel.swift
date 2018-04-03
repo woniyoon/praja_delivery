@@ -11,25 +11,56 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModel: BaseViewModel {
-    
-    var arr = BehaviorRelay<[Product]>(value: [])
+
+// MARK: - Variables & Instances
+
+    var arrOfTopSalesProduct = BehaviorRelay<[Product]>(value: [])
+    var arrOfProductYouMayLike = BehaviorRelay<[Product]>(value: [])
+    var arrOfNewProducts = BehaviorRelay<[Product]>(value: [])
+    var testArr = BehaviorRelay<[String]>(value: [])
 
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: HomeUseCaseProtocol
 
+// MARK: - Init
+
     init(useCase: HomeUseCaseProtocol) {
         self.useCase = useCase
+        self.testArr.accept(["Easter", "Chocolate", "Heinz", "Test", "Jaewon"])
     }
-    
-    func fetchArrayOfProduct() {
-        useCase.fetchArrayOfProduct()
+
+// MARK: - Methods
+
+    func fetchTopSales() {
+        useCase.fetchTopSales()
                     .subscribe(
                         onSuccess: { model in
-                            self.arr.accept(model)
-                           
+                            self.arrOfTopSalesProduct.accept(model)
                     },
                         onError: { error in print(error) }
                     )
                     .disposed(by: disposeBag)
+    }
+    
+    func fetchProductYouMayLike() {
+        useCase.fetchProductYouMayLike()
+            .subscribe(
+                onSuccess: { model in
+                    self.arrOfProductYouMayLike.accept(model)
+            },
+                onError: { error in print(error) }
+            )
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchNewProducts() {
+        useCase.fetchNewProducts()
+            .subscribe(
+                onSuccess: { model in
+                    self.arrOfNewProducts.accept(model)
+            },
+                onError: { error in print(error) }
+            )
+            .disposed(by: disposeBag)
     }
 }

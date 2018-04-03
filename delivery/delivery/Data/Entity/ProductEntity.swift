@@ -83,7 +83,7 @@ struct ProductEntity {
         let averageRating = dictionary["averageRating"] as? Double ?? 0.0
         
         let events = dictionary["event"] as? [String : Bool] ?? [:]
-        print("= event = \(events)")
+//        print("= event = \(events)")
         
         self.averageRating = averageRating
         self.brand = brand

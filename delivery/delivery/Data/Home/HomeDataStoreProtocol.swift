@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 protocol HomeDataStoreProtocol {
-    func fetchProducts() -> Single<ProductEntity>
-    func fetchArrayOfProduct() -> Single<[ProductEntity]>
+    func fetchTopSales() -> Single<[ProductEntity]>
+    func fetchProductYouMayLike() -> Single<[ProductEntity]>
+    func fetchNewProducts() -> Single<[ProductEntity]>
 }

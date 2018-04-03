@@ -10,14 +10,26 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+// MARK: - UIView
+    
+    @IBOutlet weak var topSalesCollectionView: UICollectionView!
     @IBOutlet weak var youMayLikeCollectionView: UICollectionView!
+    @IBOutlet weak var newProductsCollectionView: UICollectionView!
+    @IBOutlet weak var trendsCollectionView: UICollectionView!
+    @IBOutlet weak var banner: UIImageView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+// MARK: - Instance
     
     private var viewModel: HomeViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
+    
+
+// MARK: - ViewController
     
     static func createInstance(viewModel: HomeViewModel) -> HomeViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(HomeViewController.self)
@@ -25,22 +37,48 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView(viewModel: viewModel)
+        configureCollectionView()
+        viewModel.fetchTopSales()
+        viewModel.fetchProductYouMayLike()
+        viewModel.fetchNewProducts()
+        searchBar.delegate = self
+        
+        let imageUrl:URL = URL(string: "https://firebasestorage.googleapis.com/v0/b/nomnom-562a0.appspot.com/o/banner1.png?alt=media&token=688828a0-2b28-497e-8bf9-2df3c53ba3db")!
+        
+        let resource = ImageResource(downloadURL: imageUrl, cacheKey: "banner")
+        self.banner.kf.setImage(with: resource)
+        
+        banner.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        banner.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func imageTapped(sender: UIImageView) {
+        print("배너를 클릭했긔")
+    }
+    
+// MARK: - Binding
     
     private func bindView(viewModel: HomeViewModel) {
-//        viewModel.arr.asObservable()
-//            .bind(to: tableView.rx.items(cellIdentifier: HomeCell.Identifier, cellType: HomeCell.self))
-//            { row, item, cell in
-//                cell.item = item
-//            }.disposed(by: disposeBag)
-//
-        viewModel.arr.asObservable()
-            .bind(to: collectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
-            { row, item, cell in
-                cell.item = item
+        viewModel.arrOfTopSalesProduct.asObservable().bind(to: topSalesCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+        { row, item, cell in
+            cell.item = item
+            }.disposed(by: disposeBag)
+        
+        viewModel.arrOfProductYouMayLike.asObservable().bind(to: youMayLikeCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+        { row, item, cell in
+            cell.item = item
+            }.disposed(by: disposeBag)
+        
+        viewModel.arrOfNewProducts.asObservable().bind(to: newProductsCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+        { row, item, cell in
+            cell.item = item
             }.disposed(by: disposeBag)
        
-
-        viewModel.arr.asObservable().bind(to: youMayLikeCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
+        viewModel.testArr.asObservable().bind(to: trendsCollectionView.rx.items(cellIdentifier: TrendsCell.Identifier, cellType: TrendsCell.self))
         { row, item, cell in
             cell.item = item
             }.disposed(by: disposeBag)
@@ -50,59 +88,62 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
                 onNext: { alertError in self.showAlert(alertError) }
         ).disposed(by: disposeBag)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bindView(viewModel: viewModel)
-        configureTableView()
-        viewModel.fetchArrayOfProduct()
-    }
-    
-    func tap(sender: UITapGestureRecognizer){
-        if let indexPath = collectionView?.indexPathForItem(at: sender.location(in: collectionView)) {
-            let cell = collectionView?.cellForItem(at: indexPath)
-            print("you can do something with the cell or index path here")
-        } else {
-            print("collection view was tapped")
-        }
-    }
 
     
-    @IBAction func getArray(_ sender: Any) {
-        viewModel.fetchArrayOfProduct()
-    }
+// MARK: - CollectionView
 
     private func registerCell() {
         let nib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-        
+        topSalesCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         youMayLikeCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-
-        collectionView.delegate = self
+        newProductsCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        
+        let nib2 = UINib(nibName: TrendsCell.Identifier, bundle: nil)
+        trendsCollectionView.register(nib2, forCellWithReuseIdentifier: TrendsCell.Identifier)
+        
+        topSalesCollectionView.delegate = self
+        youMayLikeCollectionView.delegate = self
+        newProductsCollectionView.delegate = self
     }
 
-    private func configureTableView() {
+    private func configureCollectionView() {
         registerCell()
-        let cellSize = CGSize(width:180 , height:200)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = cellSize
+        layout.itemSize = CGSize(width:180 , height:200)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
-        collectionView.setCollectionViewLayout(layout, animated: true)
+        
         youMayLikeCollectionView.setCollectionViewLayout(layout, animated: true)
-        collectionView.reloadData()
+        newProductsCollectionView.setCollectionViewLayout(layout, animated: true)
+        topSalesCollectionView.setCollectionViewLayout(layout, animated: true)
+        
+        topSalesCollectionView.reloadData()
         youMayLikeCollectionView.reloadData()
+        newProductsCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
-        print(cell.item!.productId)
-        
+
         let next = resolver.resolve(ProductDetailViewController.self)!
         next.productId = cell.item!.productId
+        present(next, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - SearchBar
+
+extension HomeViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let next = resolver.resolve(ProductListViewController.self)!
         present(next, animated: true, completion: nil)
     }
 }

@@ -10,11 +10,13 @@ import Foundation
 import RxSwift
 
 protocol HomeUseCaseProtocol {
-//    func fetchProducts() -> Single<Product>
-    func fetchArrayOfProduct() -> Single<[Product]>
+    func fetchTopSales() -> Single<[Product]>
+    func fetchProductYouMayLike() -> Single<[Product]>
+    func fetchNewProducts() -> Single<[Product]>
+
 }
 
-class HomeUseCase: HomeUseCaseProtocol {
+class HomeUseCase: HomeUseCaseProtocol {    
     
     internal let repository: HomeRepositoryProtocol
     internal let translator: HomeTranslator
@@ -23,19 +25,23 @@ class HomeUseCase: HomeUseCaseProtocol {
         self.repository = repository
         self.translator = translator
     }
-
-//    func fetchProducts() -> Single<Product> {
-////        let result = repository.fetchProducts()
-////
-////        return translator.translate(result)
-//        return repository.fetchProducts()
-//            .map({ entity in
-//                self.translator.translate(entity)
-//            })
-//    }
     
-    func fetchArrayOfProduct() -> Single<[Product]> {
-        return repository.fetchArrayOfProduct()
+    func fetchTopSales() -> Single<[Product]> {
+        return repository.fetchTopSales()
+            .map({ entity in
+                self.translator.translate(entity)
+            })
+    }
+    
+    func fetchProductYouMayLike() -> Single<[Product]> {
+        return repository.fetchProductYouMayLike()
+            .map({ entity in
+                self.translator.translate(entity)
+            })
+    }
+    
+    func fetchNewProducts() -> Single<[Product]> {
+        return repository.fetchNewProducts()
             .map({ entity in
                 self.translator.translate(entity)
             })
