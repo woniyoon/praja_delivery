@@ -13,12 +13,15 @@ target 'delivery' do
   pod 'SwinjectStoryboard'
 
   # Firebase
-  pod 'Firebase/Core'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Auth'
+  pod 'Firebase/Core', '4.8.2'
+  pod 'Firebase/Firestore', '4.8.2'
+  pod 'Firebase/Auth', '4.8.2'
   
   # View
   pod 'Cosmos', '~> 15.0'
+  
+  # Image
+  pod 'Kingfisher', '~> 4.0'
 end
 
 target 'deliveryTests' do
@@ -26,8 +29,8 @@ target 'deliveryTests' do
     # Pods for testing
     pod 'RxBlocking', '~> 4.0'
     pod 'RxTest',     '~> 4.0'
-
-    pod 'Firebase/Core'
-    pod 'Firebase/Firestore'
+#
+    pod 'Firebase/Core', '4.8.2'
+    pod 'Firebase/Firestore', '4.8.2'
 end
 
