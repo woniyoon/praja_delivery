@@ -50,4 +50,8 @@ class ReviewListViewController: BaseViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }
