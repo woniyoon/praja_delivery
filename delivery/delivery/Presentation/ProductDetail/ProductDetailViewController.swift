@@ -12,9 +12,10 @@ import RxSwift
 import RxCocoa
 import Cosmos
 
-class ProductDetailViewController: BaseViewController {
+class ProductDetailViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var imageCollection: UICollectionView!
+    @IBOutlet weak var pageControls: UIPageControl!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
@@ -29,7 +30,6 @@ class ProductDetailViewController: BaseViewController {
     
     var pageViewController: UIPageViewController?
     
-    // ページングして表示させる ViewControllerを保持する
     var vcArray = [ProductImageViewController]()
     
     private let disposeBag: DisposeBag = DisposeBag()
@@ -66,9 +66,9 @@ class ProductDetailViewController: BaseViewController {
         imageCollection.showsHorizontalScrollIndicator = false
         imageCollection.setCollectionViewLayout(mainImageCollectionViewlayout, animated: false)
         
-//        layout.scrollDirection = .horizontal
-//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: mainImageCellHeight)
-//        layout.minimumLineSpacing = 0
+        imageCollection.delegate = self
+        
+        pageControls.hidesForSinglePage = true
     }
     
     private func bindView() {
@@ -111,8 +111,10 @@ class ProductDetailViewController: BaseViewController {
     
     private func configureCollectionView() {
         registerCell()
-//        imageCollection.estimatedRowHeight = 100
-//        imageCollection.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.pageControls.currentPage = (Int(collectionView.contentOffset.x) / Int(collectionView.frame.width))
     }
     
     @IBAction func buttonPressed(_ sender: Any) {

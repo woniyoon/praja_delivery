@@ -305,6 +305,11 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BpU-WT-Owe">
+                                                <rect key="frame" x="168" y="400" width="39" height="37"/>
+                                                <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </pageControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -325,6 +330,7 @@
                                             <constraint firstItem="A3g-CN-eLh" firstAttribute="leading" secondItem="qTj-wI-E0a" secondAttribute="trailing" constant="8" symbolic="YES" id="EvT-aD-NRK"/>
                                             <constraint firstItem="xn1-mS-Cgl" firstAttribute="leading" secondItem="XSS-lO-dyK" secondAttribute="leading" constant="20" symbolic="YES" id="Fsi-Mn-x9Q"/>
                                             <constraint firstItem="t3o-Sp-2EP" firstAttribute="leading" secondItem="XSS-lO-dyK" secondAttribute="leading" id="GMx-3k-Dxx"/>
+                                            <constraint firstItem="BpU-WT-Owe" firstAttribute="centerX" secondItem="XSS-lO-dyK" secondAttribute="centerX" id="J7B-bJ-BKa"/>
                                             <constraint firstItem="46K-QR-gvT" firstAttribute="bottom" secondItem="gCG-Jb-545" secondAttribute="bottom" id="LEh-NA-VDh"/>
                                             <constraint firstItem="dWd-Kd-HeA" firstAttribute="leading" secondItem="XSS-lO-dyK" secondAttribute="leading" constant="20" symbolic="YES" id="MEJ-FQ-rHM"/>
                                             <constraint firstItem="1r7-M3-hlW" firstAttribute="leading" secondItem="XSS-lO-dyK" secondAttribute="leading" id="OAf-hK-1zg"/>
@@ -356,6 +362,7 @@
                                             <constraint firstItem="gCG-Jb-545" firstAttribute="top" secondItem="xn1-mS-Cgl" secondAttribute="bottom" constant="8" id="fiK-rV-roS"/>
                                             <constraint firstItem="IyP-kt-Sbd" firstAttribute="leading" secondItem="Tb3-Ey-hmT" secondAttribute="trailing" constant="8" id="gpP-5W-RfL"/>
                                             <constraint firstItem="dWd-Kd-HeA" firstAttribute="top" secondItem="pw7-Rc-zov" secondAttribute="bottom" constant="16" id="iNL-nh-EH9"/>
+                                            <constraint firstItem="BpU-WT-Owe" firstAttribute="top" secondItem="pw7-Rc-zov" secondAttribute="bottom" constant="-30" id="jDH-84-DHf"/>
                                             <constraint firstAttribute="trailing" secondItem="G6q-pm-pQs" secondAttribute="trailing" id="jTl-65-ss7"/>
                                             <constraint firstItem="gCG-Jb-545" firstAttribute="leading" secondItem="XSS-lO-dyK" secondAttribute="leading" constant="20" symbolic="YES" id="kVi-dW-dGi"/>
                                             <constraint firstAttribute="bottom" secondItem="Ppm-BC-V2c" secondAttribute="bottom" constant="136.5" id="l31-db-vVG"/>
@@ -485,6 +492,7 @@
                         <outlet property="imageCollection" destination="pw7-Rc-zov" id="QCW-LI-f6w"/>
                         <outlet property="nameLabel" destination="dWd-Kd-HeA" id="ZH8-Pq-Uiq"/>
                         <outlet property="originalPriceLabel" destination="A3g-CN-eLh" id="Vbg-ic-29v"/>
+                        <outlet property="pageControls" destination="BpU-WT-Owe" id="WWh-wI-nQP"/>
                         <outlet property="priceLabel" destination="qTj-wI-E0a" id="6HX-oa-8i9"/>
                         <outlet property="ratingStars" destination="Tb3-Ey-hmT" id="iP8-uO-7Ld"/>
                         <outlet property="reviewRatingStars" destination="xn1-mS-Cgl" id="p4o-oJ-2Vq"/>
