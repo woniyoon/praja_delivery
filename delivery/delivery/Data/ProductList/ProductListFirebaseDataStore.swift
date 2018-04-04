@@ -23,7 +23,7 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
                 }
                 for document in document!.documents {
                     if (document.data() as? Dictionary<String, AnyObject>) != nil {
-                        guard let product = ProductEntity(dictionary: document.data()) else {
+                        guard let product = ProductEntity(docId: document.documentID, dictionary: document.data()) else {
                             return
                         }
                         print("Product name from storyboard: \(product.name)")
@@ -53,11 +53,11 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
                         
                         if keyword != "" {
                             if name.lowercased().range(of:keyword.lowercased()) != nil {
-                                let product = ProductEntity(dictionary: (doc.data()))
+                                let product = ProductEntity(docId: doc.documentID, dictionary: (doc.data()))
                                 arr.append(product!)
                             }
                         } else {
-                            let product = ProductEntity(dictionary: (doc.data()))
+                            let product = ProductEntity(docId: doc.documentID, dictionary: (doc.data()))
                             arr.append(product!)
                         }
                     }
