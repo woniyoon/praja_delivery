@@ -77,6 +77,10 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             { row, imageUrl, cell in
                 cell.imageUrl = imageUrl
             }.disposed(by: disposeBag)
+        viewModel.images.asObservable().subscribe(
+            onNext: { images in
+                self.pageControls.numberOfPages = images.count
+        }).disposed(by: disposeBag)
         viewModel.name.asObservable()
             .bind(to: nameLabel.rx.text)
             .disposed(by: disposeBag)
