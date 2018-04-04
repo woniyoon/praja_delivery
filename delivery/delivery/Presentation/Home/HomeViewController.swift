@@ -23,11 +23,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var banner: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
 // MARK: - Instance
     
     private var viewModel: HomeViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
+    public var keyword: String!
 
 // MARK: - ViewController
     
@@ -47,7 +49,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         searchBar.delegate = self
         
         let imageUrl:URL = URL(string: "https://firebasestorage.googleapis.com/v0/b/nomnom-562a0.appspot.com/o/banner1.png?alt=media&token=688828a0-2b28-497e-8bf9-2df3c53ba3db")!
-        
         let resource = ImageResource(downloadURL: imageUrl, cacheKey: "banner")
         self.banner.kf.setImage(with: resource)
         
@@ -57,7 +58,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     func imageTapped(sender: UIImageView) {
-        print("배너를 클릭했긔")
+        print("Banner clicked!")
     }
     
 // MARK: - Binding
@@ -78,7 +79,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             cell.item = item
             }.disposed(by: disposeBag)
        
-        viewModel.testArr.asObservable().bind(to: trendsCollectionView.rx.items(cellIdentifier: TrendsCell.Identifier, cellType: TrendsCell.self))
+        viewModel.arrOfTrendsKeyword.asObservable().bind(to: trendsCollectionView.rx.items(cellIdentifier: TrendsCell.Identifier, cellType: TrendsCell.self))
         { row, item, cell in
             cell.item = item
             }.disposed(by: disposeBag)
@@ -140,11 +141,17 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
 extension HomeViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
+        self.keyword = searchText
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let next = resolver.resolve(ProductListViewController.self)!
-        present(next, animated: true, completion: nil)
+        if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            let next = resolver.resolve(ProductListViewController.self)!
+            next.keyword = self.keyword
+            present(next, animated: true, completion: nil)
+        } else {
+            searchBar.endEditing(true)
+        }
     }
 }
 

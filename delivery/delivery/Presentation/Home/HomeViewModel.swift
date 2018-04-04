@@ -17,7 +17,7 @@ class HomeViewModel: BaseViewModel {
     var arrOfTopSalesProduct = BehaviorRelay<[Product]>(value: [])
     var arrOfProductYouMayLike = BehaviorRelay<[Product]>(value: [])
     var arrOfNewProducts = BehaviorRelay<[Product]>(value: [])
-    var testArr = BehaviorRelay<[String]>(value: [])
+    var arrOfTrendsKeyword = BehaviorRelay<[String]>(value: [])
 
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: HomeUseCaseProtocol
@@ -26,7 +26,7 @@ class HomeViewModel: BaseViewModel {
 
     init(useCase: HomeUseCaseProtocol) {
         self.useCase = useCase
-        self.testArr.accept(["Easter", "Chocolate", "Heinz", "Test", "Jaewon"])
+        self.arrOfTrendsKeyword.accept(["Easter", "Chocolate", "Heinz", "Test", "Jaewon"])
     }
 
 // MARK: - Methods

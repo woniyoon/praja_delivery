@@ -442,8 +442,6 @@
 		91806AE42069B25800EF6496 /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
-				913C14882069DABC001C2A9B /* CollectionViewCell.swift */,
-				913C14892069DABC001C2A9B /* CollectionViewCell.xib */,
 				9183196920731893002DF8AA /* TrendsCell.swift */,
 				9183196A20731893002DF8AA /* TrendsCell.xib */,
 			);
@@ -604,6 +602,8 @@
 		D775FF962065C8B6002180F7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				913C14882069DABC001C2A9B /* CollectionViewCell.swift */,
+				913C14892069DABC001C2A9B /* CollectionViewCell.xib */,
 				D775FF922065C20C002180F7 /* ReviewCell.swift */,
 				D775FF932065C20C002180F7 /* ReviewCell.xib */,
 			);
