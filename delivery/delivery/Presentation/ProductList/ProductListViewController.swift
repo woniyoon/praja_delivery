@@ -19,6 +19,7 @@ class ProductListViewController: BaseViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var viewModel: ProductListViewModel!
+    public var keyword: String!
 
     var gridLayout: GridLayout!
     lazy var listLayout: ListLayout = {
@@ -35,7 +36,7 @@ class ProductListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
-        viewModel.fetchProductList(with: "")
+        viewModel.fetchProductList(with: self.keyword)
         
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout

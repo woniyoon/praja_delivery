@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol HomeRepositoryProtocol{
-    func fetchProducts() -> Single<ProductEntity>
+    func fetchTopSales() -> Single<[ProductEntity]>
+    func fetchProductYouMayLike() -> Single<[ProductEntity]>
+    func fetchNewProducts() -> Single<[ProductEntity]>
 }
 
 class HomeRepository: HomeRepositoryProtocol {
@@ -21,7 +23,15 @@ class HomeRepository: HomeRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchProducts() -> Single<ProductEntity> {
-        return dataStore.fetchProducts()
+    func fetchTopSales() -> Single<[ProductEntity]> {
+        return dataStore.fetchTopSales()
+    }
+    
+    func fetchProductYouMayLike() -> Single<[ProductEntity]> {
+        return dataStore.fetchProductYouMayLike()
+    }
+    
+    func fetchNewProducts() -> PrimitiveSequence<SingleTrait, [ProductEntity]> {
+        return dataStore.fetchNewProducts()
     }
 }

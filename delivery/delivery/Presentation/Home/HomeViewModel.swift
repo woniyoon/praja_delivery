@@ -10,29 +10,56 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeViewModel {
-    
-    var name = BehaviorRelay(value: "")
-    var price = BehaviorRelay(value: "")
-    var originalPrice = BehaviorRelay(value: "")
+class HomeViewModel: BaseViewModel {
+
+// MARK: - Variables & Instances
+
+    var arrOfTopSalesProduct = BehaviorRelay<[Product]>(value: [])
+    var arrOfProductYouMayLike = BehaviorRelay<[Product]>(value: [])
+    var arrOfNewProducts = BehaviorRelay<[Product]>(value: [])
+    var arrOfTrendsKeyword = BehaviorRelay<[String]>(value: [])
 
     private let disposeBag: DisposeBag = DisposeBag()
-    
     private let useCase: HomeUseCaseProtocol
+
+// MARK: - Init
 
     init(useCase: HomeUseCaseProtocol) {
         self.useCase = useCase
+        self.arrOfTrendsKeyword.accept(["Easter", "Chocolate", "Heinz", "Test", "Jaewon"])
     }
 
-    func fetchProducts() {
-        useCase.fetchProducts()
+// MARK: - Methods
+
+    func fetchTopSales() {
+        useCase.fetchTopSales()
+                    .subscribe(
+                        onSuccess: { model in
+                            self.arrOfTopSalesProduct.accept(model)
+                    },
+                        onError: { error in print(error) }
+                    )
+                    .disposed(by: disposeBag)
+    }
+    
+    func fetchProductYouMayLike() {
+        useCase.fetchProductYouMayLike()
             .subscribe(
                 onSuccess: { model in
-                    self.name.accept(model.name)
-                    self.price.accept("$\(model.price)")
-                    self.originalPrice.accept("$\(model.originalPrice)") },
-                onError: { error in
-                    print(error.localizedDescription) }
+                    self.arrOfProductYouMayLike.accept(model)
+            },
+                onError: { error in print(error) }
+            )
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchNewProducts() {
+        useCase.fetchNewProducts()
+            .subscribe(
+                onSuccess: { model in
+                    self.arrOfNewProducts.accept(model)
+            },
+                onError: { error in print(error) }
             )
             .disposed(by: disposeBag)
     }
