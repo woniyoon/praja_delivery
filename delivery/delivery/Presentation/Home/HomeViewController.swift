@@ -105,6 +105,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         topSalesCollectionView.delegate = self
         youMayLikeCollectionView.delegate = self
         newProductsCollectionView.delegate = self
+        trendsCollectionView.delegate = self
     }
 
     private func configureCollectionView() {
@@ -126,12 +127,29 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+//
+//        let next = resolver.resolve(ProductDetailViewController.self)!
+//        next.productId = cell.item!.productId
+//        present(next, animated: true, completion: nil)
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
-
-        let next = resolver.resolve(ProductDetailViewController.self)!
-        next.productId = cell.item!.productId
-        present(next, animated: true, completion: nil)
+        
+        if collectionView == self.trendsCollectionView {
+            let cell = collectionView.cellForItem(at: indexPath) as! TrendsCell
+            
+            let next = resolver.resolve(ProductListViewController.self)!
+            next.keyword = ""
+            present(next, animated: true, completion: nil)
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+            
+            let next = resolver.resolve(ProductDetailViewController.self)!
+            next.productId = cell.item!.productId
+            present(next, animated: true, completion: nil)
+        }
     }
 }
 
