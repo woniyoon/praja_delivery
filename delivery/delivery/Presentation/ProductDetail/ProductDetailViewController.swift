@@ -122,6 +122,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
+        viewModel.fetchProductDetail(productId)
     }
     
     @IBAction func reviewListButtonPressed(_ sender: Any) {
