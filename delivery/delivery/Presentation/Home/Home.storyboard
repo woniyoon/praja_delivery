@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="1480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fs-OU-VJf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1760"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1480"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-kh-40k">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1240"/>
@@ -245,7 +245,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="KdF-kh-40k" secondAttribute="trailing" id="Goq-bm-PJ2"/>
-                                            <constraint firstAttribute="bottom" secondItem="KdF-kh-40k" secondAttribute="bottom" constant="520" id="iw9-WR-shB"/>
+                                            <constraint firstAttribute="bottom" secondItem="KdF-kh-40k" secondAttribute="bottom" constant="240" id="iw9-WR-shB"/>
                                             <constraint firstItem="KdF-kh-40k" firstAttribute="top" secondItem="9fs-OU-VJf" secondAttribute="top" id="tY9-K1-f9G"/>
                                             <constraint firstItem="KdF-kh-40k" firstAttribute="leading" secondItem="9fs-OU-VJf" secondAttribute="leading" id="tqB-qz-cKh"/>
                                         </constraints>
