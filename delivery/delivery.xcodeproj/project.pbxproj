@@ -74,6 +74,7 @@
 		9183196C20731893002DF8AA /* TrendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9183196A20731893002DF8AA /* TrendsCell.xib */; };
 		91A11D2E20746CC800C3C3DB /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A11D2D20746CC800C3C3DB /* BaseLabel.swift */; };
 		91A11D31207485BF00C3C3DB /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91A11D30207485BF00C3C3DB /* Checkout.storyboard */; };
+		91A11D332074902000C3C3DB /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A11D322074902000C3C3DB /* CheckoutViewController.swift */; };
 		91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F420577CE100017A0F /* HomeUseCase.swift */; };
 		91E3C9F720577D1100017A0F /* HomeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F620577D1100017A0F /* HomeTranslator.swift */; };
 		91E3C9FA20577E4000017A0F /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F920577E4000017A0F /* HomeRepository.swift */; };
@@ -218,6 +219,7 @@
 		9183196A20731893002DF8AA /* TrendsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendsCell.xib; sourceTree = "<group>"; };
 		91A11D2D20746CC800C3C3DB /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		91A11D30207485BF00C3C3DB /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
+		91A11D322074902000C3C3DB /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		91E3C9F420577CE100017A0F /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		91E3C9F620577D1100017A0F /* HomeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTranslator.swift; sourceTree = "<group>"; };
 		91E3C9F920577E4000017A0F /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				91A11D30207485BF00C3C3DB /* Checkout.storyboard */,
+				91A11D322074902000C3C3DB /* CheckoutViewController.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				D7569D3E2052BA1100C6D6E4 /* UIExtension.swift in Sources */,
 				911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */,
 				911B2D492063494200E2ACC6 /* Coordinate.swift in Sources */,
+				91A11D332074902000C3C3DB /* CheckoutViewController.swift in Sources */,
 				2C3BA6BA2057829500C438C0 /* OrderRepository.swift in Sources */,
 				8603A7DB2057858600CB7E5E /* UserTranslator.swift in Sources */,
 				BA475A8920589DD800F3A0B5 /* AccountUseCase.swift in Sources */,

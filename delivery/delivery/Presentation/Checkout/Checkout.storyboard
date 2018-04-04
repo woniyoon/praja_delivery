@@ -13,7 +13,7 @@
         <!--Checkout-->
         <scene sceneID="Orj-7a-UgB">
             <objects>
-                <viewController id="MpI-lx-LUr" sceneMemberID="viewController">
+                <viewController id="MpI-lx-LUr" customClass="CheckoutViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceT-D7-Zrz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
