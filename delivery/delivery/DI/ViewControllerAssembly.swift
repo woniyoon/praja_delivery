@@ -65,6 +65,7 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ProductListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
         container.register(ReviewListViewController.self) { _ in
             let dataStore  = container.resolve(ReviewListDataStoreProtocol.self)
             let repository = container.resolve(ReviewListRepositoryProtocol.self, argument: dataStore!)

@@ -9,16 +9,14 @@
 import Foundation
 
 class ProductListTranslator: TranslatorProtocol {
-    func translate(_ entity: [ProductEntity]) -> [ProductDetailModel] {
+    func translate(_ entities: [ProductEntity]) -> [Product] {
         
-        var productList = [ProductDetailModel]()
+        var products = [Product]()
         
-        entity.forEach { product in
-            let product = ProductDetailModel(name: product.name, price: product.price, originalPrice: product.originalPrice, images: product.images)
-            
-            productList.append(product)
+        for entity in entities {
+          products.append( Product(averageRating: entity.averageRating, branch: entity.branch, brand: entity.brand, description: entity.description, discountPercent: entity.discountPercent, events: entity.events, images: entity.images, name: entity.name, originalPrice: entity.originalPrice, price: entity.price, category: entity.category, subCategory: entity.subCategory))
         }
-    
-        return productList
+        
+        return products
     }
 }

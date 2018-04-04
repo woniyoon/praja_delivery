@@ -14,6 +14,8 @@ import Cosmos
 
 class ProductDetailViewController: BaseViewController {
     
+    var id: String!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

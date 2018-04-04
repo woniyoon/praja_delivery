@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import RxSwift
 
 
 protocol ProductListUseCaseProtocol {
-    func fetchProductList() -> [ProductDetailModel]
+    func fetchProductList(with keyword: String) -> Single<[Product]>
+    func fetchProductList2() -> [Product]
+    func fetchProduct(product: Product) -> Product
 }
 
 class ProductListUseCase: ProductListUseCaseProtocol {
@@ -23,8 +26,19 @@ class ProductListUseCase: ProductListUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchProductList() -> [ProductDetailModel] {
-        let entity = repository.fetchProductList()
-        return translator.translate(entity)
+    func fetchProductList2() -> [Product] {
+        
+        let products = repository.fetchProductList2()
+        return translator.translate(products)
+    }
+    
+    func fetchProductList(with keyword: String) -> Single<[Product]> {
+        return repository.fetchProductList(with: keyword).map { (entities) -> [Product] in
+            self.translator.translate(entities)
+        }        
+    }
+    
+    func fetchProduct(product: Product) -> Product {
+        return product
     }
 }

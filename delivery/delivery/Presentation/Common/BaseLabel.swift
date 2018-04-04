@@ -9,7 +9,6 @@
 import UIKit
 
 class BaseLabel: UILabel {
-    
     override var text: String? {
         didSet {
             guard let text = text else { return }
