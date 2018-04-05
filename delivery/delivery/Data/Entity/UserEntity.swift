@@ -14,7 +14,6 @@ struct UserEntity {
     public let lastName: String
     public let mobileNumber: String
     public let dateOfBirth: Date?
-    public let hasAccount: Bool
     public let totalPoint: Int
     public let email: String
     public let address: [Address]
@@ -25,7 +24,6 @@ struct UserEntity {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
             let mobileNumber = dictionary["mobileNumber"] as? String, //this part...?
-            let hasAccount = dictionary["hasAccount"] as? Bool,
             let email = dictionary["email"] as? String,
             let address = dictionary["address"] as? [Address],
             let totalPoint = dictionary["totalPoint"] as? Int,
@@ -38,7 +36,6 @@ struct UserEntity {
         self.lastName = lastName
         self.mobileNumber = mobileNumber
         self.dateOfBirth = dateOfBirth
-        self.hasAccount = hasAccount
         self.totalPoint = totalPoint
         self.email = email
         self.coupon = coupon
@@ -52,7 +49,6 @@ struct UserEntity {
             "lastName": lastName,
             "mobileNumber": mobileNumber,
             "dateOfBirth": dateOfBirth as Any,
-            "hasAccount": hasAccount,
             "email": email,
             "address": address,
             "payment": payment,

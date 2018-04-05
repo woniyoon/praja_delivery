@@ -31,6 +31,9 @@ final class UsecaseAssembly: Assembly {
         container.register(ReviewListUseCaseProtocol.self) { (_, repository: ReviewListRepositoryProtocol, translator: ReviewListTranslator) in
             ReviewListUseCase(repository: repository, translator: translator)
         }
+        container.register(CheckoutUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: CheckoutTranslator) in
+            CheckoutUseCase(repository: repository, translator: translator)
+        }
     }
 }
 

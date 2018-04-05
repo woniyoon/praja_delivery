@@ -13,7 +13,6 @@ struct User {
     public let lastName: String
     public let mobileNumber: String
     public let dateOfBirth: Date?
-    public let hasAccount: Bool
     public let email: String
     public let totalPoint: Int
     public let address: [Address]
@@ -26,7 +25,6 @@ struct User {
             "lastName": lastName,
             "mobileNumber": mobileNumber,
             "dateOfBirth": dateOfBirth as! Date,
-            "hasAccount": hasAccount,
             "email": email,
             "address": address,
             "payment": payment,
