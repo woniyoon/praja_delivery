@@ -80,8 +80,7 @@
 		BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */; };
 		BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA475A8D20589DF900F3A0B5 /* Account.storyboard */; };
 		BA475A9220589F9A00F3A0B5 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A9120589F9900F3A0B5 /* AccountModel.swift */; };
-		BA858990206ECFB600714E8F /* AccountPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA858988206ECFB500714E8F /* AccountPaymentCell.xib */; };
-		BA858991206ECFB600714E8F /* AccountShippingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA858989206ECFB600714E8F /* AccountShippingCell.xib */; };
+		BA5A4DDB2075D72400CC54E1 /* ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A4DDA2075D72400CC54E1 /* ListLayout.swift */; };
 		BA858993206ECFB600714E8F /* AccountPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */; };
 		BA858995206ECFB600714E8F /* AccountShippingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85898D206ECFB600714E8F /* AccountShippingCell.swift */; };
 		BA858999206ED13000714E8F /* AccountEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA858998206ED13000714E8F /* AccountEntity.swift */; };
@@ -216,8 +215,7 @@
 		BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BA475A8D20589DF900F3A0B5 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		BA475A9120589F9900F3A0B5 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
-		BA858988206ECFB500714E8F /* AccountPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountPaymentCell.xib; sourceTree = "<group>"; };
-		BA858989206ECFB600714E8F /* AccountShippingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountShippingCell.xib; sourceTree = "<group>"; };
+		BA5A4DDA2075D72400CC54E1 /* ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayout.swift; sourceTree = "<group>"; };
 		BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPaymentCell.swift; sourceTree = "<group>"; };
 		BA85898D206ECFB600714E8F /* AccountShippingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountShippingCell.swift; sourceTree = "<group>"; };
 		BA858998206ED13000714E8F /* AccountEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEntity.swift; sourceTree = "<group>"; };
@@ -455,8 +453,8 @@
 		BA475A8520589DD800F3A0B5 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				BA475A8620589DD800F3A0B5 /* AccountTranslator.swift */,
 				BA475A8720589DD800F3A0B5 /* AccountUseCase.swift */,
+				BA475A8620589DD800F3A0B5 /* AccountTranslator.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -467,10 +465,9 @@
 				BA475A8D20589DF900F3A0B5 /* Account.storyboard */,
 				BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */,
 				BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */,
-				BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */,
-				BA858988206ECFB500714E8F /* AccountPaymentCell.xib */,
 				BA85898D206ECFB600714E8F /* AccountShippingCell.swift */,
-				BA858989206ECFB600714E8F /* AccountShippingCell.xib */,
+				BA85898B206ECFB600714E8F /* AccountPaymentCell.swift */,
+				BA5A4DDA2075D72400CC54E1 /* ListLayout.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -846,13 +843,11 @@
 				911A281B20577948007B8084 /* Home.storyboard in Resources */,
 				D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */,
 				BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */,
-				BA858990206ECFB600714E8F /* AccountPaymentCell.xib in Resources */,
 				2C3BA6CA20578F2600C438C0 /* Order.storyboard in Resources */,
 				BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */,
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				8650FC902058C6250042640E /* User.storyboard in Resources */,
 				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
-				BA858991206ECFB600714E8F /* AccountShippingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +888,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-f0850809/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -911,6 +907,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -1104,6 +1101,7 @@
 				BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */,
 				911A281D2057796C007B8084 /* HomeViewController.swift in Sources */,
 				91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */,
+				BA5A4DDB2075D72400CC54E1 /* ListLayout.swift in Sources */,
 				BA858995206ECFB600714E8F /* AccountShippingCell.swift in Sources */,
 				911A4AF8203D310400D03889 /* Coupon.swift in Sources */,
 				911A4AFE203D32C800D03889 /* Product.swift in Sources */,

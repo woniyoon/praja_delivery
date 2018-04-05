@@ -29,16 +29,3 @@ struct Address {
         ]
     }
 }
-
-struct SectionOfAddress {
-    var header: String
-    var items: [Item]
-}
-extension SectionOfAddress: SectionModelType {
-    typealias Item = Address
-    
-    init(original: SectionOfAddress, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}

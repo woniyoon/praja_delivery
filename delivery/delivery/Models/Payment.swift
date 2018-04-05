@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxDataSources
 
 struct Payment {
     public let cardNumber: String
@@ -20,18 +19,5 @@ struct Payment {
             "holderName": holderName,
             "expiryDate": expiryDate,
         ]
-    }
-}
-
-struct SectionOfPayment {
-    var header: String
-    var items: [Item]
-}
-extension SectionOfPayment: SectionModelType {
-    typealias Item = Payment
-    
-    init(original: SectionOfPayment, items: [Item]) {
-        self = original
-        self.items = items
     }
 }

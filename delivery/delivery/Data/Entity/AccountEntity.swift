@@ -28,8 +28,6 @@ struct AccountEntity {
             let mobileNumber = dictionary["mobileNumber"] as? String,
             let email = dictionary["email"] as? String,
             let totalPoint = dictionary["totalPoint"] as? Int,
-//            let address = dictionary["address"] as? [Address],
-//            let payment = dictionary["payment"] as? [Payment],
             let token = dictionary["token"] as? String else { return nil }
 
         var temp: [AddressEntity]  = []

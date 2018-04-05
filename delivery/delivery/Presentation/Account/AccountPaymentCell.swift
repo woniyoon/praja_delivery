@@ -7,31 +7,28 @@
 //
 
 import UIKit
+import Kingfisher
 
-class AccountPaymentCell: UITableViewCell {
-    static var Identifier = "AccountPaymentCell"
+class AccountPaymentCell: UICollectionViewCell {
+    static var Identifier = "Payment"
     
     @IBOutlet weak var cardHolderLabel: UILabel!
     @IBOutlet weak var cardNumberLabel: UILabel!
-    @IBOutlet weak var cardExpireDateLabel: UILabel!
+    @IBOutlet weak var cardExpiryDateLabel: UILabel!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
     
-    var payment: Payment? {
+    var payment: PaymentEntity? {
         didSet {
             guard let payment = payment else { return }
             cardHolderLabel.text = payment.holderName
             cardNumberLabel.text = payment.cardNumber
-            cardExpireDateLabel.text = payment.expiryDate
+            cardExpiryDateLabel.text = payment.expiryDate
         }
         
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+
 }
 

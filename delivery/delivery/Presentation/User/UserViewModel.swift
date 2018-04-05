@@ -34,7 +34,7 @@ class UserViewModel{
                     self.firstName.accept("$\(model.firstName)")
                     self.lastName.accept("$\(model.lastName)")
                     self.mobileNumber.accept("$\(model.mobileNumber)")
-                    self.dateOfBirth.accept("$\(model.dateOfBirth)")
+                    self.dateOfBirth.accept("$\(String(describing: model.dateOfBirth))")
                     self.hasAccount.accept("$\(model.hasAccount)")
             },
                 onError: { error in

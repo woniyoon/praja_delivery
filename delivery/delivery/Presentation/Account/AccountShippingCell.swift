@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Kingfisher
 
-class AccountShippingCell: UITableViewCell {
-    static var Identifier = "AccountShippingCell"
+class AccountShippingCell: UICollectionViewCell {
+    static var Identifier = "Shipping"
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var fullAddressLabel: UILabel!
     @IBOutlet weak var postalCodeLabel: UILabel!
     
-    var address: Address? {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    var address: AddressEntity? {
         didSet {
             guard let address = address else { return }
             fullNameLabel.text = address.receiver
@@ -23,13 +28,5 @@ class AccountShippingCell: UITableViewCell {
             postalCodeLabel.text = address.postalCode
         }
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        }
     
 }

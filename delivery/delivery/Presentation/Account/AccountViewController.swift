@@ -12,10 +12,6 @@ import RxSwift
 import RxCocoa
 
 class AccountViewController: BaseViewController {
-
-    //This is table view(s)
-    @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var TableView2: UITableView!
     
     // text labels
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -29,9 +25,14 @@ class AccountViewController: BaseViewController {
     
     
     private var viewModel: AccountViewModel!
+    @IBOutlet weak var shippingCollection: UICollectionView! //shipping
+    @IBOutlet weak var paymentCollection: UICollectionView! //payment
     public var userEmail: String!
-    
     private let disposeBag: DisposeBag = DisposeBag()
+    
+    lazy var listLayout: ListLayout = {
+        var listLayout = ListLayout(itemHeight: 100)
+        return listLayout }()
     
     static func createInstance(viewModel: AccountViewModel) -> AccountViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(AccountViewController.self)
@@ -43,16 +44,22 @@ class AccountViewController: BaseViewController {
         super.viewDidLoad()
             // UIImageviews as buttons begin
         
-        //just a sample
+            //just a sample
             let editProfileIV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.editProfileIVAction))
             editProfileImageView.addGestureRecognizer(editProfileIV)
             
             // UIImageviews as buttons end
-            
+        
+        
             bindView() // bind data
             bindCells() // bind cells
+            viewModel.fetchAccount(userEmail)
         
-        configureTableView()
+            shippingCollection.collectionViewLayout = listLayout
+            paymentCollection.collectionViewLayout = listLayout
+            shippingCollection.reloadData()
+            paymentCollection.reloadData()
+
 
     }
     
@@ -63,7 +70,7 @@ class AccountViewController: BaseViewController {
     }
     
     //imageviews actions end
-
+    
     
     private func bindView() {
 
@@ -83,36 +90,18 @@ class AccountViewController: BaseViewController {
             .bind(to: pointsLabel.rx.text)
             .disposed(by: disposeBag)
     }
-    
-    
-    //temporary account fetcher
-    @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchAccount(userEmail)
-    }
-
-    private func registerCells() {
-        let payNib = UINib(nibName: AccountShippingCell.Identifier, bundle: nil)
-        let addNib = UINib(nibName: AccountPaymentCell.Identifier, bundle: nil)
-        TableView.register(payNib, forCellReuseIdentifier: AccountShippingCell.Identifier)
-        TableView2.register(addNib, forCellReuseIdentifier: AccountPaymentCell.Identifier)
-    }
-
-    private func configureTableView() {
-        registerCells()
-        TableView.rowHeight = 100
-    }
 
     private func bindCells() {
         viewModel.address.asObservable()
-            .bind(to: TableView.rx.items(cellIdentifier: AccountShippingCell.Identifier, cellType: AccountShippingCell.self))                           {
+            .bind(to: shippingCollection.rx.items(cellIdentifier: AccountShippingCell.Identifier, cellType: AccountShippingCell.self))                           {
                 row, address, cell in
                 cell.address = address
             }.disposed(by: disposeBag)
+
         viewModel.payment.asObservable()
-            .bind(to: TableView2.rx.items(cellIdentifier: AccountPaymentCell.Identifier, cellType: AccountPaymentCell.self))                           {
+            .bind(to: paymentCollection.rx.items(cellIdentifier: AccountPaymentCell.Identifier, cellType: AccountPaymentCell.self))                           {
                 row, payment, cell in
                 cell.payment = payment
             }.disposed(by: disposeBag)
     }
-    
 }

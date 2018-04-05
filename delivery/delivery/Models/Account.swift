@@ -27,7 +27,7 @@ struct Account {
             "firstName": firstName,
             "lastName": lastName,
             "fullName": firstName + " " + lastName,
-            "dateOfBirth": dateOfBirth,
+            "dateOfBirth": dateOfBirth as Any,
             "mobileNumber": mobileNumber,
             "email": email,
             "totalPoint": totalPoint,

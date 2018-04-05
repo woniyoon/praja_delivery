@@ -6,9 +6,9 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
-struct AccountModel {
-    public let accountId: Int
-    public let email: String
-    public let password: String
-    public let token: String
-}
+//struct AccountModel {
+//    public let accountId: Int
+//    public let email: String
+//    public let password: String
+//    public let token: String
+//}

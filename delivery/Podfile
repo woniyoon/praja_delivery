@@ -19,6 +19,7 @@ target 'delivery' do
   
   # View
   pod 'Cosmos', '~> 15.0'
+  pod 'Kingfisher', '~> 4.0'
 end
 
 target 'deliveryTests' do

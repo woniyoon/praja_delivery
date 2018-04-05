@@ -20,8 +20,8 @@ class AccountViewModel: BaseViewModel {
     var email = BehaviorRelay(value: "")
     var totalPoint = BehaviorRelay(value: "")
     
-    var address = BehaviorRelay<[Address]>(value: [])
-    var payment = BehaviorRelay<[Payment]>(value: [])
+    var address = BehaviorRelay<[AddressEntity]>(value: [])
+    var payment = BehaviorRelay<[PaymentEntity]>(value: [])
 
     
     private let useCase: AccountUseCaseProtocol
@@ -48,8 +48,8 @@ class AccountViewModel: BaseViewModel {
                     self.mobileNumber.accept("\(model.mobileNumber)")
                     self.email.accept("\(model.email)")
                     self.totalPoint.accept("NumNum Points: \(model.totalPoint)")
-                    self.address.accept([Address(receiver: "", address1: "", address2: "", city: "", province: "", postalCode: "", country: "")])
-                    self.payment.accept([Payment(cardNumber: "", holderName: "", expiryDate: "")])
+                    self.address.accept(model.address)
+                    self.payment.accept(model.payment)
             },
                 onError: { error in print(error) }
             )
