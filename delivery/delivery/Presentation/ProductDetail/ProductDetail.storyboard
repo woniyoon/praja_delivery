@@ -27,8 +27,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-zR-xXb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="1680"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-lO-dyK" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1618"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSS-lO-dyK" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1680"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-M9-Ryc" userLabel="TopBar">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -228,7 +228,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-gZ-VMv">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-gZ-VMv">
                                                 <rect key="frame" x="0.0" y="1005" width="375" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -268,7 +268,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ppm-BC-V2c">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ppm-BC-V2c">
                                                 <rect key="frame" x="0.0" y="1282" width="375" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -499,12 +499,14 @@
                     <size key="freeformSize" width="375" height="1700"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="Ups-7X-ww8" id="uJg-Oj-XHj"/>
+                        <outlet property="frequentlyCollection" destination="bp8-gZ-VMv" id="yL5-TF-bRE"/>
                         <outlet property="imageCollection" destination="pw7-Rc-zov" id="QCW-LI-f6w"/>
                         <outlet property="nameLabel" destination="dWd-Kd-HeA" id="ZH8-Pq-Uiq"/>
                         <outlet property="originalPriceLabel" destination="A3g-CN-eLh" id="Vbg-ic-29v"/>
                         <outlet property="pageControls" destination="BpU-WT-Owe" id="WWh-wI-nQP"/>
                         <outlet property="priceLabel" destination="qTj-wI-E0a" id="6HX-oa-8i9"/>
                         <outlet property="ratingStars" destination="Tb3-Ey-hmT" id="iP8-uO-7Ld"/>
+                        <outlet property="relatedCollection" destination="Ppm-BC-V2c" id="imN-3z-Pzk"/>
                         <outlet property="reviewRatingStars" destination="xn1-mS-Cgl" id="p4o-oJ-2Vq"/>
                     </connections>
                 </viewController>

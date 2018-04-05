@@ -22,6 +22,9 @@ class ProductDetailViewModel : BaseViewModel {
     
     var description = BehaviorRelay(value: "")
     
+    var frequentlyPurchasedWith = BehaviorRelay<[Product]>(value: [])
+    var relatedTo = BehaviorRelay<[Product]>(value: [])
+    
     private let useCase: ProductDetailUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -29,8 +32,8 @@ class ProductDetailViewModel : BaseViewModel {
         self.useCase = useCase
     }
     
-    func fetchProductDetail(_ id: String) {
-        useCase.fetchProductDetail(id)
+    func fetchProductDetail(_ productId: String) {
+        useCase.fetchProductDetail(productId)
             .subscribe(
                 onSuccess: { model in
                     self.images.accept(model.images)
@@ -42,6 +45,24 @@ class ProductDetailViewModel : BaseViewModel {
                     self.reviewAverage.accept(model.averageRating)
                     
                     self.description.accept(model.description) },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
+    }
+    
+    func fetchFrequentlyPurchasedWith(_ productId: String) {
+        useCase.fetchFrequentlyPurchasedWith(productId)
+            .subscribe(
+                onSuccess: { models in
+                    self.frequentlyPurchasedWith.accept(models) },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
+    }
+    
+    func fetchRelatedTo(_ productId: String) {
+        useCase.fetchRelatedTo(productId)
+            .subscribe(
+                onSuccess: { models in
+                    self.relatedTo.accept(models) },
                 onError: { error in self.setError(error) }
             ).disposed(by: disposeBag)
     }

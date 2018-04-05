@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol ProductDetailRepositoryProtocol{
-    func fetchProductDetail(_ id: String) -> Single<ProductEntity>
+    func fetchProductDetail(_ productId: String) -> Single<ProductEntity>
+    func fetchFrequentlyPurchasedWith(_ productId: String) -> Single<[ProductEntity]>
+    func fetchRelatedTo(_ productId: String) -> Single<[ProductEntity]>
 }
 
 class ProductDetailRepository: ProductDetailRepositoryProtocol {
@@ -21,7 +23,15 @@ class ProductDetailRepository: ProductDetailRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchProductDetail(_ id: String) -> Single<ProductEntity> {
-        return dataStore.fetchProductDetail(id)
+    func fetchProductDetail(_ productId: String) -> Single<ProductEntity> {
+        return dataStore.fetchProductDetail(productId)
+    }
+    
+    func fetchFrequentlyPurchasedWith(_ productId: String) -> Single<[ProductEntity]> {
+        return dataStore.fetchFrequentlyPurchasedWith(productId)
+    }
+    
+    func fetchRelatedTo(_ productId: String) -> Single<[ProductEntity]> {
+        return dataStore.fetchRelatedTo(productId)
     }
 }

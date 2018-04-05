@@ -25,6 +25,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     // Review
     @IBOutlet weak var reviewRatingStars: CosmosView!
     
+    @IBOutlet weak var frequentlyCollection: UICollectionView!
+    @IBOutlet weak var relatedCollection: UICollectionView!
+
     public var viewModel: ProductDetailViewModel!
     public var productId: String!
     
@@ -59,8 +62,20 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         return layout
     }()
     
+    private lazy var productCollectionViewlayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width:180 , height:200)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.minimumLineSpacing = 1.0
+        layout.minimumInteritemSpacing = 1.0
+        return layout
+    }()
+    
     private func setup() {
         viewModel.fetchProductDetail(productId)
+        viewModel.fetchFrequentlyPurchasedWith(productId)
+        viewModel.fetchRelatedTo(productId)
         
         imageCollection.isPagingEnabled = true
         imageCollection.showsHorizontalScrollIndicator = false
@@ -69,6 +84,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         imageCollection.delegate = self
         
         pageControls.hidesForSinglePage = true
+        
+        frequentlyCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
+        relatedCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
     }
     
     private func bindView() {
@@ -101,7 +119,26 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.reviewAverage.asObservable()
             .bind(to: reviewRatingStars.rx_rating)
             .disposed(by: disposeBag)
+        
+        // Frequent Products
+        viewModel.frequentlyPurchasedWith.asObservable()
+            .bind(to: frequentlyCollection.rx.items(
+                cellIdentifier: CollectionViewCell.Identifier,
+                cellType: CollectionViewCell.self))
+            { row, item, cell in
+                cell.item = item
+            }.disposed(by: disposeBag)
+        // Related Products
+        viewModel.relatedTo.asObservable()
+            .bind(to: relatedCollection.rx.items(
+                cellIdentifier: CollectionViewCell.Identifier,
+                cellType: CollectionViewCell.self))
+            { row, item, cell in
+                cell.item = item
+            }.disposed(by: disposeBag)
+        
 
+        // Alert Message
         viewModel.alertMessage.asObservable()
             .subscribe(
                 onNext: { alertError in self.showAlert(alertError) }
@@ -109,8 +146,12 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     private func registerCell() {
-        let nib = UINib(nibName: ProductImageCell.Identifier, bundle: nil)
-        imageCollection.register(nib, forCellWithReuseIdentifier: ProductImageCell.Identifier)
+        let productImageNib = UINib(nibName: ProductImageCell.Identifier, bundle: nil)
+        imageCollection.register(productImageNib, forCellWithReuseIdentifier: ProductImageCell.Identifier)
+        
+        let productNib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
+        frequentlyCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        relatedCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
     }
     
     private func configureCollectionView() {
