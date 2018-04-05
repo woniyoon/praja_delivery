@@ -18,13 +18,10 @@ class AccountShippingCell: UITableViewCell {
     var address: Address? {
         didSet {
             guard let address = address else { return }
-            //shippingImageView.image = UIImage(named: "\(account.shipping)")
-            //editShippingImageView.image = UIImage(named: "\(account.edit)")
             fullNameLabel.text = address.receiver
-            fullAddressLabel.text = "\(address.address1), \(address.address2), \(address.city), \(address.province), \(address.country)"
+            fullAddressLabel.text = ("\(address.address1), \(address.address2), \(address.city), \(address.province), \(address.country)")
             postalCodeLabel.text = address.postalCode
         }
-
     }
     override func awakeFromNib() {
         super.awakeFromNib()

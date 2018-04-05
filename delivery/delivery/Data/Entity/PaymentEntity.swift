@@ -1,8 +1,8 @@
 //
-//  PaymentEntity.swift
+//  AccountEntity.swift
 //  delivery
 //
-//  Created by Jaewon Yoon on 2018-03-18.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Foundation
 struct PaymentEntity {
     public let cardNumber: String
     public let holderName: String
-    public let expiryDate: Date
+    public let expiryDate: String
     
     var dictionary: [String: Any] {
         return [
@@ -24,7 +24,7 @@ struct PaymentEntity {
     init?(dictionary: [String: Any]) {
         guard let cardNumber = dictionary["cardNumber"] as? String,
             let holderName = dictionary["holderName"] as? String,
-            let expiryDate = dictionary["expiryDate"] as? Date else { return nil }
+            let expiryDate = dictionary["expiryDate"] as? String else { return nil }
         
         self.cardNumber = cardNumber
         self.holderName = holderName

@@ -13,18 +13,20 @@ import Foundation
 struct Account {
     public let firstName: String
     public let lastName: String
-    public let dateOfBirth: String
+    public let fullName: String
+    public let dateOfBirth: Date?
     public let mobileNumber: String
     public let email: String
     public let totalPoint: Int
-    public let address: [Address]
-    public let payment: [Payment]
+    public let address: [AddressEntity]
+    public let payment: [PaymentEntity]
     public let token: String
     
     var dictionary: [String: Any] {
         return [
             "firstName": firstName,
             "lastName": lastName,
+            "fullName": firstName + " " + lastName,
             "dateOfBirth": dateOfBirth,
             "mobileNumber": mobileNumber,
             "email": email,

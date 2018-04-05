@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,49 +14,71 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="AccountShippingCell" customModule="delivery" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="AccountShippingCell" customModule="delivery" customModuleProvider="target">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LuI-BY-gd8">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LuI-BY-gd8">
                         <rect key="frame" x="16" y="9" width="15" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="sYY-yj-5Q6"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5V-uh-HhG">
-                        <rect key="frame" x="314" y="9" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j5V-uh-HhG">
+                        <rect key="frame" x="264" y="9" width="20" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="zGS-rr-LAF"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-nh-E63">
-                        <rect key="frame" x="39" y="35" width="69" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fullName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-nh-E63">
+                        <rect key="frame" x="39" y="35" width="206" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fullAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3y-oI-nTL">
-                        <rect key="frame" x="39" y="53" width="159" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fullAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3y-oI-nTL">
+                        <rect key="frame" x="39" y="53" width="206" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="postalCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDh-ca-UbD">
-                        <rect key="frame" x="39" y="71" width="65" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shipping To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE1-tw-4za">
-                        <rect key="frame" x="39" y="6" width="84" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PE1-tw-4za">
+                        <rect key="frame" x="39" y="9" width="60" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="postalCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDh-ca-UbD">
+                        <rect key="frame" x="39" y="68" width="206" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="j5V-uh-HhG" firstAttribute="top" secondItem="LuI-BY-gd8" secondAttribute="top" id="0Jc-Wa-ukX"/>
+                    <constraint firstItem="LuI-BY-gd8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="3F2-7R-gPJ"/>
+                    <constraint firstItem="XDh-ca-UbD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="39" id="6Dm-0h-beR"/>
+                    <constraint firstAttribute="bottom" secondItem="XDh-ca-UbD" secondAttribute="bottom" constant="10.5" id="6dS-Kc-fAh"/>
+                    <constraint firstAttribute="trailing" secondItem="j5V-uh-HhG" secondAttribute="trailing" constant="16" id="IZz-0S-Png"/>
+                    <constraint firstItem="LuI-BY-gd8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JIi-DN-kF0"/>
+                    <constraint firstItem="XDh-ca-UbD" firstAttribute="top" secondItem="g3y-oI-nTL" secondAttribute="bottom" id="Rop-Ro-OKA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="LuI-BY-gd8" secondAttribute="bottom" constant="65" id="TCQ-Co-Pd5"/>
+                    <constraint firstItem="PE1-tw-4za" firstAttribute="top" secondItem="LuI-BY-gd8" secondAttribute="top" id="TsI-D7-MtV"/>
+                    <constraint firstItem="g3y-oI-nTL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="23" id="U3X-xe-fnS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="j5V-uh-HhG" secondAttribute="bottom" constant="60" id="UE4-dj-0hr"/>
+                    <constraint firstItem="g3y-oI-nTL" firstAttribute="top" secondItem="ybv-nh-E63" secondAttribute="bottom" constant="3.5" id="bGf-8W-h8x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ybv-nh-E63" secondAttribute="trailing" constant="39" id="cqA-Ip-ROg"/>
+                    <constraint firstItem="PE1-tw-4za" firstAttribute="leading" secondItem="LuI-BY-gd8" secondAttribute="trailing" constant="8" symbolic="YES" id="oGI-4b-7yt"/>
+                    <constraint firstAttribute="trailing" secondItem="XDh-ca-UbD" secondAttribute="trailing" constant="55" id="vxO-4f-37O"/>
+                    <constraint firstItem="ybv-nh-E63" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="23" id="wpR-YO-nmA"/>
+                    <constraint firstItem="ybv-nh-E63" firstAttribute="top" secondItem="PE1-tw-4za" secondAttribute="bottom" constant="14" id="xBJ-lT-K2K"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="g3y-oI-nTL" secondAttribute="trailing" constant="39" id="xq1-8O-exU"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -63,7 +86,7 @@
                 <outlet property="fullNameLabel" destination="ybv-nh-E63" id="jB5-zI-TA8"/>
                 <outlet property="postalCodeLabel" destination="XDh-ca-UbD" id="FMG-Sf-Gf9"/>
             </connections>
-            <point key="canvasLocation" x="107" y="82"/>
+            <point key="canvasLocation" x="82" y="82"/>
         </tableViewCell>
     </objects>
 </document>

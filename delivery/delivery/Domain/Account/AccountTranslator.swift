@@ -14,6 +14,7 @@ class AccountTranslator: TranslatorProtocol {
         return Account(
             firstName: entity.firstName,
             lastName: entity.lastName,
+            fullName: entity.fullName,
             dateOfBirth: entity.dateOfBirth,
             mobileNumber: entity.mobileNumber,
             email: entity.email,

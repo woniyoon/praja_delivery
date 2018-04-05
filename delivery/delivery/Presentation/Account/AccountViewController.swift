@@ -13,29 +13,19 @@ import RxCocoa
 
 class AccountViewController: BaseViewController {
 
-    //This is table view ultra pica das galáxias!!
+    //This is table view(s)
     @IBOutlet weak var TableView: UITableView!
-    
+    @IBOutlet weak var TableView2: UITableView!
     
     // text labels
-  
-    @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var dateOfBirthLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
-    // image views
-    @IBOutlet weak var profileImageView: UIImageView!
+    //image views
     @IBOutlet weak var editProfileImageView: UIImageView!
-    @IBOutlet weak var phoneImageView: UIImageView!
-    @IBOutlet weak var emailImageView: UIImageView!
-    @IBOutlet weak var pointsImageView: UIImageView!
-    @IBOutlet weak var inviteFriendsImageView: UIImageView!
-    @IBOutlet weak var homeImageView: UIImageView!
-    @IBOutlet weak var orderImageView: UIImageView!
-    @IBOutlet weak var userImageView: UIImageView!
     
     
     private var viewModel: AccountViewModel!
@@ -59,9 +49,8 @@ class AccountViewController: BaseViewController {
             
             // UIImageviews as buttons end
             
-            bindView() // bind data (UIView)
-            bindShipping() // bind data (ShippingCell)
-            bindPayment() // bind data (PaymentCell)
+            bindView() // bind data
+            bindCells() // bind cells
         
         configureTableView()
 
@@ -74,10 +63,12 @@ class AccountViewController: BaseViewController {
     }
     
     //imageviews actions end
+
     
     private func bindView() {
-        viewModel.firstName.asObservable()
-            .bind(to: firstNameLabel.rx.text)
+
+        viewModel.fullName.asObservable()
+            .bind(to: fullNameLabel.rx.text)
             .disposed(by: disposeBag)
         viewModel.dateOfBirth.asObservable()
             .bind(to: dateOfBirthLabel.rx.text)
@@ -96,14 +87,14 @@ class AccountViewController: BaseViewController {
     
     //temporary account fetcher
     @IBAction func buttonPressed(_ sender: Any) {
-         viewModel.fetchAccount(userEmail)
+        viewModel.fetchAccount(userEmail)
     }
 
     private func registerCells() {
         let payNib = UINib(nibName: AccountShippingCell.Identifier, bundle: nil)
         let addNib = UINib(nibName: AccountPaymentCell.Identifier, bundle: nil)
         TableView.register(payNib, forCellReuseIdentifier: AccountShippingCell.Identifier)
-        TableView.register(addNib, forCellReuseIdentifier: AccountPaymentCell.Identifier)
+        TableView2.register(addNib, forCellReuseIdentifier: AccountPaymentCell.Identifier)
     }
 
     private func configureTableView() {
@@ -111,19 +102,17 @@ class AccountViewController: BaseViewController {
         TableView.rowHeight = 100
     }
 
-    private func bindShipping() {
+    private func bindCells() {
         viewModel.address.asObservable()
             .bind(to: TableView.rx.items(cellIdentifier: AccountShippingCell.Identifier, cellType: AccountShippingCell.self))                           {
                 row, address, cell in
                 cell.address = address
             }.disposed(by: disposeBag)
-    }
-
-    private func bindPayment() {
         viewModel.payment.asObservable()
-            .bind(to: TableView.rx.items(cellIdentifier: AccountPaymentCell.Identifier, cellType: AccountPaymentCell.self))                           {
+            .bind(to: TableView2.rx.items(cellIdentifier: AccountPaymentCell.Identifier, cellType: AccountPaymentCell.self))                           {
                 row, payment, cell in
                 cell.payment = payment
             }.disposed(by: disposeBag)
     }
+    
 }

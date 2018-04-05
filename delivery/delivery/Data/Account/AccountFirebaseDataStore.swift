@@ -15,37 +15,20 @@ class AccountFirebaseDataStore: AccountDataStoreProtocol {
     let db = Firestore.firestore()
 
     func fetchAccount(_ id: String) -> Single<AccountEntity> {
-
-        print("SHIT HERE!")
         
         return Single<AccountEntity>.create { observer -> Disposable in
             self.db.collection("users").whereField("email", isEqualTo: id)
-                  .getDocuments{ (querySnapshot, err) in
-                    if let err = err {
-                        print(err)
-                    } else {
-                        if let qs = querySnapshot {
-                            let test = qs.documents
-                            for t in test {
-                            print(t.data())
-                            }
-                        }
+                  .getDocuments{ (querySnapshot, error) in
+                    if let error = error {
+                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log:error.localizedDescription)))
+                        return
                     }
-            
-            
-//                .document(id)
-//                .getDocument { (document, error) in
-//                    if let error = error {
-//                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
-//                        return
-//                    }
-//                    guard let product = ProductEntity(dictionary: (document?.data())!) else {
-//                        observer(.error(NomnomError.alert(message: "Parse Failure")))
-//                        return
-//                    }
-//                    observer(.success(product))
-//            }
-//            return Disposables.create()
+                    print(querySnapshot?.documents[0].data() as Any) //DEVELOPMENT HELP - PRINT SEARCH TO TERMINAL!!
+                        guard let account = AccountEntity(dictionary: (querySnapshot?.documents[0].data())!) else {
+                            observer(.error(NomnomError.alert(message: "Parse Failure")))
+                            return
+                        }
+                        observer(.success(account))
         }
             return Disposables.create()
     }

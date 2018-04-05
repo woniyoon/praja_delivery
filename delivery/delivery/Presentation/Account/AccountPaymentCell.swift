@@ -15,17 +15,12 @@ class AccountPaymentCell: UITableViewCell {
     @IBOutlet weak var cardNumberLabel: UILabel!
     @IBOutlet weak var cardExpireDateLabel: UILabel!
     
-    var date = Date()
-    
     var payment: Payment? {
         didSet {
             guard let payment = payment else { return }
-            //paymentImageView.image = UIImage(named: "\(payment.payment)")
-            //editPaymentImageView.image = UIImage(named: "\(payment.payment)")
             cardHolderLabel.text = payment.holderName
             cardNumberLabel.text = payment.cardNumber
-            date = payment.expiryDate
-            cardExpireDateLabel.text = date.toString(dateFormat: "MM-dd-yyyy")
+            cardExpireDateLabel.text = payment.expiryDate
         }
         
     }
@@ -38,17 +33,5 @@ class AccountPaymentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-}
-
-//Date Conversion to String
-extension Date
-{
-    func toString( dateFormat format  : String ) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
-    }
-
 }
 

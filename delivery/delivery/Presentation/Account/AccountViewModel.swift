@@ -10,10 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AccountViewModel {
+class AccountViewModel: BaseViewModel {
     
     var firstName = BehaviorRelay(value: "")
     var lastName = BehaviorRelay(value: "")
+    var fullName = BehaviorRelay(value: "")
     var dateOfBirth = BehaviorRelay(value: "")
     var mobileNumber = BehaviorRelay(value: "")
     var email = BehaviorRelay(value: "")
@@ -34,17 +35,23 @@ class AccountViewModel {
         useCase.fetchAccount(id)
             .subscribe(
                 onSuccess: { model in
-                    self.firstName.accept("$\(model.firstName)")
-                    self.lastName.accept("$\(model.lastName)")
-                    self.dateOfBirth.accept("$\(model.dateOfBirth)")
-                    self.mobileNumber.accept("$\(model.mobileNumber)")
-                    self.email.accept("$\(model.email)")
-                    self.totalPoint.accept("$\(model.totalPoint)")
+                    
+                    var date = Date()
+                    var formattedDate = ""
+                    date = model.dateOfBirth!
+                    formattedDate = date.toString(dateFormat: "MM-dd-yyyy")
+                    
+                    self.firstName.accept("\(model.firstName)")
+                    self.lastName.accept("\(model.lastName)")
+                    self.fullName.accept("\(model.fullName)")
+                    self.dateOfBirth.accept("\(formattedDate)")
+                    self.mobileNumber.accept("\(model.mobileNumber)")
+                    self.email.accept("\(model.email)")
+                    self.totalPoint.accept("NumNum Points: \(model.totalPoint)")
                     self.address.accept([Address(receiver: "", address1: "", address2: "", city: "", province: "", postalCode: "", country: "")])
-                    self.payment.accept([Payment(cardNumber: "", holderName: "", expiryDate: Date.init())])
+                    self.payment.accept([Payment(cardNumber: "", holderName: "", expiryDate: "")])
             },
-                onError: { error in
-                    print(error.localizedDescription) }
+                onError: { error in print(error) }
             )
             .disposed(by: disposeBag)
     }

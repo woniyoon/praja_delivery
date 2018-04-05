@@ -1,8 +1,8 @@
 //
-//  Address.swift
+//  AccountEntity.swift
 //  delivery
 //
-//  Created by Jaewon Yoon on 2018-02-20.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -27,5 +27,18 @@ struct Address {
             "postalCode": postalCode,
             "country": country
         ]
+    }
+}
+
+struct SectionOfAddress {
+    var header: String
+    var items: [Item]
+}
+extension SectionOfAddress: SectionModelType {
+    typealias Item = Address
+    
+    init(original: SectionOfAddress, items: [Item]) {
+        self = original
+        self.items = items
     }
 }
