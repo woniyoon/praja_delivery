@@ -68,6 +68,8 @@
 		911E26992060984F00FB3639 /* OrderDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E26982060984F00FB3639 /* OrderDetailEntity.swift */; };
 		911E269B2060AA2F00FB3639 /* PointStatementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E269A2060AA2F00FB3639 /* PointStatementEntity.swift */; };
 		911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E269C2060AFBE00FB3639 /* BranchInventoryEntity.swift */; };
+		912153E12075DBBE0057B146 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912153DF2075DBBE0057B146 /* UserInfoCell.swift */; };
+		912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912153E02075DBBE0057B146 /* UserInfoCell.xib */; };
 		913628A42075AB5800994FEB /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913628A32075AB5800994FEB /* CheckoutViewModel.swift */; };
 		913628A72075ADD300994FEB /* CheckoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913628A62075ADD300994FEB /* CheckoutUseCase.swift */; };
 		913628A92075B12400994FEB /* CheckoutTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913628A82075B12400994FEB /* CheckoutTranslator.swift */; };
@@ -216,6 +218,8 @@
 		911E26982060984F00FB3639 /* OrderDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailEntity.swift; sourceTree = "<group>"; };
 		911E269A2060AA2F00FB3639 /* PointStatementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointStatementEntity.swift; sourceTree = "<group>"; };
 		911E269C2060AFBE00FB3639 /* BranchInventoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchInventoryEntity.swift; sourceTree = "<group>"; };
+		912153DF2075DBBE0057B146 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
+		912153E02075DBBE0057B146 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
 		913628A32075AB5800994FEB /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		913628A62075ADD300994FEB /* CheckoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUseCase.swift; sourceTree = "<group>"; };
 		913628A82075B12400994FEB /* CheckoutTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTranslator.swift; sourceTree = "<group>"; };
@@ -449,6 +453,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		912153DC2075DB760057B146 /* CheckoutCell */ = {
+			isa = PBXGroup;
+			children = (
+				912153DF2075DBBE0057B146 /* UserInfoCell.swift */,
+				912153E02075DBBE0057B146 /* UserInfoCell.xib */,
+			);
+			path = CheckoutCell;
+			sourceTree = "<group>";
+		};
 		913628A52075ADB900994FEB /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +483,7 @@
 		91A11D2F207485AB00C3C3DB /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				912153DC2075DB760057B146 /* CheckoutCell */,
 				91A11D30207485BF00C3C3DB /* Checkout.storyboard */,
 				91A11D322074902000C3C3DB /* CheckoutViewController.swift */,
 				913628A32075AB5800994FEB /* CheckoutViewModel.swift */,
@@ -911,6 +925,7 @@
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				91A11D31207485BF00C3C3DB /* Checkout.storyboard in Resources */,
 				8650FC902058C6250042640E /* User.storyboard in Resources */,
+				912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */,
 				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
 				913C148B2069DABC001C2A9B /* CollectionViewCell.xib in Resources */,
 				9183196C20731893002DF8AA /* TrendsCell.xib in Resources */,
@@ -1169,6 +1184,7 @@
 				91A11D332074902000C3C3DB /* CheckoutViewController.swift in Sources */,
 				2C3BA6BA2057829500C438C0 /* OrderRepository.swift in Sources */,
 				8603A7DB2057858600CB7E5E /* UserTranslator.swift in Sources */,
+				912153E12075DBBE0057B146 /* UserInfoCell.swift in Sources */,
 				BA475A8920589DD800F3A0B5 /* AccountUseCase.swift in Sources */,
 				913628A92075B12400994FEB /* CheckoutTranslator.swift in Sources */,
 				BA475A8820589DD800F3A0B5 /* AccountTranslator.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nvg-R7-rVg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MpI-lx-LUr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,16 +13,16 @@
         <!--Checkout-->
         <scene sceneID="Orj-7a-UgB">
             <objects>
-                <viewController id="MpI-lx-LUr" sceneMemberID="viewController">
+                <viewController id="MpI-lx-LUr" customClass="CheckoutViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceT-D7-Zrz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CbT-pe-rrk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1T-pC-iys" userLabel="CheckoutTable">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9d1-HZ-gO2">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
@@ -105,7 +105,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Hz-JY-fEd" userLabel="ProceedButtonContainer">
-                                        <rect key="frame" x="0.0" y="523" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="567" width="375" height="80"/>
                                         <color key="backgroundColor" red="1" green="0.82107371179999999" blue="0.81020575279999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="0cm-oO-6pc"/>
@@ -133,26 +133,13 @@
                         <viewLayoutGuide key="safeArea" id="b18-9P-d87"/>
                     </view>
                     <navigationItem key="navigationItem" title="Checkout" largeTitleDisplayMode="never" id="WIb-zs-ZP9"/>
+                    <connections>
+                        <outlet property="checkoutTableView" destination="qQX-g1-Te7" id="ibV-Gz-jgq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P6X-wI-zaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="568.79999999999995" y="-90.404797601199405"/>
-        </scene>
-        <!--Checkout View Controller-->
-        <scene sceneID="TDd-13-aj7">
-            <objects>
-                <navigationController id="Nvg-R7-rVg" customClass="CheckoutViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7TJ-gZ-R5s">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="MpI-lx-LUr" kind="relationship" relationship="rootViewController" id="kzB-iG-J4b"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wYL-n3-5Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-285" y="-89"/>
         </scene>
     </scenes>
 </document>

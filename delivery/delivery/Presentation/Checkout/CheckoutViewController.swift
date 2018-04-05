@@ -11,13 +11,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CheckoutViewController: UINavigationController {
+class CheckoutViewController: BaseViewController {
+    
+    @IBOutlet weak var checkoutTableView: UITableView!
     
     private var viewModel: CheckoutViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindView()
+        configureTableView()
     }
     
     // MARK: - ViewController
@@ -26,6 +30,25 @@ class CheckoutViewController: UINavigationController {
         let instance = UIViewController.initialViewControllerFromStoryBoard(CheckoutViewController.self)
         instance?.viewModel = viewModel
         return instance
+    }
+    
+    
+    private func bindView() {
+        viewModel.user.asObservable().bind(to: checkoutTableView.rx.items(cellIdentifier: UserInfoCell.Identifier, cellType: UserInfoCell.self))
+        { row, item, cell in
+            cell.item = item
+        }.disposed(by: disposeBag)
+    }
+    
+    private func registerCell() {
+        let nib = UINib(nibName: UserInfoCell.Identifier, bundle: nil)
+        checkoutTableView.register(nib, forCellReuseIdentifier: UserInfoCell.Identifier)
+    }
+    
+    private func configureTableView() {
+        registerCell()
+        checkoutTableView.estimatedRowHeight = 250
+        checkoutTableView.rowHeight = UITableViewAutomaticDimension
     }
     
 }

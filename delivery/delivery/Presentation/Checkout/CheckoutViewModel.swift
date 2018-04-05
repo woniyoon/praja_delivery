@@ -12,6 +12,9 @@ import RxCocoa
 
 class CheckoutViewModel: BaseViewModel {
     
+    public var user = BehaviorRelay<[User]>(value: [User(firstName: "Jaewon", lastName: "Yoon", mobileNumber: "7788702140", dateOfBirth: Date(), email: "woniyoon@gmail.com", totalPoint: 0, address: [Address(receiver: "Jaewon", address1: "1202", address2: "1050 Burrard st", city: "Vancouver", province: "BC", postalCode: "V6Z 2S3", country: "Canada")], payment: [Payment(cardNumber: "2137 1231 4942 1232", holderName: "Jaewon Yoon", expiryDate: Date())], coupon: nil)])
+
+    
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: CheckoutUseCaseProtocol
     
@@ -20,4 +23,6 @@ class CheckoutViewModel: BaseViewModel {
     init(useCase: CheckoutUseCaseProtocol) {
         self.useCase = useCase
     }
+    
+    
 }
