@@ -162,10 +162,18 @@ extension HomeViewController: UISearchBarDelegate{
         self.keyword = searchText
     }
     
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+//            let next = resolver.resolve(ProductListViewController.self)!
+//            next.keyword = self.keyword
+//            present(next, animated: true, completion: nil)
+//        } else {
+//            searchBar.endEditing(true)
+//        }
+//    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let next = resolver.resolve(ProductListViewController.self)!
-            next.keyword = self.keyword
+            let next = resolver.resolve(CheckoutViewController.self)!
             present(next, animated: true, completion: nil)
         } else {
             searchBar.endEditing(true)

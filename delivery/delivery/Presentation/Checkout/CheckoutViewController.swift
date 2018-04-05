@@ -11,11 +11,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CheckoutViewController: UIViewController {
+class CheckoutViewController: UINavigationController {
     
     private var viewModel: CheckoutViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     // MARK: - ViewController
     
