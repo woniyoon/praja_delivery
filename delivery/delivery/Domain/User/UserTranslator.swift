@@ -10,6 +10,6 @@ import Foundation
 
 class UserTranslator: TranslatorProtocol {
     func translate(_ entity: UserEntity) -> User {
-        return User(firstName: entity.firstName, lastName: entity.lastName, mobileNumber: entity.mobileNumber, dateOfBirth: entity.dateOfBirth, hasAccount: entity.hasAccount, email: entity.email, totalPoint: entity.totalPoint, address: entity.address, payment: entity.payment, coupon: entity.coupon)
+        return User(firstName: entity.firstName, lastName: entity.lastName, mobileNumber: entity.mobileNumber, dateOfBirth: entity.dateOfBirth, email: entity.email, totalPoint: entity.totalPoint, address: entity.address, payment: entity.payment, coupon: entity.coupon)
     }
 }

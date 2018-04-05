@@ -35,7 +35,7 @@ class UserViewModel{
                     self.lastName.accept("$\(model.lastName)")
                     self.mobileNumber.accept("$\(model.mobileNumber)")
                     self.dateOfBirth.accept("$\(model.dateOfBirth)")
-                    self.hasAccount.accept("$\(model.hasAccount)")
+//                    self.hasAccount.accept("$\(model.hasAccount)")
             },
                 onError: { error in
                     print(error.localizedDescription) }
