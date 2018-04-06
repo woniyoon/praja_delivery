@@ -12,7 +12,7 @@ import RxSwift
 class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
     
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity) {
-        let realm = RealmManager()
+        let realm = RealmManager.sharedInstance
         realm.addData(object: shoppingCart)
     }
     
