@@ -19,6 +19,11 @@
 		2C3BA6CE20578F6800C438C0 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA6CD20578F6800C438C0 /* OrderViewModel.swift */; };
 		40B03536F3D4644A4C98E049 /* Pods_deliveryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */; };
 		513D3936D38A0284858CEBE2 /* Pods_delivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */; };
+		52283F5E2077143500E37785 /* ShoppingCartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F5D2077143500E37785 /* ShoppingCartRepository.swift */; };
+		52283F602077149000E37785 /* ShoppingCartDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F5F2077149000E37785 /* ShoppingCartDataStoreProtocol.swift */; };
+		52283F622077149F00E37785 /* ShoppingCartDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F612077149F00E37785 /* ShoppingCartDataStore.swift */; };
+		52283F642077153F00E37785 /* ShoppingCartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F632077153F00E37785 /* ShoppingCartEntity.swift */; };
+		52283F662077160900E37785 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F652077160900E37785 /* RealmManager.swift */; };
 		522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6291203D2974004B3560 /* ShoppingCart.swift */; };
 		522B6298203D2975004B3560 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6292203D2974004B3560 /* Branch.swift */; };
 		522B629A203D2975004B3560 /* BranchInvetory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6294203D2975004B3560 /* BranchInvetory.swift */; };
@@ -161,6 +166,11 @@
 		2C3BA6CB20578F5600C438C0 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		2C3BA6CD20578F6800C438C0 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		414E2F6DF85937C7EF0AFB75 /* Pods-deliveryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-deliveryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests.release.xcconfig"; sourceTree = "<group>"; };
+		52283F5D2077143500E37785 /* ShoppingCartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartRepository.swift; sourceTree = "<group>"; };
+		52283F5F2077149000E37785 /* ShoppingCartDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDataStoreProtocol.swift; sourceTree = "<group>"; };
+		52283F612077149F00E37785 /* ShoppingCartDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDataStore.swift; sourceTree = "<group>"; };
+		52283F632077153F00E37785 /* ShoppingCartEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartEntity.swift; sourceTree = "<group>"; };
+		52283F652077160900E37785 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		522B6291203D2974004B3560 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		522B6292203D2974004B3560 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		522B6294203D2975004B3560 /* BranchInvetory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchInvetory.swift; sourceTree = "<group>"; };
@@ -343,6 +353,17 @@
 				07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52283F5C2077140F00E37785 /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				52283F5D2077143500E37785 /* ShoppingCartRepository.swift */,
+				52283F5F2077149000E37785 /* ShoppingCartDataStoreProtocol.swift */,
+				52283F612077149F00E37785 /* ShoppingCartDataStore.swift */,
+				52283F652077160900E37785 /* RealmManager.swift */,
+			);
+			path = ShoppingCart;
 			sourceTree = "<group>";
 		};
 		522B628E203D2923004B3560 /* Models */ = {
@@ -663,6 +684,7 @@
 		D7AAD0AA2041943100D2971C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				52283F5C2077140F00E37785 /* ShoppingCart */,
 				D7E238C52054ED9000BA973F /* Entity */,
 				D7AAD0AB2041943100D2971C /* ProductDetail */,
 				523D3A8A204F9CB200B63193 /* ProductList */,
@@ -738,6 +760,7 @@
 				D7E238CA205556A100BA973F /* ReviewEntity.swift */,
 				8603A7DC20578BB900CB7E5E /* UserEntity.swift */,
 				911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */,
+				52283F632077153F00E37785 /* ShoppingCartEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1090,6 +1113,7 @@
 				911E267F205E5B3800FB3639 /* PaymentEntity.swift in Sources */,
 				BA475A8320589D9E00F3A0B5 /* AccountRepository.swift in Sources */,
 				2C3BA6C820578DD000C438C0 /* OrderUseCase.swift in Sources */,
+				52283F602077149000E37785 /* ShoppingCartDataStoreProtocol.swift in Sources */,
 				911B2D47206348E600E2ACC6 /* CoordinateEntity.swift in Sources */,
 				5281FD642058B74F00412663 /* ProductListUseCase.swift in Sources */,
 				D775FF832065AD70002180F7 /* ReviewListViewController.swift in Sources */,
@@ -1099,6 +1123,7 @@
 				528E9883203E8C1100E8338C /* Review.swift in Sources */,
 				913C148A2069DABC001C2A9B /* CollectionViewCell.swift in Sources */,
 				8603A7D6205778DF00CB7E5E /* UserViewModel.swift in Sources */,
+				52283F622077149F00E37785 /* ShoppingCartDataStore.swift in Sources */,
 				BA475A9220589F9A00F3A0B5 /* AccountModel.swift in Sources */,
 				522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */,
 				52B08AF4206DC7DD00C493A9 /* GridLayout.swift in Sources */,
@@ -1120,6 +1145,7 @@
 				D7569D382052B0FB00C6D6E4 /* RepositoryAssembly.swift in Sources */,
 				86D47224203D2FDB00624E1F /* Payment.swift in Sources */,
 				D775FF8D2065B005002180F7 /* ReviewListFirebaseDataStore.swift in Sources */,
+				52283F5E2077143500E37785 /* ShoppingCartRepository.swift in Sources */,
 				D7AAD0B82041943100D2971C /* ProductDetailRepository.swift in Sources */,
 				5281FD662058B83900412663 /* ProductListTranslator.swift in Sources */,
 				91E3CA00205780A500017A0F /* ProductModels.swift in Sources */,
@@ -1147,6 +1173,7 @@
 				D7569D322052B0C800C6D6E4 /* ViewControllerAssembly.swift in Sources */,
 				BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */,
 				911A281D2057796C007B8084 /* HomeViewController.swift in Sources */,
+				52283F642077153F00E37785 /* ShoppingCartEntity.swift in Sources */,
 				91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */,
 				911A4AF8203D310400D03889 /* Coupon.swift in Sources */,
 				911A4AFE203D32C800D03889 /* Product.swift in Sources */,
@@ -1160,6 +1187,7 @@
 				D7569D342052B0E200C6D6E4 /* ViewModelAssembly.swift in Sources */,
 				D7AAD0B52041943100D2971C /* ProductDetailModel.swift in Sources */,
 				D7569D302052B08400C6D6E4 /* Container.swift in Sources */,
+				52283F662077160900E37785 /* RealmManager.swift in Sources */,
 				8603A7DD20578BB900CB7E5E /* UserEntity.swift in Sources */,
 				91E3C9FA20577E4000017A0F /* HomeRepository.swift in Sources */,
 				86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */,
