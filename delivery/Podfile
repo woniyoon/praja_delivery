@@ -22,6 +22,9 @@ target 'delivery' do
   
   # Image
   pod 'Kingfisher', '~> 4.0'
+  
+  # RxRealm - Offline database
+  pod 'RxRealm'
 end
 
 target 'deliveryTests' do

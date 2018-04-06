@@ -18,6 +18,7 @@
 		2C3BA6CC20578F5600C438C0 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA6CB20578F5600C438C0 /* OrderViewController.swift */; };
 		2C3BA6CE20578F6800C438C0 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA6CD20578F6800C438C0 /* OrderViewModel.swift */; };
 		40B03536F3D4644A4C98E049 /* Pods_deliveryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */; };
+		513D3936D38A0284858CEBE2 /* Pods_delivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */; };
 		522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6291203D2974004B3560 /* ShoppingCart.swift */; };
 		522B6298203D2975004B3560 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6292203D2974004B3560 /* Branch.swift */; };
 		522B629A203D2975004B3560 /* BranchInvetory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6294203D2975004B3560 /* BranchInvetory.swift */; };
@@ -135,7 +136,6 @@
 		D7E238CB205556A100BA973F /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E238CA205556A100BA973F /* ReviewEntity.swift */; };
 		D7E259EB20639BDC007ADB37 /* NomnomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E259EA20639BDC007ADB37 /* NomnomError.swift */; };
 		D7E259EE2063A771007ADB37 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E259ED2063A771007ADB37 /* BaseViewModel.swift */; };
-		E91C8A778FD2D4820AE69725 /* Pods_delivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,11 +288,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BBA54AB5203D178D00D69954 /* Frameworks */ = {
+		4165B99800691D094F008936 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E91C8A778FD2D4820AE69725 /* Pods_delivery.framework in Frameworks */,
+				513D3936D38A0284858CEBE2 /* Pods_delivery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,10 +786,10 @@
 			buildPhases = (
 				15B339D8DF0BEF4F0B944716 /* [CP] Check Pods Manifest.lock */,
 				BBA54AB4203D178D00D69954 /* Sources */,
-				BBA54AB5203D178D00D69954 /* Frameworks */,
 				BBA54AB6203D178D00D69954 /* Resources */,
 				9E2F5453A9076437F8AC0949 /* [CP] Embed Pods Frameworks */,
 				8540F3B928CFA8085578A91A /* [CP] Copy Pods Resources */,
+				4165B99800691D094F008936 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1015,7 +1015,10 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-f0850809/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
@@ -1034,7 +1037,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
