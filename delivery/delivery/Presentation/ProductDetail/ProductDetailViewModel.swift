@@ -11,7 +11,8 @@ import RxSwift
 import RxCocoa
 
 class ProductDetailViewModel : BaseViewModel {
-    
+    // MARK: - BehaviorRelay
+    // Overview
     var images = BehaviorRelay<[String]>(value: [])
     var name = BehaviorRelay(value: "")
     var price = BehaviorRelay(value: "")
@@ -29,13 +30,16 @@ class ProductDetailViewModel : BaseViewModel {
     
     var numOfProduct = BehaviorRelay(value: 1)
     
+    // MARK: - Private Properties
     private let useCase: ProductDetailUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
+    // MARK: - Initializer
     init(useCase: ProductDetailUseCaseProtocol) {
         self.useCase = useCase
     }
     
+    // MARK: - Public Fuctions
     func fetchProductDetail(_ productId: String) {
         useCase.fetchProductDetail(productId)
             .subscribe(
@@ -76,7 +80,8 @@ class ProductDetailViewModel : BaseViewModel {
         // TODO Add to cart
         print("num is \(numOfProduct.value)")
     }
-    
+
+    // MARK: - Private Fuctions
     private func setValues(of model: Product) {
         self.images.accept(model.images)
         self.name.accept(model.name)

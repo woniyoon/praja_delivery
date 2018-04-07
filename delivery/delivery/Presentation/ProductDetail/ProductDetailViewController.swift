@@ -13,6 +13,7 @@ import RxCocoa
 import Cosmos
 
 class ProductDetailViewController: BaseViewController, UICollectionViewDelegate {
+    // MARK: - IBOutlet
     // Overview
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var pageControls: UIPageControl!
@@ -39,6 +40,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     // Bottom view
     @IBOutlet weak var numOfProduct: UILabel!
     
+    // MARK: - Public Properties
     public var viewModel: ProductDetailViewModel!
     public var productId: String!
     
@@ -48,7 +50,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     var mainImageCellHeight: CGFloat {
         return view.frame.width
     }
-    
+
+    // MARK: - Private Properties
     private let disposeBag: DisposeBag = DisposeBag()
     
     private lazy var mainImageCollectionViewlayout: UICollectionViewFlowLayout = {
@@ -68,25 +71,30 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         layout.minimumInteritemSpacing = 1.0
         return layout
     }()
-    
+
+    // MARK: - Static Fuctions
     static func createInstance(viewModel: ProductDetailViewModel) -> ProductDetailViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductDetailViewController.self)
         instance?.viewModel = viewModel
         return instance
     }
-    
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetch()
         setup()
         bindView()
-        configureCollectionView()
     }
-    
-    private func setup() {
+
+    // MARK: - Private Fuctions
+    private func fetch() {
         viewModel.fetchProductDetail(productId)
         viewModel.fetchFrequentlyPurchasedWith(productId)
         viewModel.fetchRelatedTo(productId)
-        
+    }
+    
+    private func setup() {
         imageCollection.isPagingEnabled = true
         imageCollection.showsHorizontalScrollIndicator = false
         imageCollection.setCollectionViewLayout(mainImageCollectionViewlayout, animated: false)
@@ -97,6 +105,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         
         frequentlyCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
         relatedCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
+        
+        registerCell()
     }
     
     private func bindView() {
@@ -178,15 +188,13 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         frequentlyCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         relatedCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
     }
-    
-    private func configureCollectionView() {
-        registerCell()
-    }
-    
+
+    // MARK: - Collection Delegate
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageControls.currentPage = (Int(collectionView.contentOffset.x) / Int(collectionView.frame.width))
     }
-    
+
+    // MARK: - IBAction
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -212,5 +220,4 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     @IBAction func addToCartButton(_ sender: Any) {
         viewModel.addToCart()
     }
-    
 }
