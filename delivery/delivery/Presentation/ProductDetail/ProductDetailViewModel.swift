@@ -78,4 +78,9 @@ class ProductDetailViewModel : BaseViewModel {
             numOfProduct.accept(numOfProduct.value - 1)
         }
     }
+    
+    func addToCart() {
+        // TODO Add to cart
+        print("num is \(numOfProduct.value)")
+    }
 }

@@ -190,5 +190,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.changeNumOfProduct(isIncrement: false)
     }
     
+    @IBAction func addToCartButton(_ sender: Any) {
+        viewModel.addToCart()
+    }
     
 }
