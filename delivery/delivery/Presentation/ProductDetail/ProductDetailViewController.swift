@@ -27,7 +27,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     @IBOutlet weak var frequentlyCollection: UICollectionView!
     @IBOutlet weak var relatedCollection: UICollectionView!
-
+    
+    @IBOutlet weak var numOfProduct: UILabel!
+    
     public var viewModel: ProductDetailViewModel!
     public var productId: String!
     
@@ -137,7 +139,11 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
                 cell.item = item
             }.disposed(by: disposeBag)
         
-
+        viewModel.numOfProduct.asObservable()
+            .map { num in String(num) }
+            .bind(to: numOfProduct.rx.text)
+            .disposed(by: disposeBag)
+        
         // Alert Message
         viewModel.alertMessage.asObservable()
             .subscribe(
@@ -175,4 +181,14 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         next.productId = "oVhTC6TXjU1a3bG8EabF"
         present(next, animated: true, completion: nil)
     }
+    
+    @IBAction func incrementButtonPressed(_ sender: Any) {
+        viewModel.changeNumOfProduct(isIncrement: true)
+    }
+
+    @IBAction func decrementButtonPressed(_ sender: Any) {
+        viewModel.changeNumOfProduct(isIncrement: false)
+    }
+    
+    
 }

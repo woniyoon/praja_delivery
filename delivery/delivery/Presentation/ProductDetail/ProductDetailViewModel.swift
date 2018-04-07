@@ -25,6 +25,8 @@ class ProductDetailViewModel : BaseViewModel {
     var frequentlyPurchasedWith = BehaviorRelay<[Product]>(value: [])
     var relatedTo = BehaviorRelay<[Product]>(value: [])
     
+    var numOfProduct = BehaviorRelay(value: 1)
+    
     private let useCase: ProductDetailUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -65,5 +67,15 @@ class ProductDetailViewModel : BaseViewModel {
                     self.relatedTo.accept(models) },
                 onError: { error in self.setError(error) }
             ).disposed(by: disposeBag)
+    }
+    
+    func changeNumOfProduct(isIncrement: Bool) {
+        if isIncrement {
+            if numOfProduct.value >= 99 { return }
+            numOfProduct.accept(numOfProduct.value + 1)
+        } else {
+            if numOfProduct.value <= 1 { return }
+            numOfProduct.accept(numOfProduct.value - 1)
+        }
     }
 }

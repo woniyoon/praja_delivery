@@ -428,6 +428,9 @@
                                                 <rect key="frame" x="15" y="-3" width="30" height="55"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                                 <state key="normal" title="-"/>
+                                                <connections>
+                                                    <action selector="decrementButtonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="PnQ-ad-1Ha"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDp-XU-Np3">
                                                 <rect key="frame" x="56" y="10" width="14" height="31"/>
@@ -439,6 +442,9 @@
                                                 <rect key="frame" x="83" y="-2" width="30" height="55"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                                 <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="incrementButtonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="e8W-2A-3eq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -502,6 +508,7 @@
                         <outlet property="frequentlyCollection" destination="bp8-gZ-VMv" id="yL5-TF-bRE"/>
                         <outlet property="imageCollection" destination="pw7-Rc-zov" id="QCW-LI-f6w"/>
                         <outlet property="nameLabel" destination="dWd-Kd-HeA" id="ZH8-Pq-Uiq"/>
+                        <outlet property="numOfProduct" destination="aDp-XU-Np3" id="hu2-VJ-DJo"/>
                         <outlet property="originalPriceLabel" destination="A3g-CN-eLh" id="Vbg-ic-29v"/>
                         <outlet property="pageControls" destination="BpU-WT-Owe" id="WWh-wI-nQP"/>
                         <outlet property="priceLabel" destination="qTj-wI-E0a" id="6HX-oa-8i9"/>
