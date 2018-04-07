@@ -508,6 +508,7 @@
                     <size key="freeformSize" width="375" height="1700"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="Ups-7X-ww8" id="uJg-Oj-XHj"/>
+                        <outlet property="discoutRateLabel" destination="PSP-EJ-p4h" id="dTC-aS-NoH"/>
                         <outlet property="frequentlyCollection" destination="bp8-gZ-VMv" id="yL5-TF-bRE"/>
                         <outlet property="imageCollection" destination="pw7-Rc-zov" id="QCW-LI-f6w"/>
                         <outlet property="nameLabel" destination="dWd-Kd-HeA" id="ZH8-Pq-Uiq"/>
@@ -515,9 +516,12 @@
                         <outlet property="originalPriceLabel" destination="A3g-CN-eLh" id="Vbg-ic-29v"/>
                         <outlet property="pageControls" destination="BpU-WT-Owe" id="WWh-wI-nQP"/>
                         <outlet property="priceLabel" destination="qTj-wI-E0a" id="6HX-oa-8i9"/>
+                        <outlet property="ratingNum" destination="IyP-kt-Sbd" id="Cvv-3Y-7j3"/>
                         <outlet property="ratingStars" destination="Tb3-Ey-hmT" id="iP8-uO-7Ld"/>
                         <outlet property="relatedCollection" destination="Ppm-BC-V2c" id="imN-3z-Pzk"/>
-                        <outlet property="reviewRatingStars" destination="xn1-mS-Cgl" id="p4o-oJ-2Vq"/>
+                        <outlet property="reviewRatingLabel" destination="gCG-Jb-545" id="ZgP-DW-mJ3"/>
+                        <outlet property="reviewRatingNumLabel" destination="46K-QR-gvT" id="FX9-9A-QlL"/>
+                        <outlet property="reviewRatingStars" destination="xn1-mS-Cgl" id="8gg-KT-H4g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRe-eM-lor" userLabel="First Responder" sceneMemberID="firstResponder"/>

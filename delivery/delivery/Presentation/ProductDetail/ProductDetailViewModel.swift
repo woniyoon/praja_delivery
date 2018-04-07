@@ -16,9 +16,11 @@ class ProductDetailViewModel : BaseViewModel {
     var name = BehaviorRelay(value: "")
     var price = BehaviorRelay(value: "")
     var originalPrice = BehaviorRelay(value: "")
+    var discountRate = BehaviorRelay(value: "")
     
     // Review
     var reviewAverage = BehaviorRelay(value: 0.0)
+    var reviewNum = BehaviorRelay(value: "(0)")
     
     var description = BehaviorRelay(value: "")
     
@@ -37,16 +39,7 @@ class ProductDetailViewModel : BaseViewModel {
     func fetchProductDetail(_ productId: String) {
         useCase.fetchProductDetail(productId)
             .subscribe(
-                onSuccess: { model in
-                    self.images.accept(model.images)
-                    self.name.accept(model.name)
-                    self.price.accept(String(format: "$%0.2f", model.price))
-                    self.originalPrice.accept(String(format: "$%0.2f", model.originalPrice))
-                    
-                    // Review
-                    self.reviewAverage.accept(model.averageRating)
-                    
-                    self.description.accept(model.description) },
+                onSuccess: { model in self.setValues(of: model) },
                 onError: { error in self.setError(error) }
             ).disposed(by: disposeBag)
     }
@@ -82,5 +75,22 @@ class ProductDetailViewModel : BaseViewModel {
     func addToCart() {
         // TODO Add to cart
         print("num is \(numOfProduct.value)")
+    }
+    
+    private func setValues(of model: Product) {
+        self.images.accept(model.images)
+        self.name.accept(model.name)
+        self.price.accept(String(format: "$%0.2f", model.price))
+        self.originalPrice.accept(String(format: "$%0.2f", model.originalPrice))
+        if model.discountPercent == 0 {
+            discountRate.accept("")
+        } else {
+            discountRate.accept("↓\(model.discountPercent)%")
+        }
+        
+        // Review
+        self.reviewAverage.accept(model.averageRating)
+        
+        self.description.accept(model.description)
     }
 }

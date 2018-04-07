@@ -13,48 +13,43 @@ import RxCocoa
 import Cosmos
 
 class ProductDetailViewController: BaseViewController, UICollectionViewDelegate {
-    
+    // Overview
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var pageControls: UIPageControl!
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var discoutRateLabel: UILabel!
+    
     @IBOutlet weak var ratingStars: CosmosView!
+    @IBOutlet weak var ratingNum: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     // Review
     @IBOutlet weak var reviewRatingStars: CosmosView!
+    @IBOutlet weak var reviewRatingLabel: UILabel!
+    @IBOutlet weak var reviewRatingNumLabel: UILabel!
     
+    // Recommended products
     @IBOutlet weak var frequentlyCollection: UICollectionView!
     @IBOutlet weak var relatedCollection: UICollectionView!
     
+    // Bottom view
     @IBOutlet weak var numOfProduct: UILabel!
     
     public var viewModel: ProductDetailViewModel!
     public var productId: String!
     
     var pageViewController: UIPageViewController?
-    
     var vcArray = [ProductImageViewController]()
-    
-    private let disposeBag: DisposeBag = DisposeBag()
-    
-    static func createInstance(viewModel: ProductDetailViewModel) -> ProductDetailViewController? {
-        let instance = UIViewController.initialViewControllerFromStoryBoard(ProductDetailViewController.self)
-        instance?.viewModel = viewModel
-        return instance
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-        bindView()
-        configureCollectionView()
-    }
     
     var mainImageCellHeight: CGFloat {
         return view.frame.width
     }
+    
+    private let disposeBag: DisposeBag = DisposeBag()
     
     private lazy var mainImageCollectionViewlayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -73,6 +68,19 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         layout.minimumInteritemSpacing = 1.0
         return layout
     }()
+    
+    static func createInstance(viewModel: ProductDetailViewModel) -> ProductDetailViewController? {
+        let instance = UIViewController.initialViewControllerFromStoryBoard(ProductDetailViewController.self)
+        instance?.viewModel = viewModel
+        return instance
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        bindView()
+        configureCollectionView()
+    }
     
     private func setup() {
         viewModel.fetchProductDetail(productId)
@@ -113,6 +121,10 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.reviewAverage.asObservable()
             .bind(to: ratingStars.rx_rating)
             .disposed(by: disposeBag)
+        viewModel.reviewNum.asObservable()
+            .bind(to: ratingNum.rx.text)
+            .disposed(by: disposeBag)
+        
         viewModel.description.asObservable()
             .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)
@@ -121,8 +133,15 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.reviewAverage.asObservable()
             .bind(to: reviewRatingStars.rx_rating)
             .disposed(by: disposeBag)
+        viewModel.reviewAverage.asObservable()
+            .map { num in String(num) }
+            .bind(to: reviewRatingLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.reviewNum.asObservable()
+            .bind(to: reviewRatingNumLabel.rx.text)
+            .disposed(by: disposeBag)
         
-        // Frequent Products
+        // Recommended Products
         viewModel.frequentlyPurchasedWith.asObservable()
             .bind(to: frequentlyCollection.rx.items(
                 cellIdentifier: CollectionViewCell.Identifier,
@@ -130,7 +149,6 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             { row, item, cell in
                 cell.item = item
             }.disposed(by: disposeBag)
-        // Related Products
         viewModel.relatedTo.asObservable()
             .bind(to: relatedCollection.rx.items(
                 cellIdentifier: CollectionViewCell.Identifier,
@@ -139,6 +157,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
                 cell.item = item
             }.disposed(by: disposeBag)
         
+        // Bottom view
         viewModel.numOfProduct.asObservable()
             .map { num in String(num) }
             .bind(to: numOfProduct.rx.text)
