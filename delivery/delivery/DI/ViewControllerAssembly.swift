@@ -85,5 +85,15 @@ final class ViewControllerAssembly: Assembly {
             let vc         = CheckoutViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        container.register(AddressEditViewController.self) { _ in
+            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
+            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(CheckoutTranslator.self)
+            let usecase    = container.resolve(AddressEditUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(AddressEditViewModel.self, argument: usecase!)
+            let vc         = AddressEditViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }

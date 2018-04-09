@@ -34,6 +34,9 @@ final class UsecaseAssembly: Assembly {
         container.register(CheckoutUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: CheckoutTranslator) in
             CheckoutUseCase(repository: repository, translator: translator)
         }
+        container.register(AddressEditUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: CheckoutTranslator) in
+            AddressEditUseCase(repository: repository, translator: translator)
+        }
     }
 }
 

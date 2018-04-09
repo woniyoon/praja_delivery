@@ -34,5 +34,8 @@ final class ViewModelAssembly: Assembly {
         container.register(CheckoutViewModel.self) { (_, useCase: CheckoutUseCaseProtocol) in
             CheckoutViewModel(useCase: useCase)
         }
+        container.register(AddressEditViewModel.self) { (_, useCase: AddressEditUseCaseProtocol) in
+            AddressEditViewModel(useCase: useCase)
+        }
     }
 }

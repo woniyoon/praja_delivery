@@ -23,7 +23,7 @@ final class RepositoryAssembly: Assembly {
             HomeRepository(dataStore: dataStore)
         }
         container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
-            UserRepository(dataStore: dataStore)
+            UserRepository(memberDataStore: dataStore)
         }
         container.register(ProductListRepositoryProtocol.self) { (_, dataStore: ProductListDataStoreProtocol) in
             ProductListRepository(dataStore: dataStore)
