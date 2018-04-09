@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BranchInvetory {
+struct BranchInventory {
     public let quantity: Int
     public let name: String
 }

@@ -15,13 +15,22 @@ protocol UserRepositoryProtocol {
 
 class UserRepository: UserRepositoryProtocol {
     
-    private let dataStore: UserDataStoreProtocol
+    private let memberDataStore: UserDataStoreProtocol
     
-    init(dataStore: UserDataStoreProtocol) {
-        self.dataStore = dataStore
+//    init(memberDataStore: UserDataStoreProtocol, guestDataStore: GuestDataStoreProtocol) {
+//        self.memberDataStore = memberDataStore
+//    }
+
+    init(memberDataStore: UserDataStoreProtocol) {
+        self.memberDataStore = memberDataStore
     }
     
     func fetchUser(_ id: String) -> Single<UserEntity> {
-        return dataStore.fetchUser(id)
+//        if memberDataStore.isMember {
+//            memberDataStore.fetchUser(id)
+//        } else {
+////            guestDataStore.die()
+//        }
+        return memberDataStore.fetchUser(id)
     }
 }

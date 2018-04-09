@@ -16,21 +16,33 @@ struct UserEntity {
     public let dateOfBirth: Date?
     public let totalPoint: Int
     public let email: String
-    public let address: [Address]
-    public let payment: [Payment]
+    public let address: [AddressEntity]
+    public let payment: [PaymentEntity]
     public let coupon: [String : Bool]
 
     init?(dictionary: [String: Any]) {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
-            let mobileNumber = dictionary["mobileNumber"] as? String, //this part...?
+            let mobileNumber = dictionary["mobileNumber"] as? String,
             let email = dictionary["email"] as? String,
-            let address = dictionary["address"] as? [Address],
-            let totalPoint = dictionary["totalPoint"] as? Int,
-            let payment = dictionary["payment"] as? [Payment] else { return nil }
+            let totalPoint = dictionary["totalPoint"] as? Int else { return nil }
+        
         
         let dateOfBirth = dictionary["dateOfBirth"] as? Date ?? nil
         let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
+        
+        var temp: [AddressEntity]  = []
+        for address in dictionary["address"] as! [Any] {
+            temp.append(AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!)
+        }
+        self.address = temp
+        
+        var paymentArr: [PaymentEntity] = []
+        for payment in dictionary["payment"] as! [Any] {
+            paymentArr.append(PaymentEntity(dictionary: (payment as? [String : Any]) ?? [:])!)
+        }
+        
+        self.payment = paymentArr
         
         self.firstName = firstName
         self.lastName = lastName
@@ -39,8 +51,6 @@ struct UserEntity {
         self.totalPoint = totalPoint
         self.email = email
         self.coupon = coupon
-        self.address = address
-        self.payment = payment
     }
     
     var dictionary: [String: Any] {

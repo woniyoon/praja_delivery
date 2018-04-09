@@ -26,7 +26,6 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
     
     func fetchUser(_ id: String) -> Single<UserEntity> {
-        
             return Single<UserEntity>.create { observer -> Disposable in
                 self.db.collection("users")
                     .document("Ljk5vGaGSMkYzviKx68B")
