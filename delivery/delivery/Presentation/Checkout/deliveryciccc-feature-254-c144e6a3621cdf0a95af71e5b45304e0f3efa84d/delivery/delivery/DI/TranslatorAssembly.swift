@@ -1,0 +1,38 @@
+//
+//  TranslatorAssembly.swift
+//  delivery
+//
+//  Created by Kento Uchida on 2018/03/09.
+//  Copyright © 2018 CICCC. All rights reserved.
+//
+
+import Swinject
+
+final class TranslatorAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(ProductDetailTranslator.self) { _ in
+            ProductDetailTranslator()
+        }
+        container.register(OrderTranslator.self) { _ in
+            OrderTranslator()
+        }
+        container.register(AccountTranslator.self) { _ in
+            AccountTranslator()
+        }
+        container.register(HomeTranslator.self) { _ in
+            HomeTranslator()
+        }
+        container.register(UserTranslator.self) { _ in
+            UserTranslator()
+        }
+        container.register(ProductListTranslator.self) { _ in
+            ProductListTranslator()
+        }
+        container.register(ReviewListTranslator.self) { _ in
+            ReviewListTranslator()
+        }
+        container.register(CheckoutTranslator.self) { _ in
+            CheckoutTranslator()
+        }
+    }
+}

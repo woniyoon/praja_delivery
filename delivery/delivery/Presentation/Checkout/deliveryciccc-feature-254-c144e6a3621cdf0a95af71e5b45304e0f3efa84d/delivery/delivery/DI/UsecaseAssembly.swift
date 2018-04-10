@@ -1,0 +1,42 @@
+//
+//  UsecaseAssembly.swift
+//  delivery
+//
+//  Created by Kento Uchida on 2018/03/09.
+//  Copyright © 2018 CICCC. All rights reserved.
+//
+
+import Swinject
+
+final class UsecaseAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register(ProductDetailUseCaseProtocol.self) { (_, repository: ProductDetailRepositoryProtocol, translator: ProductDetailTranslator) in
+            ProductDetailUseCase(repository: repository, translator: translator)
+        }
+        container.register(OrderUseCaseProtocol.self) { (_, repository: OrderRepositoryProtocol, translator: OrderTranslator) in
+            OrderUseCase(repository: repository, translator: translator)
+        }
+        container.register(AccountUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: AccountTranslator) in
+            AccountUseCase(repository: repository, translator: translator)
+        }
+        container.register(HomeUseCaseProtocol.self) { (_, repository: HomeRepositoryProtocol, translator: HomeTranslator) in
+            HomeUseCase(repository: repository, translator: translator)
+        }
+        container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
+            UserUseCase(repository: repository, translator: translator)
+        }
+        container.register(ProductListUseCaseProtocol.self) { (_, repository: ProductListRepositoryProtocol, translator: ProductListTranslator) in
+            ProductListUseCase(repository: repository, translator: translator)
+        }
+        container.register(ReviewListUseCaseProtocol.self) { (_, repository: ReviewListRepositoryProtocol, translator: ReviewListTranslator) in
+            ReviewListUseCase(repository: repository, translator: translator)
+        }
+        container.register(CheckoutUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: CheckoutTranslator) in
+            CheckoutUseCase(repository: repository, translator: translator)
+        }
+        container.register(AddressEditUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: CheckoutTranslator) in
+            AddressEditUseCase(repository: repository, translator: translator)
+        }
+    }
+}
+
