@@ -36,6 +36,14 @@
                                                                 <color key="barTintColor" red="0.090101522840000003" green="0.090101522840000003" blue="0.090101522840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </searchBar>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-Vn-j5t">
+                                                                <rect key="frame" x="321" y="22" width="46" height="30"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <connections>
+                                                                    <action selector="test:" destination="Vyz-OW-em0" eventType="touchUpInside" id="0hg-mw-p9m"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>

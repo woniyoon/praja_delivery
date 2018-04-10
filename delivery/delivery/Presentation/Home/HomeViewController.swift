@@ -127,7 +127,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    @IBAction func test(_ sender: Any) {
+        let next = resolver.resolve(AddressEditViewController.self)!
+        present(next, animated: true, completion: nil)
+    }
+    
+    
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
 //
 //        let next = resolver.resolve(ProductDetailViewController.self)!
