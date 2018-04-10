@@ -233,9 +233,9 @@
 		91A11D2D20746CC800C3C3DB /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		91A11D30207485BF00C3C3DB /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		91A11D322074902000C3C3DB /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
-		91D58502207C56B800C9BEB5 /* AddressEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressEditViewModel.swift; path = delivery/Presentation/Checkout/Checkout_2/AddressEditViewModel.swift; sourceTree = SOURCE_ROOT; };
-		91D58503207C56B800C9BEB5 /* AddressEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddressEdit.storyboard; path = delivery/Presentation/Checkout/Checkout_2/AddressEdit.storyboard; sourceTree = SOURCE_ROOT; };
-		91D58504207C56B800C9BEB5 /* AddressEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressEditViewController.swift; path = delivery/Presentation/Checkout/Checkout_2/AddressEditViewController.swift; sourceTree = SOURCE_ROOT; };
+		91D58502207C56B800C9BEB5 /* AddressEditViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressEditViewModel.swift; path = "delivery/Presentation/Checkout/CheckoutCell/New Group/AddressEditViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		91D58503207C56B800C9BEB5 /* AddressEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddressEdit.storyboard; path = "delivery/Presentation/Checkout/CheckoutCell/New Group/AddressEdit.storyboard"; sourceTree = SOURCE_ROOT; };
+		91D58504207C56B800C9BEB5 /* AddressEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressEditViewController.swift; path = "delivery/Presentation/Checkout/CheckoutCell/New Group/AddressEditViewController.swift"; sourceTree = SOURCE_ROOT; };
 		91E3C9F420577CE100017A0F /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		91E3C9F620577D1100017A0F /* HomeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTranslator.swift; sourceTree = "<group>"; };
 		91E3C9F920577E4000017A0F /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
@@ -462,9 +462,6 @@
 		912153DC2075DB760057B146 /* CheckoutCell */ = {
 			isa = PBXGroup;
 			children = (
-				91D58503207C56B800C9BEB5 /* AddressEdit.storyboard */,
-				91D58504207C56B800C9BEB5 /* AddressEditViewController.swift */,
-				91D58502207C56B800C9BEB5 /* AddressEditViewModel.swift */,
 				912153DF2075DBBE0057B146 /* UserInfoCell.swift */,
 				912153E02075DBBE0057B146 /* UserInfoCell.xib */,
 			);
@@ -492,6 +489,7 @@
 		91A11D2F207485AB00C3C3DB /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				91D5850B207C5B1500C9BEB5 /* Checkout2 */,
 				912153DC2075DB760057B146 /* CheckoutCell */,
 				91D5850A207C5AA700C9BEB5 /* Checkout1 */,
 			);
@@ -507,6 +505,16 @@
 			);
 			name = Checkout1;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		91D5850B207C5B1500C9BEB5 /* Checkout2 */ = {
+			isa = PBXGroup;
+			children = (
+				91D58503207C56B800C9BEB5 /* AddressEdit.storyboard */,
+				91D58504207C56B800C9BEB5 /* AddressEditViewController.swift */,
+				91D58502207C56B800C9BEB5 /* AddressEditViewModel.swift */,
+			);
+			path = Checkout2;
 			sourceTree = "<group>";
 		};
 		91E3C9F320577CBA00017A0F /* Home */ = {
