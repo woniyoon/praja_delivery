@@ -12,7 +12,7 @@ class ShoppingCartEntity: Object {
     
     @objc dynamic var id = 0
     @objc dynamic var quantity = 0
-    let idProducts = List<String>()
+    @objc dynamic var idProducts = ""
     
     override static func primaryKey() -> String? {
         return "id"

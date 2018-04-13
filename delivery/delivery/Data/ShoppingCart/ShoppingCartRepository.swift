@@ -11,22 +11,23 @@ import RxSwift
 protocol ShoppingCartRepositoryProtocol{
 //    func fetchShoppingCart() -> [ProductEntity]
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
 }
 
 class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
-    
+
     private let dataStore: ShoppingCartDataStoreProtocol
     
     init(dataStore: ShoppingCartDataStoreProtocol) {
         self.dataStore = dataStore
     }
-    
-//    func fetchShoppingCart() -> [ProductEntity] {
-//        dataStore.fetchShoppingCart()
-//    }
-    
+        
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity) {
         dataStore.addProductShoppingCart(shoppingCart: shoppingCart)
+    }
+    
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
+        return dataStore.fetchShoppingCart()
     }
     
 }

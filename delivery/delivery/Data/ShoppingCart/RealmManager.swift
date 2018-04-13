@@ -6,8 +6,12 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import Realm
 import RealmSwift
+import RxSwift
+import RxRealm
 
 class RealmManager {
     
@@ -47,7 +51,8 @@ class RealmManager {
     }
     
     func getNewId(type: Object.Type) -> Int? {
-        if let last = database.objects(type).last as? Int {
+        let last = database.objects(type).count
+        if last > 0 {
             return last + 1
         } else {
             return 1

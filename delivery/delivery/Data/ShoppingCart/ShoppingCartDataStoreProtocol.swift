@@ -10,6 +10,6 @@ import Foundation
 import RxSwift
 
 protocol ShoppingCartDataStoreProtocol {
-//    func fetchShoppingCart() -> [ProductEntity]
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
 }
