@@ -12,12 +12,14 @@ struct Payment {
     public let cardNumber: String
     public let holderName: String
     public let expiryDate: String
+    public let isDefault: Bool
     
     var dictionary: [String: Any] {
         return [
             "cardNumber": cardNumber,
             "holderName": holderName,
             "expiryDate": expiryDate,
+            "isDefault": isDefault
         ]
     }
 }

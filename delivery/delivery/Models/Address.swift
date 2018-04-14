@@ -16,6 +16,7 @@ struct Address {
     public let province: String
     public let postalCode: String
     public let country: String
+    public let isDefault: Bool
     
     var dictionary: [String: Any] {
         return [
@@ -25,7 +26,8 @@ struct Address {
             "city": city,
             "province": province,
             "postalCode": postalCode,
-            "country": country
+            "country": country,
+            "isDefault": isDefault
         ]
     }
 }

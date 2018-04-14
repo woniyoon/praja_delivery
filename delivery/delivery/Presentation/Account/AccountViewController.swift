@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AccountViewController: BaseViewController {
+class AccountViewController: BaseViewController, UICollectionViewDelegate {
     
     // text labels
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -20,9 +20,12 @@ class AccountViewController: BaseViewController {
     @IBOutlet weak var emailAddressLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
+    
     //image views
     @IBOutlet weak var editProfileImageView: UIImageView!
-    
+    @IBOutlet weak var editAddressImageView: UIImageView!
+    @IBOutlet weak var editPaymentImageView: UIImageView!
+
     
     private var viewModel: AccountViewModel!
     @IBOutlet weak var shippingCollection: UICollectionView! //shipping
@@ -42,38 +45,61 @@ class AccountViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            // UIImageviews as buttons begin
+        // UIImageviews as buttons begin
         
-            //just a sample
-            let editProfileIV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.editProfileIVAction))
-            editProfileImageView.addGestureRecognizer(editProfileIV)
-            
-            // UIImageviews as buttons end
+        //Edit Profile:
+        editProfileImageView.isUserInteractionEnabled = true
+        let editProfileIV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editProfileIVAction))
+        editProfileImageView.addGestureRecognizer(editProfileIV)
+        
+        //Edit Address:
+        editAddressImageView.isUserInteractionEnabled = true
+        let editAddressIV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editAddressIVAction))
+        editAddressImageView.addGestureRecognizer(editAddressIV)
+        
+        //Edit Payment:
+        editPaymentImageView.isUserInteractionEnabled = true
+        let editPaymentIV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editPaymentIVAction))
+        editPaymentImageView.addGestureRecognizer(editPaymentIV)
+        
+        // UIImageviews as buttons end
         
         
-            bindView() // bind data
-            bindCells() // bind cells
-            viewModel.fetchAccount(userEmail)
+        bindView() // bind data
+        bindCells() // bind cells
+        viewModel.fetchAccount(userEmail)
         
-            shippingCollection.collectionViewLayout = listLayout
-            paymentCollection.collectionViewLayout = listLayout
-            shippingCollection.reloadData()
-            paymentCollection.reloadData()
-
-
+        shippingCollection.collectionViewLayout = listLayout
+        paymentCollection.collectionViewLayout = listLayout
+        shippingCollection.reloadData()
+        paymentCollection.reloadData()
+        
     }
     
-    
     //imageviews actions begin
+    
     func editProfileIVAction(){
-        
+        //Edit Profile:
+        print("edit profile!")
+    }
+    
+    func editAddressIVAction(){
+        //Edit Address:
+        print("edit address!")
+            shippingCollection.reloadData()
+    }
+    
+    func editPaymentIVAction(){
+        //Edit Payment:
+        print("edit payment!")
+            paymentCollection.reloadData()
     }
     
     //imageviews actions end
     
     
     private func bindView() {
-
+        
         viewModel.fullName.asObservable()
             .bind(to: fullNameLabel.rx.text)
             .disposed(by: disposeBag)
@@ -89,15 +115,32 @@ class AccountViewController: BaseViewController {
         viewModel.totalPoint.asObservable()
             .bind(to: pointsLabel.rx.text)
             .disposed(by: disposeBag)
+        
     }
 
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.shippingCollection {
+            let cell = collectionView.cellForItem(at: indexPath) as! AccountShippingCell
+            
+            //delegate test
+            print(cell.address?.address1 as Any)
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! AccountPaymentCell
+            
+            //delegate test
+            print(cell.payment!.holderName)
+        }
+    }
+    
     private func bindCells() {
         viewModel.address.asObservable()
             .bind(to: shippingCollection.rx.items(cellIdentifier: AccountShippingCell.Identifier, cellType: AccountShippingCell.self))                           {
                 row, address, cell in
                 cell.address = address
             }.disposed(by: disposeBag)
-
+ 
         viewModel.payment.asObservable()
             .bind(to: paymentCollection.rx.items(cellIdentifier: AccountPaymentCell.Identifier, cellType: AccountPaymentCell.self))                           {
                 row, payment, cell in

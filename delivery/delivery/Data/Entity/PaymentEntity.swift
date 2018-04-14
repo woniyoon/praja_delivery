@@ -12,22 +12,26 @@ struct PaymentEntity {
     public let cardNumber: String
     public let holderName: String
     public let expiryDate: String
+    public let isDefault: Bool
     
     var dictionary: [String: Any] {
         return [
             "cardNumber": cardNumber,
             "holderName": holderName,
             "expiryDate": expiryDate,
+            "public let": isDefault
         ]
     }
     
     init?(dictionary: [String: Any]) {
         guard let cardNumber = dictionary["cardNumber"] as? String,
             let holderName = dictionary["holderName"] as? String,
-            let expiryDate = dictionary["expiryDate"] as? String else { return nil }
+            let expiryDate = dictionary["expiryDate"] as? String,
+            let isDefault = dictionary["isDefault"] as? Bool else { return nil }
         
         self.cardNumber = cardNumber
         self.holderName = holderName
         self.expiryDate = expiryDate
+        self.isDefault = isDefault
     }
 }

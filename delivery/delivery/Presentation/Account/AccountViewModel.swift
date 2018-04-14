@@ -19,15 +19,13 @@ class AccountViewModel: BaseViewModel {
     var mobileNumber = BehaviorRelay(value: "")
     var email = BehaviorRelay(value: "")
     var totalPoint = BehaviorRelay(value: "")
+    var address = BehaviorRelay<[Address]>(value: [])
+    var payment = BehaviorRelay<[Payment]>(value: [])
     
-    var address = BehaviorRelay<[AddressEntity]>(value: [])
-    var payment = BehaviorRelay<[PaymentEntity]>(value: [])
-
-    
-    private let useCase: AccountUseCaseProtocol
+    private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCase: AccountUseCaseProtocol) {
+    init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
     
