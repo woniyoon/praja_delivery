@@ -70,7 +70,7 @@
                                                         <constraint firstAttribute="height" constant="150" id="sv4-kB-opz"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-Gm-WdE" customClass="BaseButton" customModule="delivery" customModuleProvider="target">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-Gm-WdE" customClass="BaseButton" customModule="delivery" customModuleProvider="target">
                                                     <rect key="frame" x="148" y="0.0" width="20" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="6p6-lU-Cvk"/>
@@ -82,6 +82,9 @@
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="addCartTappedWithSender:" destination="diD-ja-UvS" eventType="touchUpInside" id="6vP-bg-yRd"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -102,7 +105,6 @@
                                         </constraints>
                                         <size key="customSize" width="168" height="246"/>
                                         <connections>
-                                            <outlet property="addCart" destination="Ehc-Gm-WdE" id="qTF-ng-T1D"/>
                                             <outlet property="name" destination="cFu-uT-pbT" id="l65-nD-QKL"/>
                                             <outlet property="oldPrice" destination="SPh-zk-yaq" id="4oH-4K-3YT"/>
                                             <outlet property="percentage" destination="dxx-be-Vfl" id="doR-la-SZz"/>
@@ -118,6 +120,9 @@
                                     <constraint firstAttribute="width" constant="46" id="xD8-Ot-iM7"/>
                                 </constraints>
                                 <state key="normal" title="Cart"/>
+                                <connections>
+                                    <action selector="cartLabel:" destination="kye-Ay-98n" eventType="touchUpInside" id="wQV-M7-7pW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToF-ON-rq4">
                                 <rect key="frame" x="16" y="68" width="60" height="30"/>
@@ -174,6 +179,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RN3-y5-rHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kye-Ay-98n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="120.8" y="-165.06746626686657"/>
         </scene>

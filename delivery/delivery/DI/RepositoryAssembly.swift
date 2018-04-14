@@ -31,5 +31,8 @@ final class RepositoryAssembly: Assembly {
         container.register(ReviewListRepositoryProtocol.self) { (_, dataStore: ReviewListDataStoreProtocol) in
             ReviewListRepository(dataStore: dataStore)
         }
+        container.register(ShoppingCartRepositoryProtocol.self) { (_, dataStore: ShoppingCartDataStoreProtocol) in
+            ShoppingCartRepository(dataStore: dataStore)
+        }
     }
 }

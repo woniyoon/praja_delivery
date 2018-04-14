@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+struct ProductShoppingCartEntity {
+    
+    public let product: ProductEntity
+    public let quantity: Int
+    
+    init(product: ProductEntity,quantity: Int) {
+        self.product = product
+        self.quantity = quantity
+    }
+}

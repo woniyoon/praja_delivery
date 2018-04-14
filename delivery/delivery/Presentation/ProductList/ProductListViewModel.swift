@@ -8,17 +8,20 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 import RxCocoa
 
 class ProductListViewModel: BaseViewModel {
     
     private var useCase: ProductListUseCaseProtocol
-
-    var productsList = BehaviorRelay<[Product]>(value: [])
+    private var useCaseShopping: ShoppingCartUseCaseProtocol
+    
+    public var productsList = BehaviorRelay<[Product]>(value: [])
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCase: ProductListUseCaseProtocol) {
+    init(useCase: ProductListUseCaseProtocol, useCaseShopping: ShoppingCartUseCaseProtocol) {
         self.useCase = useCase
+        self.useCaseShopping = useCaseShopping
     }
     
     func fetchProductList(with keyword:String){
@@ -29,6 +32,15 @@ class ProductListViewModel: BaseViewModel {
             }, onError: { (error) in
                 print(error.localizedDescription)}
             ) .disposed(by: disposeBag)
+    }
+    
+    func addProductShoppingCart(with shoppingCart: ShoppingCart){
+        useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
+    }
+    
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
+        
+        return useCaseShopping.fetchShoppingCart()
     }
     
 }

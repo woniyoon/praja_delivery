@@ -61,7 +61,13 @@ final class ViewControllerAssembly: Assembly {
             let repository = container.resolve(ProductListRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(ProductListTranslator.self)
             let usecase    = container.resolve(ProductListUseCaseProtocol.self, arguments: repository!, translator!)
-            let viewModel  = container.resolve(ProductListViewModel.self, argument: usecase!)
+
+            let dataStoreSC  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let repositorySC = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStoreSC!)
+            let translatorSC = container.resolve(ShoppingCartTranslator.self)
+            let usecaseSC    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: repositorySC!, translatorSC!)
+            
+            let viewModel  = container.resolve(ProductListViewModel.self, arguments: usecase!,usecaseSC!)
             let vc         = ProductListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }

@@ -6,8 +6,12 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
+import Foundation
+import RxSwift
+
 protocol ShoppingCartUseCaseProtocol {
     func addProductShoppingCart(shoppingCart: ShoppingCart)
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
@@ -25,5 +29,10 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
         let shoppingCartEntity = translator.translate(shoppingCart)
         repository.addProductShoppingCart(shoppingCart: shoppingCartEntity)
     }
+    
+    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
+        return repository.fetchShoppingCart()
+    }
+    
     
 }
