@@ -8,8 +8,8 @@
 
 import Foundation
 
-class UserTranslator: TranslatorProtocol {
-    func translate(_ entity: UserEntity) -> User {
+class UserTranslator {
+    func translate(fromEntity entity: UserEntity) -> User {
         return User(firstName: entity.firstName,
                     lastName: entity.lastName,
                     mobileNumber: entity.mobileNumber,
@@ -20,12 +20,17 @@ class UserTranslator: TranslatorProtocol {
                     payment: translatePayment(from: entity.payment),
                     coupon: entity.coupon)
     }
+
+    func translate(fromModel model: User) -> UserEntity {
+        return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: model.address, payment: model.payment, coupon: model.coupon)!
+        
+    }
     
     func translateAddress(from address: [AddressEntity]) -> [Address] {
         var arr: [Address] = []
         
         address.forEach { (element) in
-            arr.append(Address(receiver: element.receiver, address1: element.address1, address2: element.address2, city: element.city, province: element.province, postalCode: element.postalCode, country: element.country))
+            arr.append(Address(receiver: element.receiver, address1: element.address1, address2: element.address2, city: element.city, province: element.province, postalCode: element.postalCode, country: element.country, isDefault: element.isDefault))
         }
         return arr
     }
@@ -34,8 +39,16 @@ class UserTranslator: TranslatorProtocol {
         var arr: [Payment] = []
         
         payment.forEach { (element) in
-            arr.append(Payment(cardNumber: element.cardNumber, holderName: element.holderName, expiryDate: element.expiryDate))
+            arr.append(Payment(cardNumber: element.cardNumber, holderName: element.holderName, expiryDate: element.expiryDate, isDefault: element.isDefault))
         }
         return arr
+    }
+    
+    func translateAddress(from address: Address) -> AddressEntity {
+        return AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault)
+    }
+    
+    func translatePaymentModel(from payment: Payment) -> PaymentEntity {
+        return PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault)
     }
 }

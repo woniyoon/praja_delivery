@@ -16,9 +16,9 @@ final class ViewModelAssembly: Assembly {
         container.register(OrderViewModel.self) { (_, useCase: OrderUseCaseProtocol) in
             OrderViewModel(useCase: useCase)
         }
-        container.register(AccountViewModel.self) { (_, useCase: AccountUseCaseProtocol) in
-            AccountViewModel(useCase: useCase)
-        }
+//        container.register(AccountViewModel.self) { (_, useCase: AccountUseCaseProtocol) in
+//            AccountViewModel(useCase: useCase)
+//        }
         container.register(HomeViewModel.self) { (_, useCase: HomeUseCaseProtocol) in
             HomeViewModel(useCase: useCase)
         }

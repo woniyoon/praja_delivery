@@ -10,27 +10,37 @@ import Foundation
 import RxSwift
 
 protocol UserRepositoryProtocol {
-    func fetchUser(_ id: String) -> Single<UserEntity>
+    func fetchUser() -> Single<UserEntity>
+    func fetchAddress(index: Int) -> Single<[AddressEntity]>
+    func updateAddress(address: AddressEntity) -> Void
 }
 
-class UserRepository: UserRepositoryProtocol {
+class UserRepository: UserRepositoryProtocol {    
     
-    private let memberDataStore: UserDataStoreProtocol
-    
-//    init(memberDataStore: UserDataStoreProtocol, guestDataStore: GuestDataStoreProtocol) {
-//        self.memberDataStore = memberDataStore
-//    }
+    private let dataStore: UserDataStoreProtocol
+    private var user: UserEntity? = nil
 
-    init(memberDataStore: UserDataStoreProtocol) {
-        self.memberDataStore = memberDataStore
+    init(dataStore: UserDataStoreProtocol) {
+        self.dataStore = dataStore
     }
     
-    func fetchUser(_ id: String) -> Single<UserEntity> {
-//        if memberDataStore.isMember {
-//            memberDataStore.fetchUser(id)
-//        } else {
-////            guestDataStore.die()
-//        }
-        return memberDataStore.fetchUser(id)
+    func fetchUser() -> Single<UserEntity> {
+        return dataStore.fetchUser()
+    }
+    
+    func fetchAddress(index: Int) -> Single<[AddressEntity]> {
+        if let user = self.user {
+            return Single.just(user.address)
+        } else {
+            return fetchUser()
+                .map{ user in user.address}
+        }
+    }
+    
+    func updateAddress(address: AddressEntity) {
     }
 }
+
+
+
+

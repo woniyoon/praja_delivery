@@ -16,9 +16,9 @@ final class TranslatorAssembly: Assembly {
         container.register(OrderTranslator.self) { _ in
             OrderTranslator()
         }
-        container.register(AccountTranslator.self) { _ in
-            AccountTranslator()
-        }
+//        container.register(AccountTranslator.self) { _ in
+//            AccountTranslator()
+//        }
         container.register(HomeTranslator.self) { _ in
             HomeTranslator()
         }
@@ -30,9 +30,6 @@ final class TranslatorAssembly: Assembly {
         }
         container.register(ReviewListTranslator.self) { _ in
             ReviewListTranslator()
-        }
-        container.register(CheckoutTranslator.self) { _ in
-            CheckoutTranslator()
         }
     }
 }

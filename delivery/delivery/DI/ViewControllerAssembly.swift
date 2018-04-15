@@ -28,15 +28,15 @@ final class ViewControllerAssembly: Assembly {
             let vc         = OrderViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
-        container.register(AccountViewController.self) { _ in
-            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
-            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(AccountTranslator.self)
-            let usecase    = container.resolve(AccountUseCaseProtocol.self, arguments: repository!, translator!)
-            let viewModel  = container.resolve(AccountViewModel.self, argument: usecase!)
-            let vc         = AccountViewController.createInstance(viewModel: viewModel!)
-             return vc!
-        }
+//        container.register(AccountViewController.self) { _ in
+//            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
+//            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
+//            let translator = container.resolve(AccountTranslator.self)
+//            let usecase    = container.resolve(AccountUseCaseProtocol.self, arguments: repository!, translator!)
+//            let viewModel  = container.resolve(AccountViewModel.self, argument: usecase!)
+//            let vc         = AccountViewController.createInstance(viewModel: viewModel!)
+//             return vc!
+//        }
         container.register(HomeViewController.self) { _ in
             let dataStore = container.resolve(HomeDataStoreProtocol.self)
             let repository = container.resolve(HomeRepositoryProtocol.self, argument: dataStore!)
@@ -77,9 +77,9 @@ final class ViewControllerAssembly: Assembly {
         }
         
         container.register(CheckoutViewController.self) { _ in
-            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
-            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(CheckoutTranslator.self)
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(CheckoutUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(CheckoutViewModel.self, argument: usecase!)
             let vc         = CheckoutViewController.createInstance(viewModel: viewModel!)
@@ -87,9 +87,9 @@ final class ViewControllerAssembly: Assembly {
         }
         
         container.register(AddressEditViewController.self) { _ in
-            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
-            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(CheckoutTranslator.self)
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(AddressEditUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AddressEditViewModel.self, argument: usecase!)
             let vc         = AddressEditViewController.createInstance(viewModel: viewModel!)

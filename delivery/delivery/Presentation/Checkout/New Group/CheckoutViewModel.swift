@@ -12,8 +12,17 @@ import RxCocoa
 
 class CheckoutViewModel: BaseViewModel {
     
-    public var user = BehaviorRelay<[User]>(value: [User(firstName: "Jaewon", lastName: "Yoon", mobileNumber: "7788702140", dateOfBirth: Date(), email: "woniyoon@gmail.com", totalPoint: 0, address: [Address(receiver: "Jaewon", address1: "1202", address2: "1050 Burrard st", city: "Vancouver", province: "BC", postalCode: "V6Z 2S3", country: "Canada")], payment: [Payment(cardNumber: "2137 1231 4942 1232", holderName: "Jaewon Yoon", expiryDate: Date())], coupon: nil)])
+    public var user = BehaviorRelay<[User]>(value: [])
 
+    var firstName = BehaviorRelay(value: "")
+    var lastName = BehaviorRelay(value: "")
+    var fullName = BehaviorRelay(value: "")
+    var dateOfBirth = BehaviorRelay(value: Date())
+    var mobileNumber = BehaviorRelay(value: "")
+    var email = BehaviorRelay(value: "")
+    var totalPoint = BehaviorRelay(value: "")
+    var address = BehaviorRelay<[Address]>(value: [])
+    var payment = BehaviorRelay<[Payment]>(value: [])
     
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: CheckoutUseCaseProtocol
@@ -24,5 +33,30 @@ class CheckoutViewModel: BaseViewModel {
         self.useCase = useCase
     }
     
+    func updateUser() {
+        useCase.updateUser()
+    }
     
+    func fetchUser() {
+        useCase.fetchUser()
+            .subscribe(onSuccess: { (user) in
+                self.firstName.accept(user.firstName)
+                self.lastName.accept(user.lastName)
+                self.mobileNumber.accept(user.mobileNumber)
+                self.email.accept(user.email)
+                self.address.accept(user.address)
+                self.payment.accept(user.payment)
+                
+                guard let dateOfBirth = user.dateOfBirth else {return}
+                self.dateOfBirth.accept(dateOfBirth)
+                
+                let test = [User(firstName: user.firstName, lastName: user.lastName, mobileNumber: user.mobileNumber, dateOfBirth: user.dateOfBirth, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
+                
+                self.user.accept(test)
+                self.address.accept(user.address)
+                
+            }, onError: { (err) in
+                print(err)
+            }).disposed(by: disposeBag)
+    }
 }

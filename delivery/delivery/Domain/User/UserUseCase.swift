@@ -11,7 +11,7 @@ import RxSwift
 
 
 protocol UserUseCaseProtocol {
-    func fetchUser(_ id: String) -> Single<User>
+    func fetchUser() -> Single<User>
 }
 
 class UserUseCase: UserUseCaseProtocol {
@@ -24,10 +24,10 @@ class UserUseCase: UserUseCaseProtocol {
         self.translator = translator
     }
     
-    func fetchUser(_ id: String) -> Single<User> {
-        return repository.fetchUser(id)
+    func fetchUser() -> Single<User> {
+        return repository.fetchUser()
             .map({ entity in
-                self.translator.translate(entity)
+                self.translator.translate(fromEntity: entity)
             })
     }
 }

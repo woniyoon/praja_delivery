@@ -79,6 +79,7 @@ PODS:
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - Stripe (12.1.1)
   - Swinject (2.2.0)
   - SwinjectStoryboard (1.1.2):
     - Swinject (~> 2.1)
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - Stripe
   - Swinject
   - SwinjectStoryboard
 
@@ -119,9 +121,10 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  Stripe: f8e8feff38ba5caf7b2568c64eab96b0440ecb95
   Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
   SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
 
-PODFILE CHECKSUM: cd313b496ee28065393d030a13a16ec1c1550fdb
+PODFILE CHECKSUM: f28afe1c35c310a60e143432eb586c33eecc151b
 
 COCOAPODS: 1.4.0

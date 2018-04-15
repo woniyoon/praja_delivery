@@ -22,6 +22,9 @@ target 'delivery' do
   
   # Image
   pod 'Kingfisher', '~> 4.0'
+  
+  # Payment
+  pod 'Stripe'
 end
 
 target 'deliveryTests' do

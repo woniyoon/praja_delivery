@@ -17,11 +17,11 @@ class AccountViewModel {
     var password = BehaviorRelay(value: "")
     var token = BehaviorRelay(value: "")
     
-    private let useCase: AccountUseCaseProtocol
+//    private let useCase: AccountUseCaseProtocol
     
-    init(useCase: AccountUseCaseProtocol) {
-        self.useCase = useCase
-    }
+//    init(useCase: AccountUseCaseProtocol) {
+//        self.useCase = useCase
+//    }
     
     func fetchAccount(_ id: Int) {
 //        let model = useCase.fetchAccount(id)

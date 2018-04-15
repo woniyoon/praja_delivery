@@ -10,25 +10,17 @@ import Foundation
 import Firebase
 import RxSwift
 
-//class UserFirebaseDataStore: UserDataStoreProtocol {
-//    let db = Firestore.firestore()
-//
-//    let name = "Raana"
-//    let age = 64
-//    let dict = [String: Any] = ["name" : name,
-//                                "age" : age]
-//    func fetchProductDetail(_ id: String) -> ProductEntity {
-//        let productRef = db.collection("Users").addDocument(data: dict)
-//
-//    }
-//}
 class UserFirebaseDataStore: UserDataStoreProtocol {
+    
     let db = Firestore.firestore()
     
-    func fetchUser(_ id: String) -> Single<UserEntity> {
+    func fetchUser() -> Single<UserEntity> {
+        
+//        let user = Auth.auth().currentUser
+//        if let user = user {
             return Single<UserEntity>.create { observer -> Disposable in
                 self.db.collection("users")
-                    .document("Ljk5vGaGSMkYzviKx68B")
+                    .document("72tKB5nG76CR4dVYW5AM")
                     .getDocument() { (document, error) in
                         if let error = error {
                             observer(.error(error))
@@ -41,7 +33,19 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                         observer(.success(user))
                 }
                 return Disposables.create()
-        }
+            }
+//        }
+//        else {
+//            AlertError.init(title: "Reminder", message: "Please Sign In First")
+//        }
+    }
+    
+    func updateAddress(address: AddressEntity) {
+
+    }
+    
+    func updateUser(user: UserEntity) {
+        
     }
 }
 

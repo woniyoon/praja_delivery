@@ -10,5 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserDataStoreProtocol {
-    func fetchUser(_ id: String) -> Single<UserEntity>
+    func fetchUser() -> Single<UserEntity>
+    func updateUser(user: UserEntity) -> Void
+    func updateAddress(address: AddressEntity) -> Void
 }

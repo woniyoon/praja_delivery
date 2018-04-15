@@ -27,8 +27,8 @@ class UserViewModel{
         self.useCase = useCase
     }
     
-    func fetchUser(_ id: String) {
-        useCase.fetchUser(id)
+    func fetchUser() {
+        useCase.fetchUser()
             .subscribe(
                 onSuccess: { model in
                     self.firstName.accept("$\(model.firstName)")
