@@ -14,6 +14,8 @@ import Cosmos
 
 class ProductDetailViewController: BaseViewController {
     
+    var id: String!
+
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -74,6 +76,7 @@ class ProductDetailViewController: BaseViewController {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
+        viewModel.fetchProductDetail(productId)
     }
     
     @IBAction func reviewListButtonPressed(_ sender: Any) {

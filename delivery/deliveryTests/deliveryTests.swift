@@ -39,16 +39,16 @@ class deliveryTests: XCTestCase {
         
         FirebaseApp.configure()
         
-        var product: ProductEntity! = ProductEntity()
-        product.name = "diet Pepsi 100ml"
-        product.description = "Pepsi description"
-        product.brand = "Pepsi"
-        product.discountPercent = 0
-        product.price = 4.00
-        
-        
-        let data = ProductListFirebaseDataStore.init()
-        data.addNewProduct(product: product)
+//        var product: ProductEntity! = ProductEntity()
+//        product.name = "diet Pepsi 100ml"
+//        product.description = "Pepsi description"
+//        product.brand = "Pepsi"
+//        product.discountPercent = 0
+//        product.price = 4.00
+//        
+//        
+//        let data = ProductListFirebaseDataStore.init()
+//        data.addNewProduct(product: product)
         
     }
     

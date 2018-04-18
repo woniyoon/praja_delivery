@@ -1,79 +1,70 @@
 //
-//  ProductListFirebaseDataStore.swift
+//  HomeFirebaseDataStore.swift
 //  delivery
 //
-//  Created by Bacelar on 2018-03-06.
+//  Created by Jaewon Yoon on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 import Firebase
+import RxSwift
 
-class ProductListFirebaseDataStore: ProductListDataStoreProtocol {    
-
+class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
     let db = Firestore.firestore()
     
-    func fetchProductList() -> [ProductEntity] {
-        var products:[ProductEntity] = []
+    func fetchProductList2() -> [ProductEntity] {
         
-        db.collection("product").order(by: "name")
-        
-//        db.collection("product").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//            
-//                for document in querySnapshot!.documents {
-//                    if let dataProduct = document.data() as? Dictionary<String, AnyObject> {
-//                        
-//                        let name = dataProduct["name"]
-//                        let brand = dataProduct["brand"]
-//                        let description = dataProduct["description"]
-//                        let discountPercent = dataProduct["discountPercent"]
-//                        let subCategory = dataProduct["subCategory"]
-//                        let price = dataProduct["price"]
-//                        let images = dataProduct["images"]
-//                        let originalPrice = dataProduct["originalPrice"]
-//                        
-//                        let product = ProductEntity(name: name as! String, brand: brand as! String, price: price as! Double, originalPrice: originalPrice as! Double, discountPercent: Double(discountPercent as! Int), images: [images as! String], averageRating: 10.0, fiveStarsCount: 0, fourStarsCount: 4, threeStarsCount: 2, twoStarsCount: 2, oneStarCount: 1, description: "dgasyjdgasydgasdajy" , category: "Food", subCategory: "Chicken" as! String)
-//                        
-//                        
-//                        print("Product name \(product.name)")
-//                        
-//                        products.append(product)
-//                        
-//                    }
-//                }
-//            }
-//        }
+        var products = [ProductEntity]()
+        db.collection("product")
+            .getDocuments(completion: { (document, error) in
+                if let error = error {
+                    return
+                }
+                for document in document!.documents {
+                    if (document.data() as? Dictionary<String, AnyObject>) != nil {
+                        guard let product = ProductEntity(docId: document.documentID, dictionary: document.data()) else {
+                            return
+                        }
+                        print("Product name from storyboard: \(product.name)")
+                        products.append(product)
+                    }
+                    
+                }
+            })
         
         return products
     }
     
-//    func addNewProduct(product: ProductEntity){
-//
-//        print("Creating Product")
-//
-//        let docData: [String: Any] = [
-//            "name": product.name!,
-//            "description": product.description!,
-//            "price": product.price!,
-//            "brand": product.brand!,
-//            "discountPercent": product.discountPercent!,
-//            "images": product.images!,
-//            "subCategory": [
-//                "name": product.subCategory!.name,
-//                "category": [
-//                    "name": product.subCategory!.category.name
-//                ]
-//            ]
-//        ]
-//        db.collection("product").document(product.name!).setData(docData) { err in
-//            if let err = err {
-//                print("Error writing document: \(err)")
-//            } else {
-//                print("Document successfully written!")
-//            }
-//        }
+    
+    func fetchProductList(with keyword: String) -> Single<[ProductEntity]> {
+        var arr = [ProductEntity]()
+        return Single<[ProductEntity]>.create { observer -> Disposable in
+                let products = self.db.collection("product")
 
+                products.getDocuments { (documents, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                if let docs = documents?.documents {
+                    for doc in docs {
+                        let name = doc.data()["name"] as! String
+                        
+                        if keyword != "" {
+                            if name.lowercased().range(of:keyword.lowercased()) != nil {
+                                let product = ProductEntity(docId: doc.documentID, dictionary: (doc.data()))
+                                arr.append(product!)
+                            }
+                        } else {
+                            let product = ProductEntity(docId: doc.documentID, dictionary: (doc.data()))
+                            arr.append(product!)
+                        }
+                    }
+                }
+                observer(.success(arr))
+            }
+            return Disposables.create()
+        }
+    }
 }

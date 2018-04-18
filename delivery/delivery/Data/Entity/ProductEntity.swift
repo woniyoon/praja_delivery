@@ -40,9 +40,10 @@ struct ProductEntity {
     public let price: Double
     public let subCategory: String
     public let category: String
+    public let productId: String
     
     
-    init?(dictionary: [String: Any]) {
+    init?(docId: String, dictionary: [String: Any]) {
         guard let name = dictionary["name"] as? String,
             let brand = dictionary["brand"] as? String,
             let description = dictionary["description"] as? String,
@@ -53,6 +54,7 @@ struct ProductEntity {
             let subCategory = dictionary["subCategory"] as? String,
             let category = dictionary["category"] as? String else { return nil }
 
+        let productId = docId
         var temp: [BranchInvetoryEntity]  = []
         for branch in dictionary["branch"] as! [Any] {
             temp.append(BranchInvetoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
@@ -81,7 +83,7 @@ struct ProductEntity {
         let averageRating = dictionary["averageRating"] as? Double ?? 0.0
         
         let events = dictionary["event"] as? [String : Bool] ?? [:]
-        print("= event = \(events)")
+//        print("= event = \(events)")
         
         self.averageRating = averageRating
         self.brand = brand
@@ -94,6 +96,7 @@ struct ProductEntity {
         self.price = price
         self.subCategory = subCategory
         self.category = category
+        self.productId = productId
     }
     
     //        init(name: String, description: String, price: Double, brand: String, discountPercent: Int, subCategory: SubCategory, images: [String]) {

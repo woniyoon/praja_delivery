@@ -7,23 +7,28 @@
 //
 
 import Foundation
-
-import Foundation
 import RxSwift
 import RxCocoa
 
-class ProductListViewModel {
+class ProductListViewModel: BaseViewModel {
     
-    var productName = BehaviorRelay(value: "")
-    
-    private let useCase: ProductListUseCaseProtocol
+    private var useCase: ProductListUseCaseProtocol
+
+    var productsList = BehaviorRelay<[Product]>(value: [])
+    private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: ProductListUseCaseProtocol) {
         self.useCase = useCase
     }
     
-    func fetchProductList() {
-        let model = useCase.fetchProductList()
-        productName.accept("Bruno")
+    func fetchProductList(with keyword:String){
+        useCase.fetchProductList(with: keyword)
+            .subscribe(
+                onSuccess: { (product) in
+                self.productsList.accept(product)
+            }, onError: { (error) in
+                print(error.localizedDescription)}
+            ) .disposed(by: disposeBag)
     }
+    
 }
