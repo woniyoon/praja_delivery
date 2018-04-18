@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListLayout: UICollectionViewFlowLayout {
+class AccountListLayout: UICollectionViewFlowLayout {
     
     var itemHeight: CGFloat = 100
     
