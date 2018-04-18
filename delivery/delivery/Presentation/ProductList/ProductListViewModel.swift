@@ -38,7 +38,7 @@ class ProductListViewModel: BaseViewModel {
         useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
     }
     
-    func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
+    func fetchShoppingCart() -> Single<[ProductShoppingCart]> {
         
         return useCaseShopping.fetchShoppingCart()
     }

@@ -81,5 +81,15 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ReviewListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        container.register(ShoppingCartViewController.self) { _ in
+            let dataStore  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let repository = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(ShoppingCartTranslator.self)
+            let usecase    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(ShoppingCartViewModel.self, argument: usecase!)
+            let vc         = ShoppingCartViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }

@@ -25,29 +25,37 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         realm.addData(object: shoppingCart)
     }
 
+    
+    //            for carItem in realm.getData(type: ShoppingCartEntity.self)! {
+    //                let cartItem = carItem as! ShoppingCartEntity
+    //
+    //                print("id Product \(cartItem.idProducts)")
+    //
+    //            }
+    
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
-        var arr = [ProductShoppingCartEntity]()
         let realm = RealmManager.sharedInstance
             
         return Single<[ProductShoppingCartEntity]>.create { observer -> Disposable in
-            for carItem in realm.getData(type: ShoppingCartEntity.self)! {
-                let cartItem = carItem as! ShoppingCartEntity
-                
-                self.db.collection("product")
-                    .document(cartItem.idProducts)
-                    .getDocument { (document, error) in
-                        if let error = error {
-                            observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
-                            return
-                        }
+            
+            var arr = [ProductShoppingCartEntity]()
+            self.db.collection("product")
+                .document("MV8uokn9iBHsURCOzWdM")
+                .getDocument { (document, error) in
+                    if let error = error {
+                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
+                        return
+                    }
+                    
+                    if let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!)
+                    {
+                        arr.append(ProductShoppingCartEntity(product: product,quantity: 1))
                         
-                        guard let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!) else {
-                            observer(.error(NomnomError.alert(message: "Parse Failure")))
-                            return
-                        }
-                        
-                    arr.append(ProductShoppingCartEntity(product: product,quantity: cartItem.quantity))
-                }
+                    }
+                    else {
+                        observer(.error(NomnomError.alert(message: "Parse Failure")))
+                        return
+                    }
                 observer(.success(arr))
             }
             return Disposables.create()

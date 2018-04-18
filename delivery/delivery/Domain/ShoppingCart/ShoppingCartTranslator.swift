@@ -14,11 +14,20 @@ class ShoppingCartTranslator: TranslatorProtocol {
         let shopping = ShoppingCartEntity()
         shopping.quantity = shoppingCart.quantity
         shopping.idProducts = shoppingCart.idProducts
-//        
-//        for (_, product) in shoppingCart.idProducts.enumerated() {
-//            shopping.idProducts.append(product)
-//        }
         
         return shopping
+    }
+    
+    
+    func translateShoppingCart(_ shoppingCartEntity: [ProductShoppingCartEntity]) -> [ProductShoppingCart] {
+        
+        let productTranslator = ProductDetailTranslator()
+        var products = [ProductShoppingCart]()
+        
+        for shoppingCart in shoppingCartEntity {
+            let product = productTranslator.translate(shoppingCart.product)
+            products.append(ProductShoppingCart(product: product,quantity: shoppingCart.quantity))
+        }
+        return products
     }
 }

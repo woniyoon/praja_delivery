@@ -47,6 +47,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     private func bindTableView() {
+
         viewModel.productsList.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: ProductsCell.Identifier, cellType: ProductsCell.self))
             { row, product, cell in
@@ -118,5 +119,11 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         print("Shopping Cart \(viewModel.fetchShoppingCart())")
         
     }
+    
+    @IBAction func shoppingCartTapped(_ sender: Any) {
+        let next = resolver.resolve(ShoppingCartViewController.self)!
+        present(next, animated: true, completion: nil)
+    }
+    
     
 }

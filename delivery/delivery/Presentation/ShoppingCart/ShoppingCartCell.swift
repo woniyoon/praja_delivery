@@ -13,8 +13,8 @@ class ShoppingCartCell: UICollectionViewCell {
     
     static var Identifier = "ShoppingCartCell"
     
-    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: BaseLabel!
     @IBOutlet weak var percentage: UILabel!
@@ -25,22 +25,20 @@ class ShoppingCartCell: UICollectionViewCell {
         productImage.image = nil
     }
     
-    var shoppingCart: ShoppingCart? {
+    var productShoppingCart: ProductShoppingCart? {
         didSet {
-            guard let shoppingCart = shoppingCart else { return }
-            self.name.text = shoppingCart.
-            self.price.text = String(format:"%.2f", product.price)
-            self.oldPrice.text = String(format:"%.2f", product.originalPrice)
-            self.percentage.text = ("\(product.discountPercent) %")
+            guard let shoppingCart = productShoppingCart else { return }
+            self.name.text = shoppingCart.product.name
+            self.price.text = String(format:"%.2f", shoppingCart.product.price)
+            self.oldPrice.text = String(format:"%.2f", shoppingCart.product.originalPrice)
+            self.percentage.text = ("\(shoppingCart.product.discountPercent) %")
             
-            let imageUrlString = product.images[0]
+            let imageUrlString = shoppingCart.product.images[0]
             let imageUrl:URL = URL(string: imageUrlString)!
             
-            let resource = ImageResource(downloadURL: imageUrl, cacheKey: product.name)
+            let resource = ImageResource(downloadURL: imageUrl, cacheKey: shoppingCart.product.name)
             self.productImage.kf.setImage(with: resource)
-            
         }
-        
     }
 }
 

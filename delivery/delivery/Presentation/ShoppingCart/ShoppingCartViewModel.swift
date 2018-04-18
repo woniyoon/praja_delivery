@@ -15,7 +15,7 @@ class ShoppingCartViewModel: BaseViewModel {
     
     private var useCase: ShoppingCartUseCaseProtocol
     
-    public var productsList = BehaviorRelay<[ShoppingCart]>(value: [])
+    public var productsShoppingCart = BehaviorRelay<[ProductShoppingCart]>(value: [])
     private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: ShoppingCartUseCaseProtocol) {
@@ -25,12 +25,13 @@ class ShoppingCartViewModel: BaseViewModel {
     func fetchShoppingCartList(){
         
         useCase.fetchShoppingCart()
-//            .subscribe(
-//                onSuccess: { (product) in
-//                    self.productsList.accept(product)
-//            }, onError: { (error) in
-//                print(error.localizedDescription)}
-//            ) .disposed(by: disposeBag)
+            .subscribe(
+                onSuccess: { (product) in
+                    print("View Model \(product.count)")
+                    self.productsShoppingCart.accept(product)
+            }, onError: { (error) in
+                print(error.localizedDescription)}
+            ) .disposed(by: disposeBag)
     }
         
 }
