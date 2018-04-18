@@ -24,41 +24,52 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         shoppingCart.id = realm.getNewId(type: ShoppingCartEntity.self)!
         realm.addData(object: shoppingCart)
     }
-
     
-    //            for carItem in realm.getData(type: ShoppingCartEntity.self)! {
-    //                let cartItem = carItem as! ShoppingCartEntity
     //
-    //                print("id Product \(cartItem.idProducts)")
+    //                for carItem in realm.getData(type: ShoppingCartEntity.self)! {
+    //                    let cartItem = carItem as! ShoppingCartEntity
     //
-    //            }
+    //                    print("id Product \(cartItem.idProducts)")
+    //
+    //                }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
         let realm = RealmManager.sharedInstance
-            
+        
         return Single<[ProductShoppingCartEntity]>.create { observer -> Disposable in
             
             var arr = [ProductShoppingCartEntity]()
-            self.db.collection("product")
-                .document("MV8uokn9iBHsURCOzWdM")
-                .getDocument { (document, error) in
-                    if let error = error {
-                        observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
-                        return
-                    }
-                    
-                    if let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!)
-                    {
-                        arr.append(ProductShoppingCartEntity(product: product,quantity: 1))
+            var counter = 0
+            let size = realm.getData(type: ShoppingCartEntity.self)!.count
+            for carItem in realm.getData(type: ShoppingCartEntity.self)! {
+                
+                let cartItem = carItem as! ShoppingCartEntity
+                
+                self.db.collection("product")
+                    .document(cartItem.idProducts)
+                    .getDocument { (document, error) in
+                        if let error = error {
+                            observer(.error(NomnomError.network(code: "", message: ErrorMsg.tryAgain, log: error.localizedDescription)))
+                            return
+                        }
                         
-                    }
-                    else {
-                        observer(.error(NomnomError.alert(message: "Parse Failure")))
-                        return
-                    }
-                observer(.success(arr))
+                        if let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!)
+                        {
+                            arr.append(ProductShoppingCartEntity(product: product,quantity: 1))
+                            
+                        }
+                        else {
+                            observer(.error(NomnomError.alert(message: "Parse Failure")))
+                            return
+                        }
+                        counter = counter + 1
+                        if counter >= size {
+                            observer(.success(arr))
+                        }
+                }
             }
             return Disposables.create()
         }
     }
 }
+

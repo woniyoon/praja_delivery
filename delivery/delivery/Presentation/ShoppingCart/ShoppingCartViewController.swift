@@ -15,9 +15,9 @@ import Firebase
 class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var subTotal: UILabel!
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private var productsIds = [Int:String]()
     private var shoppingCart = ShoppingCart()
     private var viewModel: ShoppingCartViewModel!
     public var keyword: String!
@@ -52,6 +52,9 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
             cell.productShoppingCart = shopppingCart
         }.disposed(by: disposeBag)
         
+        viewModel.subTotal.asObservable()
+        .bind(to: subTotal.rx.text)
+            .disposed(by: disposeBag)
     }
     
     
@@ -74,6 +77,28 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.collectionView {
+            
+            let productCell = cell as! ShoppingCartCell
+            
+            let productQty = UIButton(frame: CGRect(x: cell.bounds.maxX - 50, y:0, width:36,height:36))
+            productQty.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+            productQty.setTitle(String(describing: productCell.productShoppingCart!.quantity), for: UIControlState.normal)
+            
+            productQty.setTitleColor(#colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), for: UIControlState.normal)
+            productQty.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+            productQty.layer.cornerRadius = 18
+            productQty.layer.borderWidth = 1
+            productQty.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1)
+//            addProductCart.addTarget(self, action: #selector(editButtonTapped), for: UIControlEvents.touchUpInside)
+            productQty.tag = indexPath.row
+            
+            cell.addSubview(productQty)
+        }
     }
     
 }
