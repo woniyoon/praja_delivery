@@ -22,10 +22,14 @@ class AccountPaymentCell: UICollectionViewCell, UICollectionViewDelegate {
     
     var payment: Payment? {
         didSet {
+            
+            var date = Date()
+            date = (payment?.expiryDate)!
+            
             guard let payment = payment else { return }
             cardHolderLabel.text = payment.holderName
             cardNumberLabel.text = payment.cardNumber
-            cardExpiryDateLabel.text = payment.expiryDate
+            cardExpiryDateLabel.text = date.toString(dateFormat: "MM/yy")
         }
     }
 }

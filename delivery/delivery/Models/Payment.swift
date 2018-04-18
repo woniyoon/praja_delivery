@@ -11,7 +11,7 @@ import Foundation
 struct Payment {
     public let cardNumber: String
     public let holderName: String
-    public let expiryDate: String
+    public let expiryDate: Date
     public let isDefault: Bool
     
     var dictionary: [String: Any] {

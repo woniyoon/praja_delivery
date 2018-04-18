@@ -11,7 +11,7 @@ import Foundation
 struct PaymentEntity {
     public let cardNumber: String
     public let holderName: String
-    public let expiryDate: String
+    public let expiryDate: Date
     public let isDefault: Bool
     
     var dictionary: [String: Any] {
@@ -19,14 +19,14 @@ struct PaymentEntity {
             "cardNumber": cardNumber,
             "holderName": holderName,
             "expiryDate": expiryDate,
-            "public let": isDefault
+            "isDefault": isDefault
         ]
     }
     
     init?(dictionary: [String: Any]) {
         guard let cardNumber = dictionary["cardNumber"] as? String,
             let holderName = dictionary["holderName"] as? String,
-            let expiryDate = dictionary["expiryDate"] as? String,
+            let expiryDate = dictionary["expiryDate"] as? Date,
             let isDefault = dictionary["isDefault"] as? Bool else { return nil }
         
         self.cardNumber = cardNumber
