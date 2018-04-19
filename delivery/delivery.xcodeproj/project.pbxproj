@@ -70,9 +70,7 @@
 		91E3CA00205780A500017A0F /* ProductModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9FF205780A500017A0F /* ProductModels.swift */; };
 		BA475A8220589D9E00F3A0B5 /* UserFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A7F20589D9D00F3A0B5 /* UserFirebaseDataStore.swift */; };
 		BA475A8320589D9E00F3A0B5 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8020589D9D00F3A0B5 /* UserRepository.swift */; };
-		BA475A8420589D9E00F3A0B5 /* AccountDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8120589D9D00F3A0B5 /* AccountDataStoreProtocol.swift */; };
-		BA475A8820589DD800F3A0B5 /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8620589DD800F3A0B5 /* UserTranslator.swift */; };
-		BA475A8920589DD800F3A0B5 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8720589DD800F3A0B5 /* UserUseCase.swift */; };
+		BA475A8420589D9E00F3A0B5 /* UserDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8120589D9D00F3A0B5 /* UserDataStoreProtocol.swift */; };
 		BA475A8E20589DF900F3A0B5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */; };
 		BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */; };
 		BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA475A8D20589DF900F3A0B5 /* Account.storyboard */; };
@@ -110,6 +108,8 @@
 		D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D775FF902065B86F002180F7 /* ReviewList.storyboard */; };
 		D775FF942065C20C002180F7 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D775FF922065C20C002180F7 /* ReviewCell.swift */; };
 		D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D775FF932065C20C002180F7 /* ReviewCell.xib */; };
+		D77603A4208846C000B3F917 /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77603A2208846C000B3F917 /* UserTranslator.swift */; };
+		D77603A5208846C000B3F917 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77603A3208846C000B3F917 /* UserUseCase.swift */; };
 		D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */; };
 		D78F2E74204DE6100017AA05 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */; };
 		D78F2E76204DE63F0017AA05 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */; };
@@ -206,9 +206,7 @@
 		99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_delivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA475A7F20589D9D00F3A0B5 /* UserFirebaseDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirebaseDataStore.swift; sourceTree = "<group>"; };
 		BA475A8020589D9D00F3A0B5 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		BA475A8120589D9D00F3A0B5 /* AccountDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDataStoreProtocol.swift; sourceTree = "<group>"; };
-		BA475A8620589DD800F3A0B5 /* UserTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTranslator.swift; sourceTree = "<group>"; };
-		BA475A8720589DD800F3A0B5 /* UserUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		BA475A8120589D9D00F3A0B5 /* UserDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStoreProtocol.swift; sourceTree = "<group>"; };
 		BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BA475A8D20589DF900F3A0B5 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -250,6 +248,8 @@
 		D775FF902065B86F002180F7 /* ReviewList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewList.storyboard; sourceTree = "<group>"; };
 		D775FF922065C20C002180F7 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		D775FF932065C20C002180F7 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		D77603A2208846C000B3F917 /* UserTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTranslator.swift; path = delivery/Domain/User/UserTranslator.swift; sourceTree = SOURCE_ROOT; };
+		D77603A3208846C000B3F917 /* UserUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserUseCase.swift; path = delivery/Domain/User/UserUseCase.swift; sourceTree = SOURCE_ROOT; };
 		D78F2E71204DE5DF0017AA05 /* ProductDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductDetail.storyboard; sourceTree = "<group>"; };
 		D78F2E73204DE6100017AA05 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D78F2E75204DE63F0017AA05 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				BA475A8020589D9D00F3A0B5 /* UserRepository.swift */,
-				BA475A8120589D9D00F3A0B5 /* AccountDataStoreProtocol.swift */,
+				BA475A8120589D9D00F3A0B5 /* UserDataStoreProtocol.swift */,
 				BA475A7F20589D9D00F3A0B5 /* UserFirebaseDataStore.swift */,
 			);
 			path = User;
@@ -445,8 +445,8 @@
 		BA475A8520589DD800F3A0B5 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				BA475A8620589DD800F3A0B5 /* UserTranslator.swift */,
-				BA475A8720589DD800F3A0B5 /* UserUseCase.swift */,
+				D77603A2208846C000B3F917 /* UserTranslator.swift */,
+				D77603A3208846C000B3F917 /* UserUseCase.swift */,
 			);
 			name = User;
 			path = Account;
@@ -742,7 +742,6 @@
 				BBA54AB5203D178D00D69954 /* Frameworks */,
 				BBA54AB6203D178D00D69954 /* Resources */,
 				9E2F5453A9076437F8AC0949 /* [CP] Embed Pods Frameworks */,
-				8540F3B928CFA8085578A91A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -762,7 +761,6 @@
 				BBA54AC9203D178D00D69954 /* Frameworks */,
 				BBA54ACA203D178D00D69954 /* Resources */,
 				939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */,
-				6B645F88CF9592941BF6761A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -882,36 +880,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B645F88CF9592941BF6761A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8540F3B928CFA8085578A91A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */ = {
@@ -1045,6 +1013,7 @@
 				52B08AF4206DC7DD00C493A9 /* GridLayout.swift in Sources */,
 				2C3BA6BC2057839A00C438C0 /* OrderDataStoreProtocol.swift in Sources */,
 				911E2677205E4AD900FB3639 /* BranchEntity.swift in Sources */,
+				D77603A5208846C000B3F917 /* UserUseCase.swift in Sources */,
 				911E2679205E4C3A00FB3639 /* EventEntity.swift in Sources */,
 				9183196B20731893002DF8AA /* TrendsCell.swift in Sources */,
 				2C3BA6C52057881700C438C0 /* OrderModel.swift in Sources */,
@@ -1076,13 +1045,12 @@
 				D775FF942065C20C002180F7 /* ReviewCell.swift in Sources */,
 				D7569D3C2052B2E700C6D6E4 /* TranslatorAssembly.swift in Sources */,
 				D7569D3E2052BA1100C6D6E4 /* UIExtension.swift in Sources */,
+				D77603A4208846C000B3F917 /* UserTranslator.swift in Sources */,
 				911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */,
 				BA5A4DDB2075D72400CC54E1 /* AccountListLayout.swift in Sources */,
 				BA858995206ECFB600714E8F /* AccountShippingCell.swift in Sources */,
 				911B2D492063494200E2ACC6 /* Coordinate.swift in Sources */,
 				2C3BA6BA2057829500C438C0 /* OrderRepository.swift in Sources */,
-				BA475A8920589DD800F3A0B5 /* UserUseCase.swift in Sources */,
-				BA475A8820589DD800F3A0B5 /* UserTranslator.swift in Sources */,
 				522B6298203D2975004B3560 /* Branch.swift in Sources */,
 				D7569D322052B0C800C6D6E4 /* ViewControllerAssembly.swift in Sources */,
 				BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */,
@@ -1094,7 +1062,7 @@
 				D775FF8F2065B01E002180F7 /* ReviewListTranslator.swift in Sources */,
 				BA475A8E20589DF900F3A0B5 /* AccountViewModel.swift in Sources */,
 				D775FF892065AFD0002180F7 /* ReviewListRepository.swift in Sources */,
-				BA475A8420589D9E00F3A0B5 /* AccountDataStoreProtocol.swift in Sources */,
+				BA475A8420589D9E00F3A0B5 /* UserDataStoreProtocol.swift in Sources */,
 				911A4AFA203D321600D03889 /* Address.swift in Sources */,
 				D7AAD0B72041943100D2971C /* ProductDetailFirebaseDataStore.swift in Sources */,
 				BBA54ABE203D178D00D69954 /* ViewController.swift in Sources */,
