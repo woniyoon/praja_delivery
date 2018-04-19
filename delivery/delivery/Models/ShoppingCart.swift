@@ -8,6 +8,6 @@
 import Foundation
 
 struct ShoppingCart {
-    public var user: User
+    //public var user: User
     public var product: [Product]
 }
