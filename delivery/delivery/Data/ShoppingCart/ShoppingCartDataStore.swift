@@ -17,11 +17,16 @@ import Firebase
 class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
     let db = Firestore.firestore()
     
+    func deleteShoppingCart() {
+        let realm = RealmManager.sharedInstance
+        realm.deleteAllFromDatabase()
+    }
+    
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity) {
         let realm = RealmManager.sharedInstance
         print("Realm - \(shoppingCart.id)")
         
-        shoppingCart.id = realm.getNewId(type: ShoppingCartEntity.self)!
+         shoppingCart.id = String(realm.getNewId(type: ShoppingCartEntity.self)!)
         realm.addData(object: shoppingCart)
     }
         

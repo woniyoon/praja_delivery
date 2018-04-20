@@ -12,4 +12,6 @@ import RxSwift
 protocol ShoppingCartDataStoreProtocol {
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
+    func deleteShoppingCart()
+    
 }

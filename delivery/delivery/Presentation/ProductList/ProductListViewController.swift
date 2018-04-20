@@ -98,7 +98,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             addProductCart.setImage(#imageLiteral(resourceName: "addcart"), for: UIControlState.normal)
             addProductCart.addTarget(self, action: #selector(editButtonTapped), for: UIControlEvents.touchUpInside)
             
-            addProductCart.tag = indexPath.row
+            addProductCart.tag = indexPath.row + 1
             productsIds[addProductCart.tag] = productCell.product?.productId
             
             cell.addSubview(addProductCart)

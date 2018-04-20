@@ -10,7 +10,7 @@ import RealmSwift
 
 class ShoppingCartEntity: Object {
     
-    @objc dynamic var id = 0
+    @objc dynamic var id = "1"
     @objc dynamic var quantity = 0
     @objc dynamic var idProducts = ""
     

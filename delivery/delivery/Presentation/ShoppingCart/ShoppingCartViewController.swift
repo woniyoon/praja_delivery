@@ -116,6 +116,14 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
 //        // Refresh the collection view
 //        self.collectionView!.reloadData()
     }
+    @IBAction func checkoutPurchase(_ sender: Any) {
+        viewModel.deleteShoppingCart()
+        
+        let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+        let alertController = UIAlertController(title: projectName.uppercased(), message:
+            "Shopping Cart Deleted !", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
+        dismiss(animated: false, completion: nil)
+    }
 
-    
 }

@@ -10,18 +10,23 @@ import Foundation
 import RxSwift
 
 protocol ShoppingCartUseCaseProtocol {
+    func deleteShoppingCart()
     func addProductShoppingCart(shoppingCart: ShoppingCart)
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
-    
+
     internal let repository: ShoppingCartRepositoryProtocol
     internal let translator: ShoppingCartTranslator
     
     init(repository: ShoppingCartRepositoryProtocol, translator: ShoppingCartTranslator) {
         self.repository = repository
         self.translator = translator
+    }
+    
+    func deleteShoppingCart() {
+        repository.deleteShoppingCart()
     }
     
     func addProductShoppingCart(shoppingCart: ShoppingCart) {

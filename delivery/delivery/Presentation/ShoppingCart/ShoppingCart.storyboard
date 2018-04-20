@@ -172,6 +172,9 @@
                                         <state key="normal" title="Checkout">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkoutPurchase:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="qZI-DV-Ftc"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9he-sL-4zc">
                                         <rect key="frame" x="264" y="172" width="95" height="34"/>
@@ -260,7 +263,7 @@
                         <viewLayoutGuide key="safeArea" id="F7y-zd-KRn"/>
                     </view>
                     <connections>
-                        <outlet property="binButton" destination="m3F-Qt-ikZ" id="isU-2p-hBc"/>
+                        <outlet property="binButton" destination="m3F-Qt-ikZ" id="657-V9-Zk2"/>
                         <outlet property="collectionView" destination="e2E-Hh-ZEI" id="Yb5-KG-yIQ"/>
                         <outlet property="subTotal" destination="wf0-U1-XoU" id="2Q7-9a-N6g"/>
                     </connections>

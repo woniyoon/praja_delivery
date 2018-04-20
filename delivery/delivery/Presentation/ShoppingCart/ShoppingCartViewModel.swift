@@ -45,5 +45,10 @@ class ShoppingCartViewModel: BaseViewModel {
             ) .disposed(by: disposeBag)
         
     }
+    
+    func deleteShoppingCart() {
+        useCase.deleteShoppingCart()
+    }
+    
         
 }
