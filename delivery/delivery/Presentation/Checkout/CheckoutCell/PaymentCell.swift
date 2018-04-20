@@ -16,28 +16,16 @@ class PaymentCell: UITableViewCell {
     @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var expiryDate: UILabel!
 
-    
-//    var items: [Payment]? {
-//        didSet {
-//            guard let items = items else { return }
-//            items.forEach { (payment) in
-//                cardHolder.text = payment.holderName
-//                cardNumber.text = payment.cardNumber
-//                expiryDate.text = payment.expiryDate.description
-//            }
-//        }
-//    }
-//
 
-    var item: Payment? {
+    var item: [Payment]? {
         didSet {
             guard let item = item else { return }
-            cardHolder.text = item.holderName
-            //            let test = item.address.filter { $0.isDefault}
-            //            addressLabel.text = "\(test.first!.address1) \(test.first!.address2)"
-            //            zipCodeLabel.text = "\(test.first!.postalCode)"
-            cardNumber.text = item.cardNumber
-            expiryDate.text = item.expiryDate.description
+                        let test = item.filter { $0.isDefault}
+                        cardHolder.text = test.first?.holderName
+                        cardNumber.text = test.first?.cardNumber
+                        expiryDate.text = test.first?.expiryDate.description
+//            cardNumber.text = item.cardNumber
+//            expiryDate.text = item.expiryDate.description
             
             
         }
@@ -47,6 +35,8 @@ class PaymentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = .none
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

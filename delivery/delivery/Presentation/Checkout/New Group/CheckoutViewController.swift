@@ -35,46 +35,52 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     }
     
     private func bindView() {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Any>>(
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, User>>(
             configureCell: { (_, tv, indexPath, element) in
-                print("------------- \(indexPath)")
                 if indexPath.section == 0 {
                     let cell = tv.dequeueReusableCell(withIdentifier: UserInfoCell.Identifier) as! UserInfoCell
-                    let element = element as! User
+                    let element = element
                     cell.item = element
+                    cell.backgroundColor = UIColor.clear
+                
                     return cell
                 } else if indexPath.section == 1 {
                     let cell = tv.dequeueReusableCell(withIdentifier: AddressCell.Identifier) as! AddressCell
-                    let element = element as! Address
-                    cell.item = element
+                    cell.item = element.address
                     return cell
-                } else
-//                    if indexPath.section == 2
-                    {
+                } else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PaymentCell.Identifier) as! PaymentCell
-                    let element = element as! Payment
-                    cell.item = element
+                    cell.item = element.payment
                     return cell
                 }
-//                else if indexPath.section == 3 {
+        })
+        
+
+//        checkoutTableView.rx
+//            .itemSelected
+//            .subscribe(onNext:  { [weak self] indexPath in
+//                print(indexPath)
+//                self?.checkoutTableView.deselectRow(at: indexPath, animated: true)
 //
-//                } else {
+//                print(indexPath)
+////                let next = resolver.resolve(AddressEditViewController.self)!
+////                self?.present(next, animated: true, completion: nil)
+//            })
+//            .disposed(by: disposeBag)
+        
+//        checkoutTableView.rx
+//            .itemSelected
+//            .map { indexPath in
+//                return (indexPath, dataSource[indexPath])
+//            }
+//            .subscribe(onNext: { pair in
+//                print(pair)
+//            })
+//            .disposed(by: disposeBag)
 //
-//                }
-        }
-//            ,
-//            titleForHeaderInSection: { dataSource, sectionIndex in
-////                print("%%%%%%%%%%%%%%%%%\(self.checkoutTableView.subviews)")
-//
-//                if sectionIndex == 0 {
-//                    return "User Information"
-//                } else if sectionIndex == 1 {
-//                    return "Shipping To"
-//                } else {
-//                    return "Payment"
-//                }
-//        }
-        )
+        checkoutTableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
         
            self.viewModel.user.asObservable()
                 .bind(to: checkoutTableView.rx.items(dataSource: dataSource))
@@ -95,75 +101,26 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     private func configureTableView() {
         registerCell()
         checkoutTableView.estimatedRowHeight = 300
-        checkoutTableView.allowsSelection = false
-        checkoutTableView.delegate = self
-        checkoutTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        checkoutTableView.allowsSelection = true
+//        checkoutTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-        
-        if section == 0 {
-            let view = UIView(frame: CGRect(x: 10, y: 50, width: 80, height: 70))
-            view.backgroundColor = UIColor.gray
-            let button = UIButton(frame: CGRect(x: 0, y: 10, width: 60, height: 10))
-            button.setTitle("User Information", for: UIControlState.normal)
-            view.addSubview(button)
-            return view
-        } else if section == 1 {
-            let view = UIView(frame: CGRect(x: 10, y: 50, width: 120, height: 70))
-            view.backgroundColor = UIColor.gray
-            let button = UIButton(frame: CGRect(x: 0, y: 10, width: 60, height: 10))
-            
-            button.translatesAutoresizingMaskIntoConstraints = true
-            button.setTitle("Shipping To", for: UIControlState.normal)
-            view.addSubview(button)
-            return view
-        }  else {
-            let view = UIView(frame: CGRect(x: 10, y: 50, width: 120, height: 70))
-            view.backgroundColor = UIColor.gray
-            let button = UIButton(frame: CGRect(x: 0, y: 10, width: 60, height: 10))
-            button.setTitle("Payment", for: UIControlState.normal)
-            view.addSubview(button)
-            button.addTarget(self, action: #selector(self.buttonAction), for: UIControlEvents.touchUpInside)
-         
-            return view
-        }
-    }
-    
-    func buttonAction(sender: UIButton!) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let next = resolver.resolve(CheckoutViewController.self)!
-        let next = resolver.resolve(AddressEditViewController.self)!
-        present(next, animated: true, completion: nil)
-        
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        if indexPath.section == 0 {
+            print("\(indexPath.row)th row is tapped!")
+            
+//            let next = resolver.resolve(AddressEditViewController.self)!
+//            present(next, animated: true, completion: nil)
+        } else if indexPath.section == 1 {
+            print("2nd section's item is tapped")
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        let separatorView = UIView(frame: CGRect(x: tableView.separatorInset.left, y: footerView.frame.height, width: tableView.frame.width - tableView.separatorInset.right, height: 10))
-        separatorView.backgroundColor = UIColor.white
-        footerView.addSubview(separatorView)
-        return footerView
-    }
-    
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Cancel"
-    }
-
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete && indexPath.section == 3 {
-            if editingStyle == .delete {
-                viewModel.paymentTest.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        } else {
-            print("test")
-        }
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 350, height: 7))
+        return footer
     }
 }

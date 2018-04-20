@@ -19,17 +19,15 @@ class AddressCell: UITableViewCell {
     @IBOutlet weak var zipCodeLabel: UILabel!
     
     
-    var item: Address? {
+    var item: [Address]? {
         didSet {
             guard let item = item else { return }
-                fullNameLabel.text = item.receiver
-//            let test = item.address.filter { $0.isDefault}
-//            addressLabel.text = "\(test.first!.address1) \(test.first!.address2)"
-//            zipCodeLabel.text = "\(test.first!.postalCode)"
-            addressLabel.text = "\(item.address1) \(item.address2)"
-            zipCodeLabel.text = item.postalCode
-            
-            
+                let test = item.filter { $0.isDefault}
+                fullNameLabel.text = item.first?.receiver
+                addressLabel.text = "\(test.first!.address1) \(test.first!.address2)"
+                zipCodeLabel.text = "\(test.first!.postalCode)"
+//            addressLabel.text = "\(item.address1) \(item.address2)"
+//            zipCodeLabel.text = item.postalCode
         }
     }
     

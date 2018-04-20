@@ -18,46 +18,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAl-Ze-Aiw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="BwS-gK-IUT"/>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5V4-Ta-2eL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="16" y="84" width="343" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="140" id="ClE-sZ-bY4" userLabel="UserInfo">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ClE-sZ-bY4" id="U5n-6W-CEv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="140" id="sFe-CA-nqp" userLabel="ShippingTo">
-                                        <rect key="frame" x="0.0" y="168" width="375" height="140"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sFe-CA-nqp" id="YoE-KW-jwf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="140" id="xXR-O7-9bq" userLabel="Payment">
-                                        <rect key="frame" x="0.0" y="308" width="375" height="140"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xXR-O7-9bq" id="WIz-bY-9da">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-iE-1LL">
+                                <rect key="frame" x="11" y="562" width="353" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or Continue Shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLj-yA-TNe">
+                                        <rect key="frame" x="93" y="4.5" width="167" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GLj-yA-TNe" firstAttribute="centerY" secondItem="fEu-iE-1LL" secondAttribute="centerY" id="LWE-eb-qf8"/>
+                                    <constraint firstItem="GLj-yA-TNe" firstAttribute="centerX" secondItem="fEu-iE-1LL" secondAttribute="centerX" id="WVC-R5-YHX"/>
+                                    <constraint firstAttribute="height" constant="30" id="vUU-Ga-EPX"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phg-O6-8fE">
+                                <rect key="frame" x="11" y="604" width="353" height="51"/>
+                                <color key="backgroundColor" red="0.89828271339999999" green="0.89719402790000002" blue="0.90917677350000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" id="1Oi-FQ-os0"/>
-                            <constraint firstItem="deG-40-Az2" firstAttribute="bottom" secondItem="5V4-Ta-2eL" secondAttribute="bottom" id="28z-x2-Qhc"/>
-                            <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="5V4-Ta-2eL" secondAttribute="trailing" id="qzQ-BZ-9jX"/>
-                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" id="xCc-Se-B49"/>
+                            <constraint firstItem="deG-40-Az2" firstAttribute="bottom" secondItem="phg-O6-8fE" secondAttribute="bottom" constant="12" id="3L4-b2-1QX"/>
+                            <constraint firstItem="bAl-Ze-Aiw" firstAttribute="leading" secondItem="5V4-Ta-2eL" secondAttribute="leading" constant="-16" id="7Ad-Sz-MA5"/>
+                            <constraint firstItem="fEu-iE-1LL" firstAttribute="top" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="8" id="7xj-nd-MKJ"/>
+                            <constraint firstItem="phg-O6-8fE" firstAttribute="top" secondItem="fEu-iE-1LL" secondAttribute="bottom" constant="12" id="Al2-2T-fbX"/>
+                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="16" id="Arz-Cb-ZVy"/>
+                            <constraint firstItem="bAl-Ze-Aiw" firstAttribute="trailing" secondItem="5V4-Ta-2eL" secondAttribute="trailing" constant="16" id="DqM-ir-sdP"/>
+                            <constraint firstItem="fEu-iE-1LL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="11" id="TM7-9P-quC"/>
+                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="bAl-Ze-Aiw" secondAttribute="bottom" constant="20" id="V25-1Y-cVz"/>
+                            <constraint firstItem="bAl-Ze-Aiw" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" id="auE-wo-xMo"/>
+                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="trailing" secondItem="deG-40-Az2" secondAttribute="trailing" constant="-16" id="b1Y-Fi-6nV"/>
+                            <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="fEu-iE-1LL" secondAttribute="trailing" constant="11" id="ctx-IK-Rzj"/>
+                            <constraint firstItem="deG-40-Az2" firstAttribute="bottom" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="113" id="mEz-KZ-mxF"/>
+                            <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="phg-O6-8fE" secondAttribute="trailing" constant="11" id="q9z-sJ-GjC"/>
+                            <constraint firstItem="phg-O6-8fE" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="11" id="rnp-hQ-FhN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="deG-40-Az2"/>
                     </view>

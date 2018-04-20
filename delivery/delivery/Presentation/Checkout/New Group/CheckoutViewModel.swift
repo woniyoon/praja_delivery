@@ -13,7 +13,7 @@ import RxDataSources
 
 class CheckoutViewModel: BaseViewModel {
     
-    public var user = BehaviorRelay<[SectionModel<String, Any>]>(value: [])
+    public var user = BehaviorRelay<[SectionModel<String, User>]>(value: [])
 
     var firstName = BehaviorRelay(value: "")
     var lastName = BehaviorRelay(value: "")
@@ -56,9 +56,9 @@ class CheckoutViewModel: BaseViewModel {
                 
                 self.paymentTest = self.payment.value
                 
-                self.user.accept([SectionModel(model: "User Information", items: test),
-                                  SectionModel(model: "Shipping To", items: self.address.value),
-                                  SectionModel(model: "Payment", items: self.payment.value)
+                self.user.accept([SectionModel(model: "User Information", items:                test),
+                                  SectionModel(model: "Shipping To", items: test),
+                                  SectionModel(model: "Payment", items: test)
                                  
                     ])
                 self.address.accept(user.address)
