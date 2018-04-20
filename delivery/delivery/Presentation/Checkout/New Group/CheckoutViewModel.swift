@@ -9,10 +9,11 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class CheckoutViewModel: BaseViewModel {
     
-    public var user = BehaviorRelay<[User]>(value: [])
+    public var user = BehaviorRelay<[SectionModel<String, Any>]>(value: [])
 
     var firstName = BehaviorRelay(value: "")
     var lastName = BehaviorRelay(value: "")
@@ -23,6 +24,7 @@ class CheckoutViewModel: BaseViewModel {
     var totalPoint = BehaviorRelay(value: "")
     var address = BehaviorRelay<[Address]>(value: [])
     var payment = BehaviorRelay<[Payment]>(value: [])
+    var paymentTest: [Payment] = []
     
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: CheckoutUseCaseProtocol
@@ -52,7 +54,13 @@ class CheckoutViewModel: BaseViewModel {
                 
                 let test = [User(firstName: user.firstName, lastName: user.lastName, mobileNumber: user.mobileNumber, dateOfBirth: user.dateOfBirth, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
                 
-                self.user.accept(test)
+                self.paymentTest = self.payment.value
+                
+                self.user.accept([SectionModel(model: "User Information", items: test),
+                                  SectionModel(model: "Shipping To", items: self.address.value),
+                                  SectionModel(model: "Payment", items: self.payment.value)
+                                 
+                    ])
                 self.address.accept(user.address)
                 
             }, onError: { (err) in

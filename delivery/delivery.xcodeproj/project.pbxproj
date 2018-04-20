@@ -73,6 +73,8 @@
 		913628A72075ADD300994FEB /* CheckoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913628A62075ADD300994FEB /* CheckoutUseCase.swift */; };
 		913C148A2069DABC001C2A9B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913C14882069DABC001C2A9B /* CollectionViewCell.swift */; };
 		913C148B2069DABC001C2A9B /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913C14892069DABC001C2A9B /* CollectionViewCell.xib */; };
+		91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91512C932086E1FC00E80B08 /* PaymentCell.swift */; };
+		91512C962086E1FC00E80B08 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91512C942086E1FC00E80B08 /* PaymentCell.xib */; };
 		9183196B20731893002DF8AA /* TrendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9183196920731893002DF8AA /* TrendsCell.swift */; };
 		9183196C20731893002DF8AA /* TrendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9183196A20731893002DF8AA /* TrendsCell.xib */; };
 		91A11D2E20746CC800C3C3DB /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A11D2D20746CC800C3C3DB /* BaseLabel.swift */; };
@@ -223,6 +225,8 @@
 		913628A62075ADD300994FEB /* CheckoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUseCase.swift; sourceTree = "<group>"; };
 		913C14882069DABC001C2A9B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		913C14892069DABC001C2A9B /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		91512C932086E1FC00E80B08 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		91512C942086E1FC00E80B08 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		9183196920731893002DF8AA /* TrendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsCell.swift; sourceTree = "<group>"; };
 		9183196A20731893002DF8AA /* TrendsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendsCell.xib; sourceTree = "<group>"; };
 		91A11D2D20746CC800C3C3DB /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
@@ -460,6 +464,8 @@
 				912153E02075DBBE0057B146 /* UserInfoCell.xib */,
 				91A152442082D9BF006C816D /* AddressCell.swift */,
 				91A152452082D9BF006C816D /* AddressCell.xib */,
+				91512C932086E1FC00E80B08 /* PaymentCell.swift */,
+				91512C942086E1FC00E80B08 /* PaymentCell.xib */,
 			);
 			path = CheckoutCell;
 			sourceTree = "<group>";
@@ -941,6 +947,7 @@
 				D775FF952065C20C002180F7 /* ReviewCell.xib in Resources */,
 				BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */,
 				2C3BA6CA20578F2600C438C0 /* Order.storyboard in Resources */,
+				91512C962086E1FC00E80B08 /* PaymentCell.xib in Resources */,
 				BBA54AC1203D178D00D69954 /* Main.storyboard in Resources */,
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				91D58513207C5EA100C9BEB5 /* Checkout.storyboard in Resources */,
@@ -1078,11 +1085,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-f0850809/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -1098,11 +1107,13 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -1136,6 +1147,7 @@
 				D7AAD0B32041943100D2971C /* ProductDetailTranslator.swift in Sources */,
 				2C3BA6C3205787BE00C438C0 /* OrderTranslator.swift in Sources */,
 				8603A7D92057856B00CB7E5E /* UserUseCase.swift in Sources */,
+				91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */,
 				D775FF872065AF30002180F7 /* ReviewListUseCase.swift in Sources */,
 				2C3BA6BE205783B900C438C0 /* OrderFirebaseDataStore.swift in Sources */,
 				D716B27E205D03730089E312 /* LocalCollection.swift in Sources */,

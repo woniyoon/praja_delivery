@@ -13,61 +13,53 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="UserInfoCell" customModule="delivery" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="290" height="137"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="UserInfoCell" customModule="delivery" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="290" height="136.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mX-TR-FHS">
-                        <rect key="frame" x="20" y="43" width="254" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mX-TR-FHS">
+                        <rect key="frame" x="20" y="8.5" width="164" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="phoneNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5D-sz-ist">
-                        <rect key="frame" x="20" y="70" width="254" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5D-sz-ist">
+                        <rect key="frame" x="20" y="34" width="164" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="emailAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qM-On-uUv">
-                        <rect key="frame" x="20" y="96" width="254" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qM-On-uUv">
+                        <rect key="frame" x="20" y="60" width="164" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnA-Kw-klZ">
-                        <rect key="frame" x="20" y="15" width="128" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" red="0.9414504573106699" green="0.94475960279778282" blue="0.95468703925912146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="a5D-sz-ist" secondAttribute="trailing" constant="16" id="84g-3x-ROm"/>
                     <constraint firstItem="a5D-sz-ist" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="AeJ-5I-EU9"/>
                     <constraint firstAttribute="trailing" secondItem="4mX-TR-FHS" secondAttribute="trailing" constant="16" id="BM6-Cu-gmz"/>
                     <constraint firstItem="6qM-On-uUv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="DAw-gx-GqL"/>
+                    <constraint firstItem="4mX-TR-FHS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8.5" id="FqU-k6-9G7"/>
                     <constraint firstAttribute="trailing" secondItem="6qM-On-uUv" secondAttribute="trailing" constant="16" id="M3X-Ia-RcM"/>
                     <constraint firstItem="a5D-sz-ist" firstAttribute="top" secondItem="4mX-TR-FHS" secondAttribute="bottom" constant="5" id="P3R-Pb-WNv"/>
-                    <constraint firstAttribute="bottom" secondItem="6qM-On-uUv" secondAttribute="bottom" constant="19.5" id="ReI-83-Omx"/>
-                    <constraint firstItem="GnA-Kw-klZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="US5-Za-beI"/>
+                    <constraint firstAttribute="bottom" secondItem="6qM-On-uUv" secondAttribute="bottom" constant="18.5" id="XcD-SP-QrW"/>
                     <constraint firstItem="4mX-TR-FHS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="YFd-Nf-bAw"/>
-                    <constraint firstItem="4mX-TR-FHS" firstAttribute="top" secondItem="GnA-Kw-klZ" secondAttribute="bottom" constant="8" id="dtM-hb-1KK"/>
                     <constraint firstItem="6qM-On-uUv" firstAttribute="top" secondItem="a5D-sz-ist" secondAttribute="bottom" constant="5" id="gXa-Ac-RE7"/>
-                    <constraint firstItem="GnA-Kw-klZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="ksJ-yS-gj3"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.96875482797622681" green="0.96886354684829712" blue="0.9686921238899231" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="emailLabel" destination="6qM-On-uUv" id="8Hk-8K-Gh0"/>
                 <outlet property="mobileNumberLabel" destination="a5D-sz-ist" id="JW0-v2-Myr"/>
                 <outlet property="nameLabel" destination="4mX-TR-FHS" id="MTB-Uv-EDA"/>
             </connections>
-            <point key="canvasLocation" x="19" y="100.5"/>
+            <point key="canvasLocation" x="12" y="119"/>
         </tableViewCell>
     </objects>
 </document>

@@ -36,4 +36,9 @@ class UserInfoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+//    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 16, 0, 16))
+//    }
 }
