@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxCocoa
+import RealmSwift
 import RxSwift
 import Firebase
 
@@ -16,12 +17,17 @@ import Firebase
 class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var cartQty: UILabel!
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var productsIds = [Int:String]()
     private var shoppingCart = ShoppingCart()
     private var viewModel: ProductListViewModel!
+    private var cartViewModel: ShoppingCartViewModel!
     public var keyword: String!
+
 
     var gridLayout: GridLayout!
     lazy var listLayout: ListLayout = {
@@ -41,6 +47,8 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         bindTableView()
         viewModel.fetchProductList(with: "")
         
+//        shoppingCartProducts = viewModel.fetchShoppingCart()
+        
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
@@ -53,6 +61,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             { row, product, cell in
                 cell.product = product
             }.disposed(by: disposeBag)
+
     }
 
     
@@ -89,27 +98,33 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             addProductCart.setImage(#imageLiteral(resourceName: "addcart"), for: UIControlState.normal)
             addProductCart.addTarget(self, action: #selector(editButtonTapped), for: UIControlEvents.touchUpInside)
             
-            let fetchCart = UIButton(frame: CGRect(x:150, y:100, width:40,height:40))
-            fetchCart.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-            fetchCart.setImage(#imageLiteral(resourceName: "search"), for: UIControlState.normal)
-            fetchCart.addTarget(self, action: #selector(fetchTest), for: UIControlEvents.touchUpInside)
-            
             addProductCart.tag = indexPath.row
             productsIds[addProductCart.tag] = productCell.product?.productId
             
             cell.addSubview(addProductCart)
-            cell.addSubview(fetchCart)
         }
     }
     
     @IBAction func editButtonTapped(sender: UIButton?) -> Void {
         
-        shoppingCart.idProducts = productsIds[sender!.tag]!
-        shoppingCart.quantity = 1
-        shoppingCart.id = sender!.tag
-        viewModel.addProductShoppingCart(with: shoppingCart)
-        print("Porduct added to cart \(sender!.tag) \(productsIds[sender!.tag])")
+        let myPrimaryKey = String(sender!.tag)
         
+        if viewModel.productAlreadyInCart(with: myPrimaryKey) {
+            let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+            let alertController = UIAlertController(title: projectName.uppercased(), message:
+                "Product already added to cart !", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
+            
+            present(alertController, animated: true, completion: nil)
+            
+        } else {
+            shoppingCart.idProducts = productsIds[sender!.tag]!
+            shoppingCart.quantity = 1
+            shoppingCart.id = sender!.tag
+            viewModel.addProductShoppingCart(with: shoppingCart)
+            print("Product added to cart \(sender!.tag) \(String(describing: productsIds[sender!.tag]))")
+            
+        }
     }
     
     @IBAction func fetchTest(sender: UIButton?) -> Void {
@@ -124,6 +139,5 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         let next = resolver.resolve(ShoppingCartViewController.self)!
         present(next, animated: true, completion: nil)
     }
-    
-    
+
 }

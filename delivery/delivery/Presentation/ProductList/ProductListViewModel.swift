@@ -36,11 +36,22 @@ class ProductListViewModel: BaseViewModel {
     
     func addProductShoppingCart(with shoppingCart: ShoppingCart){
         useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
+        
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCart]> {
         
         return useCaseShopping.fetchShoppingCart()
+    }
+    
+    func productAlreadyInCart(with primaryKey: String)-> Bool{
+        var result = false
+        let realm = try! Realm()
+        let shoppingCartExist = realm.object(ofType: ShoppingCartEntity.self, forPrimaryKey: primaryKey)
+        if shoppingCartExist != nil {
+            result = true
+        }
+        return result
     }
     
 }

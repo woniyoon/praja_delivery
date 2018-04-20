@@ -24,15 +24,7 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         shoppingCart.id = realm.getNewId(type: ShoppingCartEntity.self)!
         realm.addData(object: shoppingCart)
     }
-    
-    //
-    //                for carItem in realm.getData(type: ShoppingCartEntity.self)! {
-    //                    let cartItem = carItem as! ShoppingCartEntity
-    //
-    //                    print("id Product \(cartItem.idProducts)")
-    //
-    //                }
-    
+        
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
         let realm = RealmManager.sharedInstance
         

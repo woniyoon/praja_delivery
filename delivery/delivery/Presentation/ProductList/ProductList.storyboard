@@ -152,6 +152,13 @@
                                     <action selector="gridPressed:" destination="diD-ja-UvS" eventType="touchUpInside" id="0Zv-br-JmU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBb-6T-glX">
+                                <rect key="frame" x="323" y="15" width="24" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -172,6 +179,7 @@
                         <viewLayoutGuide key="safeArea" id="Xxk-hp-uoM"/>
                     </view>
                     <connections>
+                        <outlet property="cartQty" destination="xBb-6T-glX" id="FEh-aU-mF7"/>
                         <outlet property="collectionView" destination="Dbz-LK-2oa" id="MjI-YL-EnL"/>
                     </connections>
                 </viewController>

@@ -57,6 +57,7 @@ final class ViewControllerAssembly: Assembly {
             return vc!
         }
         container.register(ProductListViewController.self) { _ in
+
             let dataStore  = container.resolve(ProductListDataStoreProtocol.self)
             let repository = container.resolve(ProductListRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(ProductListTranslator.self)

@@ -14,13 +14,16 @@ import Firebase
 
 class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
 
+    @IBOutlet weak var binButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var subTotal: UILabel!
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var shoppingCart = ShoppingCart()
     private var viewModel: ShoppingCartViewModel!
+    private var editModeEnabled = false
     public var keyword: String!
+    
     
     var gridLayout: GridLayout!
     lazy var listLayout: ListLayout = {
@@ -100,5 +103,19 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
             cell.addSubview(productQty)
         }
     }
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    func deleteProductCell(sender:UIButton) {
+//        // Put the index number of the delete button the use tapped in a variable
+//        let i: Int = (sender.layer.valueForKey("index")) as Int
+//        // Remove an object from the collection view's dataSource
+//        imageFileNames.removeAtIndex(i)
+//
+//        // Refresh the collection view
+//        self.collectionView!.reloadData()
+    }
+
     
 }
