@@ -66,17 +66,30 @@
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-0C-4dz">
+                                                    <rect key="frame" x="4" y="4" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="M4y-sg-HjJ"/>
+                                                        <constraint firstAttribute="height" constant="50" id="oT9-sR-yLi"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deleteFromCart:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="OPR-oq-Uk6"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="gqQ-aK-N6B" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="8" id="1aY-Qj-raH"/>
                                             <constraint firstAttribute="bottom" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="42" id="AaS-fp-0uu"/>
                                             <constraint firstItem="pHP-b4-dbB" firstAttribute="top" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="8" id="Abj-8a-yeh"/>
+                                            <constraint firstItem="pXN-0C-4dz" firstAttribute="top" secondItem="OXc-3e-0PO" secondAttribute="top" constant="4" id="Cfx-7v-hn5"/>
                                             <constraint firstAttribute="trailing" secondItem="gqQ-aK-N6B" secondAttribute="trailing" constant="8" id="FtM-ic-cFt"/>
                                             <constraint firstItem="NMv-6W-5fh" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="9" id="HNv-eO-Gtg"/>
                                             <constraint firstItem="NMv-6W-5fh" firstAttribute="top" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="4" id="Vpd-h4-IqO"/>
                                             <constraint firstItem="GRR-zz-4Fo" firstAttribute="centerX" secondItem="OXc-3e-0PO" secondAttribute="centerX" id="XZz-RL-lSp"/>
                                             <constraint firstItem="Fma-ay-li7" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="9" id="ezQ-Xm-Atu"/>
+                                            <constraint firstItem="pXN-0C-4dz" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="4" id="hLq-rn-Beq"/>
                                             <constraint firstItem="gqQ-aK-N6B" firstAttribute="top" secondItem="GRR-zz-4Fo" secondAttribute="bottom" constant="4" id="hVi-AS-Izu"/>
                                             <constraint firstItem="GRR-zz-4Fo" firstAttribute="top" secondItem="OXc-3e-0PO" secondAttribute="topMargin" constant="-8" id="kmc-be-AKZ"/>
                                             <constraint firstItem="GRR-zz-4Fo" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leadingMargin" constant="-8" id="lxr-BI-tAl"/>
@@ -85,6 +98,7 @@
                                         </constraints>
                                         <size key="customSize" width="145" height="221"/>
                                         <connections>
+                                            <outlet property="deleteProduct" destination="pXN-0C-4dz" id="ZVJ-RC-F5f"/>
                                             <outlet property="name" destination="gqQ-aK-N6B" id="gvS-1m-Ffw"/>
                                             <outlet property="oldPrice" destination="pHP-b4-dbB" id="f5S-LA-PKs"/>
                                             <outlet property="percentage" destination="Fma-ay-li7" id="ZpO-De-SxY"/>
@@ -225,6 +239,9 @@
                                         <rect key="frame" x="321" y="7" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Bin"/>
+                                        <connections>
+                                            <action selector="deleteProduct:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="NaW-Ih-goX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-Hb-reE">
                                         <rect key="frame" x="266" y="7" width="46" height="30"/>
@@ -273,4 +290,7 @@
             <point key="canvasLocation" x="397.60000000000002" y="116.49175412293854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="delete" width="20" height="20"/>
+    </resources>
 </document>

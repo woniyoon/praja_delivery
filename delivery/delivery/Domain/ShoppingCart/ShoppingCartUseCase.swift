@@ -13,6 +13,7 @@ protocol ShoppingCartUseCaseProtocol {
     func deleteShoppingCart()
     func addProductShoppingCart(shoppingCart: ShoppingCart)
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
+    func deleteProductFromShoppingCart(with primaryKey: String)
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
@@ -41,5 +42,8 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
         }
     }
     
+    func deleteProductFromShoppingCart(with primaryKey: String){
+        repository.deleteProductFromShoppingCart(with: primaryKey)
+    }
     
 }

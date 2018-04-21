@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import Firebase
 
-class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
+class ShoppingCartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var binButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -82,6 +82,26 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Initialize the reusable Collection View Cell with our custom class
+        let shoppingCartCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCartCell", for: indexPath) as! ShoppingCartCell
+        
+        // Give the delete button an index number
+        shoppingCartCell.deleteProduct.layer.setValue(indexPath.row, forKey: "index")
+        
+        // Add an action function to the delete button
+        shoppingCartCell.deleteProduct.addTarget(self, action: "deleteProductFromCart:", for: UIControlEvents.touchUpInside)
+        // Return the cell
+        
+        print(" section \(indexPath.section)")
+        return shoppingCartCell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if collectionView == self.collectionView {
@@ -97,25 +117,21 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
             productQty.layer.cornerRadius = 18
             productQty.layer.borderWidth = 1
             productQty.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1)
-//            addProductCart.addTarget(self, action: #selector(editButtonTapped), for: UIControlEvents.touchUpInside)
             productQty.tag = indexPath.row
+    
+            productCell.addSubview(productQty)
             
-            cell.addSubview(productQty)
+            // Add delete button to cell
+
+            productCell.deleteProduct.tag = indexPath.row
+            productCell.deleteProduct.addTarget(self, action: #selector(deleteProductFromCart), for: UIControlEvents.touchUpInside)
+            
         }
     }
     @IBAction func close(_ sender: Any) {
         dismiss(animated: false, completion: nil)
     }
     
-    func deleteProductCell(sender:UIButton) {
-//        // Put the index number of the delete button the use tapped in a variable
-//        let i: Int = (sender.layer.valueForKey("index")) as Int
-//        // Remove an object from the collection view's dataSource
-//        imageFileNames.removeAtIndex(i)
-//
-//        // Refresh the collection view
-//        self.collectionView!.reloadData()
-    }
     @IBAction func checkoutPurchase(_ sender: Any) {
         viewModel.deleteShoppingCart()
         
@@ -124,6 +140,66 @@ class ShoppingCartViewController: BaseViewController, UICollectionViewDelegate {
             "Shopping Cart Deleted !", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
         dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func deleteProduct(_ sender: Any) {
+        if(editModeEnabled == false) {
+            // Put the collection view in edit mode
+            self.binButton.setTitle("Done", for: .normal)
+            editModeEnabled = true
+            
+            
+            // Loop through the collectionView's visible cells
+            for item in self.collectionView!.visibleCells {
+                let indexPath: NSIndexPath = self.collectionView!.indexPath(for: item as! ShoppingCartCell)! as NSIndexPath
+                let cell: ShoppingCartCell = self.collectionView.cellForItem(at: indexPath as IndexPath) as! ShoppingCartCell!
+                
+                cell.deleteProduct.isHidden = false
+            }
+        } else {
+            // Take the collection view out of edit mode
+            self.binButton.setTitle("Edit", for: .normal)
+            editModeEnabled = false
+            
+            // Loop through the collectionView's visible cells
+            for item in self.collectionView!.visibleCells {
+                let indexPath: NSIndexPath = self.collectionView!.indexPath(for: item as! ShoppingCartCell)! as NSIndexPath
+                let cell: ShoppingCartCell = self.collectionView.cellForItem(at: indexPath as IndexPath) as! ShoppingCartCell!
+                cell.deleteProduct.isHidden = true
+            }
+        }
+    }
+
+    
+    @IBAction func deleteFromCart(_ sender: Any) {
+    }
+    
+    
+    func deleteProductFromCart(sender: UIButton?) -> Void {
+        
+        // Put the index number of the delete button the use tapped in a variable
+        let i = (sender!.layer.value(forKey: "index"))
+        // Remove an object from the collection view's dataSource
+        
+        // Refresh the collection view
+        self.collectionView!.reloadData()
+
+        
+        let indexPath = IndexPath(row: sender!.tag, section: 1)
+        
+//        let cell = self.collectionView.cellForItem(at: indexPath)
+//        let productCell: ShoppingCartCell = self.collectionView.cellForItem(at: indexPath) as! ShoppingCartCell!
+//
+//        let productId = productCell.productShoppingCart?.product.productId
+//
+//        self.viewModel.deleteProductFromShoppingCart(with: productId!)
+        
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [indexPath])
+        }) { (finished) in
+            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        }
+
     }
 
 }

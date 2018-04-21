@@ -13,5 +13,6 @@ protocol ShoppingCartDataStoreProtocol {
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
     func deleteShoppingCart()
+    func deleteProductFromShoppingCart(with primaryKey: String)
     
 }

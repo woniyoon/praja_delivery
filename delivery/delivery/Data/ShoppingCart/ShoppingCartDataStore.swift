@@ -17,6 +17,16 @@ import Firebase
 class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
     let db = Firestore.firestore()
     
+    func deleteProductFromShoppingCart(with primaryKey: String) {
+        let realm = try! Realm()
+        let shoppingCartExist = realm.object(ofType: ShoppingCartEntity.self, forPrimaryKey: primaryKey)
+        if shoppingCartExist != nil {
+            try!   realm.write {
+                realm.delete(shoppingCartExist!)
+            }
+        }
+    }
+    
     func deleteShoppingCart() {
         let realm = RealmManager.sharedInstance
         realm.deleteAllFromDatabase()
@@ -26,7 +36,7 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         let realm = RealmManager.sharedInstance
         print("Realm - \(shoppingCart.id)")
         
-         shoppingCart.id = String(realm.getNewId(type: ShoppingCartEntity.self)!)
+        shoppingCart.id = String(realm.getNewId(type: ShoppingCartEntity.self)!)
         realm.addData(object: shoppingCart)
     }
         

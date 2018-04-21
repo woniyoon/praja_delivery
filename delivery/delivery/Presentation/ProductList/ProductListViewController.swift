@@ -101,6 +101,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             addProductCart.tag = indexPath.row + 1
             productsIds[addProductCart.tag] = productCell.product?.productId
             
+            
             cell.addSubview(addProductCart)
         }
     }

@@ -50,5 +50,9 @@ class ShoppingCartViewModel: BaseViewModel {
         useCase.deleteShoppingCart()
     }
     
+    func deleteProductFromShoppingCart(with primaryKey: String){
+        useCase.deleteProductFromShoppingCart(with: primaryKey)
+    }
+    
         
 }

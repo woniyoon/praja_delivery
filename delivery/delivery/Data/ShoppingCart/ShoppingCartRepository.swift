@@ -12,6 +12,7 @@ protocol ShoppingCartRepositoryProtocol{
     func deleteShoppingCart()
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
+    func deleteProductFromShoppingCart(with primaryKey: String)
 }
 
 class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
@@ -31,6 +32,10 @@ class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
     
     func deleteShoppingCart() {
         dataStore.deleteShoppingCart()
+    }
+    
+    func deleteProductFromShoppingCart(with primaryKey: String){
+        dataStore.deleteProductFromShoppingCart(with: primaryKey)
     }
     
     
