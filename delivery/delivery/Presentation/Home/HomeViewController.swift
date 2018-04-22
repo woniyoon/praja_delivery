@@ -128,8 +128,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     @IBAction func test(_ sender: Any) {
-        let next = resolver.resolve(CheckoutViewController.self)!
+//        let next = resolver.resolve(CheckoutViewController.self)!
 //        let next = resolver.resolve(AddressEditViewController.self)!
+        let next = resolver.resolve(AddressListViewController.self)!
+
         present(next, animated: true, completion: nil)
     }
     

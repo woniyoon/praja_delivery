@@ -12,7 +12,9 @@ import RxSwift
 protocol UserRepositoryProtocol {
     func fetchUser() -> Single<UserEntity>
     func fetchAddress(index: Int) -> Single<[AddressEntity]>
+    func fetchAddressList() -> Single<[AddressEntity]>
     func updateAddress(address: AddressEntity) -> Void
+    func deleteAddress(index: Int) -> Void
 }
 
 class UserRepository: UserRepositoryProtocol {    
@@ -37,7 +39,20 @@ class UserRepository: UserRepositoryProtocol {
         }
     }
     
+    func fetchAddressList() -> Single<[AddressEntity]> {
+        if let user = self.user {
+            return Single.just(user.address)
+        } else {
+            return fetchUser()
+                .map{ user in user.address}
+        }
+    }
+    
     func updateAddress(address: AddressEntity) {
+    }
+    
+    func deleteAddress(index: Int) {
+        
     }
 }
 

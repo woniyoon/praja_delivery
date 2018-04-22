@@ -41,7 +41,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                     let cell = tv.dequeueReusableCell(withIdentifier: UserInfoCell.Identifier) as! UserInfoCell
                     let element = element
                     cell.item = element
-                    cell.backgroundColor = UIColor.clear
                 
                     return cell
                 } else if indexPath.section == 1 {
@@ -102,7 +101,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         registerCell()
         checkoutTableView.estimatedRowHeight = 300
         checkoutTableView.allowsSelection = true
-//        checkoutTableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,16 +109,14 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
 
         if indexPath.section == 0 {
             print("\(indexPath.row)th row is tapped!")
-            
-//            let next = resolver.resolve(AddressEditViewController.self)!
-//            present(next, animated: true, completion: nil)
         } else if indexPath.section == 1 {
-            print("2nd section's item is tapped")
+            let next = resolver.resolve(AddressEditViewController.self)!
+            present(next, animated: true, completion: nil)
         }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 350, height: 7))
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 2))
         return footer
     }
 }

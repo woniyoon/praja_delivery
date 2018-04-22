@@ -37,5 +37,8 @@ final class ViewModelAssembly: Assembly {
         container.register(AddressEditViewModel.self) { (_, useCase: AddressEditUseCaseProtocol) in
             AddressEditViewModel(useCase: useCase)
         }
+        container.register(AddressListViewModel.self) { (_, useCase: AddressListUseCaseProtocol) in
+            AddressListViewModel(useCase: useCase)
+        }
     }
 }
