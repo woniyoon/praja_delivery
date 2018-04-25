@@ -110,7 +110,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         if indexPath.section == 0 {
             print("\(indexPath.row)th row is tapped!")
         } else if indexPath.section == 1 {
-            let next = resolver.resolve(AddressEditViewController.self)!
+            let next = resolver.resolve(AddressListViewController.self)!
             present(next, animated: true, completion: nil)
         }
     }

@@ -10,10 +10,11 @@ import UIKit
 
 class AddressListCell: UITableViewCell {
 
-    @IBOutlet weak var radioButton: UIImageView!
-    @IBOutlet weak var editButton: UIImageView!
-    @IBOutlet weak var deleteButton: UIImageView!
+    @IBOutlet weak var radioButton: UIButton!
 
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     @IBOutlet weak var receiverLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var zipCodeLabel: UILabel!
@@ -30,9 +31,9 @@ class AddressListCell: UITableViewCell {
             zipCodeLabel.text = item.postalCode
             
             if item.isDefault {
-                radioButton.image = #imageLiteral(resourceName: "radio_on")
+                radioButton.setImage(#imageLiteral(resourceName: "radio_on"), for: .normal)
             } else {
-                radioButton.image = #imageLiteral(resourceName: "radio_off")
+                radioButton.setImage(#imageLiteral(resourceName: "radio_off"), for: .normal)
             }
         }
     }

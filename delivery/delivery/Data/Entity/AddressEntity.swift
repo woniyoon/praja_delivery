@@ -1,8 +1,8 @@
 //
-//  AddressEntit.swift
+//  AccountEntity.swift
 //  delivery
 //
-//  Created by Jaewon Yoon on 2018-03-18.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ struct AddressEntity {
     public let postalCode: String
     public let country: String
     public let isDefault: Bool
+    public let phoneNumber: String
     
     var dictionary: [String: Any] {
         return [
@@ -27,7 +28,8 @@ struct AddressEntity {
             "province": province,
             "postalCode": postalCode,
             "country": country,
-            "isDefault": isDefault
+            "isDefault": isDefault,
+            "phoneNumber": phoneNumber
         ]
     }
     
@@ -39,7 +41,8 @@ struct AddressEntity {
             let province = dictionary["province"] as? String,
             let postalCode = dictionary["postalCode"] as? String,
             let country = dictionary["country"] as? String,
-            let isDefault = dictionary["isDefault"] as? Bool else { return nil }
+            let isDefault = dictionary["isDefault"] as? Bool,
+            let phoneNumber = dictionary["phoneNumber"] as? String else { return nil }
         
         self.receiver = receiver
         self.address1 = address1
@@ -49,9 +52,10 @@ struct AddressEntity {
         self.postalCode = postalCode
         self.country = country
         self.isDefault = isDefault
+        self.phoneNumber = phoneNumber
     }
     
-    init(receiver: String, address1: String, address2: String, city: String, province: String, postalCode: String, country: String, isDefault: Bool) {
+    init(receiver: String, address1: String, address2: String, city: String, province: String, postalCode: String, country: String, isDefault: Bool, phoneNumber: String) {
         self.receiver = receiver
         self.address1 = address1
         self.address2 = address2
@@ -60,5 +64,6 @@ struct AddressEntity {
         self.postalCode = postalCode
         self.country = country
         self.isDefault = isDefault
+        self.phoneNumber = phoneNumber
     }
 }

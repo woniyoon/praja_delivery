@@ -2,40 +2,39 @@
 //  UserEntity.swift
 //  delivery
 //
-//  Created by Sara N on 2018-03-12.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 
 struct UserEntity {
+        public let firstName: String
+        public let lastName: String
+        public let dateOfBirth: Date?
+        public let mobileNumber: String
+        public let email: String
+        public let totalPoint: Int
+        public var address: [AddressEntity]
+        public let payment: [PaymentEntity]
+        public let coupon: [String : Bool]?
     
-    public let firstName: String
-    public let lastName: String
-    public let mobileNumber: String
-    public let dateOfBirth: Date?
-    public let totalPoint: Int
-    public let email: String
-    public let address: [AddressEntity]
-    public let payment: [PaymentEntity]
-    public let coupon: [String : Bool]?
 
     init?(dictionary: [String: Any]) {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
+            let dateOfBirth = dictionary["dateOfBirth"] as? Date?,
             let mobileNumber = dictionary["mobileNumber"] as? String,
             let email = dictionary["email"] as? String,
             let totalPoint = dictionary["totalPoint"] as? Int else { return nil }
         
-        
-        let dateOfBirth = dictionary["dateOfBirth"] as? Date ?? nil
         let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
         
-        var temp: [AddressEntity]  = []
+        var addressArr: [AddressEntity]  = []
         for address in dictionary["address"] as! [Any] {
-            temp.append(AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!)
+            addressArr.append(AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!)
         }
-        self.address = temp
+        self.address = addressArr
         
         var paymentArr: [PaymentEntity] = []
         for payment in dictionary["payment"] as! [Any] {
@@ -46,9 +45,9 @@ struct UserEntity {
         
         self.firstName = firstName
         self.lastName = lastName
-        self.mobileNumber = mobileNumber
         self.dateOfBirth = dateOfBirth
         self.totalPoint = totalPoint
+        self.mobileNumber = mobileNumber
         self.email = email
         self.coupon = coupon
     }
@@ -59,25 +58,26 @@ struct UserEntity {
         self.mobileNumber = mobileNumber
         self.totalPoint = totalPoint
         self.email = email
-        
+
         var arrOfAddress: [AddressEntity] = []
-        
+
         address.forEach { (address) in
-            arrOfAddress.append(AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault))
+            arrOfAddress.append(AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault, phoneNumber: address.phoneNumber))
         }
-        
+
         self.address = arrOfAddress
-        
+
         var arrOfPayment: [PaymentEntity] = []
-        
+
         payment.forEach { (payment) in
             arrOfPayment.append(PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault))
         }
-        
+
         self.payment = arrOfPayment
-        
+
         guard let dateOfBirth = dateOfBirth,
             let coupon = coupon else { return nil }
+        
         self.dateOfBirth = dateOfBirth
         self.coupon = coupon
     }
@@ -96,3 +96,4 @@ struct UserEntity {
         ]
     }
 }
+

@@ -1,13 +1,14 @@
 //
-//  UserRepository.swift
+//  AccountRepository.swift
 //  delivery
 //
-//  Created by Sara N on 2018-03-12.
+//  Created by Diego H. Vanni on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol UserRepositoryProtocol {
     func fetchUser() -> Single<UserEntity>
@@ -31,11 +32,15 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func fetchAddress(index: Int) -> Single<[AddressEntity]> {
+        var arrWithOneElement: [AddressEntity] = []
         if let user = self.user {
-            return Single.just(user.address)
+            arrWithOneElement.append(user.address[index])
+            return Single.just(arrWithOneElement)
         } else {
             return fetchUser()
-                .map{ user in user.address}
+                .map{ user in
+                    arrWithOneElement.append(user.address[index])
+                    return arrWithOneElement }
         }
     }
     
@@ -49,11 +54,12 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func updateAddress(address: AddressEntity) {
+        dataStore.updateAddress(address: address)
     }
     
     func deleteAddress(index: Int) {
-        
     }
+    
 }
 
 

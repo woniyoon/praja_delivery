@@ -22,9 +22,12 @@ class AddressListViewModel: BaseViewModel {
     }
     
     func fetchAddressList() {
-        let test: [Address] = [Address(receiver: "Jaewon Yoon", address1: "1202", address2: "1050 Burrard St", city: "Vancouver", province: "BC", postalCode: "V6Z 2S3", country: "Canada", isDefault: true),
-                               Address(receiver: "Jiyoung Youn", address1: "1050", address2: "738 Seymour St", city: "Vancouver", province: "BC", postalCode: "V6Z 6F2", country: "Canada", isDefault: false)]
-        addressList.accept(test)
+        useCase.fetchAddressList()
+            .subscribe(onSuccess: { (addressList) in
+                self.addressList.accept(addressList)
+            }, onError: { (err) in
+                print(err)
+            }).disposed(by: disposeBag)
     }
 }
 

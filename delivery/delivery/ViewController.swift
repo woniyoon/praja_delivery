@@ -44,11 +44,7 @@ class ViewController: UIViewController{
     
     @IBAction func accountButtonPressed(_ sender: Any) {
         let next = resolver.resolve(AccountViewController.self)!
-        present(next, animated: true, completion: nil)
-    }
-    
-    @IBAction func signupButtonPressed(_ sender: Any) {
-        let next = resolver.resolve(UserViewController.self)!
+        next.userEmail = "diegoh.vanni@gmail.com"
         present(next, animated: true, completion: nil)
     }
 }

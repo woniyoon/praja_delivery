@@ -1,8 +1,8 @@
 //
-//  Payment.swift
+//  AccountEntity.swift
 //  delivery
 //
-//  Created by Sara N on 2018-02-20.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 

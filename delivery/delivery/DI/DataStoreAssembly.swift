@@ -22,9 +22,6 @@ final class DataStoreAssembly: Assembly {
         container.register(HomeDataStoreProtocol.self) { _ in
             HomeFirebaseDataStore()
         }
-        container.register(UserDataStoreProtocol.self) { _ in
-            UserFirebaseDataStore()
-        }
         container.register(ProductListDataStoreProtocol.self) { _ in
             ProductListFirebaseDataStore()
         }

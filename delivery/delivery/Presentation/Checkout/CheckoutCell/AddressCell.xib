@@ -38,7 +38,7 @@
                                 <rect key="frame" x="335" y="20" width="24" height="24"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Shipping To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3P-sW-8pw">
-                                <rect key="frame" x="24" y="20" width="282" height="21"/>
+                                <rect key="frame" x="57" y="20" width="297" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.33286405460000001" green="0.33286405460000001" blue="0.33286405460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -49,21 +49,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shippingto" translatesAutoresizingMaskIntoConstraints="NO" id="uwS-Bf-Xr5">
+                                <rect key="frame" x="24" y="20" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="21" id="BI6-Ja-cSV"/>
+                                    <constraint firstAttribute="width" constant="21" id="U2d-sj-HNA"/>
+                                    <constraint firstAttribute="height" constant="21" id="ncN-kz-jD9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.89828271339999999" green="0.89719402790000002" blue="0.90917677350000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aGV-EG-OFT" firstAttribute="leading" secondItem="SsR-Or-Vxf" secondAttribute="leading" constant="24" id="5DY-zL-hgt"/>
-                            <constraint firstItem="M3P-sW-8pw" firstAttribute="leading" secondItem="SsR-Or-Vxf" secondAttribute="leading" constant="24" id="AiX-8r-4mu"/>
                             <constraint firstItem="gzC-IG-Uqd" firstAttribute="top" secondItem="M3P-sW-8pw" secondAttribute="top" id="CEG-V5-TyC"/>
                             <constraint firstAttribute="trailing" secondItem="aGV-EG-OFT" secondAttribute="trailing" constant="24" id="Cew-fK-Nah"/>
                             <constraint firstItem="Zk1-K1-zXo" firstAttribute="top" secondItem="aGV-EG-OFT" secondAttribute="bottom" constant="13" id="Iq9-bI-4b9"/>
                             <constraint firstItem="aGV-EG-OFT" firstAttribute="top" secondItem="M3P-sW-8pw" secondAttribute="bottom" constant="11" id="Kh8-Qx-n6r"/>
                             <constraint firstItem="Zk1-K1-zXo" firstAttribute="leading" secondItem="SsR-Or-Vxf" secondAttribute="leading" constant="24" id="QNc-oo-ahC"/>
                             <constraint firstAttribute="trailing" secondItem="Zk1-K1-zXo" secondAttribute="trailing" constant="24" id="RlH-8O-ver"/>
+                            <constraint firstItem="uwS-Bf-Xr5" firstAttribute="top" secondItem="SsR-Or-Vxf" secondAttribute="top" constant="20" id="TmR-P2-ino"/>
                             <constraint firstItem="mVj-bg-e1D" firstAttribute="leading" secondItem="SsR-Or-Vxf" secondAttribute="leading" constant="24" id="U1Y-89-azb"/>
                             <constraint firstItem="M3P-sW-8pw" firstAttribute="top" secondItem="SsR-Or-Vxf" secondAttribute="top" constant="20" id="XNd-pA-jPc"/>
-                            <constraint firstAttribute="trailing" secondItem="M3P-sW-8pw" secondAttribute="trailing" constant="77" id="bvV-UE-XEd"/>
+                            <constraint firstItem="uwS-Bf-Xr5" firstAttribute="leading" secondItem="SsR-Or-Vxf" secondAttribute="leading" constant="24" id="YdS-lg-fBo"/>
+                            <constraint firstAttribute="trailing" secondItem="M3P-sW-8pw" secondAttribute="trailing" constant="29" id="bvV-UE-XEd"/>
                             <constraint firstAttribute="trailing" secondItem="gzC-IG-Uqd" secondAttribute="trailing" constant="24" id="dZ0-B6-lmc"/>
+                            <constraint firstItem="M3P-sW-8pw" firstAttribute="leading" secondItem="uwS-Bf-Xr5" secondAttribute="trailing" constant="12" id="mjr-CQ-7wE"/>
                             <constraint firstAttribute="bottom" secondItem="mVj-bg-e1D" secondAttribute="bottom" constant="20" id="oAW-fc-iEd"/>
                             <constraint firstItem="mVj-bg-e1D" firstAttribute="top" secondItem="Zk1-K1-zXo" secondAttribute="bottom" constant="13" id="rkO-R7-pBI"/>
                             <constraint firstAttribute="trailing" secondItem="mVj-bg-e1D" secondAttribute="trailing" constant="24" id="t7W-Q5-hjB"/>
@@ -90,5 +100,6 @@
     </objects>
     <resources>
         <image name="edit" width="24" height="24"/>
+        <image name="shippingto" width="12" height="12"/>
     </resources>
 </document>
