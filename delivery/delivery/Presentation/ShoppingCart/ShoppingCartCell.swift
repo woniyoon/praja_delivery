@@ -22,38 +22,12 @@ class ShoppingCartCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupViews()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
 
         productImage.image = nil
-    }
-    
-//    let deleteButton: UIButton = {
-//
-//        let button = UIButton(type: UIButtonType.system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        button.alpha = 1
-//        button.isHidden = true
-//        return button
-//    }()
-    
-    func setupViews(){
-        
-        // add a button
-//        addSubview(deleteButton)
-        
-//        let deleteButton = UIButton(frame: CGRect(x: cell.bounds.maxX - 100, y:0, width:50,height:50))
-//        deleteButton.frame = .init(x: self.frame.maxX - 50, y: 0, width: 50, height: 50)
-//        deleteButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-//        deleteButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//        deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
-        // add the touchUpInside target
-//        deleteButton.addTarget(self, action: #selector(btnTapped), for: .touchUpInside)
     }
     
     var productShoppingCart: ProductShoppingCart? {
@@ -69,7 +43,21 @@ class ShoppingCartCell: UICollectionViewCell {
             
             let resource = ImageResource(downloadURL: imageUrl, cacheKey: shoppingCart.product.name)
             self.productImage.kf.setImage(with: resource)
+            self.deleteProduct.isHidden = !isEditing
         }
+    }
+    
+    var isEditing: Bool = false {
+        didSet {
+            deleteProduct.isHidden = !isEditing
+            
+        }
+        
+    }
+    
+    @IBAction func deleteProductDidTap(_ sender: Any) {
+        
+        
     }
 }
 

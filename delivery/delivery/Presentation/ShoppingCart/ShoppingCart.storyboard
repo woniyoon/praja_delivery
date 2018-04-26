@@ -67,14 +67,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-0C-4dz">
-                                                    <rect key="frame" x="4" y="4" width="50" height="50"/>
+                                                    <rect key="frame" x="4" y="4" width="37" height="37"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="M4y-sg-HjJ"/>
-                                                        <constraint firstAttribute="height" constant="50" id="oT9-sR-yLi"/>
+                                                        <constraint firstAttribute="width" constant="37" id="M4y-sg-HjJ"/>
+                                                        <constraint firstAttribute="height" constant="37" id="oT9-sR-yLi"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="delete"/>
                                                     <connections>
-                                                        <action selector="deleteFromCart:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="OPR-oq-Uk6"/>
+                                                        <action selector="deleteProductDidTap:" destination="OXc-3e-0PO" eventType="touchUpInside" id="2mf-ba-SpB"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -232,21 +232,22 @@
                                         <rect key="frame" x="117" y="12" width="141" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3F-Qt-ikZ">
-                                        <rect key="frame" x="321" y="7" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3F-Qt-ikZ">
+                                        <rect key="frame" x="324" y="11" width="41" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Bin"/>
-                                        <connections>
-                                            <action selector="deleteProduct:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="NaW-Ih-goX"/>
-                                        </connections>
+                                        <state key="normal" image="garbage">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-Hb-reE">
-                                        <rect key="frame" x="266" y="7" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uE-Hb-reE">
+                                        <rect key="frame" x="262" y="11" width="54" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Grid"/>
+                                        <state key="normal" image="grid">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="gridPressed:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="anY-yd-fRg"/>
                                         </connections>
@@ -254,7 +255,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSj-aM-521">
                                         <rect key="frame" x="8" y="7" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Close"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="close:" destination="3bo-Fu-A9p" eventType="touchUpInside" id="DP8-vz-hJp"/>
                                         </connections>
@@ -287,10 +290,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kC-Qn-ngB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397.60000000000002" y="116.49175412293854"/>
+            <point key="canvasLocation" x="1076" y="116.49175412293854"/>
         </scene>
     </scenes>
     <resources>
         <image name="delete" width="20" height="20"/>
+        <image name="garbage" width="15" height="17"/>
+        <image name="grid" width="19" height="19"/>
     </resources>
 </document>
