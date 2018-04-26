@@ -12,10 +12,6 @@ import RxSwift
 import RxCocoa
 
 class UserFirebaseDataStore: UserDataStoreProtocol {
-    func updateUser(user: UserEntity) {
-        
-    }
-    
     let db = Firestore.firestore()
     
     func fetchUser() -> Single<UserEntity> {
@@ -40,7 +36,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
             return Disposables.create()
         }
     }
-
+    
     
     func updateAddress(address: AddressEntity) {
         db.collection("users").document("Ljk5vGaGSMkYzviKx68B").updateData([
@@ -53,7 +49,24 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                 print("Document successfully written!")
             }
         }
-
+    }
+    
+    func updateUser(user: UserEntity) -> Completable {
+        print("updateUser in FirebaseDatastore!")
+        return Completable.create { observer in
+            let dict = user.dictionary
+            print(dict)
+            self.db.collection("users").document("hIgQB6Fu5uTgQP1uCUcT").setData(user.dictionary) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
+                } else {
+                    print("Document successfully written!")
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 }
 

@@ -14,14 +14,15 @@ protocol UserRepositoryProtocol {
     func fetchUser() -> Single<UserEntity>
     func fetchAddress(index: Int) -> Single<[AddressEntity]>
     func fetchAddressList() -> Single<[AddressEntity]>
-    func updateAddress(address: AddressEntity) -> Void
+    func addAddress(address: AddressEntity) -> Completable
+    func updateAddress(address: AddressEntity, indexNo: Int) -> Completable
     func deleteAddress(index: Int) -> Void
 }
 
 class UserRepository: UserRepositoryProtocol {    
     
     private let dataStore: UserDataStoreProtocol
-    private var user: UserEntity? = nil
+    private static var user: UserEntity? = nil
 
     init(dataStore: UserDataStoreProtocol) {
         self.dataStore = dataStore
@@ -33,28 +34,54 @@ class UserRepository: UserRepositoryProtocol {
     
     func fetchAddress(index: Int) -> Single<[AddressEntity]> {
         var arrWithOneElement: [AddressEntity] = []
-        if let user = self.user {
+        if let user = UserRepository.user {
             arrWithOneElement.append(user.address[index])
             return Single.just(arrWithOneElement)
         } else {
             return fetchUser()
                 .map{ user in
+                    UserRepository.user = user
                     arrWithOneElement.append(user.address[index])
                     return arrWithOneElement }
         }
     }
     
     func fetchAddressList() -> Single<[AddressEntity]> {
-        if let user = self.user {
+        if let user = UserRepository.user {
+            print("************self.user is not empty********")
             return Single.just(user.address)
         } else {
+            print("************self.user is empty********")
+
             return fetchUser()
-                .map{ user in user.address}
+                .map{ user in
+                    UserRepository.user = user
+                    print(UserRepository.user!)
+                    return user.address
+            }
         }
     }
     
-    func updateAddress(address: AddressEntity) {
-        dataStore.updateAddress(address: address)
+    func addAddress(address: AddressEntity) -> Completable {
+//        print("!@$#%^&*%$%#@$!#$%^&*^%$##@@#$%^&*")
+//        print(address)
+//        if let test = self.user {
+//            print(test)
+//        }
+//        fetchUser().map { (user) in
+//            UserRepository.user = user
+//        }
+        UserRepository.user?.address.append(address)
+    
+        print(UserRepository.user!)
+        return dataStore.updateUser(user: UserRepository.user!)
+    }
+    
+    func updateAddress(address: AddressEntity, indexNo: Int) -> Completable {
+        UserRepository.user?.address.remove(at: indexNo)
+        UserRepository.user?.address.insert(address, at: indexNo)
+        
+        return dataStore.updateUser(user: UserRepository.user!)
     }
     
     func deleteAddress(index: Int) {

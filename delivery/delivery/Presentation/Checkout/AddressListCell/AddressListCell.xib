@@ -42,17 +42,19 @@
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzt-pd-Lti" userLabel="Delete">
                                 <rect key="frame" x="150" y="101" width="150" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="fCv-Aw-WK4"/>
                                 </constraints>
-                                <state key="normal" image="delete"/>
+                                <state key="normal" title="Delete"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe0-oU-wgf" userLabel="Edit">
                                 <rect key="frame" x="0.0" y="101" width="150" height="44"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="RAA-jD-FmB"/>
                                 </constraints>
-                                <state key="normal" image="editButton"/>
+                                <state key="normal" title="Edit"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89828271339999999" green="0.89719402790000002" blue="0.90917677350000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,8 +104,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="delete" width="123" height="44"/>
-        <image name="editButton" width="123" height="44"/>
         <image name="radio_off" width="16" height="16"/>
     </resources>
 </document>

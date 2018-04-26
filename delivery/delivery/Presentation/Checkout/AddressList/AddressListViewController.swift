@@ -38,15 +38,16 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         addressTableView.register(nib, forCellReuseIdentifier: AddressListCell.Identifier)
         
         addressTableView.allowsSelection = false
-    
     }
 
     func bindView() {
         viewModel.addressList.asObservable().bind(to: addressTableView.rx.items(cellIdentifier: AddressListCell.Identifier, cellType: AddressListCell.self))
         { row, item, cell in
             cell.item = item
-            
+
             cell.editButton.addTarget(self, action: #selector(self.editButtonTapped), for: UIControlEvents.touchUpInside)
+            
+            cell.deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: UIControlEvents.touchUpInside)
             
             cell.radioButton.addTarget(self, action: #selector(self.radioButtonSelected), for: UIControlEvents.touchUpInside)
             
@@ -54,8 +55,6 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     }
     
     func editButtonTapped(sender: UIButton) {
-        print("tapped!")
-        
         let cell: AddressListCell = (sender.superview?.superview?.superview) as! AddressListCell
         
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
@@ -63,6 +62,21 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let next = resolver.resolve(AddressEditViewController.self)!
         next.indexNumberOfAddress = index.row
         present(next, animated: true, completion: nil)
+    }
+    
+    func deleteButtonTapped(sender: UIButton) {
+        let cell: AddressListCell = (sender.superview?.superview?.superview) as! AddressListCell
+        let index : IndexPath = self.addressTableView.indexPath(for: cell)!
+
+        var testArr = viewModel.addressList.value
+        if testArr[index.row].isDefault == true {
+            testArr.remove(at: index.row)
+//            testArr[index.row-1].isDefault = true
+        } else {
+            testArr.remove(at: index.row)
+        }
+        
+        viewModel.addressList.accept(testArr)
     }
 
     func radioButtonSelected(sender: UIButton) {
@@ -87,7 +101,6 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         }
         viewModel.addressList.accept(testArr)
         addressTableView.reloadInputViews()
-        
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -95,7 +108,7 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let footerView = UIView()
         let addButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         addButton.setImage(#imageLiteral(resourceName: "new"), for: .normal)
-
+        
         footerView.addSubview(addButton)
         addButton.topAnchor.constraint(equalTo: footerView.topAnchor).isActive = true
         addButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor).isActive = true
@@ -114,11 +127,4 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let next = resolver.resolve(AddressEditViewController.self)!
         present(next, animated: true, completion: nil)
     }
-    
-    func setDeleteButton() {
-        
-    }
-    
-    
-    
 }

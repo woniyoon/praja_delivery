@@ -11,7 +11,8 @@ import RxSwift
 
 protocol AddressEditUseCaseProtocol {
     func fetchAddress(index: Int) -> Single<[Address]>
-    func updateAddress(address: Address) -> Void
+    func addAddress(address: Address) -> Completable
+    func updateAddress(address: Address, indexNo: Int) -> Completable
 }
 
 class AddressEditUseCase: AddressEditUseCaseProtocol {
@@ -31,10 +32,14 @@ class AddressEditUseCase: AddressEditUseCaseProtocol {
             })
     }
     
-    func updateAddress(address: Address) {
+    func addAddress(address: Address) -> Completable {
         let addressEntity = self.translator.translateAddress(from: address)
-        repository.updateAddress(address: addressEntity)
+        return repository.addAddress(address: addressEntity)
     }
     
+    func updateAddress(address: Address, indexNo: Int) -> Completable {
+        let addressEntity = self.translator.translateAddress(from: address)
+        return repository.updateAddress(address: addressEntity, indexNo: indexNo)
+    }
 }
 

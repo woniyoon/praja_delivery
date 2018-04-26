@@ -83,17 +83,20 @@ struct UserEntity {
     }
     
     var dictionary: [String: Any] {
-        return [
+        var dict: [String : Any] = [
             "firstName": firstName,
             "lastName": lastName,
             "mobileNumber": mobileNumber,
-            "dateOfBirth": dateOfBirth as Any,
             "email": email,
-            "address": address,
-            "payment": payment,
+            "address": address.map { $0.dictionary },
+            "payment": payment.map { $0.dictionary },
             "coupon": coupon ?? [:],
             "totalPoint": totalPoint
         ]
+        if let dateOfBirth = dateOfBirth {
+            dict["dateOfBirth"] = dateOfBirth
+        }
+        return dict
     }
 }
 

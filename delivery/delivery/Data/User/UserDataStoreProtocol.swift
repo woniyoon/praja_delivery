@@ -12,8 +12,7 @@ import RxCocoa
 
 protocol UserDataStoreProtocol {
     func fetchUser() -> Single<UserEntity>
-    func updateUser(user: UserEntity) -> Void
-//    func updateUser(user: UserEntity) -> Completable
+    func updateUser(user: UserEntity) -> Completable
     func updateAddress(address: AddressEntity) -> Void
 }
 

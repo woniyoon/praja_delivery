@@ -49,8 +49,9 @@ class CheckoutViewModel: BaseViewModel {
                 self.address.accept(user.address)
                 self.payment.accept(user.payment)
                 
-                guard let dateOfBirth = user.dateOfBirth else {return}
-                self.dateOfBirth.accept(dateOfBirth)
+                if let dateOfBirth = user.dateOfBirth {
+                    self.dateOfBirth.accept(dateOfBirth)
+                }
                 
                 let test = [User(firstName: user.firstName, lastName: user.lastName, dateOfBirth: user.dateOfBirth, mobileNumber: user.mobileNumber, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
                 
