@@ -42,6 +42,9 @@ final class UsecaseAssembly: Assembly {
         container.register(AddressListUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
             AddressListUseCase(repository: repository, translator: translator)
         }
+        container.register(UserInfoEditUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
+            UserInfoEditUseCase(repository: repository, translator: translator)
+        }
     }
 }
 
