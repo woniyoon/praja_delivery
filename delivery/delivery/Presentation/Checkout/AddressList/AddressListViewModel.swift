@@ -25,9 +25,18 @@ class AddressListViewModel: BaseViewModel {
         useCase.fetchAddressList()
             .subscribe(onSuccess: { (addressList) in
                 self.addressList.accept(addressList)
+                
+                addressList.forEach({ (t) in
+                    print(t.isDefault)
+                })
             }, onError: { (err) in
                 print(err)
             }).disposed(by: disposeBag)
+    }
+    
+    func updateAddressList() -> Completable {
+        print(self.addressList.value[2].isDefault)
+       return useCase.updateAddressList(addressList: self.addressList.value)
     }
 }
 

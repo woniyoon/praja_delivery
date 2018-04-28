@@ -22,12 +22,10 @@ class AddressCell: UITableViewCell {
     var item: [Address]? {
         didSet {
             guard let item = item else { return }
-                let test = item.filter { $0.isDefault}
-                fullNameLabel.text = item.first?.receiver
+                let test = item.filter { $0.isDefault }
+                fullNameLabel.text = test.first!.receiver
                 addressLabel.text = "\(test.first!.address1) \(test.first!.address2)"
                 zipCodeLabel.text = "\(test.first!.postalCode)"
-//            addressLabel.text = "\(item.address1) \(item.address2)"
-//            zipCodeLabel.text = item.postalCode
         }
     }
     

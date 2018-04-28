@@ -52,28 +52,30 @@ struct UserEntity {
         self.coupon = coupon
     }
     
-    init?(firstName: String, lastName: String, mobileNumber: String, dateOfBirth: Date?, totalPoint: Int, email: String, address: [Address], payment: [Payment], coupon: [String : Bool]?) {
+    init?(firstName: String, lastName: String, mobileNumber: String, dateOfBirth: Date?, totalPoint: Int, email: String, address: [AddressEntity], payment: [PaymentEntity], coupon: [String : Bool]?) {
         self.firstName = firstName
         self.lastName = lastName
         self.mobileNumber = mobileNumber
         self.totalPoint = totalPoint
         self.email = email
 
-        var arrOfAddress: [AddressEntity] = []
+//        var arrOfAddress: [AddressEntity] = []
 
-        address.forEach { (address) in
-            arrOfAddress.append(AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault, phoneNumber: address.phoneNumber))
-        }
+//        address.forEach { (address) in
+//            arrOfAddress.append(AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault, phoneNumber: address.phoneNumber))
+//        }
 
-        self.address = arrOfAddress
+//        self.address = arrOfAddress
 
-        var arrOfPayment: [PaymentEntity] = []
+        self.address = address
+        
+//        var arrOfPayment: [PaymentEntity] = []
+//
+//        payment.forEach { (payment) in
+//            arrOfPayment.append(PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault))
+//        }
 
-        payment.forEach { (payment) in
-            arrOfPayment.append(PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault))
-        }
-
-        self.payment = arrOfPayment
+        self.payment = payment
 
         guard let dateOfBirth = dateOfBirth,
             let coupon = coupon else { return nil }

@@ -20,7 +20,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
         //        if let user = user {
         return Single<UserEntity>.create { observer -> Disposable in
             self.db.collection("users")
-                .document("72tKB5nG76CR4dVYW5AM")
+                .document("hIgQB6Fu5uTgQP1uCUcT")
                 .getDocument() { (document, error) in
                     if let error = error {
                         observer(.error(error))
@@ -39,7 +39,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     
     func updateAddress(address: AddressEntity) {
-        db.collection("users").document("Ljk5vGaGSMkYzviKx68B").updateData([
+        db.collection("users").document("hIgQB6Fu5uTgQP1uCUcT").updateData([
             "address": address
             ])
         { err in

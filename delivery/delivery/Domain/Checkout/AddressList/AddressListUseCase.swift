@@ -12,7 +12,7 @@ import RxSwift
 
 protocol AddressListUseCaseProtocol {
     func fetchAddressList() -> Single<[Address]>
-    func deleteAddress(index: Int) -> Void
+    func updateAddressList(addressList: [Address]) -> Completable
 }
 
 class AddressListUseCase: AddressListUseCaseProtocol {
@@ -32,8 +32,9 @@ class AddressListUseCase: AddressListUseCaseProtocol {
             })
     }
     
-    func deleteAddress(index: Int) {
-        repository.deleteAddress(index: index)
+    func updateAddressList(addressList: [Address]) -> Completable {
+        let addressList = addressList.map { self.translator.translateAddress(from: $0)}
+        return repository.updateAddressList(address: addressList)
     }
 }
 

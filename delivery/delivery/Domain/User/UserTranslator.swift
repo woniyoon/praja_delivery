@@ -22,7 +22,7 @@ class UserTranslator {
     }
 
     func translate(fromModel model: User) -> UserEntity {
-        return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: model.address, payment: model.payment, coupon: model.coupon)!
+        return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: model.address.map({ translateAddress(from: $0)}), payment: model.payment.map({ translatePaymentModel(from: $0)}), coupon: model.coupon)!
     }
     
     func translateAddress(from address: [AddressEntity]) -> [Address] {
@@ -51,5 +51,9 @@ class UserTranslator {
         return PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault)
     }
     
+//    func translateAddressEntity(address: AddressEntity) -> Address {
+//        return Address(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault, phoneNumber: address.phoneNumber)
+//    }
+//
 }
 

@@ -57,7 +57,7 @@ class CheckoutViewModel: BaseViewModel {
                 
                 self.paymentTest = self.payment.value
                 
-                self.user.accept([SectionModel(model: "User Information", items:                test),
+                self.user.accept([SectionModel(model: "User Information", items: test),
                                   SectionModel(model: "Shipping To", items: test),
                                   SectionModel(model: "Payment", items: test)
                                  

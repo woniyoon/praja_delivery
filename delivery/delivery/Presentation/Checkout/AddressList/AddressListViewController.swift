@@ -30,13 +30,14 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         registerCell()
         bindView()
         viewModel.fetchAddressList()
+        print("(*&^%$#@#$%^&*(*&^%$#@Q#$%^&*(*&^%$#@#$%^&*()")
+//        print("\(viewModel.addressList.value[0].isDefault) is the value for the first item in an array")
         addressTableView.delegate = self
     }
     
     func registerCell() {
         let nib = UINib(nibName: AddressListCell.Identifier, bundle: nil)
         addressTableView.register(nib, forCellReuseIdentifier: AddressListCell.Identifier)
-        
         addressTableView.allowsSelection = false
     }
 
@@ -71,7 +72,13 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         var testArr = viewModel.addressList.value
         if testArr[index.row].isDefault == true {
             testArr.remove(at: index.row)
-//            testArr[index.row-1].isDefault = true
+            if let firstItem = testArr.first {
+                let newItem = Address(receiver: firstItem.receiver, address1: firstItem.address1, address2: firstItem.address2, city: firstItem.city, province: firstItem.province, postalCode: firstItem.postalCode, country: firstItem.country, isDefault: true, phoneNumber: firstItem.phoneNumber)
+                
+                testArr.removeFirst()
+                testArr.insert(newItem, at: 0)
+            }
+//            testArr[testArr.count % index.row].isDefault = true
         } else {
             testArr.remove(at: index.row)
         }
@@ -102,29 +109,19 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         viewModel.addressList.accept(testArr)
         addressTableView.reloadInputViews()
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let footerView = UIView()
-        let addButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        addButton.setImage(#imageLiteral(resourceName: "new"), for: .normal)
-        
-        footerView.addSubview(addButton)
-        addButton.topAnchor.constraint(equalTo: footerView.topAnchor).isActive = true
-        addButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor).isActive = true
-        addButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor).isActive = true
-        addButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor).isActive = true
-        addButton.translatesAutoresizingMaskIntoConstraints = false
 
-        addButton.isUserInteractionEnabled = true
-        
-        addButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
-        return footerView
-    }
-    
-    func buttonAction(sender:UIButton!){
+    @IBAction func addButtonTapped(_ sender: Any) {
         let next = resolver.resolve(AddressEditViewController.self)!
         present(next, animated: true, completion: nil)
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        viewModel.updateAddressList().subscribe(onCompleted: {
+            self.addressTableView.reloadInputViews()
+            let next = resolver.resolve(CheckoutViewController.self)!
+            self.present(next, animated: true, completion: nil)
+        }) { (err) in
+            print(err)
+        }
     }
 }
