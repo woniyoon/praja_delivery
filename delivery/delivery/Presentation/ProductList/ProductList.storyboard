@@ -189,6 +189,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addcart" width="36" height="36"/>
+        <image name="addcart" width="20" height="22"/>
     </resources>
 </document>

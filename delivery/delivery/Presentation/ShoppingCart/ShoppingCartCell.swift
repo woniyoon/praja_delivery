@@ -13,6 +13,7 @@ class ShoppingCartCell: UICollectionViewCell {
     
     static var Identifier = "ShoppingCartCell"
     
+    @IBOutlet weak var quantityButton: UIButton!
     @IBOutlet weak var deleteProduct: UIButton!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var name: UILabel!

@@ -11,22 +11,19 @@ import UIKit
 class QuantityPopUpController: UIViewController {
 
     @IBOutlet weak var quantityView: UIView!
-    @IBOutlet var popUpView: UIView!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var textQuantity: UILabel!
     
-    var productQuantity: Int = 0
+    @IBOutlet weak var quantity: UITextField!
+    var delegate: PopupDelegate?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    var productQuantity: Int = 0
+    var buttonTag: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textQuantity.text = String(productQuantity)
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func minusButtonDidTap(_ sender: Any) {
@@ -36,24 +33,28 @@ class QuantityPopUpController: UIViewController {
             productQuantity = 0
         }
         
-        textQuantity.text = String(productQuantity)
+        self.textQuantity.text = String(self.productQuantity)
     }
     
     @IBAction func plusButtonDidTap(_ sender: Any) {
         productQuantity += 1
-        
-        textQuantity.text = String(productQuantity)
+        self.textQuantity.text = String(self.productQuantity)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
         let touch: UITouch? = touches.first
-        //location is relative to the current view
-        // do something with the touched point
         if touch?.view != quantityView {
+            delegate?.passValue(value: textQuantity.text!, tag: buttonTag)
+            
             dismiss(animated: true, completion: nil)
         }
     }
-
+    
+    func setQuantity(sender: UIButton) {
+        productQuantity = Int(sender.titleLabel!.text!)!
+        textQuantity.text = sender.titleLabel!.text
+        buttonTag = sender.tag
+    }
 }

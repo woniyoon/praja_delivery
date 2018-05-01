@@ -17,6 +17,7 @@ class ProductListViewModel: BaseViewModel {
     private var useCaseShopping: ShoppingCartUseCaseProtocol
     
     public var productsList = BehaviorRelay<[Product]>(value: [])
+    public var qtyProductsCart = BehaviorRelay<String>(value: "")
     private let disposeBag: DisposeBag = DisposeBag()
     
     init(useCase: ProductListUseCaseProtocol, useCaseShopping: ShoppingCartUseCaseProtocol) {
@@ -34,15 +35,25 @@ class ProductListViewModel: BaseViewModel {
             ) .disposed(by: disposeBag)
     }
     
+    
     func addProductShoppingCart(with shoppingCart: ShoppingCart){
         useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
-        
+        fetchShoppingCartQty()
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCart]> {
-        
         return useCaseShopping.fetchShoppingCart()
     }
+
+    func fetchShoppingCartQty() {
+        useCaseShopping.fetchShoppingCart().subscribe(onSuccess: { (product) in
+            self.qtyProductsCart.accept(String(product.count))
+            print("\(product.count) in cart")
+        }, onError: { (err) in
+            print(err)
+        })
+    }
+
     
     func productAlreadyInCart(with primaryKey: String)-> Bool {
         var result = false

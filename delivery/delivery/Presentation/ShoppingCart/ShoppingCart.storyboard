@@ -77,6 +77,16 @@
                                                         <action selector="deleteProductDidTap:" destination="OXc-3e-0PO" eventType="touchUpInside" id="2mf-ba-SpB"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBw-q2-SGu">
+                                                    <rect key="frame" x="97" y="8" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="NJw-us-4Nu"/>
+                                                        <constraint firstAttribute="width" constant="40" id="NTO-Ng-vdQ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="QTY">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -84,8 +94,10 @@
                                             <constraint firstAttribute="bottom" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="42" id="AaS-fp-0uu"/>
                                             <constraint firstItem="pHP-b4-dbB" firstAttribute="top" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="8" id="Abj-8a-yeh"/>
                                             <constraint firstItem="pXN-0C-4dz" firstAttribute="top" secondItem="OXc-3e-0PO" secondAttribute="top" constant="4" id="Cfx-7v-hn5"/>
+                                            <constraint firstAttribute="trailing" secondItem="lBw-q2-SGu" secondAttribute="trailing" constant="8" id="E8Y-je-Gss"/>
                                             <constraint firstAttribute="trailing" secondItem="gqQ-aK-N6B" secondAttribute="trailing" constant="8" id="FtM-ic-cFt"/>
                                             <constraint firstItem="NMv-6W-5fh" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="9" id="HNv-eO-Gtg"/>
+                                            <constraint firstItem="lBw-q2-SGu" firstAttribute="top" secondItem="OXc-3e-0PO" secondAttribute="top" constant="8" id="OWi-VA-Ood"/>
                                             <constraint firstItem="NMv-6W-5fh" firstAttribute="top" secondItem="gqQ-aK-N6B" secondAttribute="bottom" constant="4" id="Vpd-h4-IqO"/>
                                             <constraint firstItem="GRR-zz-4Fo" firstAttribute="centerX" secondItem="OXc-3e-0PO" secondAttribute="centerX" id="XZz-RL-lSp"/>
                                             <constraint firstItem="Fma-ay-li7" firstAttribute="leading" secondItem="OXc-3e-0PO" secondAttribute="leading" constant="9" id="ezQ-Xm-Atu"/>
@@ -104,6 +116,7 @@
                                             <outlet property="percentage" destination="Fma-ay-li7" id="ZpO-De-SxY"/>
                                             <outlet property="price" destination="NMv-6W-5fh" id="LZ3-tM-gH5"/>
                                             <outlet property="productImage" destination="GRR-zz-4Fo" id="4ps-0a-Njx"/>
+                                            <outlet property="quantityButton" destination="lBw-q2-SGu" id="2aQ-g0-w4S"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

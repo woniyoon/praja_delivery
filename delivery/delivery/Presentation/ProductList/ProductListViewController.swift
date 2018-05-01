@@ -45,23 +45,28 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         collectionView.delegate = self
         bindTableView()
-        viewModel.fetchProductList(with: "")
+        bindCartQty()
         
-//        shoppingCartProducts = viewModel.fetchShoppingCart()
+        viewModel.fetchProductList(with: "")
         
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
     }
     
+    private func bindCartQty(){
+        
+        viewModel.qtyProductsCart.asObservable()
+            .bind(to: self.cartQty.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
     private func bindTableView() {
-
         viewModel.productsList.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: ProductsCell.Identifier, cellType: ProductsCell.self))
             { row, product, cell in
                 cell.product = product
             }.disposed(by: disposeBag)
-
     }
 
     

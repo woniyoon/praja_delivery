@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iwk-lF-gO8">
-                                <rect key="frame" x="103" y="289" width="168" height="89"/>
+                                <rect key="frame" x="112.5" y="307.5" width="150" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6b-UW-enS">
-                                        <rect key="frame" x="8" y="22" width="45" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="-">
                                             <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,7 +33,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc3-4B-d0t">
-                                        <rect key="frame" x="115" y="22" width="45" height="45"/>
+                                        <rect key="frame" x="114" y="0.0" width="36" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="+">
                                             <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -43,7 +43,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rN-tc-Bpi">
-                                        <rect key="frame" x="63" y="8" width="42" height="73"/>
+                                        <rect key="frame" x="41" y="4" width="68" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                         <nil key="textColor"/>
@@ -53,14 +53,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.78755552030456855" green="0.78755552030456855" blue="0.78755552030456855" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.47324486301369861" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="vya-Zz-4xI"/>
                     </view>
                     <connections>
                         <outlet property="minusButton" destination="J6b-UW-enS" id="beH-j7-0cf"/>
                         <outlet property="plusButton" destination="Tc3-4B-d0t" id="rQ6-xO-xJC"/>
-                        <outlet property="popUpView" destination="Hrc-oW-Xes" id="ipn-01-G6o"/>
                         <outlet property="quantityView" destination="Iwk-lF-gO8" id="Ay0-Ze-xAS"/>
                         <outlet property="textQuantity" destination="5rN-tc-Bpi" id="NeX-Vm-ZdZ"/>
                     </connections>

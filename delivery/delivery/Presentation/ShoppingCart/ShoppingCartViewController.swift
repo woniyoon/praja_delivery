@@ -24,7 +24,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate, UI
     private var viewModel: ShoppingCartViewModel!
     private var editModeEnabled = false
     public var keyword: String!
-    
+    public var selectedCell: ShoppingCartCell!
     
     var gridLayout: GridLayout!
     lazy var listLayout: ListLayout = {
@@ -104,20 +104,18 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate, UI
         if collectionView == self.collectionView {
             
             let productCell = cell as! ShoppingCartCell
+
+            productCell.quantityButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
+            productCell.quantityButton.setTitleColor(#colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), for: UIControlState.normal)
+            productCell.quantityButton.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+            productCell.quantityButton.layer.cornerRadius = 18
+            productCell.quantityButton.layer.borderWidth = 1
+            productCell.quantityButton.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1)
+            productCell.quantityButton.tag = indexPath.row
+            productCell.quantityButton.setTitle(String(describing: productCell.productShoppingCart!.quantity), for: UIControlState.normal)
             
-            let productQty = UIButton(frame: CGRect(x: cell.bounds.maxX - 50, y:0, width:36,height:36))
-            productQty.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-            productQty.setTitle(String(describing: productCell.productShoppingCart!.quantity), for: UIControlState.normal)
-            productQty.addTarget(self, action: #selector(changeQuantityDidTap), for: UIControlEvents.touchUpInside)
+            productCell.quantityButton.addTarget(self, action: #selector(changeQuantityDidTap), for: UIControlEvents.touchUpInside)
             
-            productQty.setTitleColor(#colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), for: UIControlState.normal)
-            productQty.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
-            productQty.layer.cornerRadius = 18
-            productQty.layer.borderWidth = 1
-            productQty.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1)
-            productQty.tag = indexPath.row
-    
-            productCell.addSubview(productQty)
         }
     }
     @IBAction func close(_ sender: Any) {
@@ -134,19 +132,38 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate, UI
         dismiss(animated: false, completion: nil)
     }
     
-    func changeQuantityDidTap(sender: UIButton?) -> Void {
+    func changeQuantityDidTap(sender: UIButton) -> Void {
         let storyBoard : UIStoryboard = UIStoryboard(name: "QuantityPopUpViewController", bundle:nil)
         
         let popUpViewController = storyBoard.instantiateViewController(withIdentifier: "quantityPopUp") as! QuantityPopUpController
         
         popUpViewController.loadView()
         
-        let cell = collectionView.visibleCells[(sender?.tag)!]
+        selectedCell = (sender.superview?.superview) as! ShoppingCartCell
+
+        popUpViewController.quantityView.frame.origin.x = (selectedCell.frame.maxX / 2)
+        popUpViewController.quantityView.frame.origin.y = (selectedCell.frame.maxY / 2)
+        popUpViewController.delegate = self
+        popUpViewController.setQuantity(sender: sender)
         
-        popUpViewController.quantityView.frame.origin.x = (cell.frame.origin.x)
-        popUpViewController.quantityView.frame.origin.y = (cell.frame.origin.y)
+//        present(popUpViewController, animated: true) {
+//            self.selectedCell = (sender.superview?.superview) as! ShoppingCartCell
+//
+//            popUpViewController.quantityView.frame.origin.x = (self.selectedCell.frame.maxX / 2)
+//            popUpViewController.quantityView.frame.origin.y = (self.selectedCell.frame.maxY / 2)
+//            popUpViewController.delegate = self
+//            popUpViewController.setQuantity(sender: sender)
+//
+//        }
+    
         
-        popUpViewController.productQuantity = Int((sender?.titleLabel?.text)!)!
-        self.present(popUpViewController, animated:true, completion:nil)
+        present(popUpViewController, animated:true, completion:nil)
+    }
+    
+}
+
+extension ShoppingCartViewController: PopupDelegate {
+    func passValue(value: String, tag: Int) {
+        selectedCell.quantityButton.setTitle(value, for: .normal)
     }
 }

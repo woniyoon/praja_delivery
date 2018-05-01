@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PopupDelegate {
-    func passValue(value: String)
+    func passValue(value: String, tag: Int)
 }
