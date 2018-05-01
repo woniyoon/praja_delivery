@@ -15,18 +15,16 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
     
     func fetchUser() -> Single<UserEntity> {
-        
         //        let user = Auth.auth().currentUser
         //        if let user = user {
         return Single<UserEntity>.create { observer -> Disposable in
             self.db.collection("users")
-                .document("hIgQB6Fu5uTgQP1uCUcT")
+                .document("72tKB5nG76CR4dVYW5AM")
                 .getDocument() { (document, error) in
                     if let error = error {
                         observer(.error(error))
                         return
                     }
-                    
                     guard let user = UserEntity(dictionary: (document?.data())!) else {
                         observer(.error(error!))
                         return
@@ -39,7 +37,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     
     func updateAddress(address: AddressEntity) {
-        db.collection("users").document("hIgQB6Fu5uTgQP1uCUcT").updateData([
+        db.collection("users").document("72tKB5nG76CR4dVYW5AM").updateData([
             "address": address
             ])
         { err in
@@ -52,11 +50,10 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     }
     
     func updateUser(user: UserEntity) -> Completable {
-        print("updateUser in FirebaseDatastore!")
         return Completable.create { observer in
             let dict = user.dictionary
             print(dict)
-            self.db.collection("users").document("hIgQB6Fu5uTgQP1uCUcT").setData(user.dictionary) { err in
+            self.db.collection("users").document("72tKB5nG76CR4dVYW5AM").setData(user.dictionary) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
                     observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))

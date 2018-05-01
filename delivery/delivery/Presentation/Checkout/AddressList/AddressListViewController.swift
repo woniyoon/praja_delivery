@@ -30,8 +30,6 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         registerCell()
         bindView()
         viewModel.fetchAddressList()
-        print("(*&^%$#@#$%^&*(*&^%$#@Q#$%^&*(*&^%$#@#$%^&*()")
-//        print("\(viewModel.addressList.value[0].isDefault) is the value for the first item in an array")
         addressTableView.delegate = self
     }
     
@@ -70,20 +68,24 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
 
         var testArr = viewModel.addressList.value
-        if testArr[index.row].isDefault == true {
-            testArr.remove(at: index.row)
-            if let firstItem = testArr.first {
-                let newItem = Address(receiver: firstItem.receiver, address1: firstItem.address1, address2: firstItem.address2, city: firstItem.city, province: firstItem.province, postalCode: firstItem.postalCode, country: firstItem.country, isDefault: true, phoneNumber: firstItem.phoneNumber)
-                
-                testArr.removeFirst()
-                testArr.insert(newItem, at: 0)
-            }
-//            testArr[testArr.count % index.row].isDefault = true
+
+        if testArr.count == 1 {
+            print("at least one address should be registered!")
         } else {
-            testArr.remove(at: index.row)
+            if testArr[index.row].isDefault == true {
+                testArr.remove(at: index.row)
+                if let firstItem = testArr.first {
+                    let newItem = Address(receiver: firstItem.receiver, address1: firstItem.address1, address2: firstItem.address2, city: firstItem.city, province: firstItem.province, postalCode: firstItem.postalCode, country: firstItem.country, isDefault: true, phoneNumber: firstItem.phoneNumber)
+                    
+                    testArr.removeFirst()
+                    testArr.insert(newItem, at: 0)
+                }
+            } else {
+                testArr.remove(at: index.row)
+            }
+            
+            viewModel.addressList.accept(testArr)
         }
-        
-        viewModel.addressList.accept(testArr)
     }
 
     func radioButtonSelected(sender: UIButton) {

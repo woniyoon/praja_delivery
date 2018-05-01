@@ -19,14 +19,13 @@ class PaymentCell: UITableViewCell {
 
     var item: [Payment]? {
         didSet {
-            guard let item = item else { return }
-                        let test = item.filter { $0.isDefault}
-                        cardHolder.text = test.first?.holderName
-                        cardNumber.text = test.first?.cardNumber
-                        expiryDate.text = test.first?.expiryDate.description
+            guard (item?.count) != nil && item?.count != 0 else { return }
+            let test = item?.filter { $0.isDefault}
+            cardHolder.text = test?.first?.holderName
+            cardNumber.text = test?.first?.cardNumber
+            expiryDate.text = test?.first?.expiryDate.description
 //            cardNumber.text = item.cardNumber
 //            expiryDate.text = item.expiryDate.description
-            
             
         }
     }

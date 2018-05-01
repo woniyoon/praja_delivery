@@ -45,7 +45,10 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                     return cell
                 } else if indexPath.section == 1 {
                     let cell = tv.dequeueReusableCell(withIdentifier: AddressCell.Identifier) as! AddressCell
-                    cell.item = element.address
+                    if element.address != nil {
+                        cell.item = element.address!
+                        return cell
+                    }
                     return cell
                 } else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PaymentCell.Identifier) as! PaymentCell
@@ -54,38 +57,13 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                 }
         })
         
-        
-
-//        checkoutTableView.rx
-//            .itemSelected
-//            .subscribe(onNext:  { [weak self] indexPath in
-//                print(indexPath)
-//                self?.checkoutTableView.deselectRow(at: indexPath, animated: true)
-//
-//                print(indexPath)
-////                let next = resolver.resolve(AddressEditViewController.self)!
-////                self?.present(next, animated: true, completion: nil)
-//            })
-//            .disposed(by: disposeBag)
-        
-//        checkoutTableView.rx
-//            .itemSelected
-//            .map { indexPath in
-//                return (indexPath, dataSource[indexPath])
-//            }
-//            .subscribe(onNext: { pair in
-//                print(pair)
-//            })
-//            .disposed(by: disposeBag)
-//
         checkoutTableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-           self.viewModel.user.asObservable()
+           self.viewModel.dataForSection.asObservable()
                 .bind(to: checkoutTableView.rx.items(dataSource: dataSource))
                 .disposed(by: disposeBag)
-
     }
 
     
@@ -108,11 +86,30 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
 //        let next = resolver.resolve(CheckoutViewController.self)!
         tableView.deselectRow(at: indexPath, animated: false)
 
+        var isMember: Bool
+        
         if indexPath.section == 0 {
-            print("\(indexPath.row)th row is tapped!")
-        } else if indexPath.section == 1 {
-            let next = resolver.resolve(AddressListViewController.self)!
+            if viewModel.user.value.count > 0 {
+                isMember = true
+            } else {
+                isMember = false
+            }
+            
+            let next = resolver.resolve(UserInfoEditViewController.self)!
+            next.isMember = isMember
             present(next, animated: true, completion: nil)
+
+        } else if indexPath.section == 1 {
+            if viewModel.user.value.first?.address != nil {
+                let next = resolver.resolve(AddressListViewController.self)!
+                present(next, animated: true, completion: nil)
+            } else {
+                let next = resolver.resolve(AddressEditViewController.self)!
+                present(next, animated: true, completion: nil)            }
+            
+//            let next = resolver.resolve(AddressListViewController.self)!
+//            next.isMember = isMember
+//            present(next, animated: true, completion: nil)
         }
     }
     

@@ -39,7 +39,6 @@
                                 <rect key="frame" x="22" y="141" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="6Vp-pW-QBd"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="X9c-E7-bXa"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -72,10 +71,14 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="VRV-DF-WLx" eventType="touchUpInside" id="xwa-yo-Mlc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dxb-pw-Tmc" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="40B-a4-k6p"/>
                             <constraint firstItem="dxb-pw-Tmc" firstAttribute="centerX" secondItem="Prg-uL-Zag" secondAttribute="centerX" id="7Cm-wV-lf4"/>
                             <constraint firstItem="Prg-uL-Zag" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" id="8K8-KP-csB"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="F8q-Ot-IiF" secondAttribute="trailing" constant="22" id="9J9-6x-GSc"/>
@@ -90,6 +93,7 @@
                             <constraint firstItem="Prg-uL-Zag" firstAttribute="top" secondItem="afQ-MO-lRK" secondAttribute="top" id="elE-Ky-FJI"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="uvY-j7-mdG" secondAttribute="trailing" constant="22" id="fZ4-Ux-zm5"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="xV9-lO-kFb" secondAttribute="trailing" constant="22" id="gGS-YI-nLd"/>
+                            <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="dxb-pw-Tmc" secondAttribute="trailing" constant="22" id="oGf-4T-Fcz"/>
                             <constraint firstItem="uvY-j7-mdG" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="sqb-aa-939"/>
                             <constraint firstItem="sDe-oE-VHa" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="uPe-0p-XhJ"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="Prg-uL-Zag" secondAttribute="trailing" id="zSM-cW-0Lf"/>
@@ -97,6 +101,10 @@
                         <viewLayoutGuide key="safeArea" id="afQ-MO-lRK"/>
                     </view>
                     <connections>
+                        <outlet property="emailLabel" destination="F8q-Ot-IiF" id="qK0-lO-li1"/>
+                        <outlet property="firstNameLabel" destination="dxb-pw-Tmc" id="SBX-38-IZt"/>
+                        <outlet property="lastNameLabel" destination="xV9-lO-kFb" id="rrP-ad-cJ8"/>
+                        <outlet property="phoneNumberLabel" destination="sDe-oE-VHa" id="CJg-M1-zO0"/>
                         <outletCollection property="userInfoTextFields" destination="F8q-Ot-IiF" collectionClass="NSMutableArray" id="HjG-fn-DTf"/>
                     </connections>
                 </viewController>

@@ -18,9 +18,9 @@ struct User {
     public let mobileNumber: String
     public let email: String
     public let totalPoint: Int
-    public let address: [Address]
-    public let payment: [Payment]
-    public let coupon: [String : Bool]
+    public let address: [Address]?
+    public let payment: [Payment]?
+    public let coupon: [String : Bool]?
     
     var dictionary: [String: Any] {
         return [

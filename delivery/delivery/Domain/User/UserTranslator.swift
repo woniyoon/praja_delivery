@@ -10,19 +10,36 @@ import Foundation
 
 class UserTranslator {
     func translate(fromEntity entity: UserEntity) -> User {
-        return User(firstName: entity.firstName,
-                    lastName: entity.lastName,
-                    dateOfBirth: entity.dateOfBirth,
-                    mobileNumber: entity.mobileNumber,
-                    email: entity.email,
-                    totalPoint: entity.totalPoint,
-                    address: translateAddress(from: entity.address),
-                    payment: translatePayment(from: entity.payment),
-                    coupon: entity.coupon!)
+        
+        if entity.address != nil, entity.payment != nil {
+            return User(firstName: entity.firstName,
+                        lastName: entity.lastName,
+                        dateOfBirth: entity.dateOfBirth,
+                        mobileNumber: entity.mobileNumber,
+                        email: entity.email,
+                        totalPoint: entity.totalPoint,
+                        address: translateAddress(from: entity.address!),
+                        payment: translatePayment(from: entity.payment!),
+                        coupon: entity.coupon!)
+        } else {
+            return User(firstName: entity.firstName,
+                        lastName: entity.lastName,
+                        dateOfBirth: entity.dateOfBirth,
+                        mobileNumber: entity.mobileNumber,
+                        email: entity.email,
+                        totalPoint: entity.totalPoint,
+                        address: nil,
+                        payment: nil,
+                        coupon: entity.coupon!)
+        }
     }
 
     func translate(fromModel model: User) -> UserEntity {
-        return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: model.address.map({ translateAddress(from: $0)}), payment: model.payment.map({ translatePaymentModel(from: $0)}), coupon: model.coupon)!
+        if model.address != nil, model.payment != nil {
+            return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: model.address!.map({translateAddress(from: $0)}), payment: model.payment!.map({translatePaymentModel(from: $0)}), coupon: model.coupon)!
+        } else {
+            return UserEntity(firstName: model.firstName, lastName: model.lastName, mobileNumber: model.mobileNumber, dateOfBirth: model.dateOfBirth, totalPoint: model.totalPoint, email: model.email, address: [], payment: [], coupon: model.coupon)!
+        }
     }
     
     func translateAddress(from address: [AddressEntity]) -> [Address] {

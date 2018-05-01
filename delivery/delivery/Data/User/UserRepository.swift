@@ -17,6 +17,7 @@ protocol UserRepositoryProtocol {
     func addAddress(address: AddressEntity) -> Completable
     func updateAddress(address: AddressEntity, indexNo: Int) -> Completable
     func updateAddressList(address: [AddressEntity]) -> Completable
+    func updateUser(user: UserEntity) -> Completable
 }
 
 class UserRepository: UserRepositoryProtocol {    
@@ -29,19 +30,22 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func fetchUser() -> Single<UserEntity> {
-        return dataStore.fetchUser()
+        return dataStore.fetchUser().map{ user in
+            UserRepository.user = user
+            return user
+        }
     }
     
     func fetchAddress(index: Int) -> Single<[AddressEntity]> {
         var arrWithOneElement: [AddressEntity] = []
         if let user = UserRepository.user {
-            arrWithOneElement.append(user.address[index])
+            arrWithOneElement.append(user.address![index])
             return Single.just(arrWithOneElement)
         } else {
             return fetchUser()
                 .map{ user in
                     UserRepository.user = user
-                    arrWithOneElement.append(user.address[index])
+                    arrWithOneElement.append(user.address![index])
                     return arrWithOneElement }
         }
     }
@@ -56,8 +60,8 @@ class UserRepository: UserRepositoryProtocol {
             return fetchUser()
                 .map{ user in
                     UserRepository.user = user
-                    print(UserRepository.user!)
-                    return user.address
+//                    print(UserRepository.user!)
+                    return user.address!
             }
 //        }
     }
@@ -65,12 +69,16 @@ class UserRepository: UserRepositoryProtocol {
     func addAddress(address: AddressEntity) -> Completable {
         let originalAddress = UserRepository.user?.address
         
-        let updatedAddress = originalAddress?.map({ address in
-            AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: false, phoneNumber: address.phoneNumber)
-        })
-        
-        UserRepository.user?.address = updatedAddress!
-        UserRepository.user?.address.append(address)
+        if let originalAddress = UserRepository.user?.address {
+            let updatedAddress = originalAddress.map({ address in
+                AddressEntity(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: false, phoneNumber: address.phoneNumber)
+            })
+            UserRepository.user?.address = updatedAddress
+            UserRepository.user?.address!.append(address)
+        } else {
+            UserRepository.user?.address = [address]
+            
+        }
         
         return dataStore.updateUser(user: UserRepository.user!)
     }
@@ -83,8 +91,8 @@ class UserRepository: UserRepositoryProtocol {
         })
         
         UserRepository.user?.address = updatedAddress!
-        UserRepository.user?.address.remove(at: indexNo)
-        UserRepository.user?.address.insert(address, at: indexNo)        
+        UserRepository.user?.address!.remove(at: indexNo)
+        UserRepository.user?.address!.insert(address, at: indexNo)        
         return dataStore.updateUser(user: UserRepository.user!)
     }
     
@@ -93,6 +101,11 @@ class UserRepository: UserRepositoryProtocol {
         let updatedUser = UserEntity(firstName: (UserRepository.user?.firstName)!, lastName: (UserRepository.user?.lastName)!, mobileNumber: (UserRepository.user?.mobileNumber)!, dateOfBirth: UserRepository.user?.dateOfBirth, totalPoint: (UserRepository.user?.totalPoint)!, email: (UserRepository.user?.email)!, address: address, payment: (UserRepository.user?.payment)!, coupon: UserRepository.user?.coupon)
         
         return dataStore.updateUser(user: updatedUser!)
+    }
+    
+    func updateUser(user: UserEntity) -> Completable {
+        UserRepository.user = user
+        return dataStore.updateUser(user: user)
     }
 }
 

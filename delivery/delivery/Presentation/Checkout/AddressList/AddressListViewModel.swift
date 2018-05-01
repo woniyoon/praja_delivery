@@ -35,7 +35,7 @@ class AddressListViewModel: BaseViewModel {
     }
     
     func updateAddressList() -> Completable {
-        print(self.addressList.value[2].isDefault)
+
        return useCase.updateAddressList(addressList: self.addressList.value)
     }
 }

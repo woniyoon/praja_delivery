@@ -15,8 +15,8 @@ struct UserEntity {
         public let mobileNumber: String
         public let email: String
         public let totalPoint: Int
-        public var address: [AddressEntity]
-        public let payment: [PaymentEntity]
+        public var address: [AddressEntity]?
+        public let payment: [PaymentEntity]?
         public let coupon: [String : Bool]?
     
 
@@ -30,18 +30,29 @@ struct UserEntity {
         
         let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
         
-        var addressArr: [AddressEntity]  = []
-        for address in dictionary["address"] as! [Any] {
-            addressArr.append(AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!)
-        }
-        self.address = addressArr
         
-        var paymentArr: [PaymentEntity] = []
-        for payment in dictionary["payment"] as! [Any] {
-            paymentArr.append(PaymentEntity(dictionary: (payment as? [String : Any]) ?? [:])!)
+        if dictionary["address"] != nil {
+            var addressArr: [AddressEntity]  = []
+            for address in dictionary["address"] as! [Any] {
+                addressArr.append(AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!)
+            }
+            self.address = addressArr
+        } else {
+            self.address = nil
+        }
+
+        
+        if dictionary["payment"] != nil {
+            var paymentArr: [PaymentEntity] = []
+            for payment in dictionary["payment"] as! [Any] {
+                paymentArr.append(PaymentEntity(dictionary: (payment as? [String : Any]) ?? [:])!)
+            }
+            self.payment = paymentArr
+        } else {
+            self.payment = nil
         }
         
-        self.payment = paymentArr
+        
         
         self.firstName = firstName
         self.lastName = lastName
@@ -90,8 +101,8 @@ struct UserEntity {
             "lastName": lastName,
             "mobileNumber": mobileNumber,
             "email": email,
-            "address": address.map { $0.dictionary },
-            "payment": payment.map { $0.dictionary },
+            "address": (address != nil) ? address!.map { $0.dictionary } : [],
+            "payment": (payment != nil) ? payment!.map { $0.dictionary } : [],
             "coupon": coupon ?? [:],
             "totalPoint": totalPoint
         ]
