@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vyz-OW-em0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vyz-OW-em0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,21 +36,30 @@
                                                                 <color key="barTintColor" red="0.090101522840000003" green="0.090101522840000003" blue="0.090101522840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </searchBar>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-Vn-j5t">
-                                                                <rect key="frame" x="321" y="22" width="46" height="30"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title="Button"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-Vn-j5t">
+                                                                <rect key="frame" x="332" y="26" width="23" height="22"/>
+                                                                <state key="normal" image="cart_w"/>
                                                                 <connections>
                                                                     <action selector="test:" destination="Vyz-OW-em0" eventType="touchUpInside" id="0hg-mw-p9m"/>
                                                                 </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh5-Ep-yGo">
+                                                                <rect key="frame" x="20" y="26" width="20" height="22"/>
+                                                                <state key="normal" image="menu_w"/>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="b4w-vC-hea" secondAttribute="trailing" id="8O1-co-eqg"/>
+                                                            <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="Qh5-Ep-yGo" secondAttribute="bottom" constant="16" id="GDu-7G-eZP"/>
+                                                            <constraint firstAttribute="trailing" secondItem="LVH-Vn-j5t" secondAttribute="trailing" constant="20" id="b3l-QO-1Ad"/>
+                                                            <constraint firstItem="Qh5-Ep-yGo" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="26" id="b68-zb-qO6"/>
+                                                            <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="LVH-Vn-j5t" secondAttribute="bottom" constant="16" id="bdi-15-ZgX"/>
                                                             <constraint firstAttribute="bottom" secondItem="b4w-vC-hea" secondAttribute="bottom" id="edr-9w-vzK"/>
                                                             <constraint firstAttribute="height" constant="120" id="h31-zq-u5b"/>
+                                                            <constraint firstItem="LVH-Vn-j5t" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="26" id="mvO-Gi-Ef4"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="leading" secondItem="hIY-s0-7h0" secondAttribute="leading" id="n7r-fi-miD"/>
+                                                            <constraint firstItem="Qh5-Ep-yGo" firstAttribute="leading" secondItem="hIY-s0-7h0" secondAttribute="leading" constant="20" id="yAB-Lm-Ot2"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA2-Mt-0BH" userLabel="TrendsSection">
@@ -293,4 +302,8 @@
             <point key="canvasLocation" x="524" y="26.086956521739133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart_w" width="23" height="20"/>
+        <image name="menu_w" width="20" height="20"/>
+    </resources>
 </document>
