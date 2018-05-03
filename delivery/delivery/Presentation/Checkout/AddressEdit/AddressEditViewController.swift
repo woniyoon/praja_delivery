@@ -7,22 +7,33 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class AddressEditViewController: UIViewController {
+class AddressEditViewController: BaseViewController {
 
     private var viewModel: AddressEditViewModel!
     
     @IBOutlet var textFields: [UITextField]!
-
+    @IBOutlet weak var receiverLabel: UITextField!
+    @IBOutlet weak var addressLabel1: UITextField!
+    @IBOutlet weak var addressLabel2: UITextField!
+    @IBOutlet weak var cityLabel: UITextField!
+    @IBOutlet weak var zipLabel: UITextField!
+    @IBOutlet weak var phoneNumberLabel: UITextField!
+    
     @IBOutlet weak var provinceField: UIView!
-    @IBOutlet weak var provinceLabel: UILabel!
-    
-
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet var countryButtons: [UIButton]!
     @IBOutlet var provinceButtons: [UIButton]!
+    @IBOutlet weak var provinceLabel: UITextField!
     
-    @IBOutlet weak var remarkTextView: UITextView!
+    @IBOutlet weak var countryField: UIView!
+    @IBOutlet var countryButtons: [UIButton]!
+    @IBOutlet weak var countryLabel: UITextField!
+    
+    public var indexNumberOfAddress: Int?
+    
+    private let disposeBag: DisposeBag = DisposeBag()
+
     
     static func createInstance(viewModel: AddressEditViewModel) -> AddressEditViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(AddressEditViewController.self)
@@ -33,9 +44,17 @@ class AddressEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextFields()
+        setAddressFields()
     }
+    
+    
+    // MARK: - IBAction functions
+
 
     @IBAction func selectDropdownProvince(_ sender: Any) {
+        countryButtons.forEach { (button) in
+            button.isHidden = true
+        }
         provinceButtons.forEach { (button) in
             UIView.animate(withDuration: 0.5, animations: {
                 button.isHidden =
@@ -46,7 +65,7 @@ class AddressEditViewController: UIViewController {
     }
     
     @IBAction func selectProvince(_ sender: UIButton) {
-        provinceLabel.text = sender.currentTitle
+        provinceLabel.text = sender.currentTitle!
         provinceButtons.forEach { (button) in
             button.isHidden = true
         }
@@ -54,15 +73,17 @@ class AddressEditViewController: UIViewController {
     
 
     @IBAction func selectDropdownCountry(_ sender: Any) {
+        provinceButtons.forEach { (button) in
+            button.isHidden = true
+        }
         countryButtons.forEach { (button) in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 3, animations: {
                 button.isHidden =
                     !button.isHidden
                 self.view.layoutIfNeeded()
             })
         }
     }
-  
     
     @IBAction func selectCountry(_ sender: UIButton) {
         countryLabel.text = sender.currentTitle
@@ -71,13 +92,79 @@ class AddressEditViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if !(receiverLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(addressLabel1.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(addressLabel2.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(cityLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(zipLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(provinceLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(countryLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
+            
+            viewModel.address1.value = addressLabel1.text!
+            viewModel.address2.value = addressLabel2.text!
+            viewModel.city.value = cityLabel.text!
+            viewModel.country.value = countryLabel.text!
+            viewModel.phoneNumber.value = phoneNumberLabel.text!
+            viewModel.province.value = provinceLabel.text!
+            viewModel.receiver.value = receiverLabel.text!
+            viewModel.zipCode.value = zipLabel.text!
+            
+            if let indexNo = self.indexNumberOfAddress {
+                viewModel.indexOfAddressOnEdit = indexNo
+            }
+            
+            viewModel.updateAddress().subscribe(onCompleted: {
+                let next = resolver.resolve(AddressListViewController.self)!
+                self.present(next, animated: true, completion: nil)
+            }) { (err) in
+                print(err)
+            }.disposed(by: disposeBag)
+            
+        } else {
+            let alert = UIAlertController(title: "Reminder", message: "Please fill out every field!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    // MARK: - Configuration before View Loaded
+
+    
     func configureTextFields() {
         textFields.forEach { (textField) in
-            textField.layer.borderColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+            textField.layer.borderWidth = 1
         }
         
-        self.provinceField.layer.borderColor = UIColor.init(red: 217, green: 217, blue: 217, alpha: 1).cgColor
-        self.provinceField.layer.borderWidth = 0.5
+        self.provinceField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+        self.provinceField.layer.borderWidth = 1
+        
+        self.countryField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+        self.countryField.layer.borderWidth = 1
+
+    }
+    
+    func setAddressFields() {
+        if let index = self.indexNumberOfAddress {
+            viewModel.fetchAddress(index: index)
+            viewModel.address.asObservable().bind { (add) in
+                self.receiverLabel.text = add.first?.receiver
+                self.addressLabel1.text = add.first?.address1
+                self.addressLabel2.text = add.first?.address2
+                self.cityLabel.text = add.first?.city
+                self.zipLabel.text = add.first?.postalCode
+                self.phoneNumberLabel.text = add.first?.phoneNumber
+                self.provinceLabel.text = add.first?.province
+                self.countryLabel.text = add.first?.country
+                self.provinceLabel.textAlignment = .center
+                self.provinceLabel.textAlignment = .center
+            }.disposed(by: disposeBag)
+        }
     }
 }

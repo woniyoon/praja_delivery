@@ -11,7 +11,17 @@ import RxSwift
 import RxCocoa
 
 class AddressEditViewModel: BaseViewModel {
-    var reviewList = BehaviorRelay<[Review]>(value: [])
+    var receiver = Variable<String>("")
+    var address1 = Variable<String>("")
+    var address2 = Variable<String>("")
+    var city = Variable<String>("")
+    var zipCode = Variable<String>("")
+    var phoneNumber = Variable<String>("")
+    var province = Variable<String>("")
+    var country = Variable<String>("")
+    var isDefault = Variable<Bool>(true)
+    var address = BehaviorRelay<[Address]>(value: [])
+    var indexOfAddressOnEdit: Int? = nil
     
     private let useCase: AddressEditUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
@@ -20,15 +30,25 @@ class AddressEditViewModel: BaseViewModel {
         self.useCase = useCase
     }
     
-    func fetchReviewList(productId: String) {
-        reviewList.accept([
-            Review(userId: "123", userName: "Kento Uchida", title: "Hello", comment: "No – one gets an iron – clad guarantee of success. Certainly, factors like opportunity, luck and timing are important. But the backbone of success is usually found in old – fashioned, basic concepts like hard work, determination, good planning and perseverance.", rating: 3.4, productId: "aaa", date: Date.init()),
-            Review(userId: "123", userName: "Kento Uchida", title: "Short one", comment: "It's really short comment!", rating: 3.4, productId: "aaa", date: Date.init())])
-        //        useCase.fetchReviewList(productId: productId)
-        //            .subscribe(
-        //                onSuccess: { model in },
-        //                onError: { error in self.setError(error)}
-        //        ).disposed(by: disposeBag)
+    func fetchAddress(index: Int) {
+        useCase.fetchAddress(index: index).subscribe(
+            onSuccess: { model in
+                self.address.accept(model)
+        },
+            onError: { error in print(error) }
+            )
+            .disposed(by: disposeBag)
+                
+        }
+    
+    func updateAddress() -> Completable {
+        let address = Address(receiver: self.receiver.value, address1: self.address1.value, address2: self.address2.value, city: self.city.value, province: self.province.value, postalCode: self.zipCode.value, country: self.country.value, isDefault: self.isDefault.value, phoneNumber: self.phoneNumber.value)
+
+        if let indexNo = self.indexOfAddressOnEdit {
+            return useCase.updateAddress(address: address, indexNo: indexNo)
+        } else {
+            return useCase.addAddress(address: address)
+        }
     }
 }
 

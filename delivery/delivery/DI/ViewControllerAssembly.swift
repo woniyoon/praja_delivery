@@ -48,6 +48,7 @@ final class ViewControllerAssembly: Assembly {
         }
         
         container.register(HomeViewController.self) { _ in
+            print("jaewoooooooon")
             let dataStore = container.resolve(HomeDataStoreProtocol.self)
             let repository = container.resolve(HomeRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(HomeTranslator.self)
