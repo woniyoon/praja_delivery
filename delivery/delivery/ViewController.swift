@@ -16,8 +16,8 @@ class ViewController: UINavigationController{
         // Do any additional setup after loading the view, typically from a nib.
 //        let storyboard = UIStoryboard(name: "Home", bundle: nil)
 //        let controller = storyboard.instantiateInitialViewController() as! UIViewController
-//        let next = resolver.resolve(HomeViewController.self)!
-//        self.pushViewController(next, animated: true)
+        let next = resolver.resolve(HomeViewController.self)!
+        self.pushViewController(next, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

@@ -100,23 +100,10 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="j4N-WQ-O7X" kind="relationship" relationship="rootViewController" id="cNd-ag-Dx8"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fel-29-pN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="126" y="870"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="P8h-Pl-l1J">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="j4N-WQ-O7X" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="6R6-Uh-iZX"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xw8-eA-rcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="973" y="878"/>
         </scene>
     </scenes>
 </document>
