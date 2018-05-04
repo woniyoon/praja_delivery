@@ -9,15 +9,23 @@
 import UIKit
 import Firebase
 
-class ViewController: UINavigationController{
+class ViewController: UITabBarController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//        let controller = storyboard.instantiateInitialViewController() as! UIViewController
-//        let next = resolver.resolve(HomeViewController.self)!
-//        self.pushViewController(next, animated: true)
+
+        let home = resolver.resolve(HomeViewController.self)!
+        let order = resolver.resolve(OrderViewController.self)!
+        let account = resolver.resolve(AccountViewController.self)!
+        
+        home.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab1"), tag: 0)
+        order.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab2"), tag: 0)
+        account.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab3"), tag: 0)
+        self.tabBar.barTintColor = .black
+        self.tabBar.tintColor = .red
+        self.addChildViewController(home)
+        self.addChildViewController(order)
+        self.addChildViewController(account)
     }
 
     override func didReceiveMemoryWarning() {
