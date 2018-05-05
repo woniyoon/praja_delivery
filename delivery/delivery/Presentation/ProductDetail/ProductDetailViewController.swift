@@ -32,6 +32,15 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     @IBOutlet weak var reviewRatingStars: CosmosView!
     @IBOutlet weak var reviewRatingLabel: UILabel!
     @IBOutlet weak var reviewRatingNumLabel: UILabel!
+    @IBOutlet weak var review1: UIView!
+    @IBOutlet weak var review1TitleLabel: UILabel!
+    @IBOutlet weak var review1UserNameLabel: UILabel!
+    @IBOutlet weak var review1CommentLabel: UILabel!
+    @IBOutlet weak var review2: UIView!
+    @IBOutlet weak var review2TitleLabel: UILabel!
+    @IBOutlet weak var review2UserNameLabel: UILabel!
+    @IBOutlet weak var review2CommentLabel: UILabel!
+    @IBOutlet weak var reviewViewMoreButton: UIButton!
     
     // Recommended products
     @IBOutlet weak var frequentlyCollection: UICollectionView!

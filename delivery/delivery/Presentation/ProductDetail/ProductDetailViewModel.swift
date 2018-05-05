@@ -23,6 +23,13 @@ class ProductDetailViewModel : BaseViewModel {
     var reviewAverage = BehaviorRelay(value: 0.0)
     var reviewNum = BehaviorRelay(value: "(0)")
     
+    var review1Title = BehaviorRelay(value: "")
+    var review1User = BehaviorRelay(value: "")
+    var review1Comment = BehaviorRelay(value: "")
+    var review2Title = BehaviorRelay(value: "")
+    var review2User = BehaviorRelay(value: "")
+    var review2Comment = BehaviorRelay(value: "")
+    
     var description = BehaviorRelay(value: "")
     
     var frequentlyPurchasedWith = BehaviorRelay<[Product]>(value: [])
