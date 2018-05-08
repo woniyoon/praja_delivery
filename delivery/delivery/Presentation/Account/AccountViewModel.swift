@@ -9,19 +9,27 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class AccountViewModel: BaseViewModel {
     
-    var firstName = BehaviorRelay(value: "")
-    var lastName = BehaviorRelay(value: "")
     var fullName = BehaviorRelay(value: "")
     var dateOfBirth = BehaviorRelay(value: "")
     var mobileNumber = BehaviorRelay(value: "")
     var email = BehaviorRelay(value: "")
-    var totalPoint = BehaviorRelay(value: "")
-    var address = BehaviorRelay<[Address]>(value: [])
-    var payment = BehaviorRelay<[Payment]>(value: [])
     
+    var totalPoint = BehaviorRelay(value: "")
+
+    var receiver = BehaviorRelay(value: "")
+    var address = BehaviorRelay(value: "")
+    var postalCode = BehaviorRelay(value: "")
+    
+    var cardholder = BehaviorRelay(value: "")
+    var cardNumber = BehaviorRelay(value: "")
+    var expiryDate = BehaviorRelay(value: "")
+    
+    public var dataForSection = BehaviorRelay<[SectionModel<String, User>]>(value: [])
+    var user = BehaviorRelay<[User]>(value: [])
 
     private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
@@ -30,28 +38,40 @@ class AccountViewModel: BaseViewModel {
         self.useCase = useCase
     }
     
-//    func fetchAccount(_ id: String) {
-//        useCase.fetchAccount(id)
-//            .subscribe(
-//                onSuccess: { model in
-//                    
-//                    var date = Date()
-//                    var formattedDate = ""
-//                    date = model.dateOfBirth!
-//                    formattedDate = date.toString(dateFormat: "MM-dd-yyyy")
-//                    
-//                    self.firstName.accept("\(model.firstName)")
-//                    self.lastName.accept("\(model.lastName)")
-//                    self.fullName.accept("\(model.fullName)")
-//                    self.dateOfBirth.accept("\(formattedDate)")
-//                    self.mobileNumber.accept("\(model.mobileNumber)")
-//                    self.email.accept("\(model.email)")
-//                    self.totalPoint.accept("NumNum Points: \(model.totalPoint)")
-//                    self.address.accept(model.address)
-//                    self.payment.accept(model.payment)
-//            },
-//                onError: { error in print(error) }
-//            )
-//            .disposed(by: disposeBag)
-//    }
+    func fetchUser() {
+        useCase.fetchUser().subscribe(onSuccess: { (user) in
+            self.user.accept([user])
+            
+            self.fullName.accept("\(user.firstName) \(user.lastName)")
+            self.email.accept(user.email)
+            if let dateOfBirth = user.dateOfBirth {
+                self.dateOfBirth.accept(dateOfBirth.description)
+            }
+            self.totalPoint.accept("\(user.totalPoint) point(s)")
+            self.mobileNumber.accept(user.mobileNumber)
+                        
+            if let address = user.address {
+                let defaultAddress = address.filter({ $0.isDefault })
+               
+                self.address.accept("\((defaultAddress.first?.address1)!) \((defaultAddress.first?.address2)!)")
+                self.receiver.accept((defaultAddress.first?.receiver)!)
+                self.postalCode.accept((defaultAddress.first?.postalCode)!)
+            }
+            
+            if let payment = user.payment {
+                let defaultPayment = payment.filter({ $0.isDefault })
+                
+                self.cardholder.accept((defaultPayment.first?.holderName)!)
+                self.cardNumber.accept((defaultPayment.first?.cardNumber)!)
+                self.expiryDate.accept((defaultPayment.first?.expiryDate.description)!)
+            }
+          
+            
+//            let test = [User(firstName: user.firstName, lastName: user.lastName, dateOfBirth: user.dateOfBirth, mobileNumber: user.mobileNumber, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
+//
+           
+        }) { (err) in
+            print(err)
+        }
+    }
 }
