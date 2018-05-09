@@ -66,7 +66,8 @@ class UserInfoEditViewController: UIViewController {
             
             viewModel.updateUser().subscribe(onCompleted: {
                 let next = resolver.resolve(CheckoutViewController.self)!
-                self.present(next, animated: true, completion: nil)})
+//                self.present(next, animated: true, completion: nil)})
+                self.navigationController?.popViewController(animated: true)})
             { (err) in
                 print(err)
             }

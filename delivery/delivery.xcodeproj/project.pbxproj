@@ -68,6 +68,8 @@
 		913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */; };
 		913C148A2069DABC001C2A9B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913C14882069DABC001C2A9B /* CollectionViewCell.swift */; };
 		913C148B2069DABC001C2A9B /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913C14892069DABC001C2A9B /* CollectionViewCell.xib */; };
+		914F07F320A13C06003D5B23 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914F07F220A13C06003D5B23 /* Category.storyboard */; };
+		914F07F720A13C3C003D5B23 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F07F620A13C3B003D5B23 /* CategoryViewController.swift */; };
 		91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91512C932086E1FC00E80B08 /* PaymentCell.swift */; };
 		91512C962086E1FC00E80B08 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91512C942086E1FC00E80B08 /* PaymentCell.xib */; };
 		915817D92091C434009BE66A /* UserInfoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915817D82091C434009BE66A /* UserInfoEdit.storyboard */; };
@@ -227,6 +229,8 @@
 		913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStoreProtocol.swift; sourceTree = "<group>"; };
 		913C14882069DABC001C2A9B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		913C14892069DABC001C2A9B /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		914F07F220A13C06003D5B23 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
+		914F07F620A13C3B003D5B23 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		91512C932086E1FC00E80B08 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
 		91512C942086E1FC00E80B08 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		915817D82091C434009BE66A /* UserInfoEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInfoEdit.storyboard; sourceTree = "<group>"; };
@@ -433,6 +437,7 @@
 		911A281920577926007B8084 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				914F07F120A13787003D5B23 /* Category */,
 				91806AE42069B25800EF6496 /* HomeCell */,
 				911A281A20577948007B8084 /* Home.storyboard */,
 				911A281C2057796C007B8084 /* HomeViewController.swift */,
@@ -483,6 +488,15 @@
 				913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		914F07F120A13787003D5B23 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				914F07F220A13C06003D5B23 /* Category.storyboard */,
+				914F07F620A13C3B003D5B23 /* CategoryViewController.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		915817D72091C37A009BE66A /* UserInfoEdit */ = {
@@ -993,6 +1007,7 @@
 			files = (
 				5281FD5B205780CB00412663 /* ProductList.storyboard in Resources */,
 				91A3C97A20995725006BC64D /* Checkout.storyboard in Resources */,
+				914F07F320A13C06003D5B23 /* Category.storyboard in Resources */,
 				BBA54AC6203D178D00D69954 /* LaunchScreen.storyboard in Resources */,
 				91A152472082D9BF006C816D /* AddressCell.xib in Resources */,
 				91C74784209C09D3001ACA6E /* Assets.xcassets in Resources */,
@@ -1213,6 +1228,7 @@
 				91A3C97820995725006BC64D /* CheckoutViewController.swift in Sources */,
 				D7AAD0BC204235BE00D2971C /* ProductEntity.swift in Sources */,
 				5281FD682058C13400412663 /* ProductListViewModel.swift in Sources */,
+				914F07F720A13C3C003D5B23 /* CategoryViewController.swift in Sources */,
 				D7569D362052B0EF00C6D6E4 /* UsecaseAssembly.swift in Sources */,
 				D703592E2063B1E200787198 /* ErrorMsg.swift in Sources */,
 				D7AAD0C6204239B300D2971C /* FirebaseAnalytics.swift in Sources */,

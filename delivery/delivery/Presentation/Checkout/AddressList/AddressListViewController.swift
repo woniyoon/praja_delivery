@@ -24,6 +24,13 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         instance?.viewModel = viewModel
         return instance
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        viewModel.fetchAddressList()
+        addressTableView.reloadData()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +65,9 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
         print(index.row)
-        let next = resolver.resolve(AddressEditViewController.self)!
-        next.indexNumberOfAddress = index.row
-        present(next, animated: true, completion: nil)
+        let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+        addressEditVC.indexNumberOfAddress = index.row
+        self.navigationController?.pushViewController(addressEditVC, animated: true)
     }
     
     func deleteButtonTapped(sender: UIButton) {
@@ -113,15 +120,30 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        let next = resolver.resolve(AddressEditViewController.self)!
-        present(next, animated: true, completion: nil)
+//        let next = resolver.resolve(AddressEditViewController.self)!
+        let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+        self.navigationController?.pushViewController(addressEditVC, animated: true)
+        
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         viewModel.updateAddressList().subscribe(onCompleted: {
             self.addressTableView.reloadInputViews()
-            let next = resolver.resolve(CheckoutViewController.self)!
-            self.present(next, animated: true, completion: nil)
+//            let next = resolver.resolve(CheckoutViewController.self)!
+            self.navigationController?.popViewController(animated: true)
+//            self.present(next, animated: true, completion: nil)
+        }) { (err) in
+            print(err)
+        }
+    }
+    
+    func test() {
+        viewModel.updateAddressList().subscribe(onCompleted: {
+            self.addressTableView.reloadInputViews()
+            //            let next = resolver.resolve(CheckoutViewController.self)!
+            self.navigationController?.popViewController(animated: true)
+            print("reached!!!")
+            //            self.present(next, animated: true, completion: nil)
         }) { (err) in
             print(err)
         }

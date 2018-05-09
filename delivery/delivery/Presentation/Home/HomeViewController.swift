@@ -14,7 +14,8 @@ import Kingfisher
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
-// MARK: - UIView
+
+    // MARK: - UIView
     
     @IBOutlet weak var topSalesCollectionView: UICollectionView!
     @IBOutlet weak var youMayLikeCollectionView: UICollectionView!
@@ -128,8 +129,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     @IBAction func test(_ sender: Any) {
+        let nav1 = UINavigationController()
         let next = resolver.resolve(CheckoutViewController.self)!
-        present(next, animated: true, completion: nil)
+
+        nav1.viewControllers = [next]
+        nav1.navigationBar.topItem?.title = "Checkout"
+//        nav1.topItem?.title = "Checkout"
+        present(nav1, animated: true, completion: nil)
     }
     
     
@@ -184,6 +190,22 @@ extension HomeViewController: UISearchBarDelegate{
         } else {
             searchBar.endEditing(true)
         }
+    }
+    
+    @IBAction func sideMenuTapped(_ sender: Any) {
+        
+        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! UIViewController
+        
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //always fill the view
+        blurEffectView.frame = self.view.bounds
+
+        view.addSubview(blurEffectView)
+        
+//        let next = CategoryViewController()
+        viewController.modalPresentationStyle = .overFullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }
 

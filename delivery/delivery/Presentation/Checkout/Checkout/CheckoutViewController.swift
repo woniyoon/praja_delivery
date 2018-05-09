@@ -19,11 +19,17 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     private var viewModel: CheckoutViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchUser()
+        checkoutTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
         configureTableView()
-        viewModel.fetchUser()
+//        viewModel.fetchUser()
     }
     
     // MARK: - ViewController
@@ -95,17 +101,21 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                 isMember = false
             }
             
-            let next = resolver.resolve(UserInfoEditViewController.self)!
-            next.isMember = isMember
-            present(next, animated: true, completion: nil)
+            let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
+            userInfoEditVC.isMember = isMember
+            userInfoEditVC.title = "User Information"
+            self.navigationController?.pushViewController(userInfoEditVC, animated: true)
 
         } else if indexPath.section == 1 {
             if viewModel.user.value.first?.address != nil {
-                let next = resolver.resolve(AddressListViewController.self)!
-                present(next, animated: true, completion: nil)
+                let addressListVC = resolver.resolve(AddressListViewController.self)!
+                addressListVC.title = "Shipping"
+                self.navigationController?.pushViewController(addressListVC, animated: true)
             } else {
-                let next = resolver.resolve(AddressEditViewController.self)!
-                present(next, animated: true, completion: nil)            }
+                let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+                addressEditVC.title = "Shipping"
+                self.navigationController?.pushViewController(addressEditVC, animated: true)
+            }
             
 //            let next = resolver.resolve(AddressListViewController.self)!
 //            next.isMember = isMember

@@ -46,6 +46,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh5-Ep-yGo">
                                                                 <rect key="frame" x="20" y="26" width="20" height="22"/>
                                                                 <state key="normal" image="menu_w"/>
+                                                                <connections>
+                                                                    <action selector="sideMenuTapped:" destination="Vyz-OW-em0" eventType="touchUpInside" id="qVx-o5-mgb"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

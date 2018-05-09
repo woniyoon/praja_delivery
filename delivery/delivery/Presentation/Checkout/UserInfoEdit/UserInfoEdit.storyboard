@@ -18,15 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Prg-uL-Zag">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Title" id="br5-jO-0vt"/>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dxb-pw-Tmc">
-                                <rect key="frame" x="22" y="97" width="331" height="45"/>
+                                <rect key="frame" x="22" y="38" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="331" id="GYo-4m-qbT"/>
                                     <constraint firstAttribute="height" constant="45" id="eac-Vc-5X2"/>
@@ -36,7 +29,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xV9-lO-kFb">
-                                <rect key="frame" x="22" y="141" width="331" height="45"/>
+                                <rect key="frame" x="22" y="82" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="6Vp-pW-QBd"/>
                                 </constraints>
@@ -45,7 +38,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sDe-oE-VHa">
-                                <rect key="frame" x="22" y="185" width="331" height="45"/>
+                                <rect key="frame" x="22" y="126" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="LAd-pZ-0aB"/>
                                 </constraints>
@@ -54,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8q-Ot-IiF">
-                                <rect key="frame" x="22" y="229" width="331" height="45"/>
+                                <rect key="frame" x="22" y="170" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="hK7-Ps-K5a"/>
                                 </constraints>
@@ -63,7 +56,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvY-j7-mdG">
-                                <rect key="frame" x="22" y="298" width="331" height="45"/>
+                                <rect key="frame" x="22" y="239" width="331" height="45"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="N6y-Va-ndi"/>
@@ -79,10 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxb-pw-Tmc" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="40B-a4-k6p"/>
-                            <constraint firstItem="dxb-pw-Tmc" firstAttribute="centerX" secondItem="Prg-uL-Zag" secondAttribute="centerX" id="7Cm-wV-lf4"/>
-                            <constraint firstItem="Prg-uL-Zag" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" id="8K8-KP-csB"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="F8q-Ot-IiF" secondAttribute="trailing" constant="22" id="9J9-6x-GSc"/>
-                            <constraint firstItem="dxb-pw-Tmc" firstAttribute="top" secondItem="Prg-uL-Zag" secondAttribute="bottom" constant="33" id="Fau-0T-4Gx"/>
                             <constraint firstItem="sDe-oE-VHa" firstAttribute="top" secondItem="xV9-lO-kFb" secondAttribute="bottom" constant="-1" id="IZr-o2-nFT"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="sDe-oE-VHa" secondAttribute="trailing" constant="22" id="M5o-4n-9EM"/>
                             <constraint firstItem="uvY-j7-mdG" firstAttribute="top" secondItem="F8q-Ot-IiF" secondAttribute="bottom" constant="24" id="WIu-zB-gF7"/>
@@ -90,13 +80,12 @@
                             <constraint firstItem="xV9-lO-kFb" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="YoN-Yp-ZgD"/>
                             <constraint firstItem="F8q-Ot-IiF" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="aDk-4H-1w4"/>
                             <constraint firstItem="xV9-lO-kFb" firstAttribute="top" secondItem="dxb-pw-Tmc" secondAttribute="bottom" constant="-1" id="aS0-iX-uy5"/>
-                            <constraint firstItem="Prg-uL-Zag" firstAttribute="top" secondItem="afQ-MO-lRK" secondAttribute="top" id="elE-Ky-FJI"/>
+                            <constraint firstItem="dxb-pw-Tmc" firstAttribute="top" secondItem="afQ-MO-lRK" secondAttribute="top" constant="18" id="cLa-BG-zVq"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="uvY-j7-mdG" secondAttribute="trailing" constant="22" id="fZ4-Ux-zm5"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="xV9-lO-kFb" secondAttribute="trailing" constant="22" id="gGS-YI-nLd"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="dxb-pw-Tmc" secondAttribute="trailing" constant="22" id="oGf-4T-Fcz"/>
                             <constraint firstItem="uvY-j7-mdG" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="sqb-aa-939"/>
                             <constraint firstItem="sDe-oE-VHa" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="uPe-0p-XhJ"/>
-                            <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="Prg-uL-Zag" secondAttribute="trailing" id="zSM-cW-0Lf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afQ-MO-lRK"/>
                     </view>

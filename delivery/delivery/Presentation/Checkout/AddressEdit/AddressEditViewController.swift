@@ -118,7 +118,8 @@ class AddressEditViewController: BaseViewController {
             
             viewModel.updateAddress().subscribe(onCompleted: {
                 let next = resolver.resolve(AddressListViewController.self)!
-                self.present(next, animated: true, completion: nil)
+//                self.present(next, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }) { (err) in
                 print(err)
             }.disposed(by: disposeBag)
