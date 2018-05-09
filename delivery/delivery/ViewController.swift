@@ -26,6 +26,9 @@ class ViewController: UITabBarController{
         self.addChildViewController(home)
         self.addChildViewController(order)
         self.addChildViewController(account)
+        // Do any additional setup after loading the view, typically from a nib.
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! UIViewController
     }
 
     override func didReceiveMemoryWarning() {
