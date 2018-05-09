@@ -44,21 +44,7 @@ class ShoppingCartCell: UICollectionViewCell {
             
             let resource = ImageResource(downloadURL: imageUrl, cacheKey: shoppingCart.product.name)
             self.productImage.kf.setImage(with: resource)
-            self.deleteProduct.isHidden = !isEditing
         }
-    }
-    
-    var isEditing: Bool = false {
-        didSet {
-            deleteProduct.isHidden = !isEditing
-            
-        }
-        
-    }
-    
-    @IBAction func deleteProductDidTap(_ sender: Any) {
-        
-        
     }
 }
 

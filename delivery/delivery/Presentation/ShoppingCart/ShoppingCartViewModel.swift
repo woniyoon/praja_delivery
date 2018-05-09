@@ -16,6 +16,9 @@ class ShoppingCartViewModel: BaseViewModel {
     private var useCase: ShoppingCartUseCaseProtocol
     
     public var subTotal = BehaviorRelay<String>(value: "0.0")
+    public var discount = BehaviorRelay<String>(value: "0.0")
+    public var hsttax = BehaviorRelay<String>(value: "0.0")
+    public var total = BehaviorRelay<String>(value: "0.0")
     public var productsShoppingCart = BehaviorRelay<[ProductShoppingCart]>(value: [])
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -24,22 +27,14 @@ class ShoppingCartViewModel: BaseViewModel {
     }
     
     func fetchShoppingCartList(){
-        
-       useCase.fetchShoppingCart()
+        useCase.fetchShoppingCart()
             .subscribe(
-                onSuccess: { (product) in
-                    print("View Model has \(product.count) product")
-                    var arr = product
-                    arr = arr + self.productsShoppingCart.value
-                    self.productsShoppingCart.accept(arr)
-                    let shoppingCart = self.productsShoppingCart.value
+                onSuccess: { (productsList) in
+
+                    self.productsShoppingCart.accept(productsList)
                     
-                    var preSubTotal = 0.0
+                    self.calculateSubTotal()
                     
-                    for item in shoppingCart {
-                        preSubTotal = preSubTotal + item.total
-                    }
-                    self.subTotal.accept("$ \(String(format:"%.2f", preSubTotal))")
             }, onError: { (error) in
                 print(error.localizedDescription)}
             ) .disposed(by: disposeBag)
@@ -54,5 +49,24 @@ class ShoppingCartViewModel: BaseViewModel {
         useCase.deleteProductFromShoppingCart(with: primaryKey)
     }
     
+    func calculateSubTotal(){
+        let shoppingCart = productsShoppingCart.value
+        
+        var preSubTotal = 0.0
+        
+        for item in shoppingCart {
+            preSubTotal = preSubTotal + item.total
+        }
+        subTotal.accept("$ \(String(format:"%.2f", preSubTotal))")
+        
+        discount.accept("$ \(String(format:"%.2f", 0))")
+        hsttax.accept("$ \(String(format:"%.2f", 0))")
+        
+        total.accept("$ \(String(format:"%.2f", preSubTotal))")
+    }
+    
+    func updateProductShoppingCart(with shoppingCart: ShoppingCart){
+        useCase.updateProductShoppingCart(shoppingCart: shoppingCart)
+    }
         
 }

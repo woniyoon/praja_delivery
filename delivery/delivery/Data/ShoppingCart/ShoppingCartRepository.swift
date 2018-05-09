@@ -11,6 +11,7 @@ import RxSwift
 protocol ShoppingCartRepositoryProtocol{
     func deleteShoppingCart()
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity)
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
     func deleteProductFromShoppingCart(with primaryKey: String)
 }
@@ -24,6 +25,10 @@ class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
         
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity) {
         dataStore.addProductShoppingCart(shoppingCart: shoppingCart)
+    }
+    
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) {
+        dataStore.updateProductShoppingCart(shoppingCart: shoppingCart)
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {

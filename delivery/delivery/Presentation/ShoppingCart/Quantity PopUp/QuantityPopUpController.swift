@@ -46,8 +46,7 @@ class QuantityPopUpController: UIViewController {
         
         let touch: UITouch? = touches.first
         if touch?.view != quantityView {
-            delegate?.passValue(value: textQuantity.text!, tag: buttonTag)
-            
+            delegate?.passValue(value: textQuantity.text!, tag: buttonTag)            
             dismiss(animated: true, completion: nil)
         }
     }

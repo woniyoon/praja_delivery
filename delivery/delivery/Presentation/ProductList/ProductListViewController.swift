@@ -48,6 +48,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         bindCartQty()
         
         viewModel.fetchProductList(with: "")
+        viewModel.fetchShoppingCartQty()
         
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout
@@ -113,9 +114,9 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBAction func editButtonTapped(sender: UIButton?) -> Void {
         
-        let myPrimaryKey = String(sender!.tag)
-        
-        if viewModel.productAlreadyInCart(with: myPrimaryKey) {
+        let myPrimaryKey = productsIds[sender!.tag]
+    
+        if viewModel.productAlreadyInCart(with: myPrimaryKey!) {
             let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
             let alertController = UIAlertController(title: projectName.uppercased(), message:
                 "Product already added to cart !", preferredStyle: UIAlertControllerStyle.alert)
@@ -143,6 +144,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBAction func shoppingCartTapped(_ sender: Any) {
         let next = resolver.resolve(ShoppingCartViewController.self)!
+        
         present(next, animated: true, completion: nil)
     }
 

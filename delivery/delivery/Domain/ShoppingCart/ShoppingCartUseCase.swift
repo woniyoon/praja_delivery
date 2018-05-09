@@ -12,6 +12,7 @@ import RxSwift
 protocol ShoppingCartUseCaseProtocol {
     func deleteShoppingCart()
     func addProductShoppingCart(shoppingCart: ShoppingCart)
+    func updateProductShoppingCart(shoppingCart: ShoppingCart)
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
     func deleteProductFromShoppingCart(with primaryKey: String)
 }
@@ -34,6 +35,12 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
     
         let shoppingCartEntity = translator.translate(shoppingCart)
         repository.addProductShoppingCart(shoppingCart: shoppingCartEntity)
+    }
+    
+    func updateProductShoppingCart(shoppingCart: ShoppingCart) {
+        
+        let shoppingCartEntity = translator.translate(shoppingCart)
+        repository.updateProductShoppingCart(shoppingCart: shoppingCartEntity)
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCart]> {

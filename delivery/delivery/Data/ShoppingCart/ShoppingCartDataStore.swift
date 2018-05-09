@@ -19,10 +19,10 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
     
     func deleteProductFromShoppingCart(with primaryKey: String) {
         let realm = try! Realm()
-        let shoppingCartExist = realm.object(ofType: ShoppingCartEntity.self, forPrimaryKey: primaryKey)
-        if shoppingCartExist != nil {
+        let cart = realm.objects(ShoppingCartEntity.self).filter("idProducts = '\(primaryKey)'")
+        if cart != nil {
             try!   realm.write {
-                realm.delete(shoppingCartExist!)
+                realm.delete(cart)
             }
         }
     }
@@ -36,10 +36,22 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         let realm = RealmManager.sharedInstance
         print("Realm - \(shoppingCart.id)")
         
-        shoppingCart.id = String(realm.getNewId(type: ShoppingCartEntity.self)!)
+        shoppingCart.id = realm.getNewId(type: ShoppingCartEntity.self)!
         realm.addData(object: shoppingCart)
     }
+    
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) {
+        let realm = RealmManager.sharedInstance
+        print("Realm - \(shoppingCart.id)")
         
+        let realmUpdate = try! Realm()
+        let cart = realmUpdate.objects(ShoppingCartEntity.self).filter("idProducts = '\(shoppingCart.idProducts)'")
+        
+        shoppingCart.id = cart[0].id
+        
+        realm.updateData(object: shoppingCart)
+    }
+    
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
         let realm = RealmManager.sharedInstance
         
@@ -62,7 +74,7 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
                         
                         if let product = ProductEntity(docId: (document?.documentID)!, dictionary: (document?.data())!)
                         {
-                            arr.append(ProductShoppingCartEntity(product: product,quantity: 1))
+                            arr.append(ProductShoppingCartEntity(product: product,quantity: cartItem.quantity))
                             
                         }
                         else {

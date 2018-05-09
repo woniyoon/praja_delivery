@@ -29,14 +29,27 @@ class RealmManager {
     func addData(object: Object)   {
         do {
             try! database.write {
+                print("add: \(object)")
                 database.add(object, update: true)
-                print("Added new object")
             }
         }
         catch let error as NSError {
             print("Something went wrong: \(error.localizedDescription)")
         }
     }
+    
+    func updateData(object: Object)   {
+        do {
+            try! database.write {
+                print("update: \(object)")
+                database.add(object, update: true)
+            }
+        }
+        catch let error as NSError {
+            print("Something went wrong: \(error.localizedDescription)")
+        }
+    }
+    
     
     func deleteAllFromDatabase()  {
         try!   database.write {
@@ -51,11 +64,10 @@ class RealmManager {
     }
     
     func getNewId(type: Object.Type) -> Int? {
-        let last = database.objects(type).count
-        if last > 0 {
-            return last + 1
-        } else {
-            return 1
-        }
+        
+        let realm = try! Realm()
+        var i = (realm.objects(type.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        return i
+        
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 struct ProductShoppingCart {
     
     public let product: Product
-    public let quantity: Int
+    public var quantity: Int
     public var total: Double {
         return product.price * Double(quantity)
     }

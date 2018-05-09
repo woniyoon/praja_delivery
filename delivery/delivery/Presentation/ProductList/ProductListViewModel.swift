@@ -58,8 +58,8 @@ class ProductListViewModel: BaseViewModel {
     func productAlreadyInCart(with primaryKey: String)-> Bool {
         var result = false
         let realm = try! Realm()
-        let shoppingCartExist = realm.object(ofType: ShoppingCartEntity.self, forPrimaryKey: primaryKey)
-        if shoppingCartExist != nil {
+        let shoppingCartExist = realm.objects(ShoppingCartEntity.self).filter("idProducts = '\(primaryKey)'")
+        if shoppingCartExist.first != nil {
             result = true
         }
         return result
