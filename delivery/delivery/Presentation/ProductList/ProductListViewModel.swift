@@ -25,8 +25,8 @@ class ProductListViewModel: BaseViewModel {
         self.useCaseShopping = useCaseShopping
     }
     
-    func fetchProductList(with keyword:String){
-        useCase.fetchProductList(with: keyword)
+    func fetchProductList(with keyword:String, by orderby: String, _ descending: Bool){
+        useCase.fetchProductList(with: keyword, by: orderby, descending)
             .subscribe(
                 onSuccess: { (product) in
                 self.productsList.accept(product)

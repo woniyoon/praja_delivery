@@ -20,6 +20,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var cartQty: UILabel!
     
+    @IBOutlet weak var dropDown: UIView!
     private let disposeBag: DisposeBag = DisposeBag()
     
     private var productsIds = [Int:String]()
@@ -53,6 +54,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
+        dropDownShadow()
     }
     
     private func bindCartQty(){
@@ -148,4 +150,28 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         present(next, animated: true, completion: nil)
     }
 
+    @IBAction func didTapOrderBy(_ sender: Any) {
+        
+        if dropDown.isHidden {
+            dropDown.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: {
+                self.dropDown.alpha = 1
+            }, completion:  nil)
+        } else {
+            UIView.animate(withDuration: 0.3/*Animation Duration second*/, animations: {
+                self.dropDown.alpha = 0
+            }, completion:  {
+                (value: Bool) in
+                self.dropDown.isHidden = true
+            })
+        }
+    }
+    
+    func dropDownShadow() {
+        dropDown.backgroundColor = UIColor.white
+        dropDown.layer.shadowColor = UIColor.lightGray.cgColor
+        dropDown.layer.shadowOpacity = 1
+        dropDown.layer.shadowOffset = CGSize(width: 7.0, height: 7.0)
+        dropDown.layer.shadowRadius = 5
+    }
 }
