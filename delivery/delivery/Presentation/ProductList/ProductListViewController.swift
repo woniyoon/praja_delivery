@@ -26,6 +26,10 @@ class ProductListViewController: BaseViewController {
         var listLayout = ListLayout(itemHeight: 280)
         return listLayout }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("test")
+        self.tabBarController?.tabBar.isTranslucent = false
+    }
     
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)

@@ -11,17 +11,46 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
+
     private let disposeBag: DisposeBag = DisposeBag()
+    private let category: [String] = ["Kitchen", "Home", "Food", "Drink"]
     
-    // MARK: - ViewController
+    @IBOutlet weak var categoryTableView: UITableView!
     
-    
+    public var userTappedCloseButtonClosure: (() -> Void)?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryTableView.dataSource = self
+        categoryTableView.delegate = self
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return category.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: 300, height: 80))
+        cell.textLabel?.text = category[indexPath.row]
+        return cell
+    }
+    
+    @IBAction func closeCategoryList(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        userTappedCloseButtonClosure?()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Do any additional setup after loading the view.
+        let next = resolver.resolve(ProductListViewController.self)!
+        next.keyword = ""
+        present(next, animated: true, completion: nil)
     }
 }

@@ -19,16 +19,19 @@ class ViewController: UITabBarController{
         let account = resolver.resolve(AccountViewController.self)!
         
         home.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab1"), tag: 0)
-        order.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab2"), tag: 0)
-        account.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab3"), tag: 0)
+        order.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab2"), tag: 1)
+        account.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab3"), tag: 2)
+        
         self.tabBar.barTintColor = .black
-        self.tabBar.tintColor = .red
         self.addChildViewController(home)
         self.addChildViewController(order)
-        self.addChildViewController(account)
-        // Do any additional setup after loading the view, typically from a nib.
-//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//        let controller = storyboard.instantiateInitialViewController() as! UIViewController
+        let navigationVCforAccount = UINavigationController()
+        
+        navigationVCforAccount.isNavigationBarHidden = true
+        navigationVCforAccount.viewControllers = [account]
+        
+        self.addChildViewController(navigationVCforAccount)
+
     }
 
     override func didReceiveMemoryWarning() {

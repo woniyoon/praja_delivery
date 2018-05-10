@@ -40,6 +40,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        view.willRemoveSubview(blurEffectView)
+        print(view.subviews.count)
+        if view.subviews.count > 1 {
+            view.willRemoveSubview(view.subviews[1])
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView(viewModel: viewModel)
@@ -155,6 +163,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             let next = resolver.resolve(ProductListViewController.self)!
             next.keyword = ""
             present(next, animated: true, completion: nil)
+            
         } else {
             let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
             
@@ -194,17 +203,21 @@ extension HomeViewController: UISearchBarDelegate{
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         
-        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! UIViewController
+        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         //always fill the view
         blurEffectView.frame = self.view.bounds
-
-        view.addSubview(blurEffectView)
         
-//        let next = CategoryViewController()
+        view.addSubview(blurEffectView)
+        viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+        }
+     
+        viewController.modalTransitionStyle = .flipHorizontal
         viewController.modalPresentationStyle = .overFullScreen
+        
         present(viewController, animated: true, completion: nil)
     }
 }
