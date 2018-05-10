@@ -117,6 +117,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         
         frequentlyCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
         relatedCollection.setCollectionViewLayout(productCollectionViewlayout, animated: true)
+        frequentlyCollection.delegate = self
+        relatedCollection.delegate = self
         
         registerCell()
     }
@@ -236,6 +238,14 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     // MARK: - Collection Delegate
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageControls.currentPage = (Int(collectionView.contentOffset.x) / Int(collectionView.frame.width))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        
+        let next = resolver.resolve(ProductDetailViewController.self)!
+        next.productId = cell.item!.productId
+        present(next, animated: true, completion: nil)
     }
 
     // MARK: - IBAction
