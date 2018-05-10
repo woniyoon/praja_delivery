@@ -23,8 +23,13 @@ class ViewController: UITabBarController{
         account.tabBarItem = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "tab3"), tag: 2)
         
         self.tabBar.barTintColor = .black
-        self.addChildViewController(home)
+        let navigationVCforHome = UINavigationController()
+        navigationVCforHome.isNavigationBarHidden = true
+        navigationVCforHome.viewControllers = [home]
+        
+        self.addChildViewController(navigationVCforHome)
         self.addChildViewController(order)
+        
         let navigationVCforAccount = UINavigationController()
         
         navigationVCforAccount.isNavigationBarHidden = true

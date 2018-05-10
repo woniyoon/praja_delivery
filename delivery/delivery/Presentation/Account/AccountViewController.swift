@@ -40,14 +40,16 @@ class AccountViewController: BaseViewController {
         return instance
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bindView() // bind data
-//        bindTableView()
-//        configureTableView()
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
         viewModel.fetchUser()
-        
+        bindView() // bind data
     }
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        bindView() // bind data
+//    }
 
     private func bindView() {
         viewModel.fullName.asObservable()
@@ -86,15 +88,19 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func toEditProfile(_ sender: Any) {
+        
+        // test
+//        let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
+//        self.navigationController?.pushViewController(userInfoEditVC, animated: true)
     }
     
     
     @IBAction func editAddress(_ sender: Any) {
         if viewModel.user.value.first?.address != nil {
             let next = resolver.resolve(AddressListViewController.self)!
-            self.parent?.addChildViewController(next)
-            print(self.parent?.childViewControllers.count)
             
+            self.navigationController?.pushViewController(next, animated: true)
+//            self.parent?.addChildViewController(next)
         }
     }
     

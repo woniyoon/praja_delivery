@@ -26,6 +26,7 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         viewModel.fetchAddressList()
         addressTableView.reloadData()

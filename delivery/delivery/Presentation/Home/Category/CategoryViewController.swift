@@ -15,12 +15,12 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
 
 
     private let disposeBag: DisposeBag = DisposeBag()
-    private let category: [String] = ["Kitchen", "Home", "Food", "Drink"]
+    private let category: [String] = ["Kitchen", "Home", "Food", "Drink", "Stationery", "Living", "Electronics"]
     
     @IBOutlet weak var categoryTableView: UITableView!
     
     public var userTappedCloseButtonClosure: (() -> Void)?
-
+    public var userSelectedCategory: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +48,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let next = resolver.resolve(ProductListViewController.self)!
-        next.keyword = ""
-        present(next, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        userSelectedCategory?()
     }
 }

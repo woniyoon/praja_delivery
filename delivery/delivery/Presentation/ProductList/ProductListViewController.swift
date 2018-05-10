@@ -27,8 +27,7 @@ class ProductListViewController: BaseViewController {
         return listLayout }()
     
     override func viewWillAppear(_ animated: Bool) {
-        print("test")
-        self.tabBarController?.tabBar.isTranslucent = false
+//        self.navigationController?.isNavigationBarHidden = false
     }
     
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {

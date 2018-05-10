@@ -41,11 +41,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        view.willRemoveSubview(blurEffectView)
-        print(view.subviews.count)
-        if view.subviews.count > 1 {
-            view.willRemoveSubview(view.subviews[1])
-        }
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLoad() {
@@ -137,13 +133,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     @IBAction func test(_ sender: Any) {
-        let nav1 = UINavigationController()
         let next = resolver.resolve(CheckoutViewController.self)!
-
-        nav1.viewControllers = [next]
-        nav1.navigationBar.topItem?.title = "Checkout"
-//        nav1.topItem?.title = "Checkout"
-        present(nav1, animated: true, completion: nil)
+        next.navigationController?.navigationBar.topItem?.title = "Checkout"
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     
@@ -162,14 +154,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             
             let next = resolver.resolve(ProductListViewController.self)!
             next.keyword = ""
-            present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
             
         } else {
             let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
             
             let next = resolver.resolve(ProductDetailViewController.self)!
             next.productId = cell.item!.productId
-            present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
         }
     }
 }
@@ -179,7 +171,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
 extension HomeViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         self.keyword = searchText
     }
     
@@ -207,12 +198,20 @@ extension HomeViewController: UISearchBarDelegate{
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //always fill the view
         blurEffectView.frame = self.view.bounds
         
         view.addSubview(blurEffectView)
+        
         viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
             blurEffectView?.removeFromSuperview()
+        }
+        
+        //this part needs fix
+        viewController.userSelectedCategory = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+            let next = resolver.resolve(ProductListViewController.self)!
+            next.keyword = ""
+            self.navigationController?.pushViewController(next, animated: true)
         }
      
         viewController.modalTransitionStyle = .flipHorizontal
