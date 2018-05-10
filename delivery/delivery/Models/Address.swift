@@ -1,8 +1,8 @@
 //
-//  Address.swift
+//  AccountEntity.swift
 //  delivery
 //
-//  Created by Jaewon Yoon on 2018-02-20.
+//  Created by Diego H. Vanni on 2018-03-25.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -16,6 +16,7 @@ struct Address {
     public let province: String
     public let postalCode: String
     public let country: String
+    public let isDefault: Bool
     
     var dictionary: [String: Any] {
         return [
@@ -25,7 +26,8 @@ struct Address {
             "city": city,
             "province": province,
             "postalCode": postalCode,
-            "country": country
+            "country": country,
+            "isDefault": isDefault
         ]
     }
 }

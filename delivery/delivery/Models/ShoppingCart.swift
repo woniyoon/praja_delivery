@@ -7,12 +7,7 @@
 
 import RealmSwift
 
-class ShoppingCart: Object {
-    @objc dynamic var id = 0
-    @objc dynamic var quantity = 0
-    @objc dynamic var idProducts = ""
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+struct ShoppingCart {
+    //public var user: User
+    public var product: [Product]
 }

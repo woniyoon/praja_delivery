@@ -29,10 +29,10 @@ final class ViewControllerAssembly: Assembly {
             return vc!
         }
         container.register(AccountViewController.self) { _ in
-            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
-            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(AccountTranslator.self)
-            let usecase    = container.resolve(AccountUseCaseProtocol.self, arguments: repository!, translator!)
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AccountViewModel.self, argument: usecase!)
             let vc         = AccountViewController.createInstance(viewModel: viewModel!)
              return vc!
@@ -45,16 +45,6 @@ final class ViewControllerAssembly: Assembly {
             let viewModel = container.resolve(HomeViewModel.self, argument: usecase!)
             let vc = HomeViewController.createInstance(viewModel: viewModel!)
              return vc!
-        }
-        //User
-        container.register(UserViewController.self) { _ in
-            let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
-            let viewModel  = container.resolve(UserViewModel.self, argument: usecase!)
-            let vc         = UserViewController.createInstance(viewModel: viewModel!)
-            return vc!
         }
         container.register(ProductListViewController.self) { _ in
 
