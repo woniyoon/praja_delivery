@@ -29,6 +29,7 @@ class ProductDetailViewModel : BaseViewModel {
     var review2Title = BehaviorRelay(value: "")
     var review2User = BehaviorRelay(value: "")
     var review2Comment = BehaviorRelay(value: "")
+    var reviewMore = BehaviorRelay(value: false)
     
     var description = BehaviorRelay(value: "")
     
@@ -103,6 +104,29 @@ class ProductDetailViewModel : BaseViewModel {
         // Review
         self.reviewAverage.accept(model.averageRating)
         
+        if let reviews = model.reviews {
+            reviewNum.accept("(\(reviews.count))")
+            if reviews.count == 1 {
+                setValuesToReview1(reviews[0])
+            } else if reviews.count >= 2 {
+                setValuesToReview1(reviews[0])
+                setValuesToReview2(reviews[1])
+                if reviews.count >= 3 { self.reviewMore.accept(true) }
+            }
+        }
+        
         self.description.accept(model.description)
+    }
+    
+    private func setValuesToReview1(_ review: Review) {
+        self.review1User.accept(review.userName)
+        self.review1Title.accept(review.title ?? "")
+        self.review1Comment.accept(review.comment ?? "")
+    }
+    
+    private func setValuesToReview2(_ review: Review) {
+        self.review2User.accept(review.userName)
+        self.review2Title.accept(review.title ?? "")
+        self.review2Comment.accept(review.comment ?? "")
     }
 }

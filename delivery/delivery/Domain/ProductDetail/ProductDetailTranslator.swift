@@ -26,6 +26,14 @@ class ProductDetailTranslator {
                        price: entity.price,
                        category: entity.category,
                        subCategory: entity.subCategory,
-                       productId: entity.productId)
+                       productId: entity.productId,
+                       reviews: translateReviews(entity.reviews))
+    }
+    
+    private func translateReviews(_ reviews: [ReviewEntity]?) -> [Review]? {
+        guard let reviews = reviews else { return nil }
+        return reviews.map{ r in
+            Review(userId: r.userId, userName: r.userName, title: r.title, comment: r.comment, rating: r.rating, date: r.date)
+        }
     }
 }

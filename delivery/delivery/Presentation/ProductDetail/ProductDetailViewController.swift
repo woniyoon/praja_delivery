@@ -94,6 +94,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         fetch()
         setup()
         bindView()
+        review1.isHidden = true
+        review2.isHidden = true
+        reviewViewMoreButton.isHidden = true
     }
 
     // MARK: - Private Fuctions
@@ -159,6 +162,38 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.reviewNum.asObservable()
             .bind(to: reviewRatingNumLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        // Reviews
+        viewModel.review1Title.asObservable()
+            .subscribe(
+                onNext: { if !$0.isEmpty { self.review1.isHidden = false } }
+            ).disposed(by: disposeBag)
+        viewModel.review1Title.asObservable()
+            .bind(to: review1TitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review1User.asObservable()
+            .bind(to: review1UserNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review1Comment.asObservable()
+            .bind(to: review1CommentLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review2Title.asObservable()
+            .subscribe(
+                onNext: { if !$0.isEmpty { self.review2.isHidden = false } }
+            ).disposed(by: disposeBag)
+        viewModel.review2Title.asObservable()
+            .bind(to: review2TitleLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review2User.asObservable()
+            .bind(to: review2UserNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review2Comment.asObservable()
+            .bind(to: review2CommentLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.reviewMore.asObservable()
+            .subscribe(
+                onNext: { if $0 { self.reviewViewMoreButton.isHidden = false } }
+            ).disposed(by: disposeBag)
         
         // Recommended Products
         viewModel.frequentlyPurchasedWith.asObservable()

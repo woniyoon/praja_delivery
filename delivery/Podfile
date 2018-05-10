@@ -18,7 +18,7 @@ target 'delivery' do
   pod 'Firebase/Auth', '4.8.2'
   
   # View
-#  pod 'Cosmos', '~> 15.0'
+  pod 'Cosmos', '~> 15.0'
 
   # Image
   pod 'Kingfisher', '~> 4.0'
