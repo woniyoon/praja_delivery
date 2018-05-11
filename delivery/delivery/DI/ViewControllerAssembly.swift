@@ -29,10 +29,10 @@ final class ViewControllerAssembly: Assembly {
             return vc!
         }
         container.register(AccountViewController.self) { _ in
-            let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            let dataStore  = container.resolve(AccountDataStoreProtocol.self)
+            let repository = container.resolve(AccountRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(AccountTranslator.self)
+            let usecase    = container.resolve(AccountUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AccountViewModel.self, argument: usecase!)
             let vc         = AccountViewController.createInstance(viewModel: viewModel!)
              return vc!
@@ -46,12 +46,29 @@ final class ViewControllerAssembly: Assembly {
             let vc = HomeViewController.createInstance(viewModel: viewModel!)
              return vc!
         }
+        //User
+        container.register(UserViewController.self) { _ in
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(UserViewModel.self, argument: usecase!)
+            let vc         = UserViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
         container.register(ProductListViewController.self) { _ in
+
             let dataStore  = container.resolve(ProductListDataStoreProtocol.self)
             let repository = container.resolve(ProductListRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(ProductListTranslator.self)
             let usecase    = container.resolve(ProductListUseCaseProtocol.self, arguments: repository!, translator!)
-            let viewModel  = container.resolve(ProductListViewModel.self, argument: usecase!)
+
+            let dataStoreSC  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let repositorySC = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStoreSC!)
+            let translatorSC = container.resolve(ShoppingCartTranslator.self)
+            let usecaseSC    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: repositorySC!, translatorSC!)
+            
+            let viewModel  = container.resolve(ProductListViewModel.self, arguments: usecase!,usecaseSC!)
             let vc         = ProductListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
@@ -63,6 +80,16 @@ final class ViewControllerAssembly: Assembly {
             let usecase    = container.resolve(ReviewListUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(ReviewListViewModel.self, argument: usecase!)
             let vc         = ReviewListViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
+        
+        container.register(ShoppingCartViewController.self) { _ in
+            let dataStore  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let repository = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(ShoppingCartTranslator.self)
+            let usecase    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(ShoppingCartViewModel.self, argument: usecase!)
+            let vc         = ShoppingCartViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
     }

@@ -1,17 +1,16 @@
 //
-//  AccountRepository.swift
+//  UserRepository.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-12.
+//  Created by Sara N on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-protocol UserRepositoryProtocol{
-    func fetchAccount(_ id: String) -> Single<UserEntity>
+protocol UserRepositoryProtocol {
+    func fetchUser(_ id: String) -> Single<UserEntity>
 }
 
 class UserRepository: UserRepositoryProtocol {
@@ -22,7 +21,7 @@ class UserRepository: UserRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchAccount(_ id: String) -> Single<UserEntity>{
+    func fetchUser(_ id: String) -> Single<UserEntity> {
         return dataStore.fetchUser(id)
     }
 }

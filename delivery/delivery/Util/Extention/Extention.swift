@@ -7,16 +7,3 @@
 //
 
 import Foundation
-
-
-//Date Conversion to String // Diego H. Vanni (please report problems if any!)
-extension Date
-{
-    func toString( dateFormat format  : String ) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
-    }
-    
-}

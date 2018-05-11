@@ -16,17 +16,23 @@ final class UsecaseAssembly: Assembly {
         container.register(OrderUseCaseProtocol.self) { (_, repository: OrderRepositoryProtocol, translator: OrderTranslator) in
             OrderUseCase(repository: repository, translator: translator)
         }
-        container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
-            UserUseCase(repository: repository, translator: translator)
+        container.register(AccountUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: AccountTranslator) in
+            AccountUseCase(repository: repository, translator: translator)
         }
         container.register(HomeUseCaseProtocol.self) { (_, repository: HomeRepositoryProtocol, translator: HomeTranslator) in
             HomeUseCase(repository: repository, translator: translator)
+        }
+        container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
+            UserUseCase(repository: repository, translator: translator)
         }
         container.register(ProductListUseCaseProtocol.self) { (_, repository: ProductListRepositoryProtocol, translator: ProductListTranslator) in
             ProductListUseCase(repository: repository, translator: translator)
         }
         container.register(ReviewListUseCaseProtocol.self) { (_, repository: ReviewListRepositoryProtocol, translator: ReviewListTranslator) in
             ReviewListUseCase(repository: repository, translator: translator)
+        }
+        container.register(ShoppingCartUseCaseProtocol.self) { (_, repository: ShoppingCartRepositoryProtocol, translator: ShoppingCartTranslator) in
+            ShoppingCartUseCase(repository: repository, translator: translator)
         }
     }
 }
