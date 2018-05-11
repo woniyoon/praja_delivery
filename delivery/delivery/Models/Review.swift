@@ -14,7 +14,7 @@ struct Review {
     public let title: String?
     public let comment: String?
     public let rating: Double
-    public let productId: String
+//    public let productId: String
     public let date: Date
     
     var dictionary: [String: Any] {
@@ -24,7 +24,7 @@ struct Review {
             "title": title as Any,
             "comment": comment as Any,
             "rating": rating,
-            "productId": productId,
+//            "productId": productId,
             "date": date
         ]
     }
