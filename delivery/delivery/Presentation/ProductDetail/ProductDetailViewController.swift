@@ -259,7 +259,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     @IBAction func reviewListButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ReviewListViewController.self)!
-        next.productId = "oVhTC6TXjU1a3bG8EabF"
+        next.productId = productId
         present(next, animated: true, completion: nil)
     }
     
