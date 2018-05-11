@@ -48,7 +48,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         bindTableView()
         bindCartQty()
         
-        viewModel.fetchProductList(with: "")
+        viewModel.fetchProductList(with: "", by: "name", false)
         viewModel.fetchShoppingCartQty()
         
         gridLayout = GridLayout(numberOfColumns: 2)

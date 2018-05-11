@@ -1,8 +1,8 @@
 //
-//  AccountEntity.swift
+//  AddressEntit.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-25.
+//  Created by Jaewon Yoon on 2018-03-18.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -16,7 +16,6 @@ struct AddressEntity {
     public let province: String
     public let postalCode: String
     public let country: String
-    public let isDefault: Bool
     
     var dictionary: [String: Any] {
         return [
@@ -26,8 +25,7 @@ struct AddressEntity {
             "city": city,
             "province": province,
             "postalCode": postalCode,
-            "country": country,
-            "isDefault": isDefault
+            "country": country
         ]
     }
     
@@ -38,8 +36,7 @@ struct AddressEntity {
             let city = dictionary["city"] as? String,
             let province = dictionary["province"] as? String,
             let postalCode = dictionary["postalCode"] as? String,
-            let country = dictionary["country"] as? String,
-            let isDefault = dictionary["isDefault"] as? Bool else { return nil }
+            let country = dictionary["country"] as? String else { return nil }
         
         self.receiver = receiver
         self.address1 = address1
@@ -48,6 +45,5 @@ struct AddressEntity {
         self.province = province
         self.postalCode = postalCode
         self.country = country
-        self.isDefault = isDefault
     }
 }
