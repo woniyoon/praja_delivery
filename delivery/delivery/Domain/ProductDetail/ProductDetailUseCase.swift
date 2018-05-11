@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol ProductDetailUseCaseProtocol {
-    func fetchProductDetail(_ id: String) -> Single<Product>
+    func fetchProductDetail(_ productId: String) -> Single<Product>
+    func fetchFrequentlyPurchasedWith(_ productId: String) -> Single<[Product]>
+    func fetchRelatedTo(_ productId: String) -> Single<[Product]>
 }
 
 class ProductDetailUseCase: ProductDetailUseCaseProtocol {
@@ -23,10 +25,24 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         self.translator = translator
     }
 
-    func fetchProductDetail(_ id: String) -> Single<Product> {
-        return repository.fetchProductDetail(id)
-            .map({ entity in
-                self.translator.translate(entity)
-            })
+    func fetchProductDetail(_ productId: String) -> Single<Product> {
+        return repository.fetchProductDetail(productId)
+            .map { entity in
+                self.translator.translate(from: entity)
+            }
+    }
+    
+    func fetchFrequentlyPurchasedWith(_ productId: String) -> Single<[Product]> {
+        return repository.fetchFrequentlyPurchasedWith(productId)
+            .map { entity in
+                self.translator.translateList(from: entity)
+            }
+    }
+    
+    func fetchRelatedTo(_ productId: String) -> Single<[Product]> {
+        return repository.fetchRelatedTo(productId)
+            .map { entity in
+                self.translator.translateList(from: entity)
+        }
     }
 }

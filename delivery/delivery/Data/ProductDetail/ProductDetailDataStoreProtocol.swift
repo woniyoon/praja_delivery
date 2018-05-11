@@ -10,5 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ProductDetailDataStoreProtocol {
-    func fetchProductDetail(_ id: String) -> Single<ProductEntity>
+    func fetchProductDetail(_ productId: String) -> Single<ProductEntity>
+    func fetchFrequentlyPurchasedWith(_ productId: String) -> Single<[ProductEntity]>
+    func fetchRelatedTo(_ productId: String) -> Single<[ProductEntity]>
 }
