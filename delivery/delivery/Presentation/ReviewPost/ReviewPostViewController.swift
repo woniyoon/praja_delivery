@@ -42,7 +42,7 @@ class ReviewPostViewController: BaseViewController {
     
     private func bind() {
         viewModel.isComplete.asObservable()
-            .subscribe(onNext: { isComplete in  })
+            .subscribe(onNext: { isComplete in  if isComplete { self.dismiss(animated: true) } })
             .disposed(by: disposeBag)
         
         // Alert Message
@@ -57,6 +57,7 @@ class ReviewPostViewController: BaseViewController {
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
+        // TODO: Get rating from cosmos view
         viewModel.postReivew(productId: productId, rating: 3, title: titleFeild.text, comment: commentField.text)
     }
 }
