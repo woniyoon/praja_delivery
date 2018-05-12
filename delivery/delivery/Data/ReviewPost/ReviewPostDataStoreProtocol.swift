@@ -1,0 +1,15 @@
+//
+//  ReviewPostDataStoreProtocol.swift
+//  delivery
+//
+//  Created by Kento Uchida on 2018/05/11.
+//  Copyright © 2018 CICCC. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+import RxCocoa
+
+protocol ReviewPostDataStoreProtocol {
+    func postReview(productId: String, rating: Double, title: String, comment: String) -> Completable
+}
