@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Cosmos
 
 class ReviewPostViewController: BaseViewController {
     
-    @IBOutlet weak var ratingStar: UIView!
+    @IBOutlet weak var ratingStar: CosmosView!
     @IBOutlet weak var titleFeild: UITextField!
     @IBOutlet weak var commentField: UITextView!
     var productId: String!
@@ -64,7 +65,6 @@ class ReviewPostViewController: BaseViewController {
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
-        // TODO: Get rating from cosmos view
-        viewModel.postReivew(productId: productId, rating: 3, title: titleFeild.text, comment: commentField.text)
+        viewModel.postReivew(productId: productId, rating: ratingStar.rating, title: titleFeild.text, comment: commentField.text)
     }
 }
