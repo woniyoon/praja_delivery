@@ -6,4 +6,5 @@
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
+let REVIEW_COLLECTION = "review"
 let PRODUCT_COLLECTION = "product"
