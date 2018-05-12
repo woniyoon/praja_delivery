@@ -13,6 +13,8 @@ import RxCocoa
 
 class ReviewPostViewController: BaseViewController {
     
+    var productId: String!
+    
     private var viewModel: ReviewPostViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
