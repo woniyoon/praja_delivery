@@ -186,6 +186,9 @@
                                                     <constraint firstAttribute="height" constant="48" id="yov-3w-2xI"/>
                                                 </constraints>
                                                 <state key="normal" title="Write a review"/>
+                                                <connections>
+                                                    <action selector="writeReviewButtonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="Q4q-mc-QHJ"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3o-Sp-2EP">
                                                 <rect key="frame" x="0.0" y="863" width="375" height="1"/>

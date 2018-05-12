@@ -257,6 +257,12 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.fetchProductDetail(productId)
     }
     
+    @IBAction func writeReviewButtonPressed(_ sender: Any) {
+        let next = resolver.resolve(ReviewPostViewController.self)!
+        next.productId = productId
+        present(next, animated: true, completion: nil)
+    }
+    
     @IBAction func reviewListButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ReviewListViewController.self)!
         next.productId = productId
