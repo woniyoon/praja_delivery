@@ -16,6 +16,17 @@ struct ReviewEntity {
     public let userId: String
     public let userName: String
     
+    var dictionary: [String: Any] {
+        return [
+            "comment": comment,
+            "date": date,
+            "rating": rating,
+            "title": title,
+            "userId": userId,
+            "userName": userName
+        ]
+    }
+    
     init?(dictionary: [String: Any]) {
         guard let comment = dictionary["comment"] as? String,
             let date = dictionary["date"] as? Date,
