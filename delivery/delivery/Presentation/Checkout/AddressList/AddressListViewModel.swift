@@ -14,10 +14,10 @@ class AddressListViewModel: BaseViewModel {
     
     var addressList = BehaviorRelay<[Address]>(value: [])
 
-    private let useCase: AddressListUseCaseProtocol
+    private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCase: AddressListUseCaseProtocol) {
+    init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
     

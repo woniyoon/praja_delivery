@@ -110,7 +110,7 @@ final class ViewControllerAssembly: Assembly {
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
             let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(CheckoutUseCaseProtocol.self, arguments: repository!, translator!)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(CheckoutViewModel.self, argument: usecase!)
             let vc         = CheckoutViewController.createInstance(viewModel: viewModel!)
             return vc!
@@ -120,7 +120,7 @@ final class ViewControllerAssembly: Assembly {
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
             let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(AddressEditUseCaseProtocol.self, arguments: repository!, translator!)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AddressEditViewModel.self, argument: usecase!)
             let vc         = AddressEditViewController.createInstance(viewModel: viewModel!)
             return vc!
@@ -130,7 +130,7 @@ final class ViewControllerAssembly: Assembly {
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
             let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(AddressListUseCaseProtocol.self, arguments: repository!, translator!)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AddressListViewModel.self, argument: usecase!)
             let vc         = AddressListViewController.createInstance(viewModel: viewModel!)
             return vc!
@@ -140,7 +140,7 @@ final class ViewControllerAssembly: Assembly {
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
             let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(UserTranslator.self)
-            let usecase    = container.resolve(UserInfoEditUseCaseProtocol.self, arguments: repository!, translator!)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(UserInfoEditViewModel.self, argument: usecase!)
             let vc         = UserInfoEditViewController.createInstance(viewModel: viewModel!)
             return vc!

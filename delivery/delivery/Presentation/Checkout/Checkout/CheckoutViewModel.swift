@@ -27,16 +27,16 @@ class CheckoutViewModel: BaseViewModel {
 //    var paymentTest: [Payment] = []
     
     private let disposeBag: DisposeBag = DisposeBag()
-    private let useCase: CheckoutUseCaseProtocol
+    private let useCase: UserUseCaseProtocol
     
     // MARK: - Init
     
-    init(useCase: CheckoutUseCaseProtocol) {
+    init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
     
     func updateUser() {
-        useCase.updateUser()
+        useCase.updateUser(user: self.user.value.first!)
     }
     
     func fetchUser() {

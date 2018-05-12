@@ -38,19 +38,6 @@ final class UsecaseAssembly: Assembly {
         container.register(ReviewListUseCaseProtocol.self) { (_, repository: ReviewListRepositoryProtocol, translator: ReviewListTranslator) in
             ReviewListUseCase(repository: repository, translator: translator)
         }
-
-        container.register(CheckoutUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
-            CheckoutUseCase(repository: repository, translator: translator)
-        }
-        container.register(AddressEditUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
-            AddressEditUseCase(repository: repository, translator: translator)
-        }
-        container.register(AddressListUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
-            AddressListUseCase(repository: repository, translator: translator)
-        }
-        container.register(UserInfoEditUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
-            UserInfoEditUseCase(repository: repository, translator: translator)
-        }
         container.register(ShoppingCartUseCaseProtocol.self) { (_, repository: ShoppingCartRepositoryProtocol, translator: ShoppingCartTranslator) in
             ShoppingCartUseCase(repository: repository, translator: translator)
         }

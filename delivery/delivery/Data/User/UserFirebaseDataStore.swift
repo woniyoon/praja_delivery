@@ -29,7 +29,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
         //        let user = Auth.auth().currentUser
         //        if let user = user {
         return Single<UserEntity>.create { observer -> Disposable in
-            self.db.collection("users")
+            self.db.collection(USER_COLLECTION)
                 .document("72tKB5nG76CR4dVYW5AM")
                 .getDocument() { (document, error) in
                     if let error = error {
@@ -48,7 +48,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     
     func updateAddress(address: AddressEntity) {
-        db.collection("users").document("72tKB5nG76CR4dVYW5AM").updateData([
+        db.collection(USER_COLLECTION).document("72tKB5nG76CR4dVYW5AM").updateData([
             "address": address
             ])
         { err in
@@ -64,7 +64,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
         return Completable.create { observer in
             let dict = user.dictionary
             print(dict)
-            self.db.collection("users").document("72tKB5nG76CR4dVYW5AM").setData(user.dictionary) { err in
+            self.db.collection(USER_COLLECTION).document("72tKB5nG76CR4dVYW5AM").setData(user.dictionary) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
                     observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))

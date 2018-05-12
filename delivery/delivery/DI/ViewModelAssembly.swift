@@ -31,16 +31,16 @@ final class ViewModelAssembly: Assembly {
         container.register(ReviewListViewModel.self) { (_, useCase: ReviewListUseCaseProtocol) in
             ReviewListViewModel(useCase: useCase)
         }
-        container.register(CheckoutViewModel.self) { (_, useCase: CheckoutUseCaseProtocol) in
+        container.register(CheckoutViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             CheckoutViewModel(useCase: useCase)
         }
-        container.register(AddressEditViewModel.self) { (_, useCase: AddressEditUseCaseProtocol) in
+        container.register(AddressEditViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             AddressEditViewModel(useCase: useCase)
         }
-        container.register(AddressListViewModel.self) { (_, useCase: AddressListUseCaseProtocol) in
+        container.register(AddressListViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             AddressListViewModel(useCase: useCase)
         }
-        container.register(UserInfoEditViewModel.self) { (_, useCase: UserInfoEditUseCaseProtocol) in
+        container.register(UserInfoEditViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             UserInfoEditViewModel(useCase: useCase)
         }
         container.register(ShoppingCartViewModel.self) { (_, useCase: ShoppingCartUseCaseProtocol) in

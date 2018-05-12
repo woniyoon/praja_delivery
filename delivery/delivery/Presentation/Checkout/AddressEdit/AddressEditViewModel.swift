@@ -23,10 +23,10 @@ class AddressEditViewModel: BaseViewModel {
     var address = BehaviorRelay<[Address]>(value: [])
     var indexOfAddressOnEdit: Int? = nil
     
-    private let useCase: AddressEditUseCaseProtocol
+    private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCase: AddressEditUseCaseProtocol) {
+    init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
     

@@ -18,10 +18,10 @@ class UserInfoEditViewModel: BaseViewModel {
     var phoneNumber = BehaviorRelay(value: "")
     var user = BehaviorRelay<[User]>(value: [])
     
-    private let useCase: UserInfoEditUseCaseProtocol
+    private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCase: UserInfoEditUseCaseProtocol) {
+    init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
     
