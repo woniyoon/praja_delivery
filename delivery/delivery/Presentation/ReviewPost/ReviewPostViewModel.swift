@@ -21,7 +21,7 @@ class ReviewPostViewModel: BaseViewModel {
         self.useCase = useCase
     }
     
-    func postReivew(productId: String, rating: Double, title: String, comment: String) {
+    func postReivew(productId: String, rating: Double, title: String?, comment: String?) {
         useCase.postReivew(productId: productId, rating: rating, title: title, comment: comment)
             .subscribe(
                 onCompleted: { self.isComplete.accept(true) },

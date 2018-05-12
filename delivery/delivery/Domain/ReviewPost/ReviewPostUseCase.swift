@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol ReviewPostUseCaseProtocol {
-    func postReivew(productId: String, rating: Double, title: String, comment: String) -> Completable
+    func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable
 }
 
 class ReviewPostUseCase: ReviewPostUseCaseProtocol {
@@ -21,8 +21,8 @@ class ReviewPostUseCase: ReviewPostUseCaseProtocol {
         self.repository = repository
     }
     
-    func postReivew(productId: String, rating: Double, title: String, comment: String) -> Completable {
-        if rating == 0 || title.isEmpty || comment.isEmpty {
+    func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable {
+        guard rating != 0, let title = title, !title.isEmpty, let comment = comment, !comment.isEmpty else {
             return Completable.error(NomnomError.alert(message: "Please input properly"))
         }
         return repository.postReivew(productId: productId, rating: rating, title: title, comment: comment)
