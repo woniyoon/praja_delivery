@@ -23,7 +23,16 @@ class ReviewPostFirebaseDataStore: ReviewPostDataStoreProtocol {
         let review = ReviewEntity(comment: comment, rating: rating, title: title, userId: user.uid, userName: user.displayName!)
         
         return Completable.create { observer -> Disposable in
-            
+            self.db.collection(PRODUCT_COLLECTION)
+                .document(productId)
+                .collection(REVIEW_COLLECTION)
+                .addDocument(data: review.dictionary) { error in
+                    if let error = error {
+                        observer(.error(error))
+                    } else {
+                        observer(.completed)
+                    }
+                }
             return Disposables.create()
         }
     }
