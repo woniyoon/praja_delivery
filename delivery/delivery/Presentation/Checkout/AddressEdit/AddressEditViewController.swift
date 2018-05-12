@@ -41,6 +41,12 @@ class AddressEditViewController: BaseViewController {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        doneButtonItem.tintColor = .black
+        self.navigationItem.rightBarButtonItem = doneButtonItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextFields()
@@ -93,7 +99,7 @@ class AddressEditViewController: BaseViewController {
     }
     
     
-    @IBAction func doneButtonPressed(_ sender: Any) {
+    func doneButtonTapped(_ sender: Any) {
         if !(receiverLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(addressLabel1.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(addressLabel2.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&

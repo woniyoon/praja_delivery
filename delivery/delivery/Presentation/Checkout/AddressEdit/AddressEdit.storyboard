@@ -240,36 +240,13 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7w-XX-PRR" userLabel="thirdContainer">
                                         <rect key="frame" x="0.0" y="500" width="375" height="103"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVV-6V-1Hd">
-                                                <rect key="frame" x="22.5" y="22" width="331" height="45"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="331" id="M55-u4-ynP"/>
-                                                    <constraint firstAttribute="height" constant="45" id="WyN-vi-vNf"/>
-                                                </constraints>
-                                                <state key="normal" title="DONE">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="doneButtonPressed:" destination="KLu-80-7gC" eventType="touchUpInside" id="ASN-CR-Hkz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="LVV-6V-1Hd" firstAttribute="top" secondItem="y7w-XX-PRR" secondAttribute="top" constant="22" id="7Dg-q4-iKL"/>
-                                            <constraint firstItem="LVV-6V-1Hd" firstAttribute="centerX" secondItem="y7w-XX-PRR" secondAttribute="centerX" id="bME-lx-GP7"/>
-                                            <constraint firstItem="LVV-6V-1Hd" firstAttribute="leading" secondItem="y7w-XX-PRR" secondAttribute="leading" constant="22.5" id="mGU-L8-dkV"/>
-                                            <constraint firstAttribute="trailing" secondItem="LVV-6V-1Hd" secondAttribute="trailing" constant="21.5" id="mLp-Co-0ac"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="cfb-iR-tPe" firstAttribute="width" secondItem="sWU-aT-S3f" secondAttribute="width" id="L8o-5t-Qps"/>
                                     <constraint firstItem="cfb-iR-tPe" firstAttribute="top" secondItem="sWU-aT-S3f" secondAttribute="top" id="N42-05-9N4"/>
                                     <constraint firstItem="cfb-iR-tPe" firstAttribute="leading" secondItem="sWU-aT-S3f" secondAttribute="leading" id="cgp-zW-LLL"/>
-                                    <constraint firstItem="LVV-6V-1Hd" firstAttribute="width" secondItem="Wgp-wA-Eg8" secondAttribute="width" id="fuN-9m-brd"/>
                                     <constraint firstAttribute="trailing" secondItem="Yfs-md-y7Y" secondAttribute="trailing" id="l11-81-4cp"/>
                                     <constraint firstItem="Yfs-md-y7Y" firstAttribute="leading" secondItem="sWU-aT-S3f" secondAttribute="leading" id="lhX-zQ-HCi"/>
                                     <constraint firstItem="Yfs-md-y7Y" firstAttribute="top" secondItem="cfb-iR-tPe" secondAttribute="bottom" id="vjl-Ph-7HA"/>
