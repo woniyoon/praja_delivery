@@ -55,19 +55,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvY-j7-mdG">
-                                <rect key="frame" x="22" y="239" width="331" height="45"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="N6y-Va-ndi"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="doneButtonTapped:" destination="VRV-DF-WLx" eventType="touchUpInside" id="xwa-yo-Mlc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -75,16 +62,13 @@
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="F8q-Ot-IiF" secondAttribute="trailing" constant="22" id="9J9-6x-GSc"/>
                             <constraint firstItem="sDe-oE-VHa" firstAttribute="top" secondItem="xV9-lO-kFb" secondAttribute="bottom" constant="-1" id="IZr-o2-nFT"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="sDe-oE-VHa" secondAttribute="trailing" constant="22" id="M5o-4n-9EM"/>
-                            <constraint firstItem="uvY-j7-mdG" firstAttribute="top" secondItem="F8q-Ot-IiF" secondAttribute="bottom" constant="24" id="WIu-zB-gF7"/>
                             <constraint firstItem="F8q-Ot-IiF" firstAttribute="top" secondItem="sDe-oE-VHa" secondAttribute="bottom" constant="-1" id="X87-Ip-X3a"/>
                             <constraint firstItem="xV9-lO-kFb" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="YoN-Yp-ZgD"/>
                             <constraint firstItem="F8q-Ot-IiF" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="aDk-4H-1w4"/>
                             <constraint firstItem="xV9-lO-kFb" firstAttribute="top" secondItem="dxb-pw-Tmc" secondAttribute="bottom" constant="-1" id="aS0-iX-uy5"/>
                             <constraint firstItem="dxb-pw-Tmc" firstAttribute="top" secondItem="afQ-MO-lRK" secondAttribute="top" constant="18" id="cLa-BG-zVq"/>
-                            <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="uvY-j7-mdG" secondAttribute="trailing" constant="22" id="fZ4-Ux-zm5"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="xV9-lO-kFb" secondAttribute="trailing" constant="22" id="gGS-YI-nLd"/>
                             <constraint firstItem="afQ-MO-lRK" firstAttribute="trailing" secondItem="dxb-pw-Tmc" secondAttribute="trailing" constant="22" id="oGf-4T-Fcz"/>
-                            <constraint firstItem="uvY-j7-mdG" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="sqb-aa-939"/>
                             <constraint firstItem="sDe-oE-VHa" firstAttribute="leading" secondItem="afQ-MO-lRK" secondAttribute="leading" constant="22" id="uPe-0p-XhJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afQ-MO-lRK"/>

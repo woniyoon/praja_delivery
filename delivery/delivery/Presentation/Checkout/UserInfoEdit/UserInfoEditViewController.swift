@@ -31,6 +31,13 @@ class UserInfoEditViewController: UIViewController {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        doneButtonItem.tintColor = .black
+        self.navigationItem.rightBarButtonItem = doneButtonItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextFields()
@@ -54,7 +61,7 @@ class UserInfoEditViewController: UIViewController {
         viewModel.phoneNumber.asObservable().bind(to: self.phoneNumberLabel.rx.text).disposed(by: disposeBag)
     }
     
-    @IBAction func doneButtonTapped(_ sender: Any) {
+    func doneButtonTapped(_ sender: Any) {
         if !(firstNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
@@ -66,7 +73,6 @@ class UserInfoEditViewController: UIViewController {
             
             viewModel.updateUser().subscribe(onCompleted: {
                 let next = resolver.resolve(CheckoutViewController.self)!
-//                self.present(next, animated: true, completion: nil)})
                 self.navigationController?.popViewController(animated: true)})
             { (err) in
                 print(err)
