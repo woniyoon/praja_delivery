@@ -23,10 +23,7 @@ class PaymentCell: UITableViewCell {
             let test = item?.filter { $0.isDefault}
             cardHolder.text = test?.first?.holderName
             cardNumber.text = test?.first?.cardNumber
-            expiryDate.text = test?.first?.expiryDate.description
-//            cardNumber.text = item.cardNumber
-//            expiryDate.text = item.expiryDate.description
-            
+            expiryDate.text = DateFormatter.expiryDateInFormat(expiryDate: (test?.first?.expiryDate)!)
         }
     }
     

@@ -27,15 +27,24 @@ class UserViewModel{
         self.useCase = useCase
     }
     
+<<<<<<< HEAD
     func fetchUser() {
         useCase.fetchUser()
+=======
+    func fetchUser(_ id: String) {
+        useCase.fetchUser(id)
+>>>>>>> develop
             .subscribe(
                 onSuccess: { model in
                     self.firstName.accept("$\(model.firstName)")
                     self.lastName.accept("$\(model.lastName)")
                     self.mobileNumber.accept("$\(model.mobileNumber)")
                     self.dateOfBirth.accept("$\(model.dateOfBirth)")
+<<<<<<< HEAD
 //                    self.hasAccount.accept("$\(model.hasAccount)")
+=======
+                    self.hasAccount.accept("$\(model.hasAccount)")
+>>>>>>> develop
             },
                 onError: { error in
                     print(error.localizedDescription) }

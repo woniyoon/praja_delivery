@@ -1,8 +1,8 @@
 //
-//  AccountTranslator.swift
+//  UserTranslator.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-12.
+//  Created by Sara N on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -14,8 +14,8 @@ class UserTranslator {
         if entity.address != nil, entity.payment != nil {
             return User(firstName: entity.firstName,
                         lastName: entity.lastName,
-                        dateOfBirth: entity.dateOfBirth,
                         mobileNumber: entity.mobileNumber,
+                        dateOfBirth: entity.dateOfBirth,
                         email: entity.email,
                         totalPoint: entity.totalPoint,
                         address: translateAddress(from: entity.address!),
@@ -24,8 +24,8 @@ class UserTranslator {
         } else {
             return User(firstName: entity.firstName,
                         lastName: entity.lastName,
-                        dateOfBirth: entity.dateOfBirth,
                         mobileNumber: entity.mobileNumber,
+                        dateOfBirth: entity.dateOfBirth,
                         email: entity.email,
                         totalPoint: entity.totalPoint,
                         address: nil,
@@ -67,10 +67,4 @@ class UserTranslator {
     func translatePaymentModel(from payment: Payment) -> PaymentEntity {
         return PaymentEntity(cardNumber: payment.cardNumber, holderName: payment.holderName, expiryDate: payment.expiryDate, isDefault: payment.isDefault)
     }
-    
-//    func translateAddressEntity(address: AddressEntity) -> Address {
-//        return Address(receiver: address.receiver, address1: address.address1, address2: address.address2, city: address.city, province: address.province, postalCode: address.postalCode, country: address.country, isDefault: address.isDefault, phoneNumber: address.phoneNumber)
-//    }
-//
 }
-

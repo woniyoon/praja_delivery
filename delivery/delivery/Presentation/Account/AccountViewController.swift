@@ -33,7 +33,7 @@ class AccountViewController: BaseViewController {
     @IBOutlet weak var cardholderLabel: UILabel!
     @IBOutlet weak var cardNumberLabel: UILabel!
     @IBOutlet weak var expiryDateLabel: UILabel!
-    
+
     static func createInstance(viewModel: AccountViewModel) -> AccountViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(AccountViewController.self)
         instance?.viewModel = viewModel
@@ -88,10 +88,8 @@ class AccountViewController: BaseViewController {
     }
     
     @IBAction func toEditProfile(_ sender: Any) {
-        
-        // test
-//        let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
-//        self.navigationController?.pushViewController(userInfoEditVC, animated: true)
+        let accountEditVC = resolver.resolve(AccountEditViewController.self)!
+        self.navigationController?.pushViewController(accountEditVC, animated: true)
     }
     
     
@@ -103,5 +101,5 @@ class AccountViewController: BaseViewController {
 //            self.parent?.addChildViewController(next)
         }
     }
-    
 }
+

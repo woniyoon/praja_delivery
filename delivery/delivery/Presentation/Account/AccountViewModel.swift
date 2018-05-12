@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class AccountViewModel: BaseViewModel {
+class AccountViewModel {
     
     var fullName = BehaviorRelay(value: "")
     var dateOfBirth = BehaviorRelay(value: "")
@@ -33,6 +33,7 @@ class AccountViewModel: BaseViewModel {
 
     private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
+
     
     init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
@@ -45,7 +46,8 @@ class AccountViewModel: BaseViewModel {
             self.fullName.accept("\(user.firstName) \(user.lastName)")
             self.email.accept(user.email)
             if let dateOfBirth = user.dateOfBirth {
-                self.dateOfBirth.accept(dateOfBirth.description)
+                let birthDateString = DateFormatter.birthDateInFormat(birthDate: dateOfBirth)
+                self.dateOfBirth.accept(birthDateString)
             }
             self.totalPoint.accept("\(user.totalPoint) point(s)")
             self.mobileNumber.accept(user.mobileNumber)
@@ -60,18 +62,15 @@ class AccountViewModel: BaseViewModel {
             
             if let payment = user.payment {
                 let defaultPayment = payment.filter({ $0.isDefault })
-                
+    
                 self.cardholder.accept((defaultPayment.first?.holderName)!)
                 self.cardNumber.accept((defaultPayment.first?.cardNumber)!)
-                self.expiryDate.accept((defaultPayment.first?.expiryDate.description)!)
+                let expiryDateString = DateFormatter.expiryDateInFormat(expiryDate: (defaultPayment.first?.expiryDate)!)
+                self.expiryDate.accept(expiryDateString)
             }
-          
-            
-//            let test = [User(firstName: user.firstName, lastName: user.lastName, dateOfBirth: user.dateOfBirth, mobileNumber: user.mobileNumber, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
-//
-           
         }) { (err) in
             print(err)
         }
     }
 }
+

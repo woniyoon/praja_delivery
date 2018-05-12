@@ -11,7 +11,7 @@ import Foundation
 struct ReviewEntity {
     public let comment: String
     public let date: Date
-    public let productId: String
+//    public let productId: String
     public let rating: Double
     public let title: String
     public let userId: String
@@ -19,7 +19,7 @@ struct ReviewEntity {
     
     init?(dictionary: [String: Any]) {
         guard let date = dictionary["date"] as? Date,
-            let productId = dictionary["productId"] as? String,
+//            let productId = dictionary["productId"] as? String,
             let rating = dictionary["rating"] as? Double,
             let userId = dictionary["userId"] as? String,
             let userName = dictionary["userName"] as? String else { return nil }
@@ -29,7 +29,7 @@ struct ReviewEntity {
         
         self.comment = comment
         self.date = date
-        self.productId = productId
+//        self.productId = productId
         self.rating = rating
         self.title = title
         self.userId = userId

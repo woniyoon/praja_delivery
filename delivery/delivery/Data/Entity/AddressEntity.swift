@@ -1,8 +1,8 @@
 //
-//  AccountEntity.swift
+//  AddressEntit.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-25.
+//  Created by Jaewon Yoon on 2018-03-18.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -18,6 +18,7 @@ struct AddressEntity {
     public let country: String
     public let isDefault: Bool
     public let phoneNumber: String
+
     
     var dictionary: [String: Any] {
         return [
@@ -29,7 +30,7 @@ struct AddressEntity {
             "postalCode": postalCode,
             "country": country,
             "isDefault": isDefault,
-            "phoneNumber": phoneNumber
+            "phoneNumber": phoneNumber,
         ]
     }
     

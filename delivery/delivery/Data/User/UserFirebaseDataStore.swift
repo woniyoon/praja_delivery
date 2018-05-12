@@ -2,15 +2,26 @@
 //  UserFirebaseDataStore.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-12.
+//  Created by Sara N on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
 import Foundation
 import Firebase
 import RxSwift
-import RxCocoa
 
+//class UserFirebaseDataStore: UserDataStoreProtocol {
+//    let db = Firestore.firestore()
+//
+//    let name = "Raana"
+//    let age = 64
+//    let dict = [String: Any] = ["name" : name,
+//                                "age" : age]
+//    func fetchProductDetail(_ id: String) -> ProductEntity {
+//        let productRef = db.collection("Users").addDocument(data: dict)
+//
+//    }
+//}
 class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
     
@@ -65,5 +76,9 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
             return Disposables.create()
         }
     }
+    
+//    func updatePassword() {
+//        Auth.auth().currentUser?.updatePassword(to: <#T##String#>, completion: <#T##UserProfileChangeCallback?##UserProfileChangeCallback?##(Error?) -> Void#>)
+//    }
 }
 

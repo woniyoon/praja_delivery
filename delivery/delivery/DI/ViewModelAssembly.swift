@@ -22,8 +22,11 @@ final class ViewModelAssembly: Assembly {
         container.register(HomeViewModel.self) { (_, useCase: HomeUseCaseProtocol) in
             HomeViewModel(useCase: useCase)
         }
-        container.register(ProductListViewModel.self) { (_, useCase: ProductListUseCaseProtocol) in
-            ProductListViewModel(useCase: useCase)
+//        container.register(UserViewModel.self) { (_, useCase: UserUseCaseProtocol) in
+//            UserViewModel(useCase: useCase)
+//        }
+        container.register(ProductListViewModel.self) { (_, useCase: ProductListUseCaseProtocol, useCaseShopping: ShoppingCartUseCaseProtocol) in
+            ProductListViewModel(useCase: useCase, useCaseShopping: useCaseShopping)
         }
         container.register(ReviewListViewModel.self) { (_, useCase: ReviewListUseCaseProtocol) in
             ReviewListViewModel(useCase: useCase)
@@ -39,6 +42,12 @@ final class ViewModelAssembly: Assembly {
         }
         container.register(UserInfoEditViewModel.self) { (_, useCase: UserInfoEditUseCaseProtocol) in
             UserInfoEditViewModel(useCase: useCase)
+        }
+        container.register(ShoppingCartViewModel.self) { (_, useCase: ShoppingCartUseCaseProtocol) in
+            ShoppingCartViewModel(useCase: useCase)
+        }
+        container.register(AccountEditViewModel.self) { (_, useCase: UserUseCaseProtocol) in
+            AccountEditViewModel(useCase: useCase)
         }
     }
 }

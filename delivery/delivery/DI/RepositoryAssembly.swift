@@ -28,11 +28,17 @@ final class RepositoryAssembly: Assembly {
         container.register(HomeRepositoryProtocol.self){ (_, dataStore: HomeDataStoreProtocol) in
             HomeRepository(dataStore: dataStore)
         }
+        container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
+            UserRepository(dataStore: dataStore)
+        }
         container.register(ProductListRepositoryProtocol.self) { (_, dataStore: ProductListDataStoreProtocol) in
             ProductListRepository(dataStore: dataStore)
         }
         container.register(ReviewListRepositoryProtocol.self) { (_, dataStore: ReviewListDataStoreProtocol) in
             ReviewListRepository(dataStore: dataStore)
+        }
+        container.register(ShoppingCartRepositoryProtocol.self) { (_, dataStore: ShoppingCartDataStoreProtocol) in
+            ShoppingCartRepository(dataStore: dataStore)
         }
     }
 }

@@ -53,10 +53,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         viewModel.fetchNewProducts()
         searchBar.delegate = self
         
-        let imageUrl:URL = URL(string: "https://firebasestorage.googleapis.com/v0/b/nomnom-562a0.appspot.com/o/banner1.png?alt=media&token=688828a0-2b28-497e-8bf9-2df3c53ba3db")!
-        let resource = ImageResource(downloadURL: imageUrl, cacheKey: "banner")
-        self.banner.kf.setImage(with: resource)
-        
         banner.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         banner.addGestureRecognizer(tapRecognizer)

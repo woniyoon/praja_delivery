@@ -29,7 +29,11 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.firstName.asObservable().bind(to: nameLabel.rx.text).disposed(by: disposeBag)
+<<<<<<< HEAD
         viewModel.fetchUser()
+=======
+        viewModel.fetchUser("aaa")
+>>>>>>> develop
     }
 
 }

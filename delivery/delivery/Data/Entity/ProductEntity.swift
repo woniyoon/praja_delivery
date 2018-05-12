@@ -41,8 +41,8 @@ struct ProductEntity {
     public let subCategory: String
     public let category: String
     public let productId: String
-    
-    
+    public var reviews: [ReviewEntity]?
+
     init?(docId: String, dictionary: [String: Any]) {
         guard let name = dictionary["name"] as? String,
             let brand = dictionary["brand"] as? String,

@@ -41,10 +41,10 @@ class UserInfoEditViewModel: BaseViewModel {
     
     func updateUser() -> Completable {
         if user.value.count > 0 {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, dateOfBirth: user.value.first?.dateOfBirth, mobileNumber: phoneNumber.value, email: email.value, totalPoint: (user.value.first?.totalPoint)!, address: user.value.first?.address, payment: user.value.first?.payment, coupon: user.value.first?.coupon)
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: user.value.first?.dateOfBirth, email: email.value, totalPoint: (user.value.first?.totalPoint)!, address: user.value.first?.address, payment: user.value.first?.payment, coupon: user.value.first?.coupon)
             return useCase.updateUser(user: updatedUser)
         } else {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, dateOfBirth: nil, mobileNumber: phoneNumber.value, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
             return useCase.updateUser(user: updatedUser)
         }
     }

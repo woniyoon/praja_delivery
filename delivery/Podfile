@@ -20,12 +20,15 @@ target 'delivery' do
   
   # View
   pod 'Cosmos', '~> 15.0'
-  
+
   # Image
   pod 'Kingfisher', '~> 4.0'
   
   # Payment
   pod 'Stripe'
+  
+  # RxRealm - Offline database
+  pod 'RxRealm'
 end
 
 target 'deliveryTests' do
@@ -33,7 +36,7 @@ target 'deliveryTests' do
     # Pods for testing
     pod 'RxBlocking', '~> 4.0'
     pod 'RxTest',     '~> 4.0'
-#
+
     pod 'Firebase/Core', '4.8.2'
     pod 'Firebase/Firestore', '4.8.2'
 end

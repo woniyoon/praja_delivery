@@ -148,7 +148,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIX-v0-bsY" userLabel="BannerView">
                                                         <rect key="frame" x="0.0" y="509" width="375" height="171"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-w8-l5z">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-w8-l5z">
                                                                 <rect key="frame" x="8" y="20" width="359" height="117"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="117" id="k30-M2-4K7"/>
@@ -306,6 +306,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="banner" width="358" height="84"/>
         <image name="cart_w" width="23" height="20"/>
         <image name="menu_w" width="20" height="20"/>
     </resources>

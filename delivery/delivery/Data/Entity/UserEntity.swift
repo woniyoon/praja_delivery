@@ -2,7 +2,7 @@
 //  UserEntity.swift
 //  delivery
 //
-//  Created by Diego H. Vanni on 2018-03-25.
+//  Created by Sara N on 2018-03-12.
 //  Copyright © 2018 CICCC. All rights reserved.
 //
 
@@ -18,13 +18,12 @@ struct UserEntity {
         public var address: [AddressEntity]?
         public let payment: [PaymentEntity]?
         public let coupon: [String : Bool]?
-    
+
 
     init?(dictionary: [String: Any]) {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
-            let dateOfBirth = dictionary["dateOfBirth"] as? Date?,
-            let mobileNumber = dictionary["mobileNumber"] as? String,
+            let mobileNumber = dictionary["mobileNumber"] as? String, //this part...?
             let email = dictionary["email"] as? String,
             let totalPoint = dictionary["totalPoint"] as? Int else { return nil }
         
@@ -52,7 +51,12 @@ struct UserEntity {
             self.payment = nil
         }
         
-        
+//        if dictionary["dateOfBirth"] != nil {
+//            self.dateOfBirth =
+//        }
+
+        let dateOfBirth = dictionary["dateOfBirth"] as? Date ?? nil
+
         
         self.firstName = firstName
         self.lastName = lastName
@@ -93,6 +97,7 @@ struct UserEntity {
         
         self.dateOfBirth = dateOfBirth
         self.coupon = coupon
+        self.address = address
     }
     
     var dictionary: [String: Any] {
@@ -110,6 +115,6 @@ struct UserEntity {
             dict["dateOfBirth"] = dateOfBirth
         }
         return dict
+
     }
 }
-

@@ -18,12 +18,6 @@ class ProductsCell: UICollectionViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var oldPrice: BaseLabel!
     @IBOutlet weak var percentage: UILabel!
-    @IBOutlet weak var addCart: BaseButton!
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -47,5 +41,5 @@ class ProductsCell: UICollectionViewCell {
             
         }
  
-    }    
+    }
 }

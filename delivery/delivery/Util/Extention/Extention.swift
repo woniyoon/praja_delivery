@@ -8,15 +8,16 @@
 
 import Foundation
 
-
-//Date Conversion to String // Diego H. Vanni (please report problems if any!)
-extension Date
-{
-    func toString( dateFormat format  : String ) -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
+extension DateFormatter {
+    static func birthDateInFormat (birthDate: Date) -> String {
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd yyyy"
+        return dateFormatterPrint.string(from: birthDate)
     }
     
+    static func expiryDateInFormat (expiryDate: Date) -> String {
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MM/yy"
+        return dateFormatterPrint.string(from: expiryDate)
+    }
 }
