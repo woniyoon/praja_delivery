@@ -72,7 +72,6 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ProductListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
-        
         container.register(ReviewListViewController.self) { _ in
             let dataStore  = container.resolve(ReviewListDataStoreProtocol.self)
             let repository = container.resolve(ReviewListRepositoryProtocol.self, argument: dataStore!)
@@ -82,7 +81,14 @@ final class ViewControllerAssembly: Assembly {
             let vc         = ReviewListViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
-        
+        container.register(ReviewPostViewController.self) { _ in
+            let dataStore  = container.resolve(ReviewPostDataStoreProtocol.self)
+            let repository = container.resolve(ReviewPostRepositoryProtocol.self, argument: dataStore!)
+            let usecase    = container.resolve(ReviewPostUseCaseProtocol.self, argument: repository!)
+            let viewModel  = container.resolve(ReviewPostViewModel.self, argument: usecase!)
+            let vc         = ReviewPostViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
         container.register(ShoppingCartViewController.self) { _ in
             let dataStore  = container.resolve(ShoppingCartDataStoreProtocol.self)
             let repository = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStore!)

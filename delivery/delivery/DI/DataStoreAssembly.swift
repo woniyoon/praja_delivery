@@ -31,6 +31,9 @@ final class DataStoreAssembly: Assembly {
         container.register(ReviewListDataStoreProtocol.self) { _ in
             ReviewListFirebaseDataStore()
         }
+        container.register(ReviewPostDataStoreProtocol.self) { _ in
+            ReviewPostFirebaseDataStore()
+        }
         container.register(ShoppingCartDataStoreProtocol.self) { _ in
             ShoppingCartDataStore()
         }

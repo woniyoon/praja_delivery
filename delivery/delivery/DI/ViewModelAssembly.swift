@@ -31,7 +31,9 @@ final class ViewModelAssembly: Assembly {
         container.register(ReviewListViewModel.self) { (_, useCase: ReviewListUseCaseProtocol) in
             ReviewListViewModel(useCase: useCase)
         }
-        
+        container.register(ReviewPostViewModel.self) { (_, useCase: ReviewPostUseCaseProtocol) in
+            ReviewPostViewModel(useCase: useCase)
+        }
         container.register(ShoppingCartViewModel.self) { (_, useCase: ShoppingCartUseCaseProtocol) in
             ShoppingCartViewModel(useCase: useCase)
         }
