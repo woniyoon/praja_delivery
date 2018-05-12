@@ -44,6 +44,12 @@ class ReviewPostViewController: BaseViewController {
         viewModel.isComplete.asObservable()
             .subscribe(onNext: { isComplete in  })
             .disposed(by: disposeBag)
+        
+        // Alert Message
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
