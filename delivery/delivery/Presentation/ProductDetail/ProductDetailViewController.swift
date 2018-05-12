@@ -260,6 +260,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     @IBAction func writeReviewButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ReviewPostViewController.self)!
         next.productId = productId
+        next.refreshProduct = fetch
         present(next, animated: true, completion: nil)
     }
     

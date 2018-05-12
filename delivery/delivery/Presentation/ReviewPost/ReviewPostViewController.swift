@@ -17,6 +17,7 @@ class ReviewPostViewController: BaseViewController {
     @IBOutlet weak var titleFeild: UITextField!
     @IBOutlet weak var commentField: UITextView!
     var productId: String!
+    var refreshProduct: (() -> Void)?
     
     private var viewModel: ReviewPostViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -42,7 +43,13 @@ class ReviewPostViewController: BaseViewController {
     
     private func bind() {
         viewModel.isComplete.asObservable()
-            .subscribe(onNext: { isComplete in  if isComplete { self.dismiss(animated: true) } })
+            .subscribe(onNext: { isComplete in
+                if isComplete {
+                    self.dismiss(animated: true)
+                    self.refreshProduct?()
+                }
+                
+            })
             .disposed(by: disposeBag)
         
         // Alert Message
