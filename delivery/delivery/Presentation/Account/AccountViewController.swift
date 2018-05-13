@@ -43,13 +43,12 @@ class AccountViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         viewModel.fetchUser()
-        bindView() // bind data
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        bindView() // bind data
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindView() // bind data
+    }
 
     private func bindView() {
         viewModel.fullName.asObservable()
@@ -99,6 +98,9 @@ class AccountViewController: BaseViewController {
             
             self.navigationController?.pushViewController(next, animated: true)
 //            self.parent?.addChildViewController(next)
+        } else {
+            let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+            self.navigationController?.pushViewController(addressEditVC, animated: true)
         }
     }
 }

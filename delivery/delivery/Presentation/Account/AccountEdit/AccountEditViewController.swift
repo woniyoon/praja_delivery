@@ -34,8 +34,9 @@ class AccountEditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        self.navigationItem.rightBarButtonItem?.tintColor = .black
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        doneButtonItem.tintColor = .black
+        self.navigationItem.rightBarButtonItem = doneButtonItem
         viewModel.fetchUser()
     }
 
@@ -87,7 +88,27 @@ class AccountEditViewController: UIViewController {
     }
     
     func doneButtonTapped() {
-        print("done tapped!")
-        
+        print(birthDateLabel.text)
+        if !(firstNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
+            viewModel.firstName.accept(firstNameLabel.text!)
+            viewModel.lastName.accept(lastNameLabel.text!)
+            viewModel.email.accept(emailLabel.text!)
+            viewModel.phoneNumber.accept(phoneNumberLabel.text!)
+            
+            if let birthDateString = birthDateLabel.text {
+                viewModel.birthDate.accept(birthDateString)
+            }
+            
+            viewModel.updateUser().subscribe(onCompleted: {
+                self.navigationController?.popViewController(animated: true)})
+            { (err) in
+                print(err)
+            }
+        } else {
+            print("all fields are mandatory!")
+        }
     }
 }

@@ -97,9 +97,9 @@ class UserRepository: UserRepositoryProtocol {
     
     func updateAddressList(address: [AddressEntity]) -> Completable {
         
-        let updatedUser = UserEntity(firstName: (UserRepository.user?.firstName)!, lastName: (UserRepository.user?.lastName)!, mobileNumber: (UserRepository.user?.mobileNumber)!, dateOfBirth: UserRepository.user?.dateOfBirth, totalPoint: (UserRepository.user?.totalPoint)!, email: (UserRepository.user?.email)!, address: address, payment: (UserRepository.user?.payment)!, coupon: UserRepository.user?.coupon)
+        let updatedUser = UserEntity(firstName: (UserRepository.user?.firstName)!, lastName: (UserRepository.user?.lastName)!, mobileNumber: (UserRepository.user?.mobileNumber)!, dateOfBirth: UserRepository.user?.dateOfBirth, totalPoint: (UserRepository.user?.totalPoint)!, email: (UserRepository.user?.email)!, address: address, payment: (UserRepository.user?.payment) != nil ? (UserRepository.user?.payment)! : nil , coupon: UserRepository.user?.coupon)
         
-        return dataStore.updateUser(user: updatedUser!)
+        return dataStore.updateUser(user: updatedUser)
     }
     
     func updateUser(user: UserEntity) -> Completable {

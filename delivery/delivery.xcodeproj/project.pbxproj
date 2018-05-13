@@ -483,8 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				911F9E0B209ABDEB004970E8 /* AddressEdit.storyboard */,
-				911F9E0C209ABDEB004970E8 /* AddressEditViewModel.swift */,
 				911F9E0D209ABDEB004970E8 /* AddressEditViewController.swift */,
+				911F9E0C209ABDEB004970E8 /* AddressEditViewModel.swift */,
 			);
 			path = AddressEdit;
 			sourceTree = "<group>";
