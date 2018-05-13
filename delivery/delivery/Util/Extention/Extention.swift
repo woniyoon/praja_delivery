@@ -20,4 +20,13 @@ extension DateFormatter {
         dateFormatterPrint.dateFormat = "MM/yy"
         return dateFormatterPrint.string(from: expiryDate)
     }
+    
+    static func toDateFromString (date: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy" //Your date format
+        dateFormatter.timeZone = TimeZone(identifier: "America/Los_Angeles") //Current time zone
+        print("converting!!")
+        return dateFormatter.date(from: date)
+    }
 }
+
