@@ -42,9 +42,12 @@ class AddressEditViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         doneButtonItem.tintColor = .black
         self.navigationItem.rightBarButtonItem = doneButtonItem
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
     }
     
     override func viewDidLoad() {
@@ -173,5 +176,9 @@ class AddressEditViewController: BaseViewController {
                 self.provinceLabel.textAlignment = .center
             }.disposed(by: disposeBag)
         }
+    }
+    
+    func cancelButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

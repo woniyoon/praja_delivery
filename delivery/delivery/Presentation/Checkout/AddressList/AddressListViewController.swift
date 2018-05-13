@@ -28,6 +28,9 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        
         viewModel.fetchAddressList()
         addressTableView.reloadData()
     }
@@ -121,7 +124,6 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-//        let next = resolver.resolve(AddressEditViewController.self)!
         let addressEditVC = resolver.resolve(AddressEditViewController.self)!
         self.navigationController?.pushViewController(addressEditVC, animated: true)
         
@@ -130,23 +132,13 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     @IBAction func doneButtonTapped(_ sender: Any) {
         viewModel.updateAddressList().subscribe(onCompleted: {
             self.addressTableView.reloadInputViews()
-//            let next = resolver.resolve(CheckoutViewController.self)!
             self.navigationController?.popViewController(animated: true)
-//            self.present(next, animated: true, completion: nil)
         }) { (err) in
             print(err)
         }
     }
     
-    func test() {
-        viewModel.updateAddressList().subscribe(onCompleted: {
-            self.addressTableView.reloadInputViews()
-            //            let next = resolver.resolve(CheckoutViewController.self)!
-            self.navigationController?.popViewController(animated: true)
-            print("reached!!!")
-            //            self.present(next, animated: true, completion: nil)
-        }) { (err) in
-            print(err)
-        }
+    func cancelButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
