@@ -19,6 +19,8 @@ class AccountViewController: BaseViewController {
     private var viewModel: AccountViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
     
+    @IBOutlet weak var profileImgContainer: UIView!
+    
     @IBOutlet weak var fullnameLabel: UILabel!
     @IBOutlet weak var birthDateLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -48,6 +50,8 @@ class AccountViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView() // bind data
+        profileImgContainer.layer.cornerRadius = 49
+        profileImgContainer.clipsToBounds = true
     }
 
     private func bindView() {
