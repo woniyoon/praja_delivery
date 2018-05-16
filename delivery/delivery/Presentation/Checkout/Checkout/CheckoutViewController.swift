@@ -88,6 +88,12 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         checkoutTableView.allowsSelection = true
     }
     
+    @IBAction func confirmButtonTapped(_ sender: Any) {
+        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderReviewViewController
+        
+        self.navigationController?.pushViewController(orderReviewVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let next = resolver.resolve(CheckoutViewController.self)!
         tableView.deselectRow(at: indexPath, animated: false)
