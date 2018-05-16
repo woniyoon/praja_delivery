@@ -53,3 +53,11 @@ public extension UIImageView {
         downloadedFrom(url: url, contentMode: mode)
     }
 }
+
+extension UITabBar {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = 56 // adjust your size here
+        return sizeThatFits
+    }
+}
