@@ -29,7 +29,7 @@ struct UserEntity {
         
         let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
     
-        if dictionary["address"] is NSNull && dictionary["address"] != nil {
+        if dictionary["address"] is NSNull && dictionary["address"] == nil {
             self.address = nil
         } else {
             var addressArr: [AddressEntity]  = []
