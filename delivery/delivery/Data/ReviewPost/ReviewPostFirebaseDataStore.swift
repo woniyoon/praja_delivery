@@ -29,11 +29,11 @@ class ReviewPostFirebaseDataStore: ReviewPostDataStoreProtocol {
                     if let error = error {
                         observer(.error(error))
                     } else {
-                        guard let reviewDoc = snapshot?.documents[0].data() else {
-                            observer(.error(NomnomError.noData(message: "")))
+                        guard let doc = snapshot?.documents, doc.count > 0 else {
+                            observer(.error(NomnomError.noData(message: "NO DATA")))
                             return
                         }
-                        guard let review = ReviewEntity(dictionary: reviewDoc) else {
+                        guard let review = ReviewEntity(dictionary: doc[0].data()) else {
                             observer(.error(NomnomError.alert(message: "Parse Failure")))
                             return
                         }
