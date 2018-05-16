@@ -8,26 +8,33 @@
 
 import Foundation
 
-class ProductDetailTranslator {
+class ProductDetailTranslator: TranslatorProtocol {
     func translateList(from list: [ProductEntity]) -> [Product] {
-        return list.map { entity in translate(from: entity) }
+        return list.map { entity in translate(entity) }
     }
     
-    func translate(from entity: ProductEntity) -> Product {
-        return Product(averageRating: entity.averageRating,
-                       branch: entity.branch,
-                       brand: entity.brand,
-                       description: entity.description,
-                       discountPercent: entity.discountPercent,
-                       events: entity.events,
-                       images: entity.images,
-                       name: entity.name,
-                       originalPrice: entity.originalPrice,
-                       price: entity.price,
-                       category: entity.category,
-                       subCategory: entity.subCategory,
-                       productId: entity.productId,
-                       reviews: translateReviews(entity.reviews))
+    func translate(_ entity: ProductEntity) -> Product {
+        return Product(
+            averageRating: entity.averageRating,
+            branch: translateBranch(from: entity.branch),
+            brand: entity.brand,
+            description: entity.description,
+            discountPercent: entity.discountPercent,
+            events: entity.events,
+            images: entity.images,
+            name: entity.name,
+            originalPrice: entity.originalPrice,
+            price: entity.price,
+            category: entity.category,
+            subCategory: entity.subCategory,
+            productId: entity.productId,
+            reviews: translateReviews(entity.reviews))
+    }
+    
+    func translateBranch(from branch: [BranchInventoryEntity]) -> [BranchInventory] {
+        return branch.map { entity in
+            BranchInventory(quantity: entity.quantity, name: entity.name)
+        }
     }
     
     private func translateReviews(_ reviews: [ReviewEntity]?) -> [Review]? {

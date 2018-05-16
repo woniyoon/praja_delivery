@@ -29,7 +29,7 @@ import Foundation
 
 struct ProductEntity {
     public let averageRating: Double
-    public let branch: [BranchInvetoryEntity]
+    public let branch: [BranchInventoryEntity]
     public let brand: String
     public let description: String
     public let discountPercent: Int
@@ -55,9 +55,9 @@ struct ProductEntity {
             let category = dictionary["category"] as? String else { return nil }
 
         let productId = docId
-        var temp: [BranchInvetoryEntity]  = []
+        var temp: [BranchInventoryEntity]  = []
         for branch in dictionary["branch"] as! [Any] {
-            temp.append(BranchInvetoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
+            temp.append(BranchInventoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
         }
         self.branch = temp
         

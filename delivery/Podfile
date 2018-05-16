@@ -7,7 +7,8 @@ target 'delivery' do
   # RxSwift  
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
-
+  pod 'RxDataSources', '~> 3.0'
+  
   # Swinject
   pod 'Swinject'
   pod 'SwinjectStoryboard'
@@ -22,6 +23,9 @@ target 'delivery' do
 
   # Image
   pod 'Kingfisher', '~> 4.0'
+  
+  # Payment
+  pod 'Stripe'
   
   # RxRealm - Offline database
   pod 'RxRealm'

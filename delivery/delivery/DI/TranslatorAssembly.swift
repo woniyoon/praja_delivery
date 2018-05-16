@@ -16,9 +16,12 @@ final class TranslatorAssembly: Assembly {
         container.register(OrderTranslator.self) { _ in
             OrderTranslator()
         }
-        container.register(AccountTranslator.self) { _ in
-            AccountTranslator()
+        container.register(UserTranslator.self) { _ in
+            UserTranslator()
         }
+//        container.register(AccountTranslator.self) { _ in
+//            AccountTranslator()
+//        }
         container.register(HomeTranslator.self) { _ in
             HomeTranslator()
         }

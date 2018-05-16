@@ -27,7 +27,7 @@ internal class OrderViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView()
-        viewModel.fetchOrder("test")
+//        viewModel.fetchOrder("test")
         
     }
     
