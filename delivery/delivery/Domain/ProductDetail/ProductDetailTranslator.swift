@@ -32,12 +32,9 @@ class ProductDetailTranslator: TranslatorProtocol {
     }
     
     func translateBranch(from branch: [BranchInventoryEntity]) -> [BranchInventory] {
-        var arr: [BranchInventory] = []
-        
-        branch.forEach { (element) in
-            arr.append(BranchInventory(quantity: element.quantity, name: element.name))
+        return branch.map { entity in
+            BranchInventory(quantity: entity.quantity, name: entity.name)
         }
-        return arr
     }
     
     private func translateReviews(_ reviews: [ReviewEntity]?) -> [Review]? {

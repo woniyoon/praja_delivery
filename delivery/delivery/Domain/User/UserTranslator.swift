@@ -28,27 +28,18 @@ class UserTranslator {
                           dateOfBirth: model.dateOfBirth != nil ? model.dateOfBirth! : nil,
                           totalPoint: model.totalPoint,
                           email: model.email,
-                          address: model.address != nil ? model.address!.map({translateAddress(from: $0)}) : nil,
-                          payment: model.payment != nil ? model.payment!.map({translatePaymentModel(from: $0)}) : nil ,
+                          address: model.address?.map({translateAddress(from: $0)}),
+                          payment: model.payment?.map({translatePaymentModel(from: $0)}) ,
                           coupon: model.coupon)
     }
     
     func translateAddress(from address: [AddressEntity]) -> [Address] {
-        var arr: [Address] = []
-        
-        address.forEach { (element) in
-            arr.append(Address(receiver: element.receiver, address1: element.address1, address2: element.address2, city: element.city, province: element.province, postalCode: element.postalCode, country: element.country, isDefault: element.isDefault, phoneNumber: element.phoneNumber))
-        }
-        return arr
+        return address.map {
+            Address(receiver: $0.receiver, address1: $0.address1, address2: $0.address2, city: $0.city, province: $0.province, postalCode: $0.postalCode, country: $0.country, isDefault: $0.isDefault, phoneNumber: $0.phoneNumber) }
     }
     
     func translatePayment(from payment: [PaymentEntity]) -> [Payment] {
-        var arr: [Payment] = []
-        
-        payment.forEach { (element) in
-            arr.append(Payment(cardNumber: element.cardNumber, holderName: element.holderName, expiryDate: element.expiryDate, isDefault: element.isDefault))
-        }
-        return arr
+        return payment.map { Payment(cardNumber: $0.cardNumber, holderName: $0.holderName, expiryDate: $0.expiryDate, isDefault: $0.isDefault)  }
     }
     
     func translateAddress(from address: Address) -> AddressEntity {
