@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class AccountViewModel {
+class AccountViewModel: BaseViewModel {
     
     var fullName = BehaviorRelay(value: "")
     var dateOfBirth = BehaviorRelay(value: "")
