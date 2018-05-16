@@ -76,7 +76,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.10588235294117647" green="0.13725490196078433" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="aBL-Rb-qri" firstAttribute="top" secondItem="Jf0-eh-dQs" secondAttribute="top" constant="25" id="2OL-r5-rph"/>
                                                             <constraint firstItem="boN-GR-jbU" firstAttribute="centerX" secondItem="Jf0-eh-dQs" secondAttribute="centerX" id="4sk-aJ-SKY"/>
@@ -101,7 +101,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uom-Al-qK5">
                                                                 <rect key="frame" x="69" y="15" width="308" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-ma-YRA">
@@ -112,7 +112,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="mUr-ma-YRA" secondAttribute="bottom" id="Fcd-jg-Yx7"/>
                                                             <constraint firstItem="Uom-Al-qK5" firstAttribute="centerY" secondItem="pFZ-ND-C7Z" secondAttribute="centerY" id="Hv4-ci-Zf8"/>
@@ -136,7 +136,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite friends and get a coupon!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtM-TQ-RBs">
                                                                 <rect key="frame" x="70.000000000000014" y="14.999999999999998" width="241.33333333333337" height="20.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.38823529411764707" green="0.68627450980392157" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-2y-Wwe">
@@ -147,7 +147,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.78431372549019607" green="0.89803921568627454" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="YtM-TQ-RBs" firstAttribute="centerY" secondItem="2fg-Ma-wqj" secondAttribute="centerY" id="3ST-CA-9ga"/>
                                                             <constraint firstAttribute="bottom" secondItem="bT2-2y-Wwe" secondAttribute="bottom" id="HA9-dr-ol4"/>
@@ -280,9 +280,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylm-29-Ndc">
-                                                                <rect key="frame" x="177" y="22" width="60" height="30"/>
+                                                                <rect key="frame" x="176" y="22" width="62" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                                 <state key="normal" title="Sign Out">
-                                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                             </button>
                                                         </subviews>

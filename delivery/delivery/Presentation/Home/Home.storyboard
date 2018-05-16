@@ -51,7 +51,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="b4w-vC-hea" secondAttribute="trailing" id="8O1-co-eqg"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="Qh5-Ep-yGo" secondAttribute="bottom" constant="16" id="GDu-7G-eZP"/>
@@ -71,7 +71,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OO8-rO-sx4">
                                                                 <rect key="frame" x="8" y="8" width="68" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ubr-Bc-nx4">
@@ -111,7 +111,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Sales" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80T-Ue-qF8">
                                                                 <rect key="frame" x="8" y="8" width="94" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nVd-U5-TS0">
@@ -168,7 +168,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You May Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vO-HQ-mkY">
                                                                 <rect key="frame" x="8" y="8" width="126.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4PD-99-pTb">
@@ -212,7 +212,7 @@
                                                                     <constraint firstAttribute="height" constant="24" id="nVh-cl-lY4"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZpA-hS-Xsu">
