@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol ReviewPostUseCaseProtocol {
     func fetchReview(productId: String) -> Single<Review>
-    func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable
+    func postReivew(productId: String, userName: String?, rating: Double, title: String?, comment: String?) -> Completable
 }
 
 class ReviewPostUseCase: ReviewPostUseCaseProtocol {
@@ -29,10 +29,10 @@ class ReviewPostUseCase: ReviewPostUseCaseProtocol {
             .map{ entitiy in self.translator.translate(entitiy) }
     }
     
-    func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable {
-        guard rating != 0, let title = title, !title.isEmpty, let comment = comment, !comment.isEmpty else {
+    func postReivew(productId: String, userName: String?, rating: Double, title: String?, comment: String?) -> Completable {
+        guard rating != 0, let userName = userName, !userName.isEmpty, let title = title, !title.isEmpty, let comment = comment, !comment.isEmpty else {
             return Completable.error(NomnomError.alert(message: "Please input properly"))
         }
-        return repository.postReivew(productId: productId, rating: rating, title: title, comment: comment)
+        return repository.postReivew(productId: productId, userName: userName, rating: rating, title: title, comment: comment)
     }
 }

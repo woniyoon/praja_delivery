@@ -33,8 +33,8 @@ class ReviewPostViewModel: BaseViewModel {
             ).disposed(by: disposeBag)
     }
     
-    func postReivew(productId: String, rating: Double, title: String?, comment: String?) {
-        useCase.postReivew(productId: productId, rating: rating, title: title, comment: comment)
+    func postReivew(productId: String, userName: String?, rating: Double, title: String?, comment: String?) {
+        useCase.postReivew(productId: productId, userName: userName, rating: rating, title: title, comment: comment)
             .subscribe(
                 onCompleted: { self.isComplete.accept(true) },
                 onError: { error in self.setError(error) }

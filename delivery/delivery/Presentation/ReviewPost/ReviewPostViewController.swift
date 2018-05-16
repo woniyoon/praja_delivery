@@ -84,6 +84,6 @@ class ReviewPostViewController: BaseViewController {
     }
     
     @IBAction func postButtonPressed(_ sender: Any) {
-        viewModel.postReivew(productId: productId, rating: ratingStar.rating, title: titleFeild.text, comment: commentField.text)
+        viewModel.postReivew(productId: productId, userName: userNameFeild.text, rating: ratingStar.rating, title: titleFeild.text, comment: commentField.text)
     }
 }

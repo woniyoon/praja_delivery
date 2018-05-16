@@ -44,11 +44,11 @@ class ReviewPostFirebaseDataStore: ReviewPostDataStoreProtocol {
         })
     }
     
-    func postReview(productId: String, rating: Double, title: String, comment: String) -> Completable {
+    func postReview(productId: String, userName: String, rating: Double, title: String, comment: String) -> Completable {
         guard let user = Auth.auth().currentUser else {
             return Completable.error(NomnomError.alert(message: "You need to sign in"))
         }
-        let review = ReviewEntity(comment: comment, rating: rating, title: title, userId: user.uid, userName: user.displayName!)
+        let review = ReviewEntity(comment: comment, rating: rating, title: title, userId: user.uid, userName: userName)
         
         return Completable.create { observer -> Disposable in
             self.db.collection(PRODUCT_COLLECTION)
