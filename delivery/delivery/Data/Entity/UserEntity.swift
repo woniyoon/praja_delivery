@@ -82,8 +82,8 @@ struct UserEntity {
             "lastName": lastName,
             "mobileNumber": mobileNumber,
             "email": email,
-            "address": (address != nil) ? address!.map { $0.dictionary } : nil,
-            "payment": (payment != nil) ? payment!.map { $0.dictionary } : nil,
+            "address": address?.map { $0.dictionary },
+            "payment": payment?.map { $0.dictionary },
             "coupon": coupon ?? [:],
             "totalPoint": totalPoint
         ]

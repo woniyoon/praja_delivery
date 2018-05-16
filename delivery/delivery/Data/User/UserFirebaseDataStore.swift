@@ -25,6 +25,8 @@ import RxSwift
 class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
     
+    // TODO: change the documentID (= userID)
+    
     func fetchUser() -> Single<UserEntity> {
         //        let user = Auth.auth().currentUser
         //        if let user = user {
@@ -63,7 +65,6 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     func updateUser(user: UserEntity) -> Completable {
         return Completable.create { observer in
             let dict = user.dictionary
-            print(dict)
             self.db.collection(USER_COLLECTION).document("72tKB5nG76CR4dVYW5AM").setData(user.dictionary) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
