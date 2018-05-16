@@ -15,6 +15,7 @@ import Cosmos
 class ReviewPostViewController: BaseViewController {
     
     @IBOutlet weak var ratingStar: CosmosView!
+    @IBOutlet weak var userNameFeild: UITextField!
     @IBOutlet weak var titleFeild: UITextField!
     @IBOutlet weak var commentField: UITextView!
     var productId: String!
@@ -31,6 +32,7 @@ class ReviewPostViewController: BaseViewController {
     override func viewDidLoad() {
         setup()
         bind()
+        fetch()
     }
     
     private func setup() {
@@ -43,6 +45,19 @@ class ReviewPostViewController: BaseViewController {
     }
     
     private func bind() {
+        viewModel.rating.asObservable()
+            .bind(to: ratingStar.rx_rating)
+            .disposed(by: disposeBag)
+        viewModel.userName.asObservable()
+            .bind(to: userNameFeild.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.title.asObservable()
+            .bind(to: titleFeild.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.comment.asObservable()
+            .bind(to: commentField.rx.text)
+            .disposed(by: disposeBag)
+        
         viewModel.isComplete.asObservable()
             .subscribe(onNext: { isComplete in
                 if isComplete {
@@ -58,6 +73,10 @@ class ReviewPostViewController: BaseViewController {
             .subscribe(
                 onNext: { alertError in self.showAlert(alertError) }
             ).disposed(by: disposeBag)
+    }
+    
+    private func fetch() {
+        viewModel.fetchReview(productId: productId)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {

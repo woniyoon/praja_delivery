@@ -11,14 +11,22 @@ import RxSwift
 import RxCocoa
 
 protocol ReviewPostUseCaseProtocol {
+    func fetchReview(productId: String) -> Single<Review>
     func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable
 }
 
 class ReviewPostUseCase: ReviewPostUseCaseProtocol {
     private let repository: ReviewPostRepositoryProtocol
+    private let translator: ReviewTranslator
     
-    init(repository: ReviewPostRepositoryProtocol) {
+    init(repository: ReviewPostRepositoryProtocol, translator: ReviewTranslator) {
         self.repository = repository
+        self.translator = translator
+    }
+    
+    func fetchReview(productId: String) -> Single<Review> {
+        return repository.fetchReview(productId: productId)
+            .map{ entitiy in self.translator.translate(entitiy) }
     }
     
     func postReivew(productId: String, rating: Double, title: String?, comment: String?) -> Completable {

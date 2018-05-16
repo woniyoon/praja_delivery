@@ -75,7 +75,7 @@ final class ViewControllerAssembly: Assembly {
         container.register(ReviewListViewController.self) { _ in
             let dataStore  = container.resolve(ReviewListDataStoreProtocol.self)
             let repository = container.resolve(ReviewListRepositoryProtocol.self, argument: dataStore!)
-            let translator = container.resolve(ReviewListTranslator.self)
+            let translator = container.resolve(ReviewTranslator.self)
             let usecase    = container.resolve(ReviewListUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(ReviewListViewModel.self, argument: usecase!)
             let vc         = ReviewListViewController.createInstance(viewModel: viewModel!)
@@ -84,7 +84,8 @@ final class ViewControllerAssembly: Assembly {
         container.register(ReviewPostViewController.self) { _ in
             let dataStore  = container.resolve(ReviewPostDataStoreProtocol.self)
             let repository = container.resolve(ReviewPostRepositoryProtocol.self, argument: dataStore!)
-            let usecase    = container.resolve(ReviewPostUseCaseProtocol.self, argument: repository!)
+            let translator = container.resolve(ReviewTranslator.self)
+            let usecase    = container.resolve(ReviewPostUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(ReviewPostViewModel.self, argument: usecase!)
             let vc         = ReviewPostViewController.createInstance(viewModel: viewModel!)
             return vc!

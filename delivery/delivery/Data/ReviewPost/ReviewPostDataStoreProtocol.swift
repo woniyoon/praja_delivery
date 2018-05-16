@@ -11,5 +11,6 @@ import RxSwift
 import RxCocoa
 
 protocol ReviewPostDataStoreProtocol {
+    func fetchReview(productId: String) -> Single<ReviewEntity>
     func postReview(productId: String, rating: Double, title: String, comment: String) -> Completable
 }

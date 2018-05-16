@@ -11,4 +11,5 @@ import Foundation
 enum NomnomError : Error {
     case alert(message: String)
     case network(code: String, message: String, log: String)
+    case noData(message: String)
 }

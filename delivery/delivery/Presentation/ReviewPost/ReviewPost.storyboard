@@ -46,7 +46,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s0a-M5-oSZ">
-                                <rect key="frame" x="20" y="130" width="335" height="30"/>
+                                <rect key="frame" x="20" y="176" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="P1h-NJ-0u7"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lJO-KE-YXz">
-                                <rect key="frame" x="20" y="176" width="335" height="185"/>
+                                <rect key="frame" x="20" y="222" width="335" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="V4D-XL-qfC"/>
@@ -82,18 +82,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42e-4M-kLT">
+                                <rect key="frame" x="20" y="130" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MV4-fb-CE8"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vD2-kK-dJl" firstAttribute="trailing" secondItem="42e-4M-kLT" secondAttribute="trailing" constant="20" id="6bu-0S-AB1"/>
                             <constraint firstItem="vD2-kK-dJl" firstAttribute="trailing" secondItem="s0a-M5-oSZ" secondAttribute="trailing" constant="20" id="8fb-uB-PJx"/>
-                            <constraint firstItem="s0a-M5-oSZ" firstAttribute="top" secondItem="erZ-ZI-Kl5" secondAttribute="bottom" constant="16" id="H7t-z1-CLW"/>
+                            <constraint firstItem="s0a-M5-oSZ" firstAttribute="top" secondItem="42e-4M-kLT" secondAttribute="bottom" constant="16" id="9hY-d8-kVW"/>
                             <constraint firstItem="4hZ-0W-RYi" firstAttribute="top" secondItem="vD2-kK-dJl" secondAttribute="top" id="RNF-AG-5V1"/>
                             <constraint firstItem="lJO-KE-YXz" firstAttribute="top" secondItem="s0a-M5-oSZ" secondAttribute="bottom" constant="16" id="RUL-ER-Czq"/>
                             <constraint firstItem="vD2-kK-dJl" firstAttribute="trailing" secondItem="lJO-KE-YXz" secondAttribute="trailing" constant="20" id="XZu-As-GA4"/>
+                            <constraint firstItem="42e-4M-kLT" firstAttribute="leading" secondItem="vD2-kK-dJl" secondAttribute="leading" constant="20" id="Z30-ss-yg1"/>
                             <constraint firstItem="erZ-ZI-Kl5" firstAttribute="leading" secondItem="vD2-kK-dJl" secondAttribute="leading" constant="16" id="ZJ8-yE-KST"/>
                             <constraint firstItem="erZ-ZI-Kl5" firstAttribute="top" secondItem="4hZ-0W-RYi" secondAttribute="bottom" constant="20" id="ddE-ij-SHT"/>
                             <constraint firstItem="lJO-KE-YXz" firstAttribute="leading" secondItem="vD2-kK-dJl" secondAttribute="leading" constant="20" id="kja-5F-TqB"/>
                             <constraint firstItem="4hZ-0W-RYi" firstAttribute="trailing" secondItem="vD2-kK-dJl" secondAttribute="trailing" id="teI-Nm-HJW"/>
+                            <constraint firstItem="42e-4M-kLT" firstAttribute="top" secondItem="erZ-ZI-Kl5" secondAttribute="bottom" constant="16" id="vfR-Im-9FO"/>
                             <constraint firstItem="s0a-M5-oSZ" firstAttribute="leading" secondItem="vD2-kK-dJl" secondAttribute="leading" constant="20" id="wrU-kk-cMs"/>
                             <constraint firstItem="4hZ-0W-RYi" firstAttribute="leading" secondItem="vD2-kK-dJl" secondAttribute="leading" id="zbf-cD-Dv3"/>
                         </constraints>
@@ -103,6 +115,7 @@
                         <outlet property="commentField" destination="lJO-KE-YXz" id="Nok-KV-c42"/>
                         <outlet property="ratingStar" destination="erZ-ZI-Kl5" id="Mfc-Rd-Vxm"/>
                         <outlet property="titleFeild" destination="s0a-M5-oSZ" id="wIE-Nd-C5h"/>
+                        <outlet property="userNameFeild" destination="42e-4M-kLT" id="Bos-dQ-fwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcN-bq-rEm" userLabel="First Responder" sceneMemberID="firstResponder"/>

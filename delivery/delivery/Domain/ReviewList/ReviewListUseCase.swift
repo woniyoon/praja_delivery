@@ -16,9 +16,9 @@ protocol ReviewListUseCaseProtocol {
 
 class ReviewListUseCase: ReviewListUseCaseProtocol {
     private let repository: ReviewListRepositoryProtocol
-    private let translator: ReviewListTranslator
+    private let translator: ReviewTranslator
     
-    init(repository: ReviewListRepositoryProtocol, translator: ReviewListTranslator) {
+    init(repository: ReviewListRepositoryProtocol, translator: ReviewTranslator) {
         self.repository = repository
         self.translator = translator
     }

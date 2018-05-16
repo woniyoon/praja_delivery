@@ -16,6 +16,34 @@ class ReviewPostFirebaseDataStore: ReviewPostDataStoreProtocol {
     
     private let db = Firestore.firestore()
     
+    func fetchReview(productId: String) -> Single<ReviewEntity> {
+        guard let user = Auth.auth().currentUser else {
+            return Single.error(NomnomError.alert(message: "Please sign in"))
+        }
+        return Single.create(subscribe: { observer in
+            self.db.collection(PRODUCT_COLLECTION)
+                .document(productId)
+                .collection(REVIEW_COLLECTION)
+                .whereField("userId", isEqualTo: user.uid)
+                .getDocuments(completion: { (snapshot, error) in
+                    if let error = error {
+                        observer(.error(error))
+                    } else {
+                        guard let reviewDoc = snapshot?.documents[0].data() else {
+                            observer(.error(NomnomError.noData(message: "")))
+                            return
+                        }
+                        guard let review = ReviewEntity(dictionary: reviewDoc) else {
+                            observer(.error(NomnomError.alert(message: "Parse Failure")))
+                            return
+                        }
+                        observer(.success(review))
+                    }
+                })
+            return Disposables.create()
+        })
+    }
+    
     func postReview(productId: String, rating: Double, title: String, comment: String) -> Completable {
         guard let user = Auth.auth().currentUser else {
             return Completable.error(NomnomError.alert(message: "You need to sign in"))
