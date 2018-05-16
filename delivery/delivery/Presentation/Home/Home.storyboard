@@ -29,22 +29,22 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1240"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIY-s0-7h0" userLabel="SearchView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                         <subviews>
                                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="b4w-vC-hea">
-                                                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                                                <color key="barTintColor" red="0.090101522840000003" green="0.090101522840000003" blue="0.090101522840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <rect key="frame" x="0.0" y="53" width="375" height="47"/>
+                                                                <color key="barTintColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </searchBar>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-Vn-j5t">
-                                                                <rect key="frame" x="332" y="26" width="23" height="22"/>
+                                                                <rect key="frame" x="332" y="15" width="23" height="22"/>
                                                                 <state key="normal" image="cart_w"/>
                                                                 <connections>
                                                                     <action selector="test:" destination="Vyz-OW-em0" eventType="touchUpInside" id="0hg-mw-p9m"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh5-Ep-yGo">
-                                                                <rect key="frame" x="20" y="26" width="20" height="22"/>
+                                                                <rect key="frame" x="20" y="15" width="20" height="22"/>
                                                                 <state key="normal" image="menu_w"/>
                                                                 <connections>
                                                                     <action selector="sideMenuTapped:" destination="Vyz-OW-em0" eventType="touchUpInside" id="qVx-o5-mgb"/>
@@ -56,17 +56,17 @@
                                                             <constraint firstAttribute="trailing" secondItem="b4w-vC-hea" secondAttribute="trailing" id="8O1-co-eqg"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="Qh5-Ep-yGo" secondAttribute="bottom" constant="16" id="GDu-7G-eZP"/>
                                                             <constraint firstAttribute="trailing" secondItem="LVH-Vn-j5t" secondAttribute="trailing" constant="20" id="b3l-QO-1Ad"/>
-                                                            <constraint firstItem="Qh5-Ep-yGo" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="26" id="b68-zb-qO6"/>
+                                                            <constraint firstItem="Qh5-Ep-yGo" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="15" id="b68-zb-qO6"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="LVH-Vn-j5t" secondAttribute="bottom" constant="16" id="bdi-15-ZgX"/>
                                                             <constraint firstAttribute="bottom" secondItem="b4w-vC-hea" secondAttribute="bottom" id="edr-9w-vzK"/>
-                                                            <constraint firstAttribute="height" constant="120" id="h31-zq-u5b"/>
-                                                            <constraint firstItem="LVH-Vn-j5t" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="26" id="mvO-Gi-Ef4"/>
+                                                            <constraint firstAttribute="height" constant="100" id="h31-zq-u5b"/>
+                                                            <constraint firstItem="LVH-Vn-j5t" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="15" id="mvO-Gi-Ef4"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="leading" secondItem="hIY-s0-7h0" secondAttribute="leading" id="n7r-fi-miD"/>
                                                             <constraint firstItem="Qh5-Ep-yGo" firstAttribute="leading" secondItem="hIY-s0-7h0" secondAttribute="leading" constant="20" id="yAB-Lm-Ot2"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA2-Mt-0BH" userLabel="TrendsSection">
-                                                        <rect key="frame" x="0.0" y="120" width="375" height="109"/>
+                                                        <rect key="frame" x="0.0" y="100" width="375" height="129"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OO8-rO-sx4">
                                                                 <rect key="frame" x="8" y="8" width="68" height="24"/>
@@ -75,7 +75,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ubr-Bc-nx4">
-                                                                <rect key="frame" x="0.0" y="40" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="40" width="375" height="81"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="y7i-r4-C26">
                                                                     <size key="itemSize" width="100" height="35"/>
@@ -85,7 +85,7 @@
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GXX-GI-CWe">
-                                                                        <rect key="frame" x="10" y="13" width="100" height="35"/>
+                                                                        <rect key="frame" x="10" y="23" width="100" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
