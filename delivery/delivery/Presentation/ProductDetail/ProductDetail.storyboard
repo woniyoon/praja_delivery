@@ -655,10 +655,12 @@
                         <outlet property="relatedCollection" destination="Ppm-BC-V2c" id="imN-3z-Pzk"/>
                         <outlet property="review1" destination="QBU-SN-Yz0" id="qgU-9K-QZJ"/>
                         <outlet property="review1CommentLabel" destination="tbF-QI-Vxv" id="TrR-3I-est"/>
+                        <outlet property="review1RatingStars" destination="SBZ-PC-Vgb" id="Eet-bu-ztS"/>
                         <outlet property="review1TitleLabel" destination="Vn1-l4-MoR" id="56p-qa-ljq"/>
                         <outlet property="review1UserNameLabel" destination="zYz-QY-XXe" id="7Gn-pv-8GR"/>
                         <outlet property="review2" destination="mbi-tI-4dV" id="68T-nD-J5u"/>
                         <outlet property="review2CommentLabel" destination="bxf-je-cQh" id="8dP-zd-0BA"/>
+                        <outlet property="review2RatingStars" destination="Ohp-Hf-8Rc" id="4x3-aX-SA8"/>
                         <outlet property="review2TitleLabel" destination="2fw-e6-OMT" id="s6k-79-Pc0"/>
                         <outlet property="review2UserNameLabel" destination="H1A-Qx-u6S" id="sjn-1f-Rym"/>
                         <outlet property="reviewRatingLabel" destination="gCG-Jb-545" id="ZgP-DW-mJ3"/>

@@ -25,9 +25,11 @@ class ProductDetailViewModel : BaseViewModel {
     
     var review1Title = BehaviorRelay(value: "")
     var review1User = BehaviorRelay(value: "")
+    var review1Rating = BehaviorRelay(value: 0.0)
     var review1Comment = BehaviorRelay(value: "")
     var review2Title = BehaviorRelay(value: "")
     var review2User = BehaviorRelay(value: "")
+    var review2Rating = BehaviorRelay(value: 0.0)
     var review2Comment = BehaviorRelay(value: "")
     var reviewMore = BehaviorRelay(value: false)
     
@@ -121,12 +123,14 @@ class ProductDetailViewModel : BaseViewModel {
     private func setValuesToReview1(_ review: Review) {
         self.review1User.accept(review.userName)
         self.review1Title.accept(review.title ?? "")
+        self.review1Rating.accept(review.rating)
         self.review1Comment.accept(review.comment ?? "")
     }
     
     private func setValuesToReview2(_ review: Review) {
         self.review2User.accept(review.userName)
         self.review2Title.accept(review.title ?? "")
+        self.review2Rating.accept(review.rating)
         self.review2Comment.accept(review.comment ?? "")
     }
 }
