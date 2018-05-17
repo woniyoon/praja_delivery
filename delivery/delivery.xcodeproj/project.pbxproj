@@ -135,6 +135,7 @@
 		D7213D3720AD325F00142E5C /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7213D3620AD325F00142E5C /* SignUp.storyboard */; };
 		D7213D3A20AD32B300142E5C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7213D3920AD32B300142E5C /* SignUpViewController.swift */; };
 		D7213D3C20AD32F700142E5C /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7213D3B20AD32F700142E5C /* SignUpViewModel.swift */; };
+		D7213D3E20AD41FB00142E5C /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7213D3D20AD41FB00142E5C /* Binding.swift */; };
 		D72D29D120A66995006D5101 /* ReviewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72D29D020A66995006D5101 /* ReviewPost.storyboard */; };
 		D72D29D320A669CE006D5101 /* ReviewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D29D220A669CE006D5101 /* ReviewPostViewController.swift */; };
 		D72D29D520A66BE7006D5101 /* ReviewPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D29D420A66BE7006D5101 /* ReviewPostViewModel.swift */; };
@@ -329,6 +330,7 @@
 		D7213D3620AD325F00142E5C /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		D7213D3920AD32B300142E5C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D7213D3B20AD32F700142E5C /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D7213D3D20AD41FB00142E5C /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		D72D29D020A66995006D5101 /* ReviewPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPost.storyboard; sourceTree = "<group>"; };
 		D72D29D220A669CE006D5101 /* ReviewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostViewController.swift; sourceTree = "<group>"; };
 		D72D29D420A66BE7006D5101 /* ReviewPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostViewModel.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 			children = (
 				D7569D3D2052BA1100C6D6E4 /* UIExtension.swift */,
 				D7AAD0C22042396200D2971C /* Extention.swift */,
+				D7213D3D20AD41FB00142E5C /* Binding.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -1508,6 +1511,7 @@
 				D7AAD0B72041943100D2971C /* ProductDetailFirebaseDataStore.swift in Sources */,
 				913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */,
 				915AC3FA20A55F30007069C8 /* ProductImageCell.swift in Sources */,
+				D7213D3E20AD41FB00142E5C /* Binding.swift in Sources */,
 				BBA54ABE203D178D00D69954 /* ViewController.swift in Sources */,
 				D7569D342052B0E200C6D6E4 /* ViewModelAssembly.swift in Sources */,
 				D7AAD0B52041943100D2971C /* ProductDetailModel.swift in Sources */,

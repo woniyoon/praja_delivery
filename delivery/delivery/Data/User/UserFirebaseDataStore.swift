@@ -27,6 +27,35 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     // TODO: change the documentID (= userID)
     
+    func signUp(email: String, password: String) -> Completable {
+        return Completable.create { observer -> Disposable in
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                guard let user = user else {
+                    observer(.error(NomnomError.alert(message: "Failed to create user")))
+                    return
+                }
+                var newUser: [String : Any] = [:]
+                if let email = user.email {
+                    newUser["email"] = email
+                }
+                
+                // Save user to Firestore
+                self.db.collection(USER_COLLECTION).document(user.uid).setData(newUser, completion: { error in
+                    if let error = error {
+                        observer(.error(error))
+                        return
+                    }
+                    observer(.completed)
+                })
+            })
+            return Disposables.create()
+        }
+    }
+    
     func fetchUser() -> Single<UserEntity> {
         //        let user = Auth.auth().currentUser
         //        if let user = user {

@@ -12,6 +12,11 @@ import RxCocoa
 
 class SignUpViewController: BaseViewController {
     
+    // MARK: - IBOutlet
+    @IBOutlet weak var emailFeild: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmField: UITextField!
+    
     // MARK: - Private Properties
     private var viewModel: SignUpViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -25,6 +30,34 @@ class SignUpViewController: BaseViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
+        bind()
+    }
+    
+    // MARK: - Private Function
+    private func bind() {
+        (emailFeild.rx.text <-> viewModel.email).disposed(by: disposeBag)
+        (passwordField.rx.text <-> viewModel.password).disposed(by: disposeBag)
+        (confirmField.rx.text <-> viewModel.confirm).disposed(by: disposeBag)
         
+        viewModel.isCompleted.asObservable()
+            .subscribe(
+                onNext: { isCompleted in self.move() },
+                onError: { error in print(error) }
+            ).disposed(by: disposeBag)
+        
+        // Alert Message
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
+    }
+    
+    private func move() {
+        print("Yattaaaaaa!!!!!")
+    }
+    
+    // MARK: - IBAction
+    @IBAction func signUpButtonPressed(_ sender: Any) {
+        viewModel.signUp()
     }
 }

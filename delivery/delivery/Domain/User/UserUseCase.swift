@@ -11,6 +11,7 @@ import RxSwift
 
 
 protocol UserUseCaseProtocol {
+    func signUp(email: String, password: String, confirm: String) -> Completable
     func fetchUser() -> Single<User>
     func updateUser(user: User) -> Completable
     func fetchAddressList() -> Single<[Address]>
@@ -28,6 +29,16 @@ class UserUseCase: UserUseCaseProtocol {
     init(repository: UserRepositoryProtocol, translator: UserTranslator) {
         self.repository = repository
         self.translator = translator
+    }
+    
+    func signUp(email: String, password: String, confirm: String) -> Completable {
+        if email.isEmpty, password.isEmpty, confirm.isEmpty {
+            return Completable.error(NomnomError.alert(message: "Please fill out"))
+        }
+        if password != confirm {
+            return Completable.error(NomnomError.alert(message: "Confirm password is differnt from Password"))
+        }
+        return repository.signUp(email: email, password: password)
     }
     
     func fetchUser() -> Single<User> {

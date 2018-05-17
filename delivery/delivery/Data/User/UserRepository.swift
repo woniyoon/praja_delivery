@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserRepositoryProtocol {
+    func signUp(email: String, password: String) -> Completable
     func fetchUser() -> Single<UserEntity>
     func fetchAddress(index: Int) -> Single<[AddressEntity]>
     func fetchAddressList() -> Single<[AddressEntity]>
@@ -26,6 +27,10 @@ class UserRepository: UserRepositoryProtocol {
 
     init(dataStore: UserDataStoreProtocol) {
         self.dataStore = dataStore
+    }
+    
+    func signUp(email: String, password: String) -> Completable {
+        return dataStore.signUp(email: email, password: password)
     }
     
     func fetchUser() -> Single<UserEntity> {
