@@ -13,6 +13,11 @@ import RxCocoa
 
 class SignInViewController: UIViewController {
 
+    // MARK: - UIViews
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
     // MARK: - Instance
     
     private var viewModel: SignInViewModel!
@@ -38,14 +43,16 @@ class SignInViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func forgotPassword(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func signIn(_ sender: Any) {
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+    }
+    
+    @IBAction func keepGuestMode(_ sender: Any) {
+    }
+    
 }
