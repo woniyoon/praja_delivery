@@ -46,5 +46,8 @@ final class ViewModelAssembly: Assembly {
         container.register(AccountEditViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             AccountEditViewModel(useCase: useCase)
         }
+        container.register(SignInViewModel.self) { (_, useCase: UserUseCaseProtocol) in
+            SignInViewModel(useCase: useCase)
+        }
     }
 }
