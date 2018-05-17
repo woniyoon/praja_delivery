@@ -72,6 +72,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
+  - RangeSeekSlider (1.7.0)
   - Realm (3.1.1):
     - Realm/Headers (= 3.1.1)
   - Realm/Headers (3.1.1)
@@ -97,6 +98,7 @@ DEPENDENCIES:
   - Firebase/Core (= 4.8.2)
   - Firebase/Firestore (= 4.8.2)
   - Kingfisher (~> 4.0)
+  - RangeSeekSlider
   - RxBlocking (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxRealm
@@ -124,6 +126,7 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  RangeSeekSlider: 0386c5a9aa5ebcb2fa5238e8a627280cf46c7c0a
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
@@ -134,6 +137,6 @@ SPEC CHECKSUMS:
   Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
   SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
 
-PODFILE CHECKSUM: 8cb27823b79c5af35f6edde871fa47bbecbee3be
+PODFILE CHECKSUM: ac015eda952f527d501262cfe3fcafe4e120ebc2
 
 COCOAPODS: 1.4.0

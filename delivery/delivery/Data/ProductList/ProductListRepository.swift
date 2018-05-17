@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ProductListRepositoryProtocol{
-    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool) -> Single<[ProductEntity]>
+    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]>
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
@@ -21,7 +21,7 @@ class ProductListRepository: ProductListRepositoryProtocol {
         self.dataStore = dataStore
     }
     
-    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool) -> Single<[ProductEntity]> {
-        return dataStore.fetchProductList(with: keyword, by: orderby, descending)
+    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]> {
+        return dataStore.fetchProductList(with: keyword, by: orderby, descending, filters: filters)
     }
 }

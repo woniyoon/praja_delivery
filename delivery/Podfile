@@ -25,6 +25,9 @@ target 'delivery' do
   
   # RxRealm - Offline database
   pod 'RxRealm'
+  
+  #UISlider
+  pod 'RangeSeekSlider'
 end
 
 target 'deliveryTests' do

@@ -193,7 +193,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         
         selectedCell = (sender.superview?.superview) as! ShoppingCartCell
         
-        var id = selectedCell.productShoppingCart?.product.productId
+        let id = selectedCell.productShoppingCart?.product.productId
         
         viewModel.deleteProductFromShoppingCart(with: id!)
         collectionView.reloadData()
