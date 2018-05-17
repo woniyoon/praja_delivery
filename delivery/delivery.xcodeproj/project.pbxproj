@@ -179,6 +179,7 @@
 		D7AAD0BF2042375800D2971C /* TranslatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0BE2042375800D2971C /* TranslatorProtocol.swift */; };
 		D7AAD0C32042396200D2971C /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0C22042396200D2971C /* Extention.swift */; };
 		D7AAD0C6204239B300D2971C /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AAD0C5204239B300D2971C /* FirebaseAnalytics.swift */; };
+		D7B1204C20AD79CF00C52D18 /* UserUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B1204B20AD79CF00C52D18 /* UserUseCaseTest.swift */; };
 		D7E238CB205556A100BA973F /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E238CA205556A100BA973F /* ReviewEntity.swift */; };
 		D7E259EB20639BDC007ADB37 /* NomnomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E259EA20639BDC007ADB37 /* NomnomError.swift */; };
 		D7E259EE2063A771007ADB37 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E259ED2063A771007ADB37 /* BaseViewModel.swift */; };
@@ -374,6 +375,7 @@
 		D7AAD0BE2042375800D2971C /* TranslatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorProtocol.swift; sourceTree = "<group>"; };
 		D7AAD0C22042396200D2971C /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		D7AAD0C5204239B300D2971C /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
+		D7B1204B20AD79CF00C52D18 /* UserUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseTest.swift; sourceTree = "<group>"; };
 		D7E238CA205556A100BA973F /* ReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntity.swift; sourceTree = "<group>"; };
 		D7E259EA20639BDC007ADB37 /* NomnomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomnomError.swift; sourceTree = "<group>"; };
 		D7E259ED2063A771007ADB37 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 			children = (
 				BBA54AD0203D178D00D69954 /* deliveryTests.swift */,
 				BBA54AD2203D178D00D69954 /* Info.plist */,
+				D7B1204B20AD79CF00C52D18 /* UserUseCaseTest.swift */,
 			);
 			path = deliveryTests;
 			sourceTree = "<group>";
@@ -1537,6 +1540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B1204C20AD79CF00C52D18 /* UserUseCaseTest.swift in Sources */,
 				BBA54AD1203D178D00D69954 /* deliveryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1596,6 +1600,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1647,6 +1652,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
