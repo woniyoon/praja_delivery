@@ -27,7 +27,8 @@ class ProductDetailTranslator {
                        category: entity.category,
                        subCategory: entity.subCategory,
                        productId: entity.productId,
-                       reviews: translateReviews(entity.reviews))
+                       reviews: translateReviews(entity.reviews),
+                       ratingCount: entity.ratingCount)
     }
     
     private func translateReviews(_ reviews: [ReviewEntity]?) -> [Review]? {

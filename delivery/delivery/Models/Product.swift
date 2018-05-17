@@ -23,6 +23,7 @@ struct Product {
     public let subCategory: String
     public let productId: String
     public var reviews: [Review]? = nil
+    public let ratingCount: Int
     
     var dictionary: [String: Any] {
         return [
