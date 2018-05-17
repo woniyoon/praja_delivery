@@ -8,3 +8,4 @@
 
 let REVIEW_COLLECTION = "review"
 let PRODUCT_COLLECTION = "product"
+let USER_COLLECTION = "users"

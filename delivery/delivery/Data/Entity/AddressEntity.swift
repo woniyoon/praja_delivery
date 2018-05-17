@@ -16,6 +16,9 @@ struct AddressEntity {
     public let province: String
     public let postalCode: String
     public let country: String
+    public let isDefault: Bool
+    public let phoneNumber: String
+
     
     var dictionary: [String: Any] {
         return [
@@ -25,7 +28,9 @@ struct AddressEntity {
             "city": city,
             "province": province,
             "postalCode": postalCode,
-            "country": country
+            "country": country,
+            "isDefault": isDefault,
+            "phoneNumber": phoneNumber,
         ]
     }
     
@@ -36,7 +41,9 @@ struct AddressEntity {
             let city = dictionary["city"] as? String,
             let province = dictionary["province"] as? String,
             let postalCode = dictionary["postalCode"] as? String,
-            let country = dictionary["country"] as? String else { return nil }
+            let country = dictionary["country"] as? String,
+            let isDefault = dictionary["isDefault"] as? Bool,
+            let phoneNumber = dictionary["phoneNumber"] as? String else { return nil }
         
         self.receiver = receiver
         self.address1 = address1
@@ -45,5 +52,19 @@ struct AddressEntity {
         self.province = province
         self.postalCode = postalCode
         self.country = country
+        self.isDefault = isDefault
+        self.phoneNumber = phoneNumber
+    }
+    
+    init(receiver: String, address1: String, address2: String, city: String, province: String, postalCode: String, country: String, isDefault: Bool, phoneNumber: String) {
+        self.receiver = receiver
+        self.address1 = address1
+        self.address2 = address2
+        self.city = city
+        self.province = province
+        self.postalCode = postalCode
+        self.country = country
+        self.isDefault = isDefault
+        self.phoneNumber = phoneNumber
     }
 }

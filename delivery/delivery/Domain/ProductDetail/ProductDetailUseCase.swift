@@ -28,7 +28,7 @@ class ProductDetailUseCase: ProductDetailUseCaseProtocol {
     func fetchProductDetail(_ productId: String) -> Single<Product> {
         return repository.fetchProductDetail(productId)
             .map { entity in
-                self.translator.translate(from: entity)
+                self.translator.translate(entity)
             }
     }
     

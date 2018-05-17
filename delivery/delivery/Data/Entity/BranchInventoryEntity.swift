@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BranchInvetoryEntity {
+struct BranchInventoryEntity {
     public let quantity: Int
     public let name: String
     

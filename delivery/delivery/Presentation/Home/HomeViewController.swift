@@ -14,7 +14,8 @@ import Kingfisher
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
-// MARK: - UIView
+
+    // MARK: - UIView
     
     @IBOutlet weak var topSalesCollectionView: UICollectionView!
     @IBOutlet weak var youMayLikeCollectionView: UICollectionView!
@@ -39,6 +40,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView(viewModel: viewModel)
@@ -47,10 +52,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         viewModel.fetchProductYouMayLike()
         viewModel.fetchNewProducts()
         searchBar.delegate = self
-        
-        let imageUrl:URL = URL(string: "https://firebasestorage.googleapis.com/v0/b/nomnom-562a0.appspot.com/o/banner1.png?alt=media&token=688828a0-2b28-497e-8bf9-2df3c53ba3db")!
-        let resource = ImageResource(downloadURL: imageUrl, cacheKey: "banner")
-        self.banner.kf.setImage(with: resource)
         
         banner.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
@@ -127,7 +128,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    @IBAction func test(_ sender: Any) {
+        let next = resolver.resolve(CheckoutViewController.self)!
+        next.navigationController?.navigationBar.topItem?.title = "Checkout"
+        self.navigationController?.pushViewController(next, animated: true)
+    }
+    
+    
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
 //
 //        let next = resolver.resolve(ProductDetailViewController.self)!
@@ -142,13 +150,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             
             let next = resolver.resolve(ProductListViewController.self)!
             next.keyword = ""
-            present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
+            
         } else {
             let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
             
             let next = resolver.resolve(ProductDetailViewController.self)!
             next.productId = cell.item!.productId
-            present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
         }
     }
 }
@@ -158,18 +167,53 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
 extension HomeViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         self.keyword = searchText
     }
     
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+//            let next = resolver.resolve(ProductListViewController.self)!
+//            next.keyword = self.keyword
+//            present(next, animated: true, completion: nil)
+//        } else {
+//            searchBar.endEditing(true)
+//        }
+//    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let next = resolver.resolve(ProductListViewController.self)!
-            next.keyword = self.keyword
+            let next = resolver.resolve(CheckoutViewController.self)!
             present(next, animated: true, completion: nil)
         } else {
             searchBar.endEditing(true)
         }
+    }
+    
+    @IBAction func sideMenuTapped(_ sender: Any) {
+        
+        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
+        
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        
+        view.addSubview(blurEffectView)
+        
+        viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+        }
+        
+        //this part needs fix
+        viewController.userSelectedCategory = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+            let next = resolver.resolve(ProductListViewController.self)!
+            next.keyword = ""
+            self.navigationController?.pushViewController(next, animated: true)
+        }
+     
+        viewController.modalTransitionStyle = .flipHorizontal
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        present(viewController, animated: true, completion: nil)
     }
 }
 
