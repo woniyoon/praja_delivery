@@ -43,6 +43,9 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         var listLayout = ListLayout(itemHeight: 280)
         return listLayout }()
     
+    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.isNavigationBarHidden = false
+    }
     
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)

@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import RxSwift
+import Stripe
 
 class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
 

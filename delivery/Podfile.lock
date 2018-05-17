@@ -6,6 +6,7 @@ PODS:
     - BoringSSL/Interface (= 10.0)
   - BoringSSL/Interface (10.0)
   - Cosmos (15.0.0)
+  - Differentiator (3.0.2)
   - Firebase/Auth (4.8.2):
     - Firebase/Core
     - FirebaseAuth (= 4.4.2)
@@ -82,12 +83,17 @@ PODS:
     - RxSwift (~> 4.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxRealm (0.7.5):
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - Stripe (12.1.1)
   - Swinject (2.2.0)
   - SwinjectStoryboard (1.1.2):
     - Swinject (~> 2.1)
@@ -101,15 +107,18 @@ DEPENDENCIES:
   - RangeSeekSlider
   - RxBlocking (~> 4.0)
   - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
   - RxRealm
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - Stripe
   - Swinject
   - SwinjectStoryboard
 
 SPEC CHECKSUMS:
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
   Cosmos: a6dbd3d0baa0cc8f51f8598f7508d5a09d0a9ade
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
@@ -131,12 +140,14 @@ SPEC CHECKSUMS:
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  Stripe: f8e8feff38ba5caf7b2568c64eab96b0440ecb95
   Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
   SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
 
-PODFILE CHECKSUM: ac015eda952f527d501262cfe3fcafe4e120ebc2
+PODFILE CHECKSUM: e34987804daf4688bd6007cdcfcdb455ef44a806
 
 COCOAPODS: 1.4.0
