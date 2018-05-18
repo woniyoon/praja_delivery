@@ -13,12 +13,13 @@ class CollectionViewCell: UICollectionViewCell {
 
     
     static var Identifier = "CollectionViewCell"
-    
+
+    @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var originalPriceLabel: UILabel!
     @IBOutlet weak var discountPercentLabel: UILabel!
-    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var addCart: UIButton!
     
     var item: Product? {
         didSet {
