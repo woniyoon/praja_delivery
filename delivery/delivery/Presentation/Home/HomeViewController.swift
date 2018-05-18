@@ -114,8 +114,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width:180 , height:200)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width:180 , height:260)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 5, bottom: 10, right: 5)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
         

@@ -16,14 +16,14 @@
             <objects>
                 <viewController id="Vyz-OW-em0" customClass="HomeViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fz9-8M-PVp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29n-BE-180">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1480"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="1300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fs-OU-VJf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1248"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-kh-40k">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1240"/>
@@ -265,7 +265,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="KdF-kh-40k" secondAttribute="trailing" id="Goq-bm-PJ2"/>
-                                            <constraint firstAttribute="bottom" secondItem="KdF-kh-40k" secondAttribute="bottom" constant="240" id="iw9-WR-shB"/>
+                                            <constraint firstAttribute="bottom" secondItem="KdF-kh-40k" secondAttribute="bottom" constant="8" id="iw9-WR-shB"/>
                                             <constraint firstItem="KdF-kh-40k" firstAttribute="top" secondItem="9fs-OU-VJf" secondAttribute="top" id="tY9-K1-f9G"/>
                                             <constraint firstItem="KdF-kh-40k" firstAttribute="leading" secondItem="9fs-OU-VJf" secondAttribute="leading" id="tqB-qz-cKh"/>
                                         </constraints>
@@ -274,8 +274,8 @@
                                 <constraints>
                                     <constraint firstItem="9fs-OU-VJf" firstAttribute="top" secondItem="29n-BE-180" secondAttribute="top" id="0Fi-8Y-MiH"/>
                                     <constraint firstItem="9fs-OU-VJf" firstAttribute="leading" secondItem="29n-BE-180" secondAttribute="leading" id="A5T-Wi-lq1"/>
-                                    <constraint firstAttribute="bottom" secondItem="9fs-OU-VJf" secondAttribute="bottom" id="Jjw-bG-ujL"/>
-                                    <constraint firstAttribute="height" secondItem="9fs-OU-VJf" secondAttribute="height" priority="250" id="mHZ-sX-IZe"/>
+                                    <constraint firstAttribute="bottom" secondItem="9fs-OU-VJf" secondAttribute="bottom" constant="52" id="Jjw-bG-ujL"/>
+                                    <constraint firstAttribute="height" secondItem="9fs-OU-VJf" secondAttribute="height" priority="250" constant="52" id="mHZ-sX-IZe"/>
                                     <constraint firstAttribute="trailing" secondItem="9fs-OU-VJf" secondAttribute="trailing" id="qRB-M0-3Vl"/>
                                     <constraint firstAttribute="width" secondItem="9fs-OU-VJf" secondAttribute="width" id="rag-DP-dGO"/>
                                 </constraints>
@@ -283,14 +283,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="29n-BE-180" firstAttribute="bottom" secondItem="KMk-W8-6Sr" secondAttribute="bottom" id="gde-uA-7LO"/>
+                            <constraint firstItem="29n-BE-180" firstAttribute="bottom" secondItem="KMk-W8-6Sr" secondAttribute="bottom" constant="20" id="gde-uA-7LO"/>
                             <constraint firstItem="29n-BE-180" firstAttribute="leading" secondItem="fz9-8M-PVp" secondAttribute="leading" id="l8G-Pf-gWB"/>
                             <constraint firstItem="29n-BE-180" firstAttribute="top" secondItem="fz9-8M-PVp" secondAttribute="top" constant="20" id="n0c-ce-Zp9"/>
                             <constraint firstAttribute="trailing" secondItem="29n-BE-180" secondAttribute="trailing" id="sBG-wX-4Sr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KMk-W8-6Sr"/>
                     </view>
-                    <size key="freeformSize" width="375" height="1500"/>
+                    <size key="freeformSize" width="375" height="1300"/>
                     <connections>
                         <outlet property="banner" destination="GIy-w8-l5z" id="dJo-pY-3pF"/>
                         <outlet property="newProductsCollectionView" destination="ZpA-hS-Xsu" id="z7Z-88-rJz"/>
