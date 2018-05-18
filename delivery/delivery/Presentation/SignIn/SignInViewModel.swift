@@ -21,4 +21,11 @@ class SignInViewModel: BaseViewModel {
         self.useCase = useCase
     }
     
+    func signIn(email: String, password: String) -> Completable {
+        return useCase.signIn(email: email, password: password)
+    }
+    
+    func forgotPassword(email: String) -> Completable {
+        return useCase.forgotPassword(email: email)
+    }
 }

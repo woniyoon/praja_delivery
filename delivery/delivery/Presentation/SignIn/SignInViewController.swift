@@ -18,6 +18,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    // MARK: - Closure
+    var onComplete: ((Bool)->Void)?
+    
     // MARK: - Instance
     
     private var viewModel: SignInViewModel!
@@ -36,23 +39,37 @@ class SignInViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     @IBAction func forgotPassword(_ sender: Any) {
+        self.showInputDialog(title: "Please type your Email",
+                             subtitle: "We'll send you a link to reset the password",
+                             actionTitle: "Done",
+                             cancelTitle: "Cancel",
+                             inputPlaceholder: "Email",
+                             inputKeyboardType: .emailAddress)
+        { (input:String?) in
+            self.viewModel.forgotPassword(email: input!).subscribe(onCompleted: {
+                self.showAlert(title: "Email Sent!", message: "Check your email box")
+            }, onError: { (err) in
+                self.showAlert(title: "Error", message: err.localizedDescription)
+            })
+        }
     }
     
     @IBAction func signIn(_ sender: Any) {
+        let givenEmail = emailField.text!
+        let givenPassword = passwordField.text!
+        viewModel.signIn(email: givenEmail, password: givenPassword).subscribe(onCompleted: {
+            self.onComplete?(true)
+        }) { (err) in
+            self.showAlert(title: "Error", message: "\(err)")
+        }
     }
     
     @IBAction func signUp(_ sender: Any) {
     }
     
     @IBAction func keepGuestMode(_ sender: Any) {
+        onComplete?(false)
     }
-    
 }

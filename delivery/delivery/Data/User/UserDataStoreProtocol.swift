@@ -11,6 +11,9 @@ import RxSwift
 
 protocol UserDataStoreProtocol {
     func fetchUser() -> Single<UserEntity>
-    func updateUser(user: UserEntity) -> Completable
-    func updateAddress(address: AddressEntity) -> Void
+    func updateUser(updatedUser: UserEntity) -> Completable
+    func updateAddress(address: AddressEntity) -> Completable
+    func signIn(email: String, password: String) -> Completable
+    func forgotPassword(email: String) -> Completable
+    func signOut() -> Completable
 }

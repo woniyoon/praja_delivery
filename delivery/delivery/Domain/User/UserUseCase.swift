@@ -18,6 +18,9 @@ protocol UserUseCaseProtocol {
     func fetchAddress(index: Int) -> Single<[Address]>
     func addAddress(address: Address) -> Completable
     func updateAddress(address: Address, indexNo: Int) -> Completable
+    func signIn(email: String, password: String) -> Completable
+    func forgotPassword(email: String) -> Completable
+    func signOut() -> Completable
 }
 
 class UserUseCase: UserUseCaseProtocol {
@@ -69,6 +72,21 @@ class UserUseCase: UserUseCaseProtocol {
     func updateAddress(address: Address, indexNo: Int) -> Completable {
         let addressEntity = self.translator.translateAddress(from: address)
         return repository.updateAddress(address: addressEntity, indexNo: indexNo)
+    }
+    
+    func signIn(email: String, password: String) -> Completable {
+        if Validation.validateEmail(email: email) && Validation.validatePassword(password: password) {
+                return repository.signIn(email: email, password: password)
+        }
+        return Completable.error(NomnomError.alert(message: "wrong password!"))
+    }
+    
+    func forgotPassword(email: String) -> Completable {
+        return repository.forgotPassword(email: email)
+    }
+    
+    func signOut() -> Completable {
+        return repository.signOut()
     }
 }
 
