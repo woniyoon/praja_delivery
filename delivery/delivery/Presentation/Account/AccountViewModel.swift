@@ -19,7 +19,7 @@ class AccountViewModel: BaseViewModel {
     var email = BehaviorRelay(value: "")
     
     var totalPoint = BehaviorRelay(value: "")
-
+    
     var receiver = BehaviorRelay(value: "")
     var address = BehaviorRelay(value: "")
     var postalCode = BehaviorRelay(value: "")
@@ -28,12 +28,14 @@ class AccountViewModel: BaseViewModel {
     var cardNumber = BehaviorRelay(value: "")
     var expiryDate = BehaviorRelay(value: "")
     
+    var isMember = BehaviorRelay(value: true)
+    
     public var dataForSection = BehaviorRelay<[SectionModel<String, User>]>(value: [])
     var user = BehaviorRelay<[User]>(value: [])
-
+    
     private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
-
+    
     
     init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
@@ -41,6 +43,7 @@ class AccountViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
+            self.isMember.accept(true)
             self.user.accept([user])
             
             self.fullName.accept("\(user.firstName) \(user.lastName)")
@@ -51,10 +54,10 @@ class AccountViewModel: BaseViewModel {
             }
             self.totalPoint.accept("\(user.totalPoint) point(s)")
             self.mobileNumber.accept(user.mobileNumber)
-                        
+            
             if let address = user.address {
                 let defaultAddress = address.filter({ $0.isDefault })
-               
+                
                 self.address.accept("\((defaultAddress.first?.address1)!) \((defaultAddress.first?.address2)!)")
                 self.receiver.accept((defaultAddress.first?.receiver)!)
                 self.postalCode.accept((defaultAddress.first?.postalCode)!)
@@ -62,15 +65,24 @@ class AccountViewModel: BaseViewModel {
             
             if let payment = user.payment {
                 let defaultPayment = payment.filter({ $0.isDefault })
-    
+                
                 self.cardholder.accept((defaultPayment.first?.holderName)!)
                 self.cardNumber.accept((defaultPayment.first?.cardNumber)!)
                 let expiryDateString = DateFormatter.expiryDateInFormat(expiryDate: (defaultPayment.first?.expiryDate)!)
                 self.expiryDate.accept(expiryDateString)
             }
         }) { (err) in
+            self.isMember.accept(false)
             print(err)
         }
+    }
+    
+    func signOut() {
+        useCase.signOut()
+            .subscribe(
+                onCompleted: { print("successfully signedOut!") },
+                onError:  { (error) in print("Zannen... signout!") }
+            ).disposed(by: disposeBag)
     }
 }
 

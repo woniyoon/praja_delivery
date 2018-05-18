@@ -146,5 +146,15 @@ final class ViewControllerAssembly: Assembly {
             let vc         = AccountEditViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        container.register(SignInViewController.self) { _ in
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(SignInViewModel.self, argument: usecase!)
+            let vc         = SignInViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }
