@@ -289,6 +289,9 @@
                                                                 <state key="normal" title="Sign Out">
                                                                     <color key="titleColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="actuallyItWasForSignIn:" destination="0cL-Pz-hEf" eventType="touchUpInside" id="GvO-EH-Klx"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

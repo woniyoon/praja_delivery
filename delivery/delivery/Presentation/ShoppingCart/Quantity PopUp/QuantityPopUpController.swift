@@ -24,7 +24,17 @@ class QuantityPopUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
+    
+    func setup(){
+        quantityView.backgroundColor = UIColor.white
+        quantityView.layer.shadowColor = UIColor.lightGray.cgColor
+        quantityView.layer.shadowOpacity = 1
+        quantityView.layer.shadowOffset = CGSize(width: 7.0, height: 7.0)
+        quantityView.layer.shadowRadius = 7
+    }
+    
     
     @IBAction func minusButtonDidTap(_ sender: Any) {
         if productQuantity>0 {

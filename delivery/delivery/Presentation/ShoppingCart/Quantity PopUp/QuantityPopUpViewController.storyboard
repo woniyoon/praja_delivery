@@ -46,7 +46,7 @@
                                         <rect key="frame" x="41" y="4" width="68" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.38823529410000002" green="0.68627450980000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

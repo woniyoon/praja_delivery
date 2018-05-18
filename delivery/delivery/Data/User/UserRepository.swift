@@ -18,6 +18,9 @@ protocol UserRepositoryProtocol {
     func updateAddress(address: AddressEntity, indexNo: Int) -> Completable
     func updateAddressList(address: [AddressEntity]) -> Completable
     func updateUser(user: UserEntity) -> Completable
+    func signIn(email: String, password: String) -> Completable
+    func forgotPassword(email: String) -> Completable
+    func signOut() -> Completable
 }
 
 class UserRepository: UserRepositoryProtocol {    
@@ -84,7 +87,7 @@ class UserRepository: UserRepositoryProtocol {
             
         }
         
-        return dataStore.updateUser(user: UserRepository.user!)
+        return dataStore.updateUser(updatedUser: UserRepository.user!)
     }
     
     func updateAddress(address: AddressEntity, indexNo: Int) -> Completable {
@@ -97,19 +100,31 @@ class UserRepository: UserRepositoryProtocol {
         UserRepository.user?.address = updatedAddress!
         UserRepository.user?.address!.remove(at: indexNo)
         UserRepository.user?.address!.insert(address, at: indexNo)        
-        return dataStore.updateUser(user: UserRepository.user!)
+        return dataStore.updateUser(updatedUser: UserRepository.user!)
     }
     
     func updateAddressList(address: [AddressEntity]) -> Completable {
         
         let updatedUser = UserEntity(firstName: (UserRepository.user?.firstName)!, lastName: (UserRepository.user?.lastName)!, mobileNumber: (UserRepository.user?.mobileNumber)!, dateOfBirth: UserRepository.user?.dateOfBirth, totalPoint: (UserRepository.user?.totalPoint)!, email: (UserRepository.user?.email)!, address: address, payment: (UserRepository.user?.payment) != nil ? (UserRepository.user?.payment)! : nil , coupon: UserRepository.user?.coupon)
         
-        return dataStore.updateUser(user: updatedUser)
+        return dataStore.updateUser(updatedUser: updatedUser)
     }
     
     func updateUser(user: UserEntity) -> Completable {
         UserRepository.user = user
-        return dataStore.updateUser(user: user)
+        return dataStore.updateUser(updatedUser: user)
+    }
+    
+    func signIn(email: String, password: String) -> Completable {
+        return dataStore.signIn(email: email, password: password)
+    }
+    
+    func forgotPassword(email: String) -> Completable {
+        return dataStore.forgotPassword(email: email)
+    }
+    
+    func signOut() -> Completable {
+        return dataStore.signOut()
     }
 }
 

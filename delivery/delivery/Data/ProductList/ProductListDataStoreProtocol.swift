@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol ProductListDataStoreProtocol {
-    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool) -> Single<[ProductEntity]>
+    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]>
 }
