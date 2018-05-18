@@ -21,14 +21,6 @@ final class UsecaseAssembly: Assembly {
         container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
             UserUseCase(repository: repository, translator: translator)
         }
-        
-//        container.register(AccountUseCaseProtocol.self) { (_, repository: AccountRepositoryProtocol, translator: AccountTranslator) in
-//            AccountUseCase(repository: repository, translator: translator)
-//        }
-
-        container.register(HomeUseCaseProtocol.self) { (_, repository: HomeRepositoryProtocol, translator: HomeTranslator) in
-            HomeUseCase(repository: repository, translator: translator)
-        }
         container.register(UserUseCaseProtocol.self) { (_, repository: UserRepositoryProtocol, translator: UserTranslator) in
             UserUseCase(repository: repository, translator: translator)
         }

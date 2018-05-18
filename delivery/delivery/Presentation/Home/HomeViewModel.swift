@@ -20,47 +20,43 @@ class HomeViewModel: BaseViewModel {
     var arrOfTrendsKeyword = BehaviorRelay<[String]>(value: [])
 
     private let disposeBag: DisposeBag = DisposeBag()
-    private let useCase: HomeUseCaseProtocol
+    private let useCase: ProductListUseCaseProtocol
+    private let useCaseShopping: ShoppingCartUseCaseProtocol
 
 // MARK: - Init
 
-    init(useCase: HomeUseCaseProtocol) {
+    init(useCase: ProductListUseCaseProtocol, useCaseShopping: ShoppingCartUseCaseProtocol) {
         self.useCase = useCase
+        self.useCaseShopping = useCaseShopping
         self.arrOfTrendsKeyword.accept(["Easter", "Chocolate", "Heinz", "Test", "Jaewon"])
     }
 
 // MARK: - Methods
 
     func fetchTopSales() {
-        useCase.fetchTopSales()
-                    .subscribe(
-                        onSuccess: { model in
-                            self.arrOfTopSalesProduct.accept(model)
-                    },
-                        onError: { error in print(error) }
-                    )
-                    .disposed(by: disposeBag)
+        useCase.fetchProductList(with: "", by: "name", false, filters: [String:Any]())
+            .subscribe(onSuccess: { (product) in
+            self.arrOfTopSalesProduct.accept(product)
+            }
+            , onError: { (err) in print(err) })
+            .disposed(by: disposeBag)
     }
     
     func fetchProductYouMayLike() {
-        useCase.fetchProductYouMayLike()
-            .subscribe(
-                onSuccess: { model in
-                    self.arrOfProductYouMayLike.accept(model)
-            },
-                onError: { error in print(error) }
-            )
+        useCase.fetchProductList(with: "", by: "name", true, filters: [String:Any]())
+            .subscribe(onSuccess: { (product) in
+                self.arrOfProductYouMayLike.accept(product)
+            }
+                , onError: { (err) in print(err) })
             .disposed(by: disposeBag)
     }
     
     func fetchNewProducts() {
-        useCase.fetchNewProducts()
-            .subscribe(
-                onSuccess: { model in
-                    self.arrOfNewProducts.accept(model)
-            },
-                onError: { error in print(error) }
-            )
+        useCase.fetchProductList(with: "", by: "brand", false, filters: [String:Any]())
+            .subscribe(onSuccess: { (product) in
+                self.arrOfNewProducts.accept(product)
+            }
+                , onError: { (err) in print(err) })
             .disposed(by: disposeBag)
     }
 }
