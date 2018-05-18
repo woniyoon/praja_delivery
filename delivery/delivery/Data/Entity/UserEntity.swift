@@ -29,7 +29,6 @@ struct UserEntity {
         
         let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
     
-        print(dictionary["address"])
         if dictionary["address"] is NSNull || dictionary["address"] == nil {
             self.address = nil
         } else {
@@ -49,10 +48,6 @@ struct UserEntity {
             }
             self.payment = paymentArr
         }
-        
-//        if dictionary["dateOfBirth"] != nil {
-//            self.dateOfBirth =
-//        }
 
         let dateOfBirth = dictionary["dateOfBirth"] as? Date ?? nil
 
@@ -92,6 +87,5 @@ struct UserEntity {
             dict["dateOfBirth"] = dateOfBirth
         }
         return dict
-
     }
 }

@@ -78,7 +78,7 @@ class UserInfoEditViewController: UIViewController {
                 print(err)
             }
         } else {
-            print("all fields are mandatory!")
+            self.showAlert(title: "Warning", message: "You should fill out every field!")
         }
     }
 }

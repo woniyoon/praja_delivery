@@ -32,4 +32,17 @@ struct Address {
             "phoneNumber": phoneNumber
         ]
     }
+    
+    func changeDefault(isDefault: Bool) -> Address {
+        return Address(receiver: self.receiver,
+                       address1: self.address1,
+                       address2: self.address2,
+                       city: self.city,
+                       province: self.province,
+                       postalCode: self.postalCode,
+                       country: self.country,
+                       isDefault: isDefault,
+                       phoneNumber: self.phoneNumber)
+    }
+
 }

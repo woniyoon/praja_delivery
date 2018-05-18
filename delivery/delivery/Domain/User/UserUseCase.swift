@@ -76,7 +76,7 @@ class UserUseCase: UserUseCaseProtocol {
     
     func signIn(email: String, password: String) -> Completable {
         if Validation.validateEmail(email: email) && Validation.validatePassword(password: password) {
-                return repository.signIn(email: email, password: password)
+            return repository.signIn(email: email, password: password)
         }
         return Completable.error(NomnomError.alert(message: "wrong password!"))
     }

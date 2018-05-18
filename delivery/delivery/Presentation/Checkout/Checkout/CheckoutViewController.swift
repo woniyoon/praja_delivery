@@ -29,7 +29,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         bindView()
         configureTableView()
-//        viewModel.fetchUser()
     }
     
     // MARK: - ViewController
@@ -74,12 +73,12 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
 
     
     private func registerCell() {
-        let nib = UINib(nibName: UserInfoCell.Identifier, bundle: nil)
-        let nib2 = UINib(nibName: AddressCell.Identifier, bundle: nil)
-        let nib3 = UINib(nibName: PaymentCell.Identifier, bundle: nil)
-        checkoutTableView.register(nib, forCellReuseIdentifier: UserInfoCell.Identifier)
-        checkoutTableView.register(nib2, forCellReuseIdentifier: AddressCell.Identifier)
-        checkoutTableView.register(nib3, forCellReuseIdentifier: PaymentCell.Identifier)
+        let userInfoCellNib = UINib(nibName: UserInfoCell.Identifier, bundle: nil)
+        let addressCellNib = UINib(nibName: AddressCell.Identifier, bundle: nil)
+        let paymentCellNib = UINib(nibName: PaymentCell.Identifier, bundle: nil)
+        checkoutTableView.register(userInfoCellNib, forCellReuseIdentifier: UserInfoCell.Identifier)
+        checkoutTableView.register(addressCellNib, forCellReuseIdentifier: AddressCell.Identifier)
+        checkoutTableView.register(paymentCellNib, forCellReuseIdentifier: PaymentCell.Identifier)
     }
     
     private func configureTableView() {
@@ -106,7 +105,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
             } else {
                 isMember = false
             }
-            
             let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
             userInfoEditVC.isMember = isMember
             userInfoEditVC.title = "User Information"
@@ -122,10 +120,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                 addressEditVC.title = "Shipping"
                 self.navigationController?.pushViewController(addressEditVC, animated: true)
             }
-            
-//            let next = resolver.resolve(AddressListViewController.self)!
-//            next.isMember = isMember
-//            present(next, animated: true, completion: nil)
         }
     }
     
