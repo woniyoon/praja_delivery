@@ -27,7 +27,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                         return
                     }
                     guard let user = UserEntity(dictionary: (document?.data())!) else {
-                        observer(.error(error!))
+                        observer(.error(NomnomError.noData(message: "Couldn't find user")))
                         return
                     }
                     observer(.success(user))
@@ -35,8 +35,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
             return Disposables.create()
         }
     }
-    
-    
+
     func updateAddress(address: AddressEntity) -> Completable{
         guard let user = Auth.auth().currentUser else {
             return Completable.error(NomnomError.alert(message: "SignIn is required!"))
