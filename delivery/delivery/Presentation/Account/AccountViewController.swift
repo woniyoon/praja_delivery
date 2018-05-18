@@ -41,17 +41,18 @@ class AccountViewController: BaseViewController {
         instance?.viewModel = viewModel
         return instance
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-        viewModel.fetchUser()
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindView() // bind data
         profileImgContainer.layer.cornerRadius = 49
         profileImgContainer.clipsToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        viewModel.fetchUser()
     }
 
     private func bindView() {
@@ -88,6 +89,15 @@ class AccountViewController: BaseViewController {
         viewModel.expiryDate.asObservable()
             .bind(to: expiryDateLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.isMember.asObservable()
+            .subscribe(onNext: { isMember in
+                if !isMember {
+                    let signInVC = resolver.resolve(SignInViewController.self)!
+                    signInVC.onComplete = self.onCompleteSignIn
+                    self.navigationController?.pushViewController(signInVC, animated: false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     @IBAction func toEditProfile(_ sender: Any) {
@@ -99,12 +109,26 @@ class AccountViewController: BaseViewController {
     @IBAction func editAddress(_ sender: Any) {
         if viewModel.user.value.first?.address != nil {
             let next = resolver.resolve(AddressListViewController.self)!
-            
             self.navigationController?.pushViewController(next, animated: true)
-//            self.parent?.addChildViewController(next)
         } else {
             let addressEditVC = resolver.resolve(AddressEditViewController.self)!
             self.navigationController?.pushViewController(addressEditVC, animated: true)
+        }
+    }
+    
+    
+    @IBAction func actuallyItWasForSignIn(_ sender: Any) {
+        viewModel.signOut()
+        let signInVC = resolver.resolve(SignInViewController.self)!
+        signInVC.onComplete = onCompleteSignIn
+        self.navigationController?.pushViewController(signInVC, animated: true)
+    }
+    
+    private func onCompleteSignIn(isMember: Bool) {
+        if isMember {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            tabBarController?.selectedIndex = 0
         }
     }
 }

@@ -10,29 +10,17 @@ import Foundation
 import Firebase
 import RxSwift
 
-//class UserFirebaseDataStore: UserDataStoreProtocol {
-//    let db = Firestore.firestore()
-//
-//    let name = "Raana"
-//    let age = 64
-//    let dict = [String: Any] = ["name" : name,
-//                                "age" : age]
-//    func fetchProductDetail(_ id: String) -> ProductEntity {
-//        let productRef = db.collection("Users").addDocument(data: dict)
-//
-//    }
-//}
 class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
-    
-    // TODO: change the documentID (= userID)
-    
+
     func fetchUser() -> Single<UserEntity> {
-        //        let user = Auth.auth().currentUser
-        //        if let user = user {
+        guard let user = Auth.auth().currentUser else {
+            return Single.error(NomnomError.alert(message: "sign in is required"))
+        }
+        
         return Single<UserEntity>.create { observer -> Disposable in
             self.db.collection(USER_COLLECTION)
-                .document("72tKB5nG76CR4dVYW5AM")
+                .document(user.uid)
                 .getDocument() { (document, error) in
                     if let error = error {
                         observer(.error(error))
@@ -49,37 +37,82 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     }
     
     
-    func updateAddress(address: AddressEntity) {
-        db.collection(USER_COLLECTION).document("72tKB5nG76CR4dVYW5AM").updateData([
-            "address": address
-            ])
-        { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
+    func updateAddress(address: AddressEntity) -> Completable{
+        guard let user = Auth.auth().currentUser else {
+            return Completable.error(NomnomError.alert(message: "SignIn is required!"))
         }
-    }
-    
-    func updateUser(user: UserEntity) -> Completable {
+        
         return Completable.create { observer in
-            let dict = user.dictionary
-            self.db.collection(USER_COLLECTION).document("72tKB5nG76CR4dVYW5AM").setData(user.dictionary) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                    observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
-                } else {
-                    print("Document successfully written!")
-                    observer(.completed)
+            self.db.collection(USER_COLLECTION)
+                .document(user.uid)
+                .setData(["address": address]) { err in
+                    if let err = err {
+                        observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
+                    } else {
+                        observer(.completed)
+                    }
                 }
-            }
             return Disposables.create()
         }
     }
     
-//    func updatePassword() {
-//        Auth.auth().currentUser?.updatePassword(to: <#T##String#>, completion: <#T##UserProfileChangeCallback?##UserProfileChangeCallback?##(Error?) -> Void#>)
-//    }
+    func updateUser(updatedUser: UserEntity) -> Completable {
+        guard let currentUser = Auth.auth().currentUser else {
+            return Completable.error(NomnomError.alert(message: "SignIn is required!"))
+        }
+        
+        return Completable.create { observer in
+                self.db.collection(USER_COLLECTION)
+                    .document(currentUser.uid)
+                    .setData(updatedUser.dictionary) { err in
+                    if let err = err {
+                        observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
+                    } else {
+                        observer(.completed)
+                    }
+                }
+            return Disposables.create()
+        }
+    }
+    
+    func signIn(email: String, password: String) -> Completable {
+        return Completable.create { observer in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
+                if let err = err {
+                    observer(.error(NomnomError.alert(message: "Error : \(err.localizedDescription)")))
+                } else {
+                    observer(.completed)
+                }
+            })
+            return Disposables.create()
+        }
+    }
+    
+    func forgotPassword(email: String) -> Completable {
+        return Completable.create { observer in
+            Auth.auth().sendPasswordReset(withEmail: email, completion: { (err) in
+                if let err = err {
+                    observer(.error(err))
+                } else {
+                    observer(.completed)
+                }
+            })
+            return Disposables.create()
+        }
+    }
+    
+    func signOut() -> Completable {
+        return Completable.create(subscribe: { (observer) -> Disposable in
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                observer(.error(error))
+                return Disposables.create()
+            }
+        
+            observer(.completed)
+            return Disposables.create()
+        })
+    }
 }
 

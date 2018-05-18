@@ -190,7 +190,7 @@ extension HomeViewController: UISearchBarDelegate{
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         
-        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
+        let categoryVC = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -198,22 +198,22 @@ extension HomeViewController: UISearchBarDelegate{
         
         view.addSubview(blurEffectView)
         
-        viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
+        categoryVC.userTappedCloseButtonClosure = { [weak blurEffectView] in
             blurEffectView?.removeFromSuperview()
         }
         
         //this part needs fix
-        viewController.userSelectedCategory = { [weak blurEffectView] in
+        categoryVC.userSelectedCategory = { [weak blurEffectView] in
             blurEffectView?.removeFromSuperview()
             let next = resolver.resolve(ProductListViewController.self)!
             next.keyword = ""
             self.navigationController?.pushViewController(next, animated: true)
         }
      
-        viewController.modalTransitionStyle = .flipHorizontal
-        viewController.modalPresentationStyle = .overFullScreen
+        categoryVC.modalTransitionStyle = .flipHorizontal
+        categoryVC.modalPresentationStyle = .overFullScreen
         
-        present(viewController, animated: true, completion: nil)
+        present(categoryVC, animated: true, completion: nil)
     }
 }
 
