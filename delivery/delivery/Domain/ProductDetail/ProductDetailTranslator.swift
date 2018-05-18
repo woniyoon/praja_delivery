@@ -28,7 +28,8 @@ class ProductDetailTranslator: TranslatorProtocol {
             category: entity.category,
             subCategory: entity.subCategory,
             productId: entity.productId,
-            reviews: translateReviews(entity.reviews))
+            reviews: translateReviews(entity.reviews),
+            ratingCount: entity.ratingCount)
     }
     
     func translateBranch(from branch: [BranchInventoryEntity]) -> [BranchInventory] {

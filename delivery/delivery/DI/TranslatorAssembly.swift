@@ -31,8 +31,8 @@ final class TranslatorAssembly: Assembly {
         container.register(ProductListTranslator.self) { _ in
             ProductListTranslator()
         }
-        container.register(ReviewListTranslator.self) { _ in
-            ReviewListTranslator()
+        container.register(ReviewTranslator.self) { _ in
+            ReviewTranslator()
         }
         container.register(ShoppingCartTranslator.self) { _ in
             ShoppingCartTranslator()
