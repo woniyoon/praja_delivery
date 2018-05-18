@@ -11,7 +11,7 @@ import RxSwift
 
 
 protocol ProductListUseCaseProtocol {
-    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool) -> Single<[Product]>
+    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[Product]>
     func fetchProduct(product: Product) -> Product
 }
 
@@ -19,14 +19,16 @@ class ProductListUseCase: ProductListUseCaseProtocol {
     
     internal let repository: ProductListRepositoryProtocol
     internal let translator: ProductListTranslator
+    var brands: [String]
     
     init(repository: ProductListRepositoryProtocol, translator: ProductListTranslator) {
         self.repository = repository
         self.translator = translator
+        self.brands = [String]()
     }
     
-    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool) -> Single<[Product]> {
-        return repository.fetchProductList(with: keyword, by: orderby, descending).map { (entities) -> [Product] in
+    func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[Product]> {
+        return repository.fetchProductList(with: keyword, by: orderby, descending, filters: filters).map { (entities) -> [Product] in
             self.translator.translate(entities)
         }        
     }
