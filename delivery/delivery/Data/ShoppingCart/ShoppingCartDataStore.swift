@@ -59,8 +59,16 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
             
             var arr = [ProductShoppingCartEntity]()
             var counter = 0
-            let size = realm.getData(type: ShoppingCartEntity.self)!.count
-            for carItem in realm.getData(type: ShoppingCartEntity.self)! {
+            guard let data = realm.getData(type: ShoppingCartEntity.self) else {
+                observer(.success([]))
+                return Disposables.create()
+            }
+            let size = data.count
+            if size == 0 {
+                observer(.success([]))
+                return Disposables.create()
+            }
+            for carItem in data {
                 
                 let cartItem = carItem as! ShoppingCartEntity
                 

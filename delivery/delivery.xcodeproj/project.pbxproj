@@ -18,14 +18,6 @@
 		2C3BA6CC20578F5600C438C0 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA6CB20578F5600C438C0 /* OrderViewController.swift */; };
 		2C3BA6CE20578F6800C438C0 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA6CD20578F6800C438C0 /* OrderViewModel.swift */; };
 		40B03536F3D4644A4C98E049 /* Pods_deliveryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */; };
-		513D3936D38A0284858CEBE2 /* Pods_delivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */; };
-		52283F5E2077143500E37785 /* ShoppingCartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F5D2077143500E37785 /* ShoppingCartRepository.swift */; };
-		52283F602077149000E37785 /* ShoppingCartDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F5F2077149000E37785 /* ShoppingCartDataStoreProtocol.swift */; };
-		52283F622077149F00E37785 /* ShoppingCartDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F612077149F00E37785 /* ShoppingCartDataStore.swift */; };
-		52283F642077153F00E37785 /* ShoppingCartEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F632077153F00E37785 /* ShoppingCartEntity.swift */; };
-		52283F662077160900E37785 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F652077160900E37785 /* RealmManager.swift */; };
-		52283F6B20771EFF00E37785 /* ShoppingCartUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F6A20771EFF00E37785 /* ShoppingCartUseCase.swift */; };
-		52283F6D20771F3500E37785 /* ShoppingCartTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52283F6C20771F3500E37785 /* ShoppingCartTranslator.swift */; };
 		522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6291203D2974004B3560 /* ShoppingCart.swift */; };
 		522B6298203D2975004B3560 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6292203D2974004B3560 /* Branch.swift */; };
 		522B629A203D2975004B3560 /* BranchInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522B6294203D2975004B3560 /* BranchInventory.swift */; };
@@ -34,9 +26,9 @@
 		523D3A95204FA3B000B63193 /* ProductListFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523D3A94204FA3B000B63193 /* ProductListFirebaseDataStore.swift */; };
 		5248F53B2069B3EE00525149 /* ProductsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5248F5392069B3EE00525149 /* ProductsCell.swift */; };
 		524D83C22050F5EE00730243 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7AAD0B92041943D00D2971C /* GoogleService-Info.plist */; };
-		5263DF7A20AA77D300F961FA /* ProductsFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5263DF7920AA77D300F961FA /* ProductsFilter.storyboard */; };
 		5263DF7C20AA77F900F961FA /* ProductsFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263DF7B20AA77F900F961FA /* ProductsFilterController.swift */; };
-		5263DF7E20ABDC0300F961FA /* filterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263DF7D20ABDC0300F961FA /* filterDelegate.swift */; };
+		5263DF7F20AD1EE900F961FA /* filterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263DF7D20ABDC0300F961FA /* filterDelegate.swift */; };
+		5263DF8020AD23F900F961FA /* ProductsFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5263DF7920AA77D300F961FA /* ProductsFilter.storyboard */; };
 		5281FD5B205780CB00412663 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5281FD5A205780CB00412663 /* ProductList.storyboard */; };
 		5281FD5D205780E900412663 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281FD5C205780E900412663 /* ProductListViewController.swift */; };
 		5281FD642058B74F00412663 /* ProductListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281FD632058B74F00412663 /* ProductListUseCase.swift */; };
@@ -223,7 +215,6 @@
 		5281FD632058B74F00412663 /* ProductListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListUseCase.swift; sourceTree = "<group>"; };
 		5281FD652058B83900412663 /* ProductListTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTranslator.swift; sourceTree = "<group>"; };
 		5281FD672058C13400412663 /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
-		528E987E203E891700E8338C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		528E9880203E8AF200E8338C /* PointStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointStatement.swift; sourceTree = "<group>"; };
 		528E9882203E8C1100E8338C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		528E9884203E8CDC00E8338C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -432,26 +423,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		52283F5C2077140F00E37785 /* ShoppingCart */ = {
-			isa = PBXGroup;
-			children = (
-				52283F5D2077143500E37785 /* ShoppingCartRepository.swift */,
-				52283F5F2077149000E37785 /* ShoppingCartDataStoreProtocol.swift */,
-				52283F612077149F00E37785 /* ShoppingCartDataStore.swift */,
-				52283F652077160900E37785 /* RealmManager.swift */,
-			);
-			path = ShoppingCart;
-			sourceTree = "<group>";
-		};
-		52283F6920771E9F00E37785 /* ShoppingCart */ = {
-			isa = PBXGroup;
-			children = (
-				52283F6A20771EFF00E37785 /* ShoppingCartUseCase.swift */,
-				52283F6C20771F3500E37785 /* ShoppingCartTranslator.swift */,
-			);
-			path = ShoppingCart;
-			sourceTree = "<group>";
-		};
 		522B628E203D2923004B3560 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,16 +453,6 @@
 				523D3A94204FA3B000B63193 /* ProductListFirebaseDataStore.swift */,
 			);
 			path = ProductList;
-			sourceTree = "<group>";
-		};
-		524006AF20916B610049DF6B /* Quantity PopUp */ = {
-			isa = PBXGroup;
-			children = (
-				524006AB209163E70049DF6B /* QuantityPopUpController.swift */,
-				524006AD20916A220049DF6B /* QuantityPopUpViewController.storyboard */,
-				524006B020918A290049DF6B /* PopupDelegate.swift */,
-			);
-			path = "Quantity PopUp";
 			sourceTree = "<group>";
 		};
 		5263DF7820AA77B200F961FA /* Filter */ = {
@@ -1066,7 +1027,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBA54AD8203D178D00D69954 /* Build configuration list for PBXNativeTarget "deliveryTests" */;
 			buildPhases = (
-				15BA5007801575E93ED5320E /* [CP] Check Pods Manifest.lock */,
+				00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */,
+				15BA5007801575E93ED5320E /* [CP] Copy Pods Resources */,
 				BBA54AC8203D178D00D69954 /* Sources */,
 				BBA54AC9203D178D00D69954 /* Frameworks */,
 				BBA54ACA203D178D00D69954 /* Resources */,
@@ -1130,6 +1092,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5263DF8020AD23F900F961FA /* ProductsFilter.storyboard in Resources */,
 				5281FD5B205780CB00412663 /* ProductList.storyboard in Resources */,
 				91A3C97A20995725006BC64D /* Checkout.storyboard in Resources */,
 				914F07F320A13C06003D5B23 /* Category.storyboard in Resources */,
@@ -1171,6 +1134,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-deliveryTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		15B339D8DF0BEF4F0B944716 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1189,7 +1170,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		15BA5007801575E93ED5320E /* [CP] Check Pods Manifest.lock */ = {
+		15BA5007801575E93ED5320E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1346,6 +1327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5263DF7F20AD1EE900F961FA /* filterDelegate.swift in Sources */,
 				911E267B205E4CC300FB3639 /* CouponEntity.swift in Sources */,
 				915AC3DA20A54F17007069C8 /* QuantityPopUpController.swift in Sources */,
 				911E26992060984F00FB3639 /* OrderDetailEntity.swift in Sources */,

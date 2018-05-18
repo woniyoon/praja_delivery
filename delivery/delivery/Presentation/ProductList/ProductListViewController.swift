@@ -43,9 +43,6 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         var listLayout = ListLayout(itemHeight: 280)
         return listLayout }()
     
-    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.isNavigationBarHidden = false
-    }
     
     static func createInstance(viewModel: ProductListViewModel) -> ProductListViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(ProductListViewController.self)
@@ -64,12 +61,15 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         lastAscDesc = false
         orderBy.setTitle("Order by Name: A - Z", for: .normal)
         viewModel.fetchProductList(with: "", by: lastOrderBy, lastAscDesc, filters: filters)
-        viewModel.fetchShoppingCartQty()
         
         gridLayout = GridLayout(numberOfColumns: 2)
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
         dropDownShadow()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchShoppingCartQty()
     }
     
     private func bindCartQty(){
@@ -85,7 +85,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
                 cell.product = product
             }.disposed(by: disposeBag)
     }
-
+    
     
     @IBAction func gridPressed(_ sender: Any) {
         if collectionView.collectionViewLayout == gridLayout {
@@ -127,20 +127,19 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             let addProductCart = UIButton(frame: CGRect(x: cell.bounds.maxX - 50, y:0, width:50,height:50))
             addProductCart.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
             addProductCart.setImage(#imageLiteral(resourceName: "addcart"), for: .normal)
-            addProductCart.addTarget(self, action: #selector(editButtonTapped), for: UIControlEvents.touchUpInside)
+            addProductCart.addTarget(self, action: #selector(DidTapAddToCart), for: UIControlEvents.touchUpInside)
             
             addProductCart.tag = indexPath.row + 1
             productsIds[addProductCart.tag] = productCell.product?.productId
-            
             
             cell.addSubview(addProductCart)
         }
     }
     
-    @IBAction func editButtonTapped(sender: UIButton?) -> Void {
+    func DidTapAddToCart(sender: UIButton?) -> Void {
         
         let myPrimaryKey = productsIds[sender!.tag]
-    
+
         if viewModel.productAlreadyInCart(with: myPrimaryKey!) {
             let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
             let alertController = UIAlertController(title: projectName.uppercased(), message:
@@ -154,23 +153,23 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
             shoppingCart.quantity = 1
             shoppingCart.id = sender!.tag
             viewModel.addProductShoppingCart(with: shoppingCart)
-            print("Product added to cart \(sender!.tag) \(String(describing: productsIds[sender!.tag]))")
-            
         }
     }
     
-    @IBAction func fetchTest(sender: UIButton?) -> Void {
-
-        let list = viewModel.productsList.value
-        
-        print("Shopping Cart \(viewModel.fetchShoppingCart())")
-        
-    }
-    
     @IBAction func shoppingCartTapped(_ sender: Any) {
-        let next = resolver.resolve(ShoppingCartViewController.self)!
+        print("shoppingCartTapped \(viewModel.qtyProductsCart.value)")
+        if Int(viewModel.qtyProductsCart.value) == 0 {
+            let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+            let alertController = UIAlertController(title: projectName.uppercased(), message:
+                "Shopping Cart is empty !", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
+            
+            present(alertController, animated: true, completion: nil)
+        } else {
         
-        present(next, animated: true, completion: nil)
+            let next = resolver.resolve(ShoppingCartViewController.self)!
+            present(next, animated: true, completion: nil)
+        }
     }
 
     @IBAction func didTapOrderBy(_ sender: Any) {
@@ -234,7 +233,6 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     func fetchProductListFromDataStore(searchFor: String, orderBy field: String, ascDesc: Bool){
-        print(filters)
         viewModel.fetchProductList(with: searchFor, by: field, ascDesc, filters: filters)
         collectionView.reloadData()
     }
@@ -250,6 +248,34 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         popUpViewController.delegate = self
         
         present(popUpViewController, animated:true, completion:nil)
+    }
+    
+    @IBAction func sideMenuTapped(_ sender: Any) {
+        
+        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
+        
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        
+        view.addSubview(blurEffectView)
+        
+        viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+        }
+        
+        //this part needs fix
+        viewController.userSelectedCategory = { [weak blurEffectView] in
+            blurEffectView?.removeFromSuperview()
+            let next = resolver.resolve(ProductListViewController.self)!
+            next.keyword = ""
+            self.navigationController?.pushViewController(next, animated: true)
+        }
+        
+        viewController.modalTransitionStyle = .flipHorizontal
+        viewController.modalPresentationStyle = .overFullScreen
+        
+        present(viewController, animated: true, completion: nil)
     }
 }
 

@@ -48,7 +48,6 @@ class ProductListViewModel: BaseViewModel {
     func fetchShoppingCartQty() {
         useCaseShopping.fetchShoppingCart().subscribe(onSuccess: { (product) in
             self.qtyProductsCart.accept(String(product.count))
-            print("\(product.count) in cart")
         }, onError: { (err) in
             print(err)
         })

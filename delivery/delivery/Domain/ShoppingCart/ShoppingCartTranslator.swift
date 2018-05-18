@@ -25,7 +25,7 @@ class ShoppingCartTranslator: TranslatorProtocol {
         var products = [ProductShoppingCart]()
         
         for shoppingCart in shoppingCartEntity {
-            let product = productTranslator.translate(from: shoppingCart.product)
+            let product = productTranslator.translate(shoppingCart.product)
             products.append(ProductShoppingCart(product: product,quantity: shoppingCart.quantity))
         }
         return products

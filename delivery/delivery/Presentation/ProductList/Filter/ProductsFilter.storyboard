@@ -163,7 +163,7 @@
                                             <action selector="didTapApply:" destination="ejn-nW-555" eventType="touchUpInside" id="qAi-FZ-0OM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-mE-V1j">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="ProductsFilter" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLj-mE-V1j">
                                         <rect key="frame" x="269" y="319" width="98" height="30"/>
                                         <state key="normal" title="Clear all filters">
                                             <color key="titleColor" red="0.38823529410000002" green="0.68627450980000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

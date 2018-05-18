@@ -38,7 +38,11 @@ class ProductsFilterController: UIViewController {
     }
     
     private func setup() {
-//        mainView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        subVIew.backgroundColor = UIColor.white
+        subVIew.layer.shadowColor = UIColor.lightGray.cgColor
+        subVIew.layer.shadowOpacity = 1
+        subVIew.layer.shadowOffset = CGSize(width: 7.0, height: 7.0)
+        subVIew.layer.shadowRadius = 5
         
         // currency range slider
         let handleColor: UIColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

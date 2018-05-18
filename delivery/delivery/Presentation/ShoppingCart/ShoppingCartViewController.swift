@@ -13,14 +13,19 @@ import RxSwift
 import Firebase
 
 class NavigationController: UINavigationController {
-//    func viewDidLoad() {
-//        
-//    }
+    //    func viewDidLoad() {
+    //
+    //    }
 }
 
 class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
-
-
+    
+    
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var deleteAllButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var gridListButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var binButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var subTotal: UILabel!
@@ -58,17 +63,17 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         collectionView.reloadData()
         viewModel.fetchShoppingCartList()
     }
-
+    
     private func bindTableView() {
         
         viewModel.productsShoppingCart.asObservable()
-        .bind(to: collectionView.rx.items(cellIdentifier: ShoppingCartCell.Identifier, cellType: ShoppingCartCell.self))
-        {   row, shopppingCart, cell in
-            cell.productShoppingCart = shopppingCart
-        }.disposed(by: disposeBag)
+            .bind(to: collectionView.rx.items(cellIdentifier: ShoppingCartCell.Identifier, cellType: ShoppingCartCell.self))
+            {   row, shopppingCart, cell in
+                cell.productShoppingCart = shopppingCart
+            }.disposed(by: disposeBag)
         
         viewModel.subTotal.asObservable()
-        .bind(to: subTotal.rx.text)
+            .bind(to: subTotal.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.total.asObservable()
@@ -112,26 +117,26 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Initialize the reusable Collection View Cell with our custom class
-        let shoppingCartCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCartCell", for: indexPath) as! ShoppingCartCell
-        
-        
-        return shoppingCartCell
-    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        // Initialize the reusable Collection View Cell with our custom class
+//        let shoppingCartCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCartCell", for: indexPath) as! ShoppingCartCell
+//
+//
+//        return shoppingCartCell
+//    }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if collectionView == self.collectionView {
             
             let productCell = cell as! ShoppingCartCell
-
+            
             productCell.quantityButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-            productCell.quantityButton.setTitleColor(#colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), for: UIControlState.normal)
+            productCell.quantityButton.setTitleColor(#colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1), for: UIControlState.normal)
             productCell.quantityButton.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
             productCell.quantityButton.layer.cornerRadius = 18
             productCell.quantityButton.layer.borderWidth = 1
-            productCell.quantityButton.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1)
+            productCell.quantityButton.layer.borderColor = #colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1)
             productCell.quantityButton.tag = indexPath.row
             productCell.quantityButton.setTitle(String(describing: productCell.productShoppingCart!.quantity), for: UIControlState.normal)
             
@@ -139,7 +144,6 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
             
             productCell.deleteProduct.tag = indexPath.row
             productCell.deleteProduct.addTarget(self, action: #selector(deleteItemFromCart), for: UIControlEvents.touchUpInside)
-            
         }
     }
     
@@ -148,13 +152,8 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func checkoutPurchase(_ sender: Any) {
-        viewModel.deleteShoppingCart()
-        
-        let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
-        let alertController = UIAlertController(title: projectName.uppercased(), message:
-            "Shopping Cart Deleted !", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
-        dismiss(animated: false, completion: nil)
+        let next = resolver.resolve(CheckoutViewController.self)!
+        present(next, animated:true, completion:nil)
     }
     
     func changeQuantityDidTap(sender: UIButton) -> Void {
@@ -165,27 +164,54 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         popUpViewController.loadView()
         
         selectedCell = (sender.superview?.superview) as! ShoppingCartCell
-
+        
         popUpViewController.quantityView.frame.origin.x = (selectedCell.frame.maxX / 2)
         popUpViewController.quantityView.frame.origin.y = (selectedCell.frame.maxY / 2)
         popUpViewController.delegate = self
         popUpViewController.setQuantity(sender: sender)
-
+        
         present(popUpViewController, animated:true, completion:nil)
     }
     
     
     @IBAction func didTapBinButton(_ sender: Any) {
-
+        hideButtons(hide: true)
+        addDeleteButtonCell()
+    }
+    
+    func addDeleteButtonCell(){
         for item in collectionView.visibleCells {
-            var indexpath : NSIndexPath = self.collectionView!.indexPath(for: item as! ShoppingCartCell)! as NSIndexPath
-            var cell : ShoppingCartCell = self.collectionView!.cellForItem(at: indexpath as IndexPath) as! ShoppingCartCell
+            let indexpath : NSIndexPath = self.collectionView!.indexPath(for: item as! ShoppingCartCell)! as NSIndexPath
+            let cell : ShoppingCartCell = self.collectionView!.cellForItem(at: indexpath as IndexPath) as! ShoppingCartCell
             
             if cell.deleteProduct.isHidden{
                 cell.deleteProduct.isHidden = false
             } else {
                 cell.deleteProduct.isHidden = true
             }
+        }
+    }
+    @IBAction func didTapCancelButton(_ sender: Any) {
+        hideButtons(hide: false)
+        addDeleteButtonCell()
+    }
+    
+    func hideButtons(hide: Bool){
+        if hide {
+            labelName.isHidden = true
+            closeButton.isHidden = true
+            gridListButton.isHidden = true
+            binButton.isHidden = true
+            deleteAllButton.isHidden = false
+            cancelButton.isHidden = false
+        }
+        else {
+            labelName.isHidden = false
+            closeButton.isHidden = false
+            gridListButton.isHidden = false
+            binButton.isHidden = false
+            deleteAllButton.isHidden = true
+            cancelButton.isHidden = true
         }
     }
     
@@ -196,20 +222,28 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         let id = selectedCell.productShoppingCart?.product.productId
         
         viewModel.deleteProductFromShoppingCart(with: id!)
-        collectionView.reloadData()
-        print(collectionView.numberOfItems(inSection: 0))
         if collectionView.numberOfItems(inSection: 0) == 1 {
             dismiss(animated: false, completion: nil)
         }
         viewModel.fetchShoppingCartList()
+        collectionView.reloadData()
     }
     
+    @IBAction func didTabDeleteAll(_ Sender: Any){
+        viewModel.deleteShoppingCart()
+        
+        let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+        let alertController = UIAlertController(title: projectName.uppercased(), message:
+            "Shopping Cart Deleted !", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel,handler: nil))
+        dismiss(animated: false, completion: nil)
+    }
 }
 
 extension ShoppingCartViewController: PopupDelegate {
     func passValue(value: String, tag: Int) {
         selectedCell.quantityButton.setTitle(value, for: .normal)
-
+        
         shoppingCart.idProducts = (selectedCell.productShoppingCart?.product.productId)!
         shoppingCart.quantity = Int(value)!
         viewModel.updateProductShoppingCart(with: shoppingCart)
@@ -218,3 +252,4 @@ extension ShoppingCartViewController: PopupDelegate {
         viewModel.fetchShoppingCartList()
     }
 }
+
