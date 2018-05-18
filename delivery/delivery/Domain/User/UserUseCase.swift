@@ -11,7 +11,6 @@ import RxSwift
 
 
 protocol UserUseCaseProtocol {
-    func signUp(email: String, password: String, confirm: String) -> Completable
     func fetchUser() -> Single<User>
     func updateUser(user: User) -> Completable
     func fetchAddressList() -> Single<[Address]>
@@ -19,6 +18,7 @@ protocol UserUseCaseProtocol {
     func fetchAddress(index: Int) -> Single<[Address]>
     func addAddress(address: Address) -> Completable
     func updateAddress(address: Address, indexNo: Int) -> Completable
+    func signUp(email: String, password: String, confirm: String) -> Completable
     func signIn(email: String, password: String) -> Completable
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable
@@ -32,16 +32,6 @@ class UserUseCase: UserUseCaseProtocol {
     init(repository: UserRepositoryProtocol, translator: UserTranslator) {
         self.repository = repository
         self.translator = translator
-    }
-    
-    func signUp(email: String, password: String, confirm: String) -> Completable {
-        if email.isEmpty, password.isEmpty, confirm.isEmpty {
-            return Completable.error(NomnomError.alert(message: "Please fill out"))
-        }
-        if password != confirm {
-            return Completable.error(NomnomError.alert(message: "Confirm password is differnt from Password"))
-        }
-        return repository.signUp(email: email, password: password)
     }
     
     func fetchUser() -> Single<User> {
@@ -83,6 +73,16 @@ class UserUseCase: UserUseCaseProtocol {
     func updateAddress(address: Address, indexNo: Int) -> Completable {
         let addressEntity = self.translator.translateAddress(from: address)
         return repository.updateAddress(address: addressEntity, indexNo: indexNo)
+    }
+    
+    func signUp(email: String, password: String, confirm: String) -> Completable {
+        if email.isEmpty, password.isEmpty, confirm.isEmpty {
+            return Completable.error(NomnomError.alert(message: "Please fill out"))
+        }
+        if password != confirm {
+            return Completable.error(NomnomError.alert(message: "Confirm password is differnt from Password"))
+        }
+        return repository.signUp(email: email, password: password)
     }
     
     func signIn(email: String, password: String) -> Completable {
