@@ -26,6 +26,7 @@ target 'delivery' do
   
   # Payment
   pod 'Stripe'
+  pod 'Alamofire', '~> 4.7'
   
   # RxRealm - Offline database
   pod 'RxRealm'
