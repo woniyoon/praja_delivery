@@ -17,6 +17,9 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmField: UITextField!
     
+    // MARK: - Argument
+    var onComplete: ((Bool)->Void)?
+    
     // MARK: - Private Properties
     private var viewModel: SignUpViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -41,7 +44,7 @@ class SignUpViewController: BaseViewController {
         
         viewModel.isCompleted.asObservable()
             .subscribe(
-                onNext: { isCompleted in self.move() },
+                onNext: { isCompleted in if isCompleted { self.onComplete?(true) } },
                 onError: { error in print(error) }
             ).disposed(by: disposeBag)
         
@@ -50,10 +53,6 @@ class SignUpViewController: BaseViewController {
             .subscribe(
                 onNext: { alertError in self.showAlert(alertError) }
             ).disposed(by: disposeBag)
-    }
-    
-    private func move() {
-        print("Yattaaaaaa!!!!!")
     }
     
     // MARK: - IBAction

@@ -67,6 +67,9 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
+        let next = resolver.resolve(SignUpViewController.self)!
+        next.onComplete = self.onComplete
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     @IBAction func keepGuestMode(_ sender: Any) {

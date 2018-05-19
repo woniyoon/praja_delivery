@@ -30,7 +30,9 @@ class SignUpViewModel: BaseViewModel {
         useCase.signUp(email: email.value, password: password.value, confirm: confirm.value)
             .subscribe(
                 onCompleted: { self.isCompleted.accept(true) },
-                onError: { error in self.setError(error) }
-            ).disposed(by: disposeBag)
+                onError: { error in
+                    self.setError(error)
+                    
+            }).disposed(by: disposeBag)
     }
 }
