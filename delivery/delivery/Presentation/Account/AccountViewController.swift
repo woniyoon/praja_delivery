@@ -126,7 +126,7 @@ class AccountViewController: BaseViewController {
     
     private func onCompleteSignIn(isMember: Bool) {
         if isMember {
-            self.navigationController?.popViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
         } else {
             tabBarController?.selectedIndex = 0
         }

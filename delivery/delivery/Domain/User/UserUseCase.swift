@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 
-
 protocol UserUseCaseProtocol {
     func fetchUser() -> Single<User>
     func updateUser(user: User) -> Completable
@@ -18,6 +17,7 @@ protocol UserUseCaseProtocol {
     func fetchAddress(index: Int) -> Single<[Address]>
     func addAddress(address: Address) -> Completable
     func updateAddress(address: Address, indexNo: Int) -> Completable
+    func signUp(email: String, password: String, confirm: String) -> Completable
     func signIn(email: String, password: String) -> Completable
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable
@@ -72,6 +72,28 @@ class UserUseCase: UserUseCaseProtocol {
     func updateAddress(address: Address, indexNo: Int) -> Completable {
         let addressEntity = self.translator.translateAddress(from: address)
         return repository.updateAddress(address: addressEntity, indexNo: indexNo)
+    }
+    
+    func signUp(email: String, password: String, confirm: String) -> Completable {
+        if email.isEmpty, password.isEmpty, confirm.isEmpty {
+            return Completable.error(NomnomError.alert(message: "Please fill out"))
+        }
+        var messageArray: [String] = []
+        if !Validation.validateEmail(email: email) {
+            messageArray.append("Email address is invalid")
+        }
+        if !Validation.validatePassword(password: password) {
+            messageArray.append("Password is invalid")
+        }
+        if password != confirm {
+            messageArray.append("Confirm password is differnt from Password")
+        }
+        if messageArray.count > 0 {
+            let message = messageArray.joined(separator: "\n")
+            return Completable.error(NomnomError.alert(message: message))
+        }
+
+        return repository.signUp(email: email, password: password)
     }
     
     func signIn(email: String, password: String) -> Completable {

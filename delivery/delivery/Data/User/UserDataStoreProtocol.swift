@@ -13,6 +13,7 @@ protocol UserDataStoreProtocol {
     func fetchUser() -> Single<UserEntity>
     func updateUser(updatedUser: UserEntity) -> Completable
     func updateAddress(address: AddressEntity) -> Completable
+    func signUp(email: String, password: String) -> Completable
     func signIn(email: String, password: String) -> Completable
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable

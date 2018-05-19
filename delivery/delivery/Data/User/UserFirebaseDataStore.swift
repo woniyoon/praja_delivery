@@ -12,7 +12,7 @@ import RxSwift
 
 class UserFirebaseDataStore: UserDataStoreProtocol {
     let db = Firestore.firestore()
-
+    
     func fetchUser() -> Single<UserEntity> {
         guard let user = Auth.auth().currentUser else {
             return Single.error(NomnomError.alert(message: "sign in is required"))
@@ -27,7 +27,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                         return
                     }
                     guard let user = UserEntity(dictionary: (document?.data())!) else {
-                        observer(.error(error!))
+                        observer(.error(NomnomError.noData(message: "Couldn't find user")))
                         return
                     }
                     observer(.success(user))
@@ -35,8 +35,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
             return Disposables.create()
         }
     }
-    
-    
+
     func updateAddress(address: AddressEntity) -> Completable{
         guard let user = Auth.auth().currentUser else {
             return Completable.error(NomnomError.alert(message: "SignIn is required!"))
@@ -71,6 +70,35 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                         observer(.completed)
                     }
                 }
+            return Disposables.create()
+        }
+    }
+    
+    func signUp(email: String, password: String) -> Completable {
+        return Completable.create { observer -> Disposable in
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                guard let user = user else {
+                    observer(.error(NomnomError.alert(message: "Failed to create user")))
+                    return
+                }
+                var newUser: [String : Any] = [:]
+                if let email = user.email {
+                    newUser["email"] = email
+                }
+                
+                // Save user to Firestore
+                self.db.collection(USER_COLLECTION).document(user.uid).setData(newUser, completion: { error in
+                    if let error = error {
+                        observer(.error(error))
+                        return
+                    }
+                    observer(.completed)
+                })
+            })
             return Disposables.create()
         }
     }

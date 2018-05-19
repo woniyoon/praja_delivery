@@ -10,6 +10,16 @@ import Swinject
 
 final class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(SignUpViewController.self) { _ in
+            let dataStore  = container.resolve(UserDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(UserTranslator.self)
+            let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(SignUpViewModel.self, argument: usecase!)
+            let vc         = SignUpViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
+        
         container.register(ProductDetailViewController.self) { _ in
             let dataStore  = container.resolve(ProductDetailDataStoreProtocol.self)
             let repository = container.resolve(ProductDetailRepositoryProtocol.self, argument: dataStore!)
