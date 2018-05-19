@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
+
 
 class HomeViewModel: BaseViewModel {
 
@@ -22,6 +24,9 @@ class HomeViewModel: BaseViewModel {
     private let disposeBag: DisposeBag = DisposeBag()
     private let useCase: ProductListUseCaseProtocol
     private let useCaseShopping: ShoppingCartUseCaseProtocol
+    
+    public var qtyProductsCart = BehaviorRelay<String>(value: "")
+
 
 // MARK: - Init
 
@@ -58,5 +63,29 @@ class HomeViewModel: BaseViewModel {
             }
                 , onError: { (err) in print(err) })
             .disposed(by: disposeBag)
+    }
+    
+    func addProductShoppingCart(with shoppingCart: ShoppingCart){
+        useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
+        fetchShoppingCartQty()
+    }
+    
+    func fetchShoppingCartQty() {
+        useCaseShopping.fetchShoppingCart().subscribe(onSuccess: { (product) in
+            self.qtyProductsCart.accept(String(product.count))
+            print(self.qtyProductsCart.value)
+        }, onError: { (err) in
+            print(err)
+        })
+    }
+
+    func productAlreadyInCart(with primaryKey: String)-> Bool {
+        var result = false
+        let realm = try! Realm()
+        let shoppingCartExist = realm.objects(ShoppingCartEntity.self).filter("idProducts = '\(primaryKey)'")
+        if shoppingCartExist.first != nil {
+            result = true
+        }
+        return result
     }
 }

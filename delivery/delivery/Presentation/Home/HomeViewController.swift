@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
+
 class HomeViewController: BaseViewController, UICollectionViewDelegate {
 
 
@@ -24,6 +25,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     @IBOutlet weak var banner: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var cartQty: UILabel!
+    
+    private var shoppingCart = ShoppingCart()
+    private var cartViewModel: ShoppingCartViewModel!
     
 // MARK: - Instance
     
@@ -41,6 +46,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchShoppingCartQty()
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -68,16 +74,19 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         viewModel.arrOfTopSalesProduct.asObservable().bind(to: topSalesCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
         { row, item, cell in
             cell.item = item
+            cell.addCart.addTarget(self, action: #selector(self.didTapAddToCart), for: .touchUpInside)
             }.disposed(by: disposeBag)
         
         viewModel.arrOfProductYouMayLike.asObservable().bind(to: youMayLikeCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
         { row, item, cell in
             cell.item = item
+            cell.addCart.addTarget(self, action: #selector(self.didTapAddToCart), for: .touchUpInside)
             }.disposed(by: disposeBag)
         
         viewModel.arrOfNewProducts.asObservable().bind(to: newProductsCollectionView.rx.items(cellIdentifier: CollectionViewCell.Identifier, cellType: CollectionViewCell.self))
         { row, item, cell in
             cell.item = item
+            cell.addCart.addTarget(self, action: #selector(self.didTapAddToCart), for: .touchUpInside)
             }.disposed(by: disposeBag)
        
         viewModel.arrOfTrendsKeyword.asObservable().bind(to: trendsCollectionView.rx.items(cellIdentifier: TrendsCell.Identifier, cellType: TrendsCell.self))
@@ -89,6 +98,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             .subscribe(
                 onNext: { alertError in self.showAlert(alertError) }
         ).disposed(by: disposeBag)
+        
+        viewModel.qtyProductsCart.asObservable()
+            .bind(to: self.cartQty.rx.text)
+            .disposed(by: disposeBag)
     }
 
     
@@ -128,20 +141,14 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
-    @IBAction func test(_ sender: Any) {
-        let next = resolver.resolve(CheckoutViewController.self)!
-        next.navigationController?.navigationBar.topItem?.title = "Checkout"
-        self.navigationController?.pushViewController(next, animated: true)
+    @IBAction func goToShoppingCart(_ sender: Any) {
+        if Int(viewModel.qtyProductsCart.value) == 0 {
+            self.showAlert(title: "projectName.uppercased()", message: "Shopping Cart is empty !")
+        } else {
+            let next = resolver.resolve(ShoppingCartViewController.self)!
+            self.present(next, animated: true, completion: nil)
+        }
     }
-    
-    
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
-//
-//        let next = resolver.resolve(ProductDetailViewController.self)!
-//        next.productId = cell.item!.productId
-//        present(next, animated: true, completion: nil)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -160,6 +167,21 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             self.navigationController?.pushViewController(next, animated: true)
         }
     }
+    
+    func didTapAddToCart(sender: UIButton) -> Void {
+        let cell = sender.superview?.superview?.superview as! CollectionViewCell
+        
+        let productId = cell.item?.productId
+        
+        if viewModel.productAlreadyInCart(with: productId!) {
+            let projectName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+            self.showAlert(title: projectName.uppercased(), message: "Product already added to cart !")
+        } else {
+            shoppingCart.idProducts = productId!
+            shoppingCart.quantity = 1
+            viewModel.addProductShoppingCart(with: shoppingCart)
+        }
+    }
 }
 
 
@@ -169,16 +191,7 @@ extension HomeViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.keyword = searchText
     }
-    
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-//            let next = resolver.resolve(ProductListViewController.self)!
-//            next.keyword = self.keyword
-//            present(next, animated: true, completion: nil)
-//        } else {
-//            searchBar.endEditing(true)
-//        }
-//    }
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             let next = resolver.resolve(CheckoutViewController.self)!

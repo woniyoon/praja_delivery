@@ -39,6 +39,7 @@ class CollectionViewCell: UICollectionViewCell {
             
             let resource = ImageResource(downloadURL: imageUrl, cacheKey: item.name)
             self.productImage.kf.setImage(with: resource)
+            
         }
     }
     
