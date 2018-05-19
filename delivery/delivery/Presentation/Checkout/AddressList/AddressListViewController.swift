@@ -51,7 +51,8 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
     }
 
     func bindView() {
-        viewModel.addressList.asObservable().bind(to: addressTableView.rx.items(cellIdentifier: AddressListCell.Identifier, cellType: AddressListCell.self))
+        viewModel.addressList
+                 .asObservable().bind(to: addressTableView.rx.items(cellIdentifier: AddressListCell.Identifier, cellType: AddressListCell.self))
         { row, item, cell in
             cell.item = item
 
@@ -68,7 +69,7 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let cell: AddressListCell = (sender.superview?.superview?.superview) as! AddressListCell
         
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
-        print(index.row)
+
         let addressEditVC = resolver.resolve(AddressEditViewController.self)!
         addressEditVC.indexNumberOfAddress = index.row
         self.navigationController?.pushViewController(addressEditVC, animated: true)
@@ -78,64 +79,28 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let cell: AddressListCell = (sender.superview?.superview?.superview) as! AddressListCell
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
 
-        var testArr = viewModel.addressList.value
-
-        if testArr.count == 1 {
-            print("at least one address should be registered!")
-        } else {
-            if testArr[index.row].isDefault == true {
-                testArr.remove(at: index.row)
-                if let firstItem = testArr.first {
-                    let newItem = Address(receiver: firstItem.receiver, address1: firstItem.address1, address2: firstItem.address2, city: firstItem.city, province: firstItem.province, postalCode: firstItem.postalCode, country: firstItem.country, isDefault: true, phoneNumber: firstItem.phoneNumber)
-                    
-                    testArr.removeFirst()
-                    testArr.insert(newItem, at: 0)
-                }
-            } else {
-                testArr.remove(at: index.row)
-            }
-            
-            viewModel.addressList.accept(testArr)
-        }
+        viewModel.deleteAddressAtSelectedIndex(index: index.row)
     }
 
     func radioButtonSelected(sender: UIButton) {
-            let cell: AddressListCell = (sender.superview?.superview) as! AddressListCell
-            
-            let index : IndexPath = self.addressTableView.indexPath(for: cell)!
-            print(index.row)
-
-        let originalArr = viewModel.addressList.value
-        var testArr: [Address] = []
-        for i in 0..<originalArr.count {
-            if i == index.row {
-                let add = Address(receiver: originalArr[i].receiver, address1: originalArr[i].address1, address2: originalArr[i].address2, city: originalArr[i].city, province: originalArr[i].province, postalCode: originalArr[i].postalCode, country: originalArr[i].country, isDefault: true, phoneNumber: originalArr[i].phoneNumber)
-                
-                testArr.append(add)
-
-            } else {
-                let add = Address(receiver: originalArr[i].receiver, address1: originalArr[i].address1, address2: originalArr[i].address2, city: originalArr[i].city, province: originalArr[i].province, postalCode: originalArr[i].postalCode, country: originalArr[i].country, isDefault: false, phoneNumber: originalArr[i].phoneNumber)
-                
-                testArr.append(add)
-            }
-        }
-        viewModel.addressList.accept(testArr)
-        addressTableView.reloadInputViews()
+        let cell: AddressListCell = (sender.superview?.superview) as! AddressListCell
+        let index : IndexPath = self.addressTableView.indexPath(for: cell)!
+        
+        viewModel.changeDefaultAddress(row: index.row)
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
         let addressEditVC = resolver.resolve(AddressEditViewController.self)!
         self.navigationController?.pushViewController(addressEditVC, animated: true)
-        
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         viewModel.updateAddressList().subscribe(onCompleted: {
             self.addressTableView.reloadInputViews()
             self.navigationController?.popViewController(animated: true)
-        }) { (err) in
-            print(err)
-        }
+        }, onError: { (err) in
+            self.showAlert(title: "Error", message: err.localizedDescription)
+        })
     }
     
     func cancelButtonTapped(_ sender: Any) {

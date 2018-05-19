@@ -33,8 +33,8 @@ class HomeViewModel: BaseViewModel {
 
     func fetchTopSales() {
         useCase.fetchTopSales()
-                    .subscribe(
-                        onSuccess: { model in
+                .subscribe(
+                    onSuccess: { model in
                             self.arrOfTopSalesProduct.accept(model)
                     },
                         onError: { error in print(error) }
