@@ -31,8 +31,8 @@ class UserInfoEditViewModel: BaseViewModel {
             self.lastName.accept(user.lastName)
             self.email.accept(user.email)
             self.phoneNumber.accept(user.mobileNumber)
-            let arr: [User] = [user]
-            self.user.accept(arr)
+//            let arr: [User] = [user]
+            self.user.accept([user])
             print(user.firstName)
         }) { (err) in
             print(err)

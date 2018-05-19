@@ -43,14 +43,12 @@ class CheckoutViewModel: BaseViewModel {
         useCase.fetchUser()
             .subscribe(onSuccess: { (user) in
 
-                let test = [User(firstName: user.firstName, lastName: user.lastName, mobileNumber: user.mobileNumber, dateOfBirth: user.dateOfBirth, email: user.email, totalPoint: user.totalPoint, address: user.address, payment: user.payment, coupon: user.coupon)]
-                
-                self.dataForSection.accept([SectionModel(model: "User Information", items: test),
-                                  SectionModel(model: "Shipping To", items: test),
-                                  SectionModel(model: "Payment", items: test)
+                self.dataForSection.accept([SectionModel(model: "User Information", items: [user]),
+                                  SectionModel(model: "Shipping To", items: [user]),
+                                  SectionModel(model: "Payment", items: [user])
                     ])
                 
-                self.user.accept(test)
+                self.user.accept([user])
             }, onError: { (err) in
                 print(err)
             }).disposed(by: disposeBag)

@@ -79,6 +79,18 @@ class UserUseCaseTest: XCTestCase {
 }
 
 fileprivate final class UserRepositoryMock: UserRepositoryProtocol {
+    func signIn(email: String, password: String) -> Completable {
+        return Completable.empty()
+    }
+    
+    func forgotPassword(email: String) -> Completable {
+        return Completable.empty()
+    }
+    
+    func signOut() -> Completable {
+        return Completable.empty()
+    }
+    
     func signUp(email: String, password: String) -> Completable {
         return Completable.empty()
     }

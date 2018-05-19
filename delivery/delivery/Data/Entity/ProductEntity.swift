@@ -35,7 +35,7 @@ struct ProductEntity {
             let price = dictionary["price"] as? Double,
             let subCategory = dictionary["subCategory"] as? String,
             let category = dictionary["category"] as? String else { return nil }
-
+    
         var branchList: [BranchInventoryEntity]  = []
         for branch in dictionary["branch"] as! [Any] {
             branchList.append(BranchInventoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)

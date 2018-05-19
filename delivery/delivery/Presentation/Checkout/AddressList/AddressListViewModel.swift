@@ -38,5 +38,18 @@ class AddressListViewModel: BaseViewModel {
 
        return useCase.updateAddressList(addressList: self.addressList.value)
     }
+    
+    func changeDefaultAddress(row: Int) {
+        let newAddressList = addressList.value.enumerated().map { (index, address) in
+            address.changeDefault(isDefault: index == row)
+        }
+        addressList.accept(newAddressList)
+    }
+    
+    func deleteAddressAtSelectedIndex(index: Int) {
+        var newAddressList = addressList.value
+        newAddressList.remove(at: index)
+        addressList.accept(newAddressList)
+    }
 }
 
