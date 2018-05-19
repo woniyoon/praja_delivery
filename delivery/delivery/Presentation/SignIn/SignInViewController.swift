@@ -40,6 +40,10 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBAction func forgotPassword(_ sender: Any) {
         self.showInputDialog(title: "Please type your Email",
                              subtitle: "We'll send you a link to reset the password",
