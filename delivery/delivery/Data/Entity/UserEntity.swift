@@ -20,14 +20,6 @@ struct UserEntity {
         public let coupon: [String : Bool]?
 
     init?(dictionary: [String: Any]) {
-        guard let firstName = dictionary["firstName"] as? String,
-            let lastName = dictionary["lastName"] as? String,
-            let mobileNumber = dictionary["mobileNumber"] as? String,
-            let email = dictionary["email"] as? String,
-            let totalPoint = dictionary["totalPoint"] as? Int else { return nil }
-        
-        let coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
-    
         if !(dictionary["address"] is NSNull), let addresses = dictionary["address"] as? [Any] {
             self.address = addresses.map({ address in
                 AddressEntity(dictionary: (address as? [String : Any]) ?? [:])!
