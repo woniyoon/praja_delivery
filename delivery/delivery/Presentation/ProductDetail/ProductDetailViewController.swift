@@ -274,14 +274,6 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
 
     // MARK: - IBAction
-    @IBAction func closeButtonPressed(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail(productId)
-    }
-    
     @IBAction func writeReviewButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ReviewPostViewController.self)!
         next.productId = productId
