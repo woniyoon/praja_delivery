@@ -100,6 +100,19 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         review2.isHidden = true
         reviewViewMoreButton.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(shoppingCartButtonTapped))
+        
+        // Make the background of NavigationController transparent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        let newView = UIView()
+        UIApplication.shared.keyWindow?.addSubview(newView)
+    }
 
     // MARK: - Private Fuctions
     private func fetch() {
@@ -242,6 +255,10 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         frequentlyCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         relatedCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
     }
+    
+    @objc private func shoppingCartButtonTapped(_ sender: Any) {
+        
+    }
 
     // MARK: - Collection Delegate
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -249,11 +266,11 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell else { return }
         
         let next = resolver.resolve(ProductDetailViewController.self)!
         next.productId = cell.item!.productId
-        present(next, animated: true, completion: nil)
+        self.navigationController?.pushViewController(next, animated: true)
     }
 
     // MARK: - IBAction
