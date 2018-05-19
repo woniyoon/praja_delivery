@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Stripe
 
 class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
@@ -18,7 +19,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
     private var viewModel: CheckoutViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
-    
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.fetchUser()
@@ -30,6 +30,14 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         bindView()
         configureTableView()
     }
+    
+    
+    @IBAction func confirmPayment(_ sender: Any) {
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        navigationController?.pushViewController(addCardViewController, animated: true)
+    }
+    
     
     // MARK: - ViewController
     
@@ -128,3 +136,34 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         return footer
     }
 }
+
+//STP Extension
+extension CheckoutViewController: STPAddCardViewControllerDelegate {
+    
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+        //2000 = 20.00 (pass amount as integer for stripe)
+        StripeClient.shared.completeCharge(with: token, amount: 7590) { result in
+            switch result {
+            // 1
+            case .success:
+                completion(nil)
+                
+                let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true)
+            // 2
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+}
+
+
