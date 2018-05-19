@@ -35,10 +35,12 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     @IBOutlet weak var review1: UIView!
     @IBOutlet weak var review1TitleLabel: UILabel!
     @IBOutlet weak var review1UserNameLabel: UILabel!
+    @IBOutlet weak var review1RatingStars: CosmosView!
     @IBOutlet weak var review1CommentLabel: UILabel!
     @IBOutlet weak var review2: UIView!
     @IBOutlet weak var review2TitleLabel: UILabel!
     @IBOutlet weak var review2UserNameLabel: UILabel!
+    @IBOutlet weak var review2RatingStars: CosmosView!
     @IBOutlet weak var review2CommentLabel: UILabel!
     @IBOutlet weak var reviewViewMoreButton: UIButton!
     
@@ -176,6 +178,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.review1User.asObservable()
             .bind(to: review1UserNameLabel.rx.text)
             .disposed(by: disposeBag)
+        viewModel.review1Rating.asObservable()
+            .bind(to: review1RatingStars.rx_rating)
+            .disposed(by: disposeBag)
         viewModel.review1Comment.asObservable()
             .bind(to: review1CommentLabel.rx.text)
             .disposed(by: disposeBag)
@@ -188,6 +193,9 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             .disposed(by: disposeBag)
         viewModel.review2User.asObservable()
             .bind(to: review2UserNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.review2Rating.asObservable()
+            .bind(to: review2RatingStars.rx_rating)
             .disposed(by: disposeBag)
         viewModel.review2Comment.asObservable()
             .bind(to: review2CommentLabel.rx.text)
@@ -255,6 +263,13 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     @IBAction func buttonPressed(_ sender: Any) {
         viewModel.fetchProductDetail(productId)
+    }
+    
+    @IBAction func writeReviewButtonPressed(_ sender: Any) {
+        let next = resolver.resolve(ReviewPostViewController.self)!
+        next.productId = productId
+        next.refreshProduct = fetch
+        present(next, animated: true, completion: nil)
     }
     
     @IBAction func reviewListButtonPressed(_ sender: Any) {

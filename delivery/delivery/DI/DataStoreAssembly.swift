@@ -16,9 +16,6 @@ final class DataStoreAssembly: Assembly {
         container.register(OrderDataStoreProtocol.self) { _ in
             OrderFirebaseDataStore()
         }
-//        container.register(AccountDataStoreProtocol.self) { _ in
-//            AccountFirebaseDataStore()
-//        }
         container.register(HomeDataStoreProtocol.self) { _ in
             HomeFirebaseDataStore()
         }
@@ -30,6 +27,9 @@ final class DataStoreAssembly: Assembly {
         }
         container.register(ReviewListDataStoreProtocol.self) { _ in
             ReviewListFirebaseDataStore()
+        }
+        container.register(ReviewPostDataStoreProtocol.self) { _ in
+            ReviewPostFirebaseDataStore()
         }
         container.register(ShoppingCartDataStoreProtocol.self) { _ in
             ShoppingCartDataStore()

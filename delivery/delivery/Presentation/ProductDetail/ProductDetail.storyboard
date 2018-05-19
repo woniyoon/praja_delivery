@@ -186,6 +186,9 @@
                                                     <constraint firstAttribute="height" constant="48" id="yov-3w-2xI"/>
                                                 </constraints>
                                                 <state key="normal" title="Write a review"/>
+                                                <connections>
+                                                    <action selector="writeReviewButtonPressed:" destination="t2j-LS-lSz" eventType="touchUpInside" id="Q4q-mc-QHJ"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t3o-Sp-2EP">
                                                 <rect key="frame" x="0.0" y="863" width="375" height="1"/>
@@ -219,7 +222,7 @@
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBZ-PC-Vgb" customClass="CosmosView">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SBZ-PC-Vgb" customClass="CosmosView" customModule="Cosmos">
                                                                 <rect key="frame" x="67" y="49" width="115" height="21"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -227,8 +230,12 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
                                                                         <integer key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                                        <real key="value" value="10"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                                        <integer key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -285,6 +292,24 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohp-Hf-8Rc" customClass="CosmosView" customModule="Cosmos">
+                                                                <rect key="frame" x="78" y="49.5" width="120" height="20"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="Cqj-Cl-QRx"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                                        <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -293,9 +318,11 @@
                                                             <constraint firstItem="2fw-e6-OMT" firstAttribute="leading" secondItem="mbi-tI-4dV" secondAttribute="leading" constant="20" symbolic="YES" id="B7r-14-V4b"/>
                                                             <constraint firstItem="bxf-je-cQh" firstAttribute="leading" secondItem="mbi-tI-4dV" secondAttribute="leading" constant="20" symbolic="YES" id="HsS-oc-GnN"/>
                                                             <constraint firstItem="H1A-Qx-u6S" firstAttribute="top" secondItem="2fw-e6-OMT" secondAttribute="bottom" constant="8" id="INT-Wy-uI7"/>
+                                                            <constraint firstItem="Ohp-Hf-8Rc" firstAttribute="leading" secondItem="H1A-Qx-u6S" secondAttribute="trailing" constant="16" id="JQe-qa-5Hm"/>
                                                             <constraint firstItem="H1A-Qx-u6S" firstAttribute="leading" secondItem="mbi-tI-4dV" secondAttribute="leading" constant="20" symbolic="YES" id="LVh-uL-s4j"/>
                                                             <constraint firstAttribute="bottom" secondItem="bxf-je-cQh" secondAttribute="bottom" constant="20" symbolic="YES" id="O6t-wn-PJs"/>
                                                             <constraint firstItem="bxf-je-cQh" firstAttribute="top" secondItem="H1A-Qx-u6S" secondAttribute="bottom" constant="8" symbolic="YES" id="YmO-4P-pSp"/>
+                                                            <constraint firstItem="Ohp-Hf-8Rc" firstAttribute="centerY" secondItem="H1A-Qx-u6S" secondAttribute="centerY" id="zba-Vw-xKB"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvg-xk-Xj8">
@@ -628,10 +655,12 @@
                         <outlet property="relatedCollection" destination="Ppm-BC-V2c" id="imN-3z-Pzk"/>
                         <outlet property="review1" destination="QBU-SN-Yz0" id="qgU-9K-QZJ"/>
                         <outlet property="review1CommentLabel" destination="tbF-QI-Vxv" id="TrR-3I-est"/>
+                        <outlet property="review1RatingStars" destination="SBZ-PC-Vgb" id="Eet-bu-ztS"/>
                         <outlet property="review1TitleLabel" destination="Vn1-l4-MoR" id="56p-qa-ljq"/>
                         <outlet property="review1UserNameLabel" destination="zYz-QY-XXe" id="7Gn-pv-8GR"/>
                         <outlet property="review2" destination="mbi-tI-4dV" id="68T-nD-J5u"/>
                         <outlet property="review2CommentLabel" destination="bxf-je-cQh" id="8dP-zd-0BA"/>
+                        <outlet property="review2RatingStars" destination="Ohp-Hf-8Rc" id="4x3-aX-SA8"/>
                         <outlet property="review2TitleLabel" destination="2fw-e6-OMT" id="s6k-79-Pc0"/>
                         <outlet property="review2UserNameLabel" destination="H1A-Qx-u6S" id="sjn-1f-Rym"/>
                         <outlet property="reviewRatingLabel" destination="gCG-Jb-545" id="ZgP-DW-mJ3"/>

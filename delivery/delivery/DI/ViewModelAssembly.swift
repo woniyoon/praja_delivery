@@ -10,6 +10,9 @@ import Swinject
 
 final class ViewModelAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(SignUpViewModel.self) { (_, useCase: UserUseCaseProtocol) in
+            SignUpViewModel(useCase: useCase)
+        }
         container.register(ProductDetailViewModel.self) { (_, useCase: ProductDetailUseCaseProtocol) in
             ProductDetailViewModel(useCase: useCase)
         }
@@ -27,6 +30,9 @@ final class ViewModelAssembly: Assembly {
         }
         container.register(ReviewListViewModel.self) { (_, useCase: ReviewListUseCaseProtocol) in
             ReviewListViewModel(useCase: useCase)
+        }
+        container.register(ReviewPostViewModel.self) { (_, useCase: ReviewPostUseCaseProtocol) in
+            ReviewPostViewModel(useCase: useCase)
         }
         container.register(CheckoutViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             CheckoutViewModel(useCase: useCase)

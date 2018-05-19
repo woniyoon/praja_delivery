@@ -23,6 +23,7 @@ struct ProductEntity {
     public let category: String
     public let productId: String
     public var reviews: [ReviewEntity]?
+    public let ratingCount: Int
 
     init?(docId: String, dictionary: [String: Any]) {
         guard let name = dictionary["name"] as? String,
@@ -34,31 +35,26 @@ struct ProductEntity {
             let price = dictionary["price"] as? Double,
             let subCategory = dictionary["subCategory"] as? String,
             let category = dictionary["category"] as? String else { return nil }
-
-        let productId = docId
-        
-        var branchArr: [BranchInventoryEntity]  = []
-        for branch in dictionary["branch"] as! [Any] {
-            branchArr.append(BranchInventoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
-        }
-        self.branch = branchArr
     
-        let averageRating = dictionary["averageRating"] as? Double ?? 0.0
+        var branchList: [BranchInventoryEntity]  = []
+        for branch in dictionary["branch"] as! [Any] {
+            branchList.append(BranchInventoryEntity(dictionary: (branch as? [String : Any]) ?? [:])!)
+        }
+        self.branch = branchList
         
-        let events = dictionary["event"] as? [String : Bool] ?? [:]
-        
-        self.averageRating = averageRating
+        self.averageRating = dictionary["averageRating"] as? Double ?? 0.0
         self.brand = brand
         self.description = description
         self.discountPercent = discountPercent
-        self.events = events
+        self.events = dictionary["event"] as? [String : Bool] ?? [:]
         self.images = images
         self.name = name
         self.originalPrice = originalPrice
         self.price = price
         self.subCategory = subCategory
         self.category = category
-        self.productId = productId
+        self.productId = docId
+        self.ratingCount = dictionary["ratingCount"] as? Int ?? 0
     }
 }
 
