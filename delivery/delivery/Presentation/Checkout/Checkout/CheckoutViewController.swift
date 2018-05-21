@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Stripe
 
 class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
@@ -18,7 +19,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
     private var viewModel: CheckoutViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
-    
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.fetchUser()
@@ -29,8 +29,15 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         bindView()
         configureTableView()
-//        viewModel.fetchUser()
     }
+    
+    
+    @IBAction func confirmPayment(_ sender: Any) {
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        navigationController?.pushViewController(addCardViewController, animated: true)
+    }
+    
     
     // MARK: - ViewController
     
@@ -74,12 +81,12 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
 
     
     private func registerCell() {
-        let nib = UINib(nibName: UserInfoCell.Identifier, bundle: nil)
-        let nib2 = UINib(nibName: AddressCell.Identifier, bundle: nil)
-        let nib3 = UINib(nibName: PaymentCell.Identifier, bundle: nil)
-        checkoutTableView.register(nib, forCellReuseIdentifier: UserInfoCell.Identifier)
-        checkoutTableView.register(nib2, forCellReuseIdentifier: AddressCell.Identifier)
-        checkoutTableView.register(nib3, forCellReuseIdentifier: PaymentCell.Identifier)
+        let userInfoCellNib = UINib(nibName: UserInfoCell.Identifier, bundle: nil)
+        let addressCellNib = UINib(nibName: AddressCell.Identifier, bundle: nil)
+        let paymentCellNib = UINib(nibName: PaymentCell.Identifier, bundle: nil)
+        checkoutTableView.register(userInfoCellNib, forCellReuseIdentifier: UserInfoCell.Identifier)
+        checkoutTableView.register(addressCellNib, forCellReuseIdentifier: AddressCell.Identifier)
+        checkoutTableView.register(paymentCellNib, forCellReuseIdentifier: PaymentCell.Identifier)
     }
     
     private func configureTableView() {
@@ -106,7 +113,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
             } else {
                 isMember = false
             }
-            
             let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
             userInfoEditVC.isMember = isMember
             userInfoEditVC.title = "User Information"
@@ -122,10 +128,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                 addressEditVC.title = "Shipping"
                 self.navigationController?.pushViewController(addressEditVC, animated: true)
             }
-            
-//            let next = resolver.resolve(AddressListViewController.self)!
-//            next.isMember = isMember
-//            present(next, animated: true, completion: nil)
         }
     }
     
@@ -134,3 +136,34 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         return footer
     }
 }
+
+//STP Extension
+extension CheckoutViewController: STPAddCardViewControllerDelegate {
+    
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+        //2000 = 20.00 (pass amount as integer for stripe)
+        StripeClient.shared.completeCharge(with: token, amount: 7590) { result in
+            switch result {
+            // 1
+            case .success:
+                completion(nil)
+                
+                let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true)
+            // 2
+            case .failure(let error):
+                completion(error)
+            }
+        }
+    }
+}
+
+

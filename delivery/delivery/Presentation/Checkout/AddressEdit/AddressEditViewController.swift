@@ -127,18 +127,13 @@ class AddressEditViewController: BaseViewController {
             
             viewModel.updateAddress().subscribe(onCompleted: {
                 let next = resolver.resolve(AddressListViewController.self)!
-//                self.present(next, animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }) { (err) in
                 print(err)
             }.disposed(by: disposeBag)
             
         } else {
-            let alert = UIAlertController(title: "Reminder", message: "Please fill out every field!", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
+            self.showAlert(title: "Reminder", message: "Please fille out every field!")
         }
     }
     

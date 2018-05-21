@@ -126,6 +126,8 @@
 		91E3CA00205780A500017A0F /* ProductModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9FF205780A500017A0F /* ProductModels.swift */; };
 		91EDA984208AC93C0090471B /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA983208AC93C0090471B /* AddressListViewController.swift */; };
 		91EDA986208AC94C0090471B /* AddressList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91EDA985208AC94C0090471B /* AddressList.storyboard */; };
+		BA190ECE20AFD46B00342FF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA190ECD20AFD46B00342FF2 /* Constants.swift */; };
+		BA190ED020AFD49E00342FF2 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA190ECF20AFD49E00342FF2 /* StripeClient.swift */; };
 		BA475A8E20589DF900F3A0B5 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */; };
 		BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */; };
 		BA475A9020589DF900F3A0B5 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA475A8D20589DF900F3A0B5 /* Account.storyboard */; };
@@ -326,6 +328,8 @@
 		91EDA983208AC93C0090471B /* AddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		91EDA985208AC94C0090471B /* AddressList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressList.storyboard; sourceTree = "<group>"; };
 		99448353BC8D49DF5EF0F7CA /* Pods_delivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_delivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA190ECD20AFD46B00342FF2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BA190ECF20AFD49E00342FF2 /* StripeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		BA475A8B20589DF900F3A0B5 /* AccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		BA475A8C20589DF900F3A0B5 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BA475A8D20589DF900F3A0B5 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -699,6 +703,7 @@
 		91A3C97420995725006BC64D /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				BA190ECF20AFD49E00342FF2 /* StripeClient.swift */,
 				91A3C97520995725006BC64D /* CheckoutViewController.swift */,
 				91A3C97620995725006BC64D /* CheckoutViewModel.swift */,
 				91A3C97720995725006BC64D /* Checkout.storyboard */,
@@ -796,6 +801,7 @@
 				D7AAD0AA2041943100D2971C /* Data */,
 				D7AAD0C02042394400D2971C /* Util */,
 				BBA54ABB203D178D00D69954 /* AppDelegate.swift */,
+				BA190ECD20AFD46B00342FF2 /* Constants.swift */,
 				BBA54ABD203D178D00D69954 /* ViewController.swift */,
 				BBA54ABF203D178D00D69954 /* Main.storyboard */,
 				91C74783209C09D2001ACA6E /* Assets.xcassets */,
@@ -1110,9 +1116,7 @@
 				BBA54AB4203D178D00D69954 /* Sources */,
 				BBA54AB5203D178D00D69954 /* Frameworks */,
 				BBA54AB6203D178D00D69954 /* Resources */,
-				D4142B252AB61C7F690CA25D /* [CP] Copy Pods Resources */,
 				9E2F5453A9076437F8AC0949 /* [CP] Embed Pods Frameworks */,
-				B331C2142948A2060B2E54E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1128,13 +1132,10 @@
 			buildConfigurationList = BBA54AD8203D178D00D69954 /* Build configuration list for PBXNativeTarget "deliveryTests" */;
 			buildPhases = (
 				00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */,
-				15BA5007801575E93ED5320E /* [CP] Copy Pods Resources */,
 				BBA54AC8203D178D00D69954 /* Sources */,
 				BBA54AC9203D178D00D69954 /* Frameworks */,
 				BBA54ACA203D178D00D69954 /* Resources */,
 				939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */,
-				0FDEE271D5777EC4B4BF1327 /* [CP] Copy Pods Resources */,
-				4E6C0A82442CAE266103A93B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1256,21 +1257,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0FDEE271D5777EC4B4BF1327 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		15B339D8DF0BEF4F0B944716 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1287,39 +1273,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		15BA5007801575E93ED5320E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-deliveryTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4E6C0A82442CAE266103A93B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */ = {
@@ -1369,6 +1322,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
@@ -1395,6 +1349,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
@@ -1422,36 +1377,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B331C2142948A2060B2E54E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4142B252AB61C7F690CA25D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1586,6 +1511,7 @@
 				D775FF8F2065B01E002180F7 /* ReviewTranslator.swift in Sources */,
 				BA475A8E20589DF900F3A0B5 /* AccountViewModel.swift in Sources */,
 				915AC3F520A5504B007069C8 /* ProductShoppingCartEntity.swift in Sources */,
+				BA190ECE20AFD46B00342FF2 /* Constants.swift in Sources */,
 				D7213D3E20AD41FB00142E5C /* Binding.swift in Sources */,
 				D775FF892065AFD0002180F7 /* ReviewListRepository.swift in Sources */,
 				911A4AFA203D321600D03889 /* Address.swift in Sources */,
@@ -1606,6 +1532,7 @@
 				911A281F205779A8007B8084 /* HomeViewModel.swift in Sources */,
 				915AC3F720A55F19007069C8 /* ProductImageViewController.swift in Sources */,
 				D7AAD0C32042396200D2971C /* Extention.swift in Sources */,
+				BA190ED020AFD49E00342FF2 /* StripeClient.swift in Sources */,
 				D775FF8B2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift in Sources */,
 				D7AAD0B62041943100D2971C /* ProductDetailDataStoreProtocol.swift in Sources */,
 				D775FF852065AE03002180F7 /* ReviewListViewModel.swift in Sources */,
