@@ -57,9 +57,9 @@ class OrderDetailViewController: BaseViewController {
         bindView()
         viewModel.fetchOrderDetail(with: orderId)
         
-        //ジグザグ呼び出し
         applyZigZagEffect(givenView: whiteview)
-        //shadow 効かない
+        
+        //MARK : doesn't work shadow effect so far...
         //        whiteview.layer.shadowOffset = CGSize(width: 0, height: 1)
         //        whiteview.layer.shadowColor = UIColor.black.cgColor
         //        whiteview.layer.shadowRadius = 2.0
@@ -149,7 +149,7 @@ class OrderDetailViewController: BaseViewController {
     }
 }
 
-
+//MARK : doesn't work shadow effect so far...
 @IBDesignable
 class Shadow: UIView {
     

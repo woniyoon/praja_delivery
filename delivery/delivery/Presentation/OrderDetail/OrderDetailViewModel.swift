@@ -6,9 +6,7 @@ import RxCocoa
 //import RxDataSources
 
 class OrderDetailViewModel : BaseViewModel{
-    //Array
     var arrOfOrderDetail = BehaviorRelay<[OrderDetail]>(value: [])
-//    var arrOfProduct = BehaviorRelay<[Product]>(value: [])
 //    var arrOfUser = BehaviorRelay<[User]>(value: [])
     
     //UserEntity

@@ -36,7 +36,6 @@ class OrderDetailCell: UITableViewCell {
             self.productName.text = orderDetail?.productName
             self.quantityPerItem.text = String(orderDetail!.quantity)
             self.pricePerItem.text = "\(orderDetail!.pricePerItem)"
-//                String(format:"%.2f", (orderDetail!.pricePerItem))
         }
     }
 
