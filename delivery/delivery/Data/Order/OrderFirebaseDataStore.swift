@@ -1,4 +1,4 @@
-//
+        //
 //  DeliveryFirebaseDataStore.swift
 //  delivery
 //
@@ -13,23 +13,54 @@ import RxSwift
 class OrderFirebaseDataStore: OrderDataStoreProtocol {
     let db = Firestore.firestore()
     
-    func fetchOrder(_ id: String) -> Single<OrderEntity>{
-        
-        return Single<OrderEntity>.create { observer -> Disposable in
-            self.db.collection("order")
-                .whereField("userId", isEqualTo: id)
-                .getDocuments() { (document, error) in
-                    if let error = error {
-                        observer(.error(error))
-                        return
+    func fetchOrder(with userId: String) -> Single<[OrderEntity]>{
+        var arr = [OrderEntity]()
+        return Single<[OrderEntity]>.create { observer -> Disposable in
+                self.db.collection("order")
+                    .whereField("userId", isEqualTo: userId)
+                    .getDocuments{(documents, error) in
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                if let docs = documents?.documents {
+                    for doc in docs {
+                        let order = OrderEntity(docId: doc.documentID, dictionary: doc.data())
+                        print(order!.deliveryInfo.count) //all variables
+                        arr.append(order!)
                     }
-                    guard let product = OrderEntity(dictionary: (document?.documents[0].data())!) else {
-                        observer(.error(error!))
-                        return
-                    }
-                    observer(.success(product))
+                }
+                observer(.success(arr))
             }
             return Disposables.create()
         }
     }
+    
+    func fetchOrderDetail(with orderId: String) -> Single<OrderEntity> {
+        return Single<OrderEntity>.create( subscribe: { observer in
+            self.db
+                .collection("order")
+                .document(orderId)
+                .getDocument(completion: { (snapshot, error) in
+                    if let error = error {
+                        observer(.error(error))
+                    } else{
+                        guard let doc = snapshot?.data() else{
+                            observer(.error(NomnomError.alert(message: "no data")))
+                            return
+                        }
+                        guard let order = OrderEntity(docId: orderId, dictionary: doc)
+                            else{
+                                observer(.error(NomnomError.alert(message: "Parse Failure")))
+                                return
+                        }
+                        observer(.success(order))
+                        
+                    }
+                })
+            return Disposables.create()
+        })
+    }
+
+    
 }

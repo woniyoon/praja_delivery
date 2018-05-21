@@ -29,8 +29,11 @@ class ViewController: UITabBarController{
 //        navigationVCforHome.isNavigationBarHidden = true
         navigationVCforHome.viewControllers = [home]
         
+        let navigationVCforOrder = UINavigationController()
+        navigationVCforOrder.viewControllers = [order]
+        
         self.addChildViewController(navigationVCforHome)
-        self.addChildViewController(order)
+        self.addChildViewController(navigationVCforOrder)
         
         let navigationVCforAccount = UINavigationController()
         
