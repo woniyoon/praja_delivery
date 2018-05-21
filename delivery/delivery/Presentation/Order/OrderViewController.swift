@@ -96,13 +96,17 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
 
     //Action : Show Detail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! CurrentOrderCell
-//        let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
-        
-        let next = resolver.resolve(OrderDetailViewController.self)!
-        next.orderId = currentCell.order?.orderId
-//        next.orderId = pastCell.order?.orderId
-        navigationController?.pushViewController(next, animated: true)
+        if indexPath.section == 0 {
+            let currentCell = tableView.cellForRow(at: indexPath) as! CurrentOrderCell
+            let next = resolver.resolve(OrderDetailViewController.self)!
+            next.orderId = currentCell.order?.orderId
+            navigationController?.pushViewController(next, animated: true)
+        } else {
+            let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
+            let next = resolver.resolve(OrderDetailViewController.self)!
+            next.orderId = pastCell.order?.orderId
+            navigationController?.pushViewController(next, animated: true)
+        }
     }
     
     //TableView : Header section's detail
