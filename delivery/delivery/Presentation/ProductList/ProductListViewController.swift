@@ -115,7 +115,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         
         let next = resolver.resolve(ProductDetailViewController.self)!
         next.productId = cell.product?.productId
-        present(next, animated: true, completion: nil)
+        navigationController?.pushViewController(next, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -168,7 +168,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         } else {
         
             let next = resolver.resolve(ShoppingCartViewController.self)!
-            present(next, animated: true, completion: nil)
+            navigationController?.pushViewController(next, animated: true)
         }
     }
 
@@ -275,7 +275,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         viewController.modalTransitionStyle = .flipHorizontal
         viewController.modalPresentationStyle = .overFullScreen
         
-        present(viewController, animated: true, completion: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

@@ -96,7 +96,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderReviewViewController
+        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderConfirmationViewController
         
         self.navigationController?.pushViewController(orderReviewVC, animated: true)
     }
