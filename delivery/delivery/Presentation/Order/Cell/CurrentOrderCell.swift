@@ -70,6 +70,7 @@ class CurrentOrderCell: UITableViewCell {
             self.productName.text = order?.orderDetail[0].productName
             self.quantity.text = String(order!.orderDetail.count)
             self.purchasedDate.text = DateFormatter.purchasedDateInFormat(purchasedDate: ((order?.deliveryInfo["purchasedDate"])!)!)
+            
             self.totalPrice.text = String(format:"%.2f", (order?.totalPrice)! - (order?.couponDiscount)!)
             
         }

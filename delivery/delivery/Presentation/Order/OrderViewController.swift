@@ -41,11 +41,21 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         //-------------------------------------
         tableView.separatorStyle = .none //境界線消す
         self.navigationItem.title="Your Order"
+//        let backImage = UIBarButtonItem(image: #imageLiteral(resourceName: "backward_arrow"), style: .plain, target: nil, action: nil)
+//        backImage.title = ""
+//        self.navigationItem.backBarButtonItem = backImage
+        let image = UIImage(named: "backward_arrow")?.withRenderingMode(.alwaysOriginal)
+        UINavigationBar.appearance().backIndicatorImage = image
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = image
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         //-------------------------------------
         bindView()
         configureTableView()
         viewModel.fetchOrder(with: "Ljk5vGaGSMkYzviKx68B") //userId
     }
+    
     
     private func registerCell(){
         tableView.register(UINib(nibName: CurrentOrderCell.Identifier, bundle: nil), forCellReuseIdentifier: CurrentOrderCell.Identifier)
@@ -57,6 +67,8 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         registerCell()
 //        tableView.estimatedRowHeight = 300
         tableView.allowsSelection = true
+        
+
     }
 
     //-------------------------------------
@@ -75,7 +87,6 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
                 } else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PastOrderCell.Identifier) as! PastOrderCell
                     cell.order = element
-//                    cell.contentView.backgroundColor = UIColor.green
                     return cell
                 }
             }
@@ -101,11 +112,13 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
             let next = resolver.resolve(OrderDetailViewController.self)!
             next.orderId = currentCell.order?.orderId
             navigationController?.pushViewController(next, animated: true)
+//            navigationController?.popViewController(animated: true)
         } else {
             let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
             let next = resolver.resolve(OrderDetailViewController.self)!
             next.orderId = pastCell.order?.orderId
             navigationController?.pushViewController(next, animated: true)
+            
         }
     }
     
@@ -152,19 +165,6 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         return 2
     }
 
-    //TableView : Number of cell for each section
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section==0) //CurrentOrder
-        {
-            return 1
-        }
-        else //PastOrder
-        {
-            return 4
-        }
-
-    }
-    
     //TableView : Cell's height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section==0)
