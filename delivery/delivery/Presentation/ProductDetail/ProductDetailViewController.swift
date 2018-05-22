@@ -240,6 +240,12 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             .bind(to: numOfProduct.rx.text)
             .disposed(by: disposeBag)
         
+        // ShoppingCart
+        viewModel.onCompleteAddingMessage.asObservable()
+            .subscribe(
+                onNext: { msg in self.showAlert(message: msg) }
+            ).disposed(by: disposeBag)
+        
         // Alert Message
         viewModel.alertMessage.asObservable()
             .subscribe(

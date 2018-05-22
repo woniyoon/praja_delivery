@@ -15,9 +15,20 @@ class BaseViewController : UIViewController {
             return
         }
         let alert = UIAlertController(title: alertError.title, message: alertError.message, preferredStyle: UIAlertControllerStyle.alert)
-
+        
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
+    func showAlert(message: String) {
+        if message.isEmpty {
+            return
+        }
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
     }
 }

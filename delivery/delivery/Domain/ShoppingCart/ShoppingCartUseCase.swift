@@ -10,11 +10,11 @@ import Foundation
 import RxSwift
 
 protocol ShoppingCartUseCaseProtocol {
-    func deleteShoppingCart()
-    func addProductShoppingCart(shoppingCart: ShoppingCart)
-    func updateProductShoppingCart(shoppingCart: ShoppingCart)
+    func deleteShoppingCart() -> Completable
+    func addProductShoppingCart(shoppingCart: ShoppingCart) -> Completable
+    func updateProductShoppingCart(shoppingCart: ShoppingCart) -> Completable
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
-    func deleteProductFromShoppingCart(with primaryKey: String)
+    func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
@@ -26,31 +26,28 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
         self.repository = repository
         self.translator = translator
     }
-    
-    func deleteShoppingCart() {
-        repository.deleteShoppingCart()
+
+    func deleteShoppingCart() -> Completable {
+        return repository.deleteShoppingCart()
     }
-    
-    func addProductShoppingCart(shoppingCart: ShoppingCart) {
-    
+
+    func addProductShoppingCart(shoppingCart: ShoppingCart) -> Completable {
         let shoppingCartEntity = translator.translate(shoppingCart)
-        repository.addProductShoppingCart(shoppingCart: shoppingCartEntity)
+        return repository.addProductShoppingCart(shoppingCart: shoppingCartEntity)
     }
-    
-    func updateProductShoppingCart(shoppingCart: ShoppingCart) {
-        
+
+    func updateProductShoppingCart(shoppingCart: ShoppingCart) -> Completable {
         let shoppingCartEntity = translator.translate(shoppingCart)
-        repository.updateProductShoppingCart(shoppingCart: shoppingCartEntity)
+        return repository.updateProductShoppingCart(shoppingCart: shoppingCartEntity)
     }
-    
+
     func fetchShoppingCart() -> Single<[ProductShoppingCart]> {
         return repository.fetchShoppingCart().map { (shoppingCartEntity) -> [ProductShoppingCart] in
             self.translator.translateShoppingCart(shoppingCartEntity)
         }
     }
-    
-    func deleteProductFromShoppingCart(with primaryKey: String){
-        repository.deleteProductFromShoppingCart(with: primaryKey)
+
+    func deleteProductFromShoppingCart(with primaryKey: String) -> Completable {
+        return repository.deleteProductFromShoppingCart(with: primaryKey)
     }
-    
 }

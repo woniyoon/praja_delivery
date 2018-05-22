@@ -40,6 +40,8 @@ class ProductDetailViewModel : BaseViewModel {
     
     var numOfProduct = BehaviorRelay(value: 1)
     
+    var onCompleteAddingMessage = BehaviorRelay(value: "")
+    
     // MARK: - Private Properties
     private let useCase: ProductDetailUseCaseProtocol
     private let shoppingCartUseCase: ShoppingCartUseCaseProtocol
@@ -93,6 +95,10 @@ class ProductDetailViewModel : BaseViewModel {
         shoppingCart.idProducts = productId
         shoppingCart.quantity = numOfProduct.value
         shoppingCartUseCase.addProductShoppingCart(shoppingCart: shoppingCart)
+            .subscribe(
+                onCompleted: { self.onCompleteAddingToCart() },
+                onError: { error in self.setError(error) })
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Private Fuctions
@@ -136,5 +142,9 @@ class ProductDetailViewModel : BaseViewModel {
         self.review2Title.accept(review.title ?? "")
         self.review2Rating.accept(review.rating)
         self.review2Comment.accept(review.comment ?? "")
+    }
+    
+    private func onCompleteAddingToCart() {
+        onCompleteAddingMessage.accept("Succeed to add!")
     }
 }
