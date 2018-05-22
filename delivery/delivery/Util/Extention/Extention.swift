@@ -28,5 +28,18 @@ extension DateFormatter {
         print("converting!!")
         return dateFormatter.date(from: date)
     }
+    
+    static func scheduledDeliveryDateInFormat(scheduledDeliveryDate: Date) -> String {
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM d h:m a"
+        return dateFormatterPrint.string(from: scheduledDeliveryDate)
+    }
+    
+    static func purchasedDateInFormat(purchasedDate: Date) -> String {
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd, yyyy h:mm a"
+        return dateFormatterPrint.string(from: purchasedDate)
+    }
+
 }
 

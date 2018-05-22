@@ -10,5 +10,7 @@ import Foundation
 import RxSwift
 
 protocol OrderDataStoreProtocol {
-    func fetchOrder(_ id: String) -> Single<OrderEntity> //OrderEntity
+    func fetchOrder(with userId: String) -> Single<[OrderEntity]>
+    func fetchOrderDetail(with orderId: String) -> Single<OrderEntity>
+//    func fetchOrderProduct(with productId : String) -> Single<ProductEntity>
 }
