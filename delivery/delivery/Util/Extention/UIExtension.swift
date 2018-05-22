@@ -90,6 +90,8 @@ extension UIViewController {
     }
     
     func showAlert(title: String? = nil, message: String){
+        if message.isEmpty { return }
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
