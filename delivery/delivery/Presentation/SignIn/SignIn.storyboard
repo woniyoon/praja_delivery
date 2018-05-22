@@ -30,51 +30,33 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMa-Yz-3oq" userLabel="TextFields">
                                         <rect key="frame" x="0.0" y="180" width="373" height="150"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Son-ou-7ye">
-                                                <rect key="frame" x="36.5" y="30" width="300" height="21"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Son-ou-7ye" customClass="WhiteLineTextField" customModule="delivery" customModuleProvider="target">
+                                                <rect key="frame" x="36.5" y="30" width="300" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="Bch-Hn-ncx"/>
+                                                    <constraint firstAttribute="height" constant="30" id="JZ6-ho-4cI"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFb-jv-Cmj">
-                                                <rect key="frame" x="36.5" y="57" width="300" height="1"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-6R-5ni" customClass="WhiteLineTextField" customModule="delivery" customModuleProvider="target">
+                                                <rect key="frame" x="36.5" y="89" width="300" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="i5S-jG-6Bd"/>
-                                                    <constraint firstAttribute="width" constant="300" id="jsw-Kc-crY"/>
-                                                </constraints>
-                                            </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vwT-6R-5ni">
-                                                <rect key="frame" x="36.5" y="98" width="300" height="21"/>
-                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="E4o-cQ-g3O"/>
                                                     <constraint firstAttribute="width" constant="300" id="I10-xd-wRy"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOw-iU-uT0">
-                                                <rect key="frame" x="36.5" y="119" width="300" height="1"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="300" id="KIO-DR-D9K"/>
-                                                    <constraint firstAttribute="height" constant="1" id="k9n-u9-veI"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Son-ou-7ye" firstAttribute="top" secondItem="JMa-Yz-3oq" secondAttribute="top" constant="30" id="29w-5Q-RGz"/>
                                             <constraint firstItem="Son-ou-7ye" firstAttribute="centerX" secondItem="JMa-Yz-3oq" secondAttribute="centerX" id="559-dF-rmA"/>
                                             <constraint firstAttribute="bottom" secondItem="vwT-6R-5ni" secondAttribute="bottom" constant="31" id="BjW-9w-Zek"/>
                                             <constraint firstAttribute="height" constant="150" id="JeN-j3-QFA"/>
-                                            <constraint firstItem="BFb-jv-Cmj" firstAttribute="centerX" secondItem="JMa-Yz-3oq" secondAttribute="centerX" id="UfO-au-L4l"/>
                                             <constraint firstItem="vwT-6R-5ni" firstAttribute="centerX" secondItem="JMa-Yz-3oq" secondAttribute="centerX" id="UlI-bC-puH"/>
-                                            <constraint firstItem="hOw-iU-uT0" firstAttribute="top" secondItem="vwT-6R-5ni" secondAttribute="bottom" id="WGI-e8-iAn"/>
-                                            <constraint firstItem="BFb-jv-Cmj" firstAttribute="top" secondItem="Son-ou-7ye" secondAttribute="bottom" constant="6" id="ZWv-K1-lFs"/>
-                                            <constraint firstItem="hOw-iU-uT0" firstAttribute="centerX" secondItem="JMa-Yz-3oq" secondAttribute="centerX" id="dXK-g9-TfN"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QZ-k4-ccj" userLabel="findPWandSignInbtn">

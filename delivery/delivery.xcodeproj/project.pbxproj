@@ -127,11 +127,6 @@
 		91AE1786208AE64300CC3EF8 /* AddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE1784208AE64300CC3EF8 /* AddressListCell.swift */; };
 		91AE1787208AE64300CC3EF8 /* AddressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AE1785208AE64300CC3EF8 /* AddressListCell.xib */; };
 		91C74784209C09D3001ACA6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C74783209C09D2001ACA6E /* Assets.xcassets */; };
-		91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F420577CE100017A0F /* HomeUseCase.swift */; };
-		91E3C9F720577D1100017A0F /* HomeTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F620577D1100017A0F /* HomeTranslator.swift */; };
-		91E3C9FA20577E4000017A0F /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9F920577E4000017A0F /* HomeRepository.swift */; };
-		91E3C9FC20577E7100017A0F /* HomeDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9FB20577E7100017A0F /* HomeDataStoreProtocol.swift */; };
-		91E3C9FE20577E9400017A0F /* HomeFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9FD20577E9400017A0F /* HomeFirebaseDataStore.swift */; };
 		91E3CA00205780A500017A0F /* ProductModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E3C9FF205780A500017A0F /* ProductModels.swift */; };
 		91EDA984208AC93C0090471B /* AddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA983208AC93C0090471B /* AddressListViewController.swift */; };
 		91EDA986208AC94C0090471B /* AddressList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91EDA985208AC94C0090471B /* AddressList.storyboard */; };
@@ -337,11 +332,6 @@
 		91AE1784208AE64300CC3EF8 /* AddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListCell.swift; sourceTree = "<group>"; };
 		91AE1785208AE64300CC3EF8 /* AddressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressListCell.xib; sourceTree = "<group>"; };
 		91C74783209C09D2001ACA6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		91E3C9F420577CE100017A0F /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
-		91E3C9F620577D1100017A0F /* HomeTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTranslator.swift; sourceTree = "<group>"; };
-		91E3C9F920577E4000017A0F /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
-		91E3C9FB20577E7100017A0F /* HomeDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataStoreProtocol.swift; sourceTree = "<group>"; };
-		91E3C9FD20577E9400017A0F /* HomeFirebaseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFirebaseDataStore.swift; sourceTree = "<group>"; };
 		91E3C9FF205780A500017A0F /* ProductModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModels.swift; sourceTree = "<group>"; };
 		91EDA983208AC93C0090471B /* AddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListViewController.swift; sourceTree = "<group>"; };
 		91EDA985208AC94C0090471B /* AddressList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressList.storyboard; sourceTree = "<group>"; };
@@ -767,25 +757,6 @@
 			path = AddressListCell;
 			sourceTree = "<group>";
 		};
-		91E3C9F320577CBA00017A0F /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				91E3C9F620577D1100017A0F /* HomeTranslator.swift */,
-				91E3C9F420577CE100017A0F /* HomeUseCase.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		91E3C9F820577E0000017A0F /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				91E3C9F920577E4000017A0F /* HomeRepository.swift */,
-				91E3C9FB20577E7100017A0F /* HomeDataStoreProtocol.swift */,
-				91E3C9FD20577E9400017A0F /* HomeFirebaseDataStore.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		91EDA982208AC87D0090471B /* AddressList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,7 +981,6 @@
 				915AC3EB20A54FA4007069C8 /* ShoppingCart */,
 				D7E238C62054EDA100BA973F /* Model */,
 				D7AAD0BD2042374E00D2971C /* Common */,
-				91E3C9F320577CBA00017A0F /* Home */,
 				D7891E4220884EFB002130B1 /* User */,
 				2C3D5A0F20B373EF0066AE37 /* Order */,
 				D7AAD0A52041943100D2971C /* ProductDetail */,
@@ -1039,7 +1009,6 @@
 				2C3D5A1420B374190066AE37 /* Order */,
 				D7AAD0AB2041943100D2971C /* ProductDetail */,
 				523D3A8A204F9CB200B63193 /* ProductList */,
-				91E3C9F820577E0000017A0F /* Home */,
 				D72D29D920A68803006D5101 /* ReviewPost */,
 				D775FF812065AD2A002180F7 /* ReviewList */,
 			);
@@ -1481,7 +1450,6 @@
 				915AC3F120A54FD7007069C8 /* ProductShoppingCart.swift in Sources */,
 				5263DF7C20AA77F900F961FA /* ProductsFilterController.swift in Sources */,
 				D7529E20205D0662003CFD5A /* SampleProductModel.swift in Sources */,
-				91E3C9FC20577E7100017A0F /* HomeDataStoreProtocol.swift in Sources */,
 				9167CC362091C9D6009CC5D5 /* UserInfoEditViewModel.swift in Sources */,
 				D7213D3C20AD32F700142E5C /* SignUpViewModel.swift in Sources */,
 				915AC3DD20A54F17007069C8 /* ShoppingCartViewController.swift in Sources */,
@@ -1540,11 +1508,9 @@
 				9149074B20AD1014001092D7 /* SignInViewModel.swift in Sources */,
 				D7569D3A2052B18600C6D6E4 /* DataStoreAssembly.swift in Sources */,
 				915AC3F320A5502D007069C8 /* ShoppingCartEntity.swift in Sources */,
-				91E3C9F720577D1100017A0F /* HomeTranslator.swift in Sources */,
 				86D47220203D2D8900624E1F /* User.swift in Sources */,
 				D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */,
 				915AC3E620A54F82007069C8 /* ShoppingCartRepository.swift in Sources */,
-				91E3C9FE20577E9400017A0F /* HomeFirebaseDataStore.swift in Sources */,
 				9149074920AD0FD1001092D7 /* SignInViewController.swift in Sources */,
 				D7E259EE2063A771007ADB37 /* BaseViewModel.swift in Sources */,
 				D72D29D320A669CE006D5101 /* ReviewPostViewController.swift in Sources */,
@@ -1590,7 +1556,6 @@
 				BA911EDB20798DF70082CF28 /* UserEntity.swift in Sources */,
 				2C3D5A3120B3874D0066AE37 /* OrderViewController.swift in Sources */,
 				911A281D2057796C007B8084 /* HomeViewController.swift in Sources */,
-				91E3C9F520577CE100017A0F /* HomeUseCase.swift in Sources */,
 				911A4AF8203D310400D03889 /* Coupon.swift in Sources */,
 				911A4AFE203D32C800D03889 /* Product.swift in Sources */,
 				D775FF8F2065B01E002180F7 /* ReviewTranslator.swift in Sources */,
@@ -1607,7 +1572,6 @@
 				D7569D342052B0E200C6D6E4 /* ViewModelAssembly.swift in Sources */,
 				D7AAD0B52041943100D2971C /* ProductDetailModel.swift in Sources */,
 				D7569D302052B08400C6D6E4 /* Container.swift in Sources */,
-				91E3C9FA20577E4000017A0F /* HomeRepository.swift in Sources */,
 				86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */,
 				D78F2E76204DE63F0017AA05 /* ProductDetailViewModel.swift in Sources */,
 				BBA54ABC203D178D00D69954 /* AppDelegate.swift in Sources */,
