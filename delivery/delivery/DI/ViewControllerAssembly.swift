@@ -39,6 +39,16 @@ final class ViewControllerAssembly: Assembly {
             let vc         = OrderViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        container.register(OrderDetailViewController.self) { _ in
+            let dataStore  = container.resolve(OrderDataStoreProtocol.self)
+            let repository = container.resolve(OrderRepositoryProtocol.self, argument: dataStore!)
+            let translator = container.resolve(OrderTranslator.self)
+            let usecase    = container.resolve(OrderUseCaseProtocol.self, arguments: repository!, translator!)
+            let viewModel  = container.resolve(OrderDetailViewModel.self, argument: usecase!)
+            let vc         = OrderDetailViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
 
         container.register(AccountViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
