@@ -296,6 +296,6 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
-        viewModel.addToCart()
+        viewModel.addToCart(productId)
     }
 }

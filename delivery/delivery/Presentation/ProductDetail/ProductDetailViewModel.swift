@@ -42,11 +42,13 @@ class ProductDetailViewModel : BaseViewModel {
     
     // MARK: - Private Properties
     private let useCase: ProductDetailUseCaseProtocol
+    private let shoppingCartUseCase: ShoppingCartUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - Initializer
-    init(useCase: ProductDetailUseCaseProtocol) {
+    init(useCase: ProductDetailUseCaseProtocol, shoppingCartUseCase: ShoppingCartUseCaseProtocol) {
         self.useCase = useCase
+        self.shoppingCartUseCase = shoppingCartUseCase
     }
     
     // MARK: - Public Fuctions
@@ -86,9 +88,11 @@ class ProductDetailViewModel : BaseViewModel {
         }
     }
     
-    func addToCart() {
-        // TODO Add to cart
-        print("num is \(numOfProduct.value)")
+    func addToCart(_ productId: String) {
+        let shoppingCart = ShoppingCart()
+        shoppingCart.idProducts = productId
+        shoppingCart.quantity = numOfProduct.value
+        shoppingCartUseCase.addProductShoppingCart(shoppingCart: shoppingCart)
     }
 
     // MARK: - Private Fuctions
