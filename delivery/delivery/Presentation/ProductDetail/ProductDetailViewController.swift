@@ -103,7 +103,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(shoppingCartButtonTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cart"), style: .plain, target: self, action: #selector(shoppingCartButtonTapped))
         
         // Make the background of NavigationController transparent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -263,7 +263,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     @objc private func shoppingCartButtonTapped(_ sender: Any) {
-        
+        let next = resolver.resolve(ShoppingCartViewController.self)!
+        self.navigationController?.pushViewController(next, animated: true)
     }
 
     // MARK: - Collection Delegate
