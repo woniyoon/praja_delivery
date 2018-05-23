@@ -13,6 +13,7 @@ struct UserEntity {
         public let lastName: String
         public let dateOfBirth: Date?
         public let mobileNumber: String
+        public let isMember: Bool
         public let email: String
         public let totalPoint: Int
         public var address: [AddressEntity]?
@@ -43,13 +44,15 @@ struct UserEntity {
         self.mobileNumber = dictionary["mobileNumber"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.coupon = dictionary["coupon"] as? [String : Bool] ?? [:]
+        self.isMember = true
     }
 
-    init(firstName: String, lastName: String, mobileNumber: String, dateOfBirth: Date?, totalPoint: Int, email: String, address: [AddressEntity]?, payment: [PaymentEntity]?, coupon: [String : Bool]?) {
+    init(firstName: String, lastName: String, mobileNumber: String, dateOfBirth: Date?, isMember: Bool, totalPoint: Int, email: String, address: [AddressEntity]?, payment: [PaymentEntity]?, coupon: [String : Bool]?) {
         self.firstName = firstName
         self.lastName = lastName
         self.mobileNumber = mobileNumber
         self.totalPoint = totalPoint
+        self.isMember = isMember
         self.email = email
         self.dateOfBirth = dateOfBirth
         self.coupon = coupon
