@@ -111,6 +111,7 @@ extension UINavigationItem {
         label.font = label.font.withSize(10)
         label.textColor = .white
         label.backgroundColor = UIColor(displayP3Red: 99/255, green: 175/255, blue: 113/255, alpha: 1)
+        label.tag = 1001
         
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
         button.setBackgroundImage(#imageLiteral(resourceName: "cart"), for: .normal)
@@ -127,7 +128,7 @@ extension UINavigationItem {
     func updateShoppingCart(num: Int) {
         let shoppingCart = self.rightBarButtonItem
         let button = shoppingCart?.customView as? UIButton
-        let label = button?.subviews[0] as? UILabel
+        let label = button?.viewWithTag(1001) as? UILabel
         if num > 0 {
             label?.isHidden = false
             label?.text = String(num)
