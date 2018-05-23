@@ -103,15 +103,8 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-
-        navigationItem.addShoppingCart()
-            .addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
-
-        // Make the background of NavigationController transparent
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        
+        viewModel.fetchShoppingCartQty()
     }
 
     // MARK: - Private Fuctions
@@ -119,7 +112,6 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.fetchProductDetail(productId)
         viewModel.fetchFrequentlyPurchasedWith(productId)
         viewModel.fetchRelatedTo(productId)
-        viewModel.fetchShoppingCartQty()
     }
     
     private func setup() {
@@ -137,6 +129,15 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         relatedCollection.delegate = self
         
         registerCell()
+        
+        navigationItem.addShoppingCart()
+            .addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
+        
+        // Make the background of NavigationController transparent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     private func bindView() {
