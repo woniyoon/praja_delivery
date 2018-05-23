@@ -480,9 +480,9 @@
 			isa = PBXGroup;
 			children = (
 				2C3D5A2520B3862F0066AE37 /* PastOrderCell.xib */,
-				2C3D5A2620B3862F0066AE37 /* CurrentOrderCell.swift */,
-				2C3D5A2820B3862F0066AE37 /* CurrentOrderCell.xib */,
 				2C3D5A2720B3862F0066AE37 /* PastOrderCell.swift */,
+				2C3D5A2820B3862F0066AE37 /* CurrentOrderCell.xib */,
+				2C3D5A2620B3862F0066AE37 /* CurrentOrderCell.swift */,
 			);
 			name = Cell;
 			path = delivery/Presentation/Order/Cell;

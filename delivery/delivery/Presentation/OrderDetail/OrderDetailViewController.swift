@@ -19,18 +19,21 @@ class OrderDetailViewController: BaseViewController {
     @IBOutlet weak var whiteview: UIView!
     @IBOutlet weak var scheduledDeliveryDate: UILabel!
     
-    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var address1: UILabel!
+    @IBOutlet weak var address2: UILabel!
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var province: UILabel!
     @IBOutlet weak var postalCode: UILabel!
-    @IBOutlet weak var mobileNumber: UILabel!
-    @IBOutlet weak var payment: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
     @IBOutlet weak var coupon: UILabel!
     @IBOutlet weak var totalBeforeShippingFee: UILabel!
     @IBOutlet weak var deliveryFee: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
     
-
-    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
     //-------------------------------------
     // MARK : Public Properties
     
@@ -51,6 +54,7 @@ class OrderDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title="Your Order Detail"
+        
         configureTableView()
         tableView.separatorStyle = .none
         tableView.backgroundColor = .none
@@ -78,7 +82,8 @@ class OrderDetailViewController: BaseViewController {
         registerCell()
         //        tableView.estimatedRowHeight = 300
         tableView.allowsSelection = true
-    }
+
+            }
 
     
     //-------------------------------------
@@ -86,6 +91,24 @@ class OrderDetailViewController: BaseViewController {
     func bindView(){
         viewModel.scheduledDeliveryDate.asObservable()
             .bind(to: scheduledDeliveryDate.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.address1.asObservable()
+            .bind(to: address1.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.address2.asObservable()
+            .bind(to: address2.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.city.asObservable()
+            .bind(to: city.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.province.asObservable()
+            .bind(to: province.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.postalCode.asObservable()
+            .bind(to: postalCode.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.phoneNumber.asObservable()
+            .bind(to: phoneNumber.rx.text)
             .disposed(by: disposeBag)
         viewModel.couponDiscount.asObservable()
             .bind(to: coupon.rx.text)
