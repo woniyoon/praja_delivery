@@ -40,13 +40,18 @@ class ProductDetailViewModel : BaseViewModel {
     
     var numOfProduct = BehaviorRelay(value: 1)
     
+    var numOfProducntInShoppingCart = BehaviorRelay(value: 0)
+    var onCompleteAddingMessage = BehaviorRelay(value: "")
+    
     // MARK: - Private Properties
     private let useCase: ProductDetailUseCaseProtocol
+    private let shoppingCartUseCase: ShoppingCartUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - Initializer
-    init(useCase: ProductDetailUseCaseProtocol) {
+    init(useCase: ProductDetailUseCaseProtocol, shoppingCartUseCase: ShoppingCartUseCaseProtocol) {
         self.useCase = useCase
+        self.shoppingCartUseCase = shoppingCartUseCase
     }
     
     // MARK: - Public Fuctions
@@ -86,9 +91,24 @@ class ProductDetailViewModel : BaseViewModel {
         }
     }
     
-    func addToCart() {
-        // TODO Add to cart
-        print("num is \(numOfProduct.value)")
+    func addToCart(_ productId: String) {
+        let shoppingCart = ShoppingCart()
+        shoppingCart.idProducts = productId
+        shoppingCart.quantity = numOfProduct.value
+        shoppingCartUseCase.addProductShoppingCart(shoppingCart: shoppingCart)
+            .subscribe(
+                onCompleted: { self.onCompleteAddingToCart() },
+                onError: { error in self.setError(error) })
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchShoppingCartQty() {
+        shoppingCartUseCase.fetchShoppingCart()
+            .subscribe(
+                onSuccess: { products in
+                    self.numOfProducntInShoppingCart.accept(products.count) },
+                onError: { error in self.setError(error) }
+        ).disposed(by: disposeBag)
     }
 
     // MARK: - Private Fuctions
@@ -104,7 +124,7 @@ class ProductDetailViewModel : BaseViewModel {
         }
         
         // Review
-        self.reviewAverage.accept(model.averageRating)
+        self.reviewAverage.accept(round(model.averageRating * 10) / 10)
         
         if let reviews = model.reviews {
             reviewNum.accept("(\(reviews.count))")
@@ -132,5 +152,9 @@ class ProductDetailViewModel : BaseViewModel {
         self.review2Title.accept(review.title ?? "")
         self.review2Rating.accept(review.rating)
         self.review2Comment.accept(review.comment ?? "")
+    }
+    
+    private func onCompleteAddingToCart() {
+        onCompleteAddingMessage.accept("Succeed to add!")
     }
 }

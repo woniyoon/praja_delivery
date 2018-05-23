@@ -22,11 +22,19 @@ final class ViewControllerAssembly: Assembly {
         }
         
         container.register(ProductDetailViewController.self) { _ in
+            // ProductDetail
             let dataStore  = container.resolve(ProductDetailDataStoreProtocol.self)
             let repository = container.resolve(ProductDetailRepositoryProtocol.self, argument: dataStore!)
             let translator = container.resolve(ProductDetailTranslator.self)
             let usecase    = container.resolve(ProductDetailUseCaseProtocol.self, arguments: repository!, translator!)
-            let viewModel  = container.resolve(ProductDetailViewModel.self, argument: usecase!)
+
+            // ShoppingCart
+            let shoppingCartDataStore  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let shoppingCartRepository = container.resolve(ShoppingCartRepositoryProtocol.self, argument: shoppingCartDataStore!)
+            let shoppingCartTranslator = container.resolve(ShoppingCartTranslator.self)
+            let shoppingCartUsecase    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: shoppingCartRepository!, shoppingCartTranslator!)
+
+            let viewModel  = container.resolve(ProductDetailViewModel.self, arguments: usecase!, shoppingCartUsecase!)
             let vc         = ProductDetailViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
