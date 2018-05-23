@@ -124,7 +124,7 @@ class ProductDetailViewModel : BaseViewModel {
         }
         
         // Review
-        self.reviewAverage.accept(model.averageRating)
+        self.reviewAverage.accept(round(model.averageRating * 10) / 10)
         
         if let reviews = model.reviews {
             reviewNum.accept("(\(reviews.count))")
