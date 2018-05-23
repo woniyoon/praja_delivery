@@ -18,7 +18,11 @@ class UserInfoCell: UITableViewCell {
     
     var item: User? {
         didSet {
-            guard let item = item else { return }
+            guard let item = item else {
+                nameLabel.text = "full name"
+                mobileNumberLabel.text = "mobile number"
+                emailLabel.text = "email"
+                return }
             nameLabel.text = "\(item.firstName) \(item.lastName)"
             mobileNumberLabel.text = item.mobileNumber
             emailLabel.text = item.email

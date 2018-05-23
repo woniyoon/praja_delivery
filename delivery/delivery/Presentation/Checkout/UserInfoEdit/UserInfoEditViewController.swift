@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class UserInfoEditViewController: UIViewController {
-
+    
     @IBOutlet var userInfoTextFields: [UITextField]!
     
     @IBOutlet weak var firstNameLabel: UITextField!
@@ -42,9 +42,7 @@ class UserInfoEditViewController: UIViewController {
         super.viewDidLoad()
         setTextFields()
         bindView()
-        if self.isMember != nil {
-            viewModel.fetchUser()
-        }
+        viewModel.fetchUser()
     }
     
     func setTextFields() {
@@ -59,6 +57,16 @@ class UserInfoEditViewController: UIViewController {
         viewModel.lastName.asObservable().bind(to: self.lastNameLabel.rx.text).disposed(by: disposeBag)
         viewModel.email.asObservable().bind(to: self.emailLabel.rx.text).disposed(by: disposeBag)
         viewModel.phoneNumber.asObservable().bind(to: self.phoneNumberLabel.rx.text).disposed(by: disposeBag)
+        viewModel.isSaved.asObservable()
+            .subscribe(onNext: { isSaved in
+                if let isSaved = isSaved {
+                    if isSaved {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.showAlert(title: "Reminder", message: "Please check your email again!")
+                    }
+                }
+            }).disposed(by: disposeBag)
     }
     
     func doneButtonTapped(_ sender: Any) {
@@ -66,17 +74,8 @@ class UserInfoEditViewController: UIViewController {
             !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
-                viewModel.firstName.accept(firstNameLabel.text!)
-                viewModel.lastName.accept(lastNameLabel.text!)
-                viewModel.email.accept(emailLabel.text!)
-                viewModel.phoneNumber.accept(phoneNumberLabel.text!)
-            
-            viewModel.updateUser().subscribe(onCompleted: {
-                let next = resolver.resolve(CheckoutViewController.self)!
-                self.navigationController?.popViewController(animated: true)})
-            { (err) in
-                print(err)
-            }
+
+            viewModel.updateUser(firstName: firstNameLabel.text!, lastName: lastNameLabel.text!, email: emailLabel.text!, mobileNumber: phoneNumberLabel.text!)
         } else {
             self.showAlert(title: "Warning", message: "You should fill out every field!")
         }

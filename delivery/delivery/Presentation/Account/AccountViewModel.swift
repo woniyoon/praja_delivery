@@ -43,37 +43,46 @@ class AccountViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
-            self.isMember.accept(true)
-            self.user.accept([user])
-            
-            self.fullName.accept("\(user.firstName) \(user.lastName)")
-            self.email.accept(user.email)
-            if let dateOfBirth = user.dateOfBirth {
-                let birthDateString = DateFormatter.birthDateInFormat(birthDate: dateOfBirth)
-                self.dateOfBirth.accept(birthDateString)
-            }
-            self.totalPoint.accept("\(user.totalPoint) point(s)")
-            self.mobileNumber.accept(user.mobileNumber)
-            
-            if let address = user.address {
-                let defaultAddress = address.filter({ $0.isDefault })
+            if user.isMember {
+                self.isMember.accept(true)
+                self.user.accept([user])
                 
-                self.address.accept("\((defaultAddress.first?.address1)!) \((defaultAddress.first?.address2)!)")
-                self.receiver.accept((defaultAddress.first?.receiver)!)
-                self.postalCode.accept((defaultAddress.first?.postalCode)!)
-            }
-            
-            if let payment = user.payment {
-                let defaultPayment = payment.filter({ $0.isDefault })
+                self.fullName.accept("\(user.firstName) \(user.lastName)")
+                self.email.accept(user.email)
+                if let dateOfBirth = user.dateOfBirth {
+                    let birthDateString = DateFormatter.birthDateInFormat(birthDate: dateOfBirth)
+                    self.dateOfBirth.accept(birthDateString)
+                }
+                self.totalPoint.accept("\(user.totalPoint) point(s)")
+                self.mobileNumber.accept(user.mobileNumber)
                 
-                self.cardholder.accept((defaultPayment.first?.holderName)!)
-                self.cardNumber.accept((defaultPayment.first?.cardNumber)!)
-                let expiryDateString = DateFormatter.expiryDateInFormat(expiryDate: (defaultPayment.first?.expiryDate)!)
-                self.expiryDate.accept(expiryDateString)
+                if let address = user.address {
+                    let defaultAddress = address.filter({ $0.isDefault })
+                    
+                    self.address.accept("\((defaultAddress.first?.address1)!) \((defaultAddress.first?.address2)!)")
+                    self.receiver.accept((defaultAddress.first?.receiver)!)
+                    self.postalCode.accept((defaultAddress.first?.postalCode)!)
+                }
+                
+                if let payment = user.payment {
+                    let defaultPayment = payment.filter({ $0.isDefault })
+                    
+                    self.cardholder.accept((defaultPayment.first?.holderName)!)
+                    self.cardNumber.accept((defaultPayment.first?.cardNumber)!)
+                    let expiryDateString = DateFormatter.expiryDateInFormat(expiryDate: (defaultPayment.first?.expiryDate)!)
+                    self.expiryDate.accept(expiryDateString)
+                }
+            } else {
+                self.isMember.accept(false)
             }
         }) { (err) in
-            self.isMember.accept(false)
-            print(err)
+            switch (err) {
+            case NomnomError.noData:
+                self.isMember.accept(false)
+                break
+            default:
+                print(err)
+            }
         }
     }
     

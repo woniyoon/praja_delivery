@@ -146,7 +146,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             self.showAlert(title: "projectName.uppercased()", message: "Shopping Cart is empty !")
         } else {
             let next = resolver.resolve(ShoppingCartViewController.self)!
-            self.present(next, animated: true, completion: nil)
+//            self.present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
         }
     }
     

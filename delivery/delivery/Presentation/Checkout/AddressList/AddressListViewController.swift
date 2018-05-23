@@ -79,7 +79,11 @@ class AddressListViewController: UIViewController, UITableViewDelegate {
         let cell: AddressListCell = (sender.superview?.superview?.superview) as! AddressListCell
         let index : IndexPath = self.addressTableView.indexPath(for: cell)!
 
-        viewModel.deleteAddressAtSelectedIndex(index: index.row)
+        if viewModel.addressList.value.count != 1 {
+            viewModel.deleteAddressAtSelectedIndex(index: index.row)
+        } else {
+            self.showAlert(title: "Reminder", message: "At least one address should be registerd")
+        }
     }
 
     func radioButtonSelected(sender: UIButton) {

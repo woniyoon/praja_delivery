@@ -14,4 +14,5 @@ protocol GuestDataStoreProtocol {
     func fetchGuestInfo() -> Single<GuestInfoEntity>
     func fetchGuestAddress() -> Single<GuestAddressEntity?>
     func fetchGuest() -> Single<UserEntity>
+    func saveGuestAddress(guestAddress: AddressEntity) -> Completable
 }

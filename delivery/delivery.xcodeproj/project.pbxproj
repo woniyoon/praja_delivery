@@ -76,6 +76,11 @@
 		911F9E10209ABDEB004970E8 /* AddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F9E0D209ABDEB004970E8 /* AddressEditViewController.swift */; };
 		912153E12075DBBE0057B146 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912153DF2075DBBE0057B146 /* UserInfoCell.swift */; };
 		912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912153E02075DBBE0057B146 /* UserInfoCell.xib */; };
+		91221B0020B2672F00A8C624 /* GuestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221AFF20B2672F00A8C624 /* GuestInfo.swift */; };
+		91221B0220B268E800A8C624 /* GuestInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0120B268E800A8C624 /* GuestInfoEntity.swift */; };
+		91221B0D20B2810300A8C624 /* GuestDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */; };
+		91221B0F20B2813600A8C624 /* GuestDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0E20B2813600A8C624 /* GuestDataStore.swift */; };
+		91221B1520B37DF100A8C624 /* GuestAddressEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */; };
 		913A3EA9208D51DF00411FDD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA6208D51DE00411FDD /* UserRepository.swift */; };
 		913A3EAA208D51DF00411FDD /* UserFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA7208D51DE00411FDD /* UserFirebaseDataStore.swift */; };
 		913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */; };
@@ -211,9 +216,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_deliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEntity.swift; sourceTree = "<group>"; };
-		2C3BA6C42057881700C438C0 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		2C3D59F120B3739D0066AE37 /* OrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailCell.xib; sourceTree = "<group>"; };
 		2C3D59F220B3739D0066AE37 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		2C3D59F420B3739D0066AE37 /* OrderDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailCell.swift; sourceTree = "<group>"; };
@@ -231,6 +233,9 @@
 		2C3D5A3720B387B80066AE37 /* OrderFirebaseDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderFirebaseDataStore.swift; path = delivery/Data/Order/OrderFirebaseDataStore.swift; sourceTree = SOURCE_ROOT; };
 		2C3D5A3820B387B90066AE37 /* OrderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderRepository.swift; path = delivery/Data/Order/OrderRepository.swift; sourceTree = SOURCE_ROOT; };
 		2C3D5A3920B387B90066AE37 /* OrderDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDataStoreProtocol.swift; path = delivery/Data/Order/OrderDataStoreProtocol.swift; sourceTree = SOURCE_ROOT; };
+		07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_deliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEntity.swift; sourceTree = "<group>"; };
+		2C3BA6C42057881700C438C0 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		414E2F6DF85937C7EF0AFB75 /* Pods-deliveryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-deliveryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests.release.xcconfig"; sourceTree = "<group>"; };
 		522B6291203D2974004B3560 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		522B6292203D2974004B3560 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -281,6 +286,11 @@
 		911F9E0D209ABDEB004970E8 /* AddressEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		912153DF2075DBBE0057B146 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
 		912153E02075DBBE0057B146 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
+		91221AFF20B2672F00A8C624 /* GuestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfo.swift; sourceTree = "<group>"; };
+		91221B0120B268E800A8C624 /* GuestInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoEntity.swift; sourceTree = "<group>"; };
+		91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestDataStoreProtocol.swift; sourceTree = "<group>"; };
+		91221B0E20B2813600A8C624 /* GuestDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestDataStore.swift; sourceTree = "<group>"; };
+		91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAddressEntity.swift; sourceTree = "<group>"; };
 		913A3EA6208D51DE00411FDD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		913A3EA7208D51DE00411FDD /* UserFirebaseDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirebaseDataStore.swift; sourceTree = "<group>"; };
 		913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStoreProtocol.swift; sourceTree = "<group>"; };
@@ -515,6 +525,7 @@
 				528E9882203E8C1100E8338C /* Review.swift */,
 				522B6291203D2974004B3560 /* ShoppingCart.swift */,
 				911B2D482063494200E2ACC6 /* Coordinate.swift */,
+				91221AFF20B2672F00A8C624 /* GuestInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -604,6 +615,15 @@
 				91512C942086E1FC00E80B08 /* PaymentCell.xib */,
 			);
 			path = CheckoutCell;
+			sourceTree = "<group>";
+		};
+		91221B0320B27F7C00A8C624 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */,
+				91221B0E20B2813600A8C624 /* GuestDataStore.swift */,
+			);
+			path = Guest;
 			sourceTree = "<group>";
 		};
 		913A3EA5208D51DE00411FDD /* User */ = {
@@ -1003,10 +1023,11 @@
 		D7AAD0AA2041943100D2971C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				91221B0320B27F7C00A8C624 /* Guest */,
 				915AC3E020A54F82007069C8 /* ShoppingCart */,
 				913A3EA5208D51DE00411FDD /* User */,
-				D7E238C52054ED9000BA973F /* Entity */,
 				2C3D5A1420B374190066AE37 /* Order */,
+				D7E238C52054ED9000BA973F /* Entity */,
 				D7AAD0AB2041943100D2971C /* ProductDetail */,
 				523D3A8A204F9CB200B63193 /* ProductList */,
 				D72D29D920A68803006D5101 /* ReviewPost */,
@@ -1076,13 +1097,15 @@
 				911E267A205E4CC300FB3639 /* CouponEntity.swift */,
 				D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */,
 				911E2678205E4C3A00FB3639 /* EventEntity.swift */,
-				2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */,
 				911E26982060984F00FB3639 /* OrderDetailEntity.swift */,
+				2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */,
 				911E267E205E5B3800FB3639 /* PaymentEntity.swift */,
 				911E269A2060AA2F00FB3639 /* PointStatementEntity.swift */,
 				D7AAD0BB204235BE00D2971C /* ProductEntity.swift */,
 				D7E238CA205556A100BA973F /* ReviewEntity.swift */,
 				911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */,
+				91221B0120B268E800A8C624 /* GuestInfoEntity.swift */,
+				91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1134,6 +1157,7 @@
 				BBA54AB6203D178D00D69954 /* Resources */,
 				9E2F5453A9076437F8AC0949 /* [CP] Embed Pods Frameworks */,
 				EFC75D537F3EA855030141BA /* [CP] Copy Pods Resources */,
+				A1AB60E0454B48004A0A4201 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1154,6 +1178,7 @@
 				BBA54ACA203D178D00D69954 /* Resources */,
 				939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */,
 				CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */,
+				8D868197ABA1D8F652578EC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1261,6 +1286,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFC75D537F3EA855030141BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1295,6 +1350,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D868197ABA1D8F652578EC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */ = {
@@ -1401,22 +1471,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFC75D537F3EA855030141BA /* [CP] Copy Pods Resources */ = {
+		A1AB60E0454B48004A0A4201 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1443,6 +1498,7 @@
 				911E267B205E4CC300FB3639 /* CouponEntity.swift in Sources */,
 				915AC3DA20A54F17007069C8 /* QuantityPopUpController.swift in Sources */,
 				911E26992060984F00FB3639 /* OrderDetailEntity.swift in Sources */,
+				91221B0220B268E800A8C624 /* GuestInfoEntity.swift in Sources */,
 				523D3A93204FA25B00B63193 /* ProductListRepository.swift in Sources */,
 				D72D29DD20A690CF006D5101 /* ReviewPostDataStoreProtocol.swift in Sources */,
 				5281FD5D205780E900412663 /* ProductListViewController.swift in Sources */,
@@ -1453,11 +1509,13 @@
 				9167CC362091C9D6009CC5D5 /* UserInfoEditViewModel.swift in Sources */,
 				D7213D3C20AD32F700142E5C /* SignUpViewModel.swift in Sources */,
 				915AC3DD20A54F17007069C8 /* ShoppingCartViewController.swift in Sources */,
+				91221B1520B37DF100A8C624 /* GuestAddressEntity.swift in Sources */,
+				2C3D5A3620B387880066AE37 /* OrderUseCase.swift in Sources */,
 				D7AAD0B32041943100D2971C /* ProductDetailTranslator.swift in Sources */,
 				91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */,
-				2C3D5A3620B387880066AE37 /* OrderUseCase.swift in Sources */,
 				D775FF872065AF30002180F7 /* ReviewListUseCase.swift in Sources */,
 				911F9E0F209ABDEB004970E8 /* AddressEditViewModel.swift in Sources */,
+				91221B0020B2672F00A8C624 /* GuestInfo.swift in Sources */,
 				913A3EA9208D51DF00411FDD /* UserRepository.swift in Sources */,
 				915AC3EE20A54FA5007069C8 /* ShoppingCartTranslator.swift in Sources */,
 				D72D29D520A66BE7006D5101 /* ReviewPostViewModel.swift in Sources */,
@@ -1468,10 +1526,10 @@
 				5281FD682058C13400412663 /* ProductListViewModel.swift in Sources */,
 				910E994920AA8FC7001AF396 /* OrderReviewViewController.swift in Sources */,
 				915AC3DE20A54F17007069C8 /* ShoppingCartCell.swift in Sources */,
+				2C3D59FC20B3739D0066AE37 /* OrderDetailViewModel.swift in Sources */,
 				914F07F720A13C3C003D5B23 /* CategoryViewController.swift in Sources */,
 				D7569D362052B0EF00C6D6E4 /* UsecaseAssembly.swift in Sources */,
 				D703592E2063B1E200787198 /* ErrorMsg.swift in Sources */,
-				2C3D59FC20B3739D0066AE37 /* OrderDetailViewModel.swift in Sources */,
 				D7AAD0C6204239B300D2971C /* FirebaseAnalytics.swift in Sources */,
 				D72D29DF20A69128006D5101 /* ReviewPostFirebaseDataStore.swift in Sources */,
 				529D72392069E5380062B970 /* BaseButton.swift in Sources */,
@@ -1489,17 +1547,18 @@
 				2C3BA6C02057863F00C438C0 /* OrderEntity.swift in Sources */,
 				523D3A95204FA3B000B63193 /* ProductListFirebaseDataStore.swift in Sources */,
 				528E9883203E8C1100E8338C /* Review.swift in Sources */,
+				2C3D5A2A20B3862F0066AE37 /* CurrentOrderCell.swift in Sources */,
 				913C148A2069DABC001C2A9B /* CollectionViewCell.swift in Sources */,
 				522B6297203D2975004B3560 /* ShoppingCart.swift in Sources */,
 				52B08AF4206DC7DD00C493A9 /* GridLayout.swift in Sources */,
-				2C3D5A2A20B3862F0066AE37 /* CurrentOrderCell.swift in Sources */,
 				915AC3E720A54F82007069C8 /* RealmManager.swift in Sources */,
 				911E2677205E4AD900FB3639 /* BranchEntity.swift in Sources */,
 				911E2679205E4C3A00FB3639 /* EventEntity.swift in Sources */,
+				2C3D5A3B20B387B90066AE37 /* OrderRepository.swift in Sources */,
 				9183196B20731893002DF8AA /* TrendsCell.swift in Sources */,
 				2C3BA6C52057881700C438C0 /* OrderModel.swift in Sources */,
+				91221B0F20B2813600A8C624 /* GuestDataStore.swift in Sources */,
 				D70359302063B5A700787198 /* BaseViewController.swift in Sources */,
-				2C3D5A3B20B387B90066AE37 /* OrderRepository.swift in Sources */,
 				915AC3FE20A570AE007069C8 /* CollectionName.swift in Sources */,
 				523D3A8F204F9DF600B63193 /* ProductListDataStoreProtocol.swift in Sources */,
 				915817DB2091C44D009BE66A /* UserInfoEditViewController.swift in Sources */,
@@ -1511,26 +1570,26 @@
 				86D47220203D2D8900624E1F /* User.swift in Sources */,
 				D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */,
 				915AC3E620A54F82007069C8 /* ShoppingCartRepository.swift in Sources */,
+				2C3D5A3C20B387B90066AE37 /* OrderDataStoreProtocol.swift in Sources */,
 				9149074920AD0FD1001092D7 /* SignInViewController.swift in Sources */,
 				D7E259EE2063A771007ADB37 /* BaseViewModel.swift in Sources */,
 				D72D29D320A669CE006D5101 /* ReviewPostViewController.swift in Sources */,
 				D7569D382052B0FB00C6D6E4 /* RepositoryAssembly.swift in Sources */,
-				2C3D5A3C20B387B90066AE37 /* OrderDataStoreProtocol.swift in Sources */,
 				914F082420A51BD2003D5B23 /* AccountEditViewController.swift in Sources */,
 				86D47224203D2FDB00624E1F /* Payment.swift in Sources */,
 				D775FF8D2065B005002180F7 /* ReviewListFirebaseDataStore.swift in Sources */,
+				2C3D59F820B3739D0066AE37 /* OrderDetailViewController.swift in Sources */,
 				D7AAD0B82041943100D2971C /* ProductDetailRepository.swift in Sources */,
 				915AC3E820A54F82007069C8 /* ShoppingCartDataStoreProtocol.swift in Sources */,
 				D72D29D820A68769006D5101 /* ReviewPostUseCase.swift in Sources */,
 				5281FD662058B83900412663 /* ProductListTranslator.swift in Sources */,
-				2C3D59F820B3739D0066AE37 /* OrderDetailViewController.swift in Sources */,
 				91E3CA00205780A500017A0F /* ProductModels.swift in Sources */,
 				91AE1782208AE2D700CC3EF8 /* AddressListViewModel.swift in Sources */,
+				2C3D5A2B20B3862F0066AE37 /* PastOrderCell.swift in Sources */,
 				91A152462082D9BF006C816D /* AddressCell.swift in Sources */,
 				D7891E4620884EFB002130B1 /* UserTranslator.swift in Sources */,
 				9149075020AD33AA001092D7 /* Validation.swift in Sources */,
 				915AC3EA20A54F82007069C8 /* ShoppingCartDataStore.swift in Sources */,
-				2C3D5A2B20B3862F0066AE37 /* PastOrderCell.swift in Sources */,
 				528E9881203E8AF200E8338C /* PointStatement.swift in Sources */,
 				D7D1051920AEDA7E0040AD00 /* WhiteLineTextField.swift in Sources */,
 				911E267D205E5B0600FB3639 /* AddressEntity.swift in Sources */,
@@ -1540,21 +1599,21 @@
 				91A11D2E20746CC800C3C3DB /* BaseLabel.swift in Sources */,
 				D7AAD0BF2042375800D2971C /* TranslatorProtocol.swift in Sources */,
 				D78F2E74204DE6100017AA05 /* ProductDetailViewController.swift in Sources */,
+				2C3D5A3520B387880066AE37 /* OrderTranslator.swift in Sources */,
 				915AC3EF20A54FA5007069C8 /* ShoppingCartUseCase.swift in Sources */,
 				D775FF942065C20C002180F7 /* ReviewCell.swift in Sources */,
 				D7569D3C2052B2E700C6D6E4 /* TranslatorAssembly.swift in Sources */,
 				D7569D3E2052BA1100C6D6E4 /* UIExtension.swift in Sources */,
-				2C3D5A3520B387880066AE37 /* OrderTranslator.swift in Sources */,
 				915AC3DF20A54F17007069C8 /* ShoppingCartViewModel.swift in Sources */,
 				912153E12075DBBE0057B146 /* UserInfoCell.swift in Sources */,
 				911E269D2060AFBE00FB3639 /* BranchInventoryEntity.swift in Sources */,
 				911B2D492063494200E2ACC6 /* Coordinate.swift in Sources */,
 				522B6298203D2975004B3560 /* Branch.swift in Sources */,
+				2C3D5A3120B3874D0066AE37 /* OrderViewController.swift in Sources */,
 				D7569D322052B0C800C6D6E4 /* ViewControllerAssembly.swift in Sources */,
 				913A3EAA208D51DF00411FDD /* UserFirebaseDataStore.swift in Sources */,
 				BA475A8F20589DF900F3A0B5 /* AccountViewController.swift in Sources */,
 				BA911EDB20798DF70082CF28 /* UserEntity.swift in Sources */,
-				2C3D5A3120B3874D0066AE37 /* OrderViewController.swift in Sources */,
 				911A281D2057796C007B8084 /* HomeViewController.swift in Sources */,
 				911A4AF8203D310400D03889 /* Coupon.swift in Sources */,
 				911A4AFE203D32C800D03889 /* Product.swift in Sources */,
@@ -1564,6 +1623,7 @@
 				BA190ECE20AFD46B00342FF2 /* Constants.swift in Sources */,
 				D7213D3E20AD41FB00142E5C /* Binding.swift in Sources */,
 				D775FF892065AFD0002180F7 /* ReviewListRepository.swift in Sources */,
+				91221B0D20B2810300A8C624 /* GuestDataStoreProtocol.swift in Sources */,
 				911A4AFA203D321600D03889 /* Address.swift in Sources */,
 				D7AAD0B72041943100D2971C /* ProductDetailFirebaseDataStore.swift in Sources */,
 				913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */,
@@ -1575,20 +1635,20 @@
 				86D47222203D2F7100624E1F /* OrderDetail.swift in Sources */,
 				D78F2E76204DE63F0017AA05 /* ProductDetailViewModel.swift in Sources */,
 				BBA54ABC203D178D00D69954 /* AppDelegate.swift in Sources */,
+				2C3D59FA20B3739D0066AE37 /* OrderDetailCell.swift in Sources */,
 				911F9E10209ABDEB004970E8 /* AddressEditViewController.swift in Sources */,
 				D703592C2063AC7600787198 /* AlertError.swift in Sources */,
 				522B629A203D2975004B3560 /* BranchInventory.swift in Sources */,
 				911A281F205779A8007B8084 /* HomeViewModel.swift in Sources */,
+				2C3D5A3020B3874D0066AE37 /* OrderViewModel.swift in Sources */,
 				915AC3F720A55F19007069C8 /* ProductImageViewController.swift in Sources */,
-				2C3D59FA20B3739D0066AE37 /* OrderDetailCell.swift in Sources */,
 				D7AAD0C32042396200D2971C /* Extention.swift in Sources */,
+				2C3D5A3A20B387B90066AE37 /* OrderFirebaseDataStore.swift in Sources */,
 				BA190ED020AFD49E00342FF2 /* StripeClient.swift in Sources */,
 				D775FF8B2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift in Sources */,
 				D7AAD0B62041943100D2971C /* ProductDetailDataStoreProtocol.swift in Sources */,
-				2C3D5A3020B3874D0066AE37 /* OrderViewModel.swift in Sources */,
 				D775FF852065AE03002180F7 /* ReviewListViewModel.swift in Sources */,
 				52B08AF2206DC72F00C493A9 /* ListLayout.swift in Sources */,
-				2C3D5A3A20B387B90066AE37 /* OrderFirebaseDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
