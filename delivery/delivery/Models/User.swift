@@ -14,7 +14,7 @@ struct User {
     public let lastName: String
     public let mobileNumber: String
     public let dateOfBirth: Date?
-//    public let hasAccount: Bool
+    public let isMember: Bool
     public let email: String
     public let totalPoint: Int
     public let address: [Address]?
