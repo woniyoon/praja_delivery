@@ -40,6 +40,7 @@ class ProductDetailViewModel : BaseViewModel {
     
     var numOfProduct = BehaviorRelay(value: 1)
     
+    var numOfProducntInShoppingCart = BehaviorRelay(value: 0)
     var onCompleteAddingMessage = BehaviorRelay(value: "")
     
     // MARK: - Private Properties
@@ -99,6 +100,15 @@ class ProductDetailViewModel : BaseViewModel {
                 onCompleted: { self.onCompleteAddingToCart() },
                 onError: { error in self.setError(error) })
             .disposed(by: disposeBag)
+    }
+    
+    func fetchShoppingCartQty() {
+        shoppingCartUseCase.fetchShoppingCart()
+            .subscribe(
+                onSuccess: { products in
+                    self.numOfProducntInShoppingCart.accept(products.count) },
+                onError: { error in self.setError(error) }
+        ).disposed(by: disposeBag)
     }
 
     // MARK: - Private Fuctions

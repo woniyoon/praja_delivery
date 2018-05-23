@@ -119,6 +119,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         viewModel.fetchProductDetail(productId)
         viewModel.fetchFrequentlyPurchasedWith(productId)
         viewModel.fetchRelatedTo(productId)
+        viewModel.fetchShoppingCartQty()
     }
     
     private func setup() {
@@ -241,9 +242,16 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             .disposed(by: disposeBag)
         
         // ShoppingCart
+        viewModel.numOfProducntInShoppingCart.asObservable()
+            .subscribe(
+                onNext: { num in self.navigationItem.updateShoppingCart(num: num) }
+            ).disposed(by: disposeBag)
         viewModel.onCompleteAddingMessage.asObservable()
             .subscribe(
-                onNext: { msg in self.showAlert(message: msg) }
+                onNext: { msg in
+                    self.showAlert(message: msg)
+                    self.viewModel.fetchShoppingCartQty()
+            }
             ).disposed(by: disposeBag)
         
         // Alert Message
