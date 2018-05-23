@@ -44,7 +44,7 @@
                                                             <constraint firstAttribute="width" constant="141" id="wdN-IQ-S94"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SLT-wc-Qh9">
@@ -53,13 +53,13 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssm-t4-Xqz">
                                                                 <rect key="frame" x="0.0" y="0.0" width="8.5" height="10"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="deviceWhite"/>
+                                                                <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="more items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-0d-HE7">
                                                                 <rect key="frame" x="12.5" y="0.0" width="67.5" height="10"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="deviceWhite"/>
+                                                                <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-Jl-tMs">
@@ -90,24 +90,17 @@
                                             <constraint firstAttribute="bottom" secondItem="MLg-FN-LzR" secondAttribute="bottom" id="h1m-3V-FBx"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hY-s5-cWp" customClass="BorderLabel" customModule="delivery" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="complete" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hY-s5-cWp" customClass="BorderLabel" customModule="delivery" customModuleProvider="target">
                                         <rect key="frame" x="214" y="0.0" width="81" height="30"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="complete">
-                                                <attributes>
-                                                    <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="deviceWhite"/>
-                                                    <font key="NSFont" size="17" name="SFProText-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                        <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="4"/>
@@ -125,56 +118,37 @@
                                     <constraint firstItem="ttT-OM-gYg" firstAttribute="top" secondItem="TzT-8T-qwD" secondAttribute="top" id="j7J-n7-rWC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y27-kk-rgB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" verticalHuggingPriority="251" text="Dec 14, 2018 4:00 PM" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y27-kk-rgB">
                                 <rect key="frame" x="16" y="76" width="140" height="16"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Dec 14, 2018 4:00 PM">
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="SFProText-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xK-Qq-dzI">
                                 <rect key="frame" x="211" y="76" width="100" height="16"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-cR-9Gx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEV-cR-9Gx">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="mQZ-0X-Htw"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Total">
-                                                <attributes>
-                                                    <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" size="14" name="SFProText-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zy6-uy-RUc" userLabel="totalPrice">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$400.00" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zy6-uy-RUc" userLabel="totalPrice">
                                         <rect key="frame" x="50" y="0.0" width="50" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="PCw-Fr-KgE"/>
                                         </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="$400.00">
-                                                <attributes>
-                                                    <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" size="14" name="SFProText-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TzT-8T-qwD" firstAttribute="leading" secondItem="4I8-bD-km4" secondAttribute="leading" constant="16" id="0V4-rl-R4g"/>
                             <constraint firstItem="3xK-Qq-dzI" firstAttribute="top" secondItem="TzT-8T-qwD" secondAttribute="bottom" constant="8" id="BGZ-fF-oaf"/>

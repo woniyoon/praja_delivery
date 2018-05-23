@@ -83,10 +83,12 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
                     let element = element
                     cell.order = element
                     cell.contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1) //Color literal - 247.247.247
+                    cell.selectionStyle = UITableViewCellSelectionStyle.none //disable highlights
                     return cell
                 } else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PastOrderCell.Identifier) as! PastOrderCell
                     cell.order = element
+                    cell.selectionStyle = UITableViewCellSelectionStyle.none //disable highlights
                     return cell
                 }
             }
@@ -127,7 +129,7 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         
         if(section==1) //Title of "Past Order"
         {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 327, height: 28))
+            let label = UILabel(frame: CGRect(x: 16, y: 0, width: 327, height: 28))
             label.textAlignment = NSTextAlignment.left
             label.text = "Past Orders"
             label.textColor = #colorLiteral(red: 0.5764705882, green: 0.5764705882, blue: 0.5764705882, alpha: 1)
