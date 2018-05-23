@@ -10,10 +10,10 @@ import Foundation
 import RxSwift
 
 protocol ShoppingCartDataStoreProtocol {
-    func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
-    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity)
+    func addProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
-    func deleteShoppingCart()
-    func deleteProductFromShoppingCart(with primaryKey: String)
+    func deleteShoppingCart() -> Completable
+    func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
     
 }

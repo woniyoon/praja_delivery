@@ -67,7 +67,10 @@ class HomeViewModel: BaseViewModel {
     
     func addProductShoppingCart(with shoppingCart: ShoppingCart){
         useCaseShopping.addProductShoppingCart(shoppingCart: shoppingCart)
-        fetchShoppingCartQty()
+            .subscribe(
+                onCompleted: { self.fetchShoppingCartQty() },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
     }
     
     func fetchShoppingCartQty() {
