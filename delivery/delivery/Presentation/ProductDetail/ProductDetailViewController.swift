@@ -103,15 +103,15 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cart"), style: .plain, target: self, action: #selector(shoppingCartButtonTapped))
-        
+
+        navigationItem.addShoppingCart()
+            .addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
+
         // Make the background of NavigationController transparent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-        let newView = UIView()
-        UIApplication.shared.keyWindow?.addSubview(newView)
     }
 
     // MARK: - Private Fuctions

@@ -99,3 +99,40 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+extension UINavigationItem {
+    func addShoppingCart(num: Int = 0) -> UIButton {
+        let label = UILabel(frame: CGRect(x: 10, y: -10, width: 16, height: 16))
+        label.layer.borderColor = UIColor.clear.cgColor
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = label.bounds.size.height / 2
+        label.textAlignment = .center
+        label.layer.masksToBounds = true
+        label.font = label.font.withSize(10)
+        label.textColor = .white
+        label.backgroundColor = UIColor(displayP3Red: 99/255, green: 175/255, blue: 113/255, alpha: 1)
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 16))
+        button.setBackgroundImage(#imageLiteral(resourceName: "cart"), for: .normal)
+        button.addSubview(label)
+        
+        let shoppingCart = UIBarButtonItem(customView: button)
+        
+        self.rightBarButtonItem = shoppingCart
+        
+        updateShoppingCart(num: num)
+        return button
+    }
+    
+    func updateShoppingCart(num: Int) {
+        let shoppingCart = self.rightBarButtonItem
+        let button = shoppingCart?.customView as? UIButton
+        let label = button?.subviews[0] as? UILabel
+        if num > 0 {
+            label?.isHidden = false
+            label?.text = String(num)
+        } else {
+            label?.isHidden = true
+        }
+    }
+}
