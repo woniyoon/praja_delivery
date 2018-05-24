@@ -54,6 +54,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         bindView(viewModel: viewModel)
         configureCollectionView()
+        configureBadgeOnButton()
         viewModel.fetchTopSales()
         viewModel.fetchProductYouMayLike()
         viewModel.fetchNewProducts()
@@ -141,6 +142,19 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
+    private func configureBadgeOnButton() {
+        cartQty.layer.borderColor = UIColor.clear.cgColor
+        cartQty.layer.borderWidth = 2
+        cartQty.layer.cornerRadius = cartQty.bounds.size.height / 2
+        cartQty.textAlignment = .center
+        cartQty.layer.masksToBounds = true
+        cartQty.font = cartQty.font.withSize(10)
+        cartQty.textColor = .white
+        cartQty.backgroundColor = UIColor(displayP3Red: 99/255, green: 175/255, blue: 113/255, alpha: 1)
+        cartQty.tag = 1001
+    }
+    
+    
     @IBAction func goToShoppingCart(_ sender: Any) {
         if Int(viewModel.qtyProductsCart.value) == 0 {
             self.showAlert(title: "projectName.uppercased()", message: "Shopping Cart is empty !")
@@ -224,7 +238,7 @@ extension HomeViewController: UISearchBarDelegate{
             self.navigationController?.pushViewController(next, animated: true)
         }
      
-        categoryVC.modalTransitionStyle = .flipHorizontal
+        categoryVC.modalTransitionStyle = .coverVertical
         categoryVC.modalPresentationStyle = .overFullScreen
         
         present(categoryVC, animated: true, completion: nil)

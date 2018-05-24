@@ -61,7 +61,7 @@ class UserInfoEditViewController: UIViewController {
             .subscribe(onNext: { isSaved in
                 if let isSaved = isSaved {
                     if isSaved {
-                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     } else {
                         self.showAlert(title: "Reminder", message: "Please check your email again!")
                     }

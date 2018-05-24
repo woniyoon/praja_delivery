@@ -39,8 +39,6 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func fetchUser() -> Single<UserEntity> {
-        print("*******************************  fetchUser()")
-        print(UserRepository.user)
         return dataStore.fetchUser()
             .catchError { (error) in
                 switch error {
@@ -58,8 +56,6 @@ class UserRepository: UserRepositoryProtocol {
     
     func fetchAddress(index: Int) -> Single<[AddressEntity]> {
         var arrWithOneElement: [AddressEntity] = []
-        print("*******************************  fetchAddress()")
-        print(UserRepository.user)
         
         if let user = UserRepository.user {
             arrWithOneElement.append(user.address![index])
@@ -141,7 +137,7 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func updateUser(user: UserEntity) -> Completable {
-        if !Validation.validateEmail(email: user.email) {
+        if !Validation.validateEmail(email: user.email!) {
             return Completable.error(NomnomError.invalidInput(message: "wrong format"))
         }
         

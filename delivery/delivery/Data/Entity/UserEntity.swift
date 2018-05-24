@@ -9,12 +9,12 @@
 import Foundation
 
 struct UserEntity {
-        public let firstName: String
-        public let lastName: String
+        public let firstName: String?
+        public let lastName: String?
         public let dateOfBirth: Date?
-        public let mobileNumber: String
+        public let mobileNumber: String?
         public let isMember: Bool
-        public let email: String
+        public let email: String?
         public let totalPoint: Int
         public var address: [AddressEntity]?
         public let payment: [PaymentEntity]?
@@ -47,7 +47,7 @@ struct UserEntity {
         self.isMember = true
     }
 
-    init(firstName: String, lastName: String, mobileNumber: String, dateOfBirth: Date?, isMember: Bool, totalPoint: Int, email: String, address: [AddressEntity]?, payment: [PaymentEntity]?, coupon: [String : Bool]?) {
+    init(firstName: String?, lastName: String?, mobileNumber: String?, dateOfBirth: Date?, isMember: Bool, totalPoint: Int, email: String?, address: [AddressEntity]?, payment: [PaymentEntity]?, coupon: [String : Bool]?) {
         self.firstName = firstName
         self.lastName = lastName
         self.mobileNumber = mobileNumber

@@ -29,10 +29,10 @@ class UserInfoEditViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
-            self.firstName.accept(user.firstName)
-            self.lastName.accept(user.lastName)
-            self.email.accept(user.email)
-            self.phoneNumber.accept(user.mobileNumber)
+            self.firstName.accept(user.firstName ?? "")
+            self.lastName.accept(user.lastName ?? "")
+            self.email.accept(user.email ?? "")
+            self.phoneNumber.accept(user.mobileNumber ?? "")
             self.user.accept([user])
         }) { (err) in
             print(err)

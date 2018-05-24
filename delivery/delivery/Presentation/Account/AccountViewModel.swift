@@ -47,14 +47,14 @@ class AccountViewModel: BaseViewModel {
                 self.isMember.accept(true)
                 self.user.accept([user])
                 
-                self.fullName.accept("\(user.firstName) \(user.lastName)")
-                self.email.accept(user.email)
+                self.fullName.accept("\(user.firstName ?? "full name") \(user.lastName ?? "")")
+                self.email.accept(user.email ?? "")
                 if let dateOfBirth = user.dateOfBirth {
                     let birthDateString = DateFormatter.birthDateInFormat(birthDate: dateOfBirth)
                     self.dateOfBirth.accept(birthDateString)
                 }
                 self.totalPoint.accept("\(user.totalPoint) point(s)")
-                self.mobileNumber.accept(user.mobileNumber)
+                self.mobileNumber.accept(user.mobileNumber ?? "")
                 
                 if let address = user.address {
                     let defaultAddress = address.filter({ $0.isDefault })

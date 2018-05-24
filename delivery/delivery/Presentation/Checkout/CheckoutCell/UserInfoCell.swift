@@ -23,9 +23,9 @@ class UserInfoCell: UITableViewCell {
                 mobileNumberLabel.text = "mobile number"
                 emailLabel.text = "email"
                 return }
-            nameLabel.text = "\(item.firstName) \(item.lastName)"
-            mobileNumberLabel.text = item.mobileNumber
-            emailLabel.text = item.email
+            nameLabel.text = "\(item.firstName ?? "full name") \(item.lastName ?? "")"
+            mobileNumberLabel.text = item.mobileNumber ?? "mobile number"
+            emailLabel.text = item.email ?? "email"
         }
     }
     
@@ -39,10 +39,4 @@ class UserInfoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        contentView.frame = UIEdgeInsetsInsetRect(contentView.frame, UIEdgeInsetsMake(0, 16, 0, 16))
-//    }
 }

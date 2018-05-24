@@ -35,13 +35,13 @@ class GuestDataStore: GuestDataStoreProtocol {
         print("GuestDataStore before return")
         return Single<UserEntity>
          .zip(fetchGuestInfo(), fetchGuestAddress()) { (info, address) in
-            return UserEntity(firstName: info.firstName,
-                              lastName: info.lastName,
-                              mobileNumber: info.mobileNumber,
+            return UserEntity(firstName: info?.firstName ?? nil,
+                              lastName: info?.lastName ?? nil,
+                              mobileNumber: info?.mobileNumber ?? nil,
                               dateOfBirth: nil,
                               isMember: false,
                               totalPoint: 0,
-                              email: info.email,
+                              email: info?.email ?? nil,
                               address: self.mapToAddress(address),
                               payment: nil,
                               coupon: nil)
@@ -49,10 +49,10 @@ class GuestDataStore: GuestDataStoreProtocol {
         
     }
     
-    func fetchGuestInfo() -> Single<GuestInfoEntity> {
+    func fetchGuestInfo() -> Single<GuestInfoEntity?> {
         let realm = RealmManager.sharedInstance
         
-        return Single<GuestInfoEntity>.create { observer -> Disposable in
+        return Single<GuestInfoEntity?>.create { observer -> Disposable in
             let dispose = Disposables.create()
             
             guard let data = realm.getData(type: GuestInfoEntity.self) else {
@@ -67,7 +67,7 @@ class GuestDataStore: GuestDataStoreProtocol {
                 observer(.success(guestInfoEntity))
             }
             else {
-                observer(.success(GuestInfoEntity()))
+                observer(.success(nil))
             }
         return dispose
         }
@@ -125,10 +125,10 @@ class GuestDataStore: GuestDataStoreProtocol {
     
     private func mapToGuestInfoEntity(userEntity: UserEntity) -> GuestInfoEntity {
         let guestInfoEntity = GuestInfoEntity()
-        guestInfoEntity.firstName = userEntity.firstName
-        guestInfoEntity.lastName = userEntity.lastName
-        guestInfoEntity.mobileNumber = userEntity.mobileNumber
-        guestInfoEntity.email = userEntity.email
+        guestInfoEntity.firstName = userEntity.firstName!
+        guestInfoEntity.lastName = userEntity.lastName!
+        guestInfoEntity.mobileNumber = userEntity.mobileNumber!
+        guestInfoEntity.email = userEntity.email!
         return guestInfoEntity
     }
     

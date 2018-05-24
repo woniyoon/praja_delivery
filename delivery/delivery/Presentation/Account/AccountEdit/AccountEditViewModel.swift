@@ -28,10 +28,10 @@ class AccountEditViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
-            self.firstName.accept(user.firstName)
-            self.lastName.accept(user.lastName)
-            self.phoneNumber.accept(user.mobileNumber)
-            self.email.accept(user.email)
+            self.firstName.accept(user.firstName ?? "")
+            self.lastName.accept(user.lastName ?? "")
+            self.phoneNumber.accept(user.mobileNumber ?? "")
+            self.email.accept(user.email ?? "")
             self.user.accept([user])
             
             print(self.user.value)

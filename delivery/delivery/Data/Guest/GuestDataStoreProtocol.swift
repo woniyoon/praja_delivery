@@ -11,7 +11,7 @@ import RxSwift
 
 protocol GuestDataStoreProtocol {
     func saveGuestInfo(userEntity: UserEntity) -> Completable
-    func fetchGuestInfo() -> Single<GuestInfoEntity>
+    func fetchGuestInfo() -> Single<GuestInfoEntity?>
     func fetchGuestAddress() -> Single<GuestAddressEntity?>
     func fetchGuest() -> Single<UserEntity>
     func saveGuestAddress(guestAddress: AddressEntity) -> Completable

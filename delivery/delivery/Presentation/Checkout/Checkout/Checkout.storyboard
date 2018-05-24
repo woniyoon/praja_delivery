@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5V4-Ta-2eL">
-                                <rect key="frame" x="16" y="46" width="343" height="543"/>
+                                <rect key="frame" x="16" y="36" width="343" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -45,7 +45,7 @@
                             <constraint firstItem="5V4-Ta-2eL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="16" id="Arz-Cb-ZVy"/>
                             <constraint firstItem="phg-O6-8fE" firstAttribute="top" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="16" id="Mvy-bY-Lj3"/>
                             <constraint firstItem="5V4-Ta-2eL" firstAttribute="trailing" secondItem="deG-40-Az2" secondAttribute="trailing" constant="-16" id="b1Y-Fi-6nV"/>
-                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" constant="26" id="nhT-in-Oo4"/>
+                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" constant="16" id="nhT-in-Oo4"/>
                             <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="phg-O6-8fE" secondAttribute="trailing" constant="11" id="q9z-sJ-GjC"/>
                             <constraint firstItem="phg-O6-8fE" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="11" id="rnp-hQ-FhN"/>
                         </constraints>
