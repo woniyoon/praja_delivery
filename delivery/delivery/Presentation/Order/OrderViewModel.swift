@@ -25,9 +25,18 @@ class OrderViewModel : BaseViewModel{
         useCase.fetchOrder(with: userId)
             .subscribe(
                 onSuccess: { model in
+                    var currentOrder: [Order] = []
+                    var pastOrder: [Order] = []
+                    model.forEach({ (order) in
+                        if (order.deliveryInfo["deliveredDate"] == nil) {
+                            currentOrder.append(order)
+                        } else {
+                            pastOrder.append(order)
+                        }
+                    })
                     self.arrOfOrder.accept([
-                        SectionModel(model: "Current Order", items:model),
-                        SectionModel(model: "Past Order", items: model)])
+                        SectionModel(model: "Current Order", items:currentOrder),
+                        SectionModel(model: "Past Order", items: pastOrder)])
             }, onError: { (error) in
                 print(error.localizedDescription)}
             ).disposed(by: disposeBag)
