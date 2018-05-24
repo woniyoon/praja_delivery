@@ -33,9 +33,13 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
     
     @IBAction func confirmPayment(_ sender: Any) {
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        navigationController?.pushViewController(addCardViewController, animated: true)
+        let next = resolver.resolve(OrderReviewViewController.self)!
+        navigationController?.pushViewController(next, animated: true)
+
+        
+//        let addCardViewController = STPAddCardViewController()
+//        addCardViewController.delegate = self
+//        navigationController?.pushViewController(addCardViewController, animated: true)
     }
     
     
@@ -96,9 +100,10 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     }
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
-        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderConfirmationViewController
+        let next = resolver.resolve(OrderReviewViewController.self)!
+//        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderConfirmationViewController
         
-        self.navigationController?.pushViewController(orderReviewVC, animated: true)
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -30,8 +30,8 @@
 		5263DF7F20AD1EE900F961FA /* filterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5263DF7D20ABDC0300F961FA /* filterDelegate.swift */; };
 		5263DF8020AD23F900F961FA /* ProductsFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5263DF7920AA77D300F961FA /* ProductsFilter.storyboard */; };
 		527CE63F20B370F30000DD2D /* OrderReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */; };
-		527CE64120B371010000DD2D /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527CE64020B371010000DD2D /* OrderReview.storyboard */; };
 		527CE64320B377260000DD2D /* OrderReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CE64220B377260000DD2D /* OrderReviewViewModel.swift */; };
+		527CE64520B3AFB00000DD2D /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527CE64420B3AFB00000DD2D /* OrderReview.storyboard */; };
 		5281FD5B205780CB00412663 /* ProductList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5281FD5A205780CB00412663 /* ProductList.storyboard */; };
 		5281FD5D205780E900412663 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281FD5C205780E900412663 /* ProductListViewController.swift */; };
 		5281FD642058B74F00412663 /* ProductListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281FD632058B74F00412663 /* ProductListUseCase.swift */; };
@@ -233,8 +233,8 @@
 		5263DF7B20AA77F900F961FA /* ProductsFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFilterController.swift; sourceTree = "<group>"; };
 		5263DF7D20ABDC0300F961FA /* filterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterDelegate.swift; sourceTree = "<group>"; };
 		527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewViewController.swift; sourceTree = "<group>"; };
-		527CE64020B371010000DD2D /* OrderReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
 		527CE64220B377260000DD2D /* OrderReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewViewModel.swift; sourceTree = "<group>"; };
+		527CE64420B3AFB00000DD2D /* OrderReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
 		5281FD5A205780CB00412663 /* ProductList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductList.storyboard; sourceTree = "<group>"; };
 		5281FD5C205780E900412663 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		5281FD632058B74F00412663 /* ProductListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListUseCase.swift; sourceTree = "<group>"; };
@@ -513,8 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */,
-				527CE64020B371010000DD2D /* OrderReview.storyboard */,
 				527CE64220B377260000DD2D /* OrderReviewViewModel.swift */,
+				527CE64420B3AFB00000DD2D /* OrderReview.storyboard */,
 			);
 			name = OrderReview;
 			path = "New Group";
@@ -1241,7 +1241,7 @@
 				912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */,
 				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
 				913C148B2069DABC001C2A9B /* CollectionViewCell.xib in Resources */,
-				527CE64120B371010000DD2D /* OrderReview.storyboard in Resources */,
+				527CE64520B3AFB00000DD2D /* OrderReview.storyboard in Resources */,
 				9183196C20731893002DF8AA /* TrendsCell.xib in Resources */,
 				9149074520AD0F4A001092D7 /* SignIn.storyboard in Resources */,
 				915817D92091C434009BE66A /* UserInfoEdit.storyboard in Resources */,

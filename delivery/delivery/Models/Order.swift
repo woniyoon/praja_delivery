@@ -24,6 +24,38 @@ struct Order {
     public let trackingNumber: String?
     public let dateInfo: [String : Date]
 
+    init?(dictionary: [String: Any]) {
+        guard let orderNumber = dictionary["orderNumber"] as? String,
+            let trackingNumber = dictionary["trackingNumber"] as? String,
+            //            let dateOfPurchase = dictionary["dateOfPurchase"] as? Date,
+            let scheduledDeliveryDate = dictionary["scheduledDeliveryDate"] as? Date,
+            let totalPrice = dictionary["totalPrice"] as? Double,
+            let shippingAddress = dictionary["shippingAddress"] as? Address,
+            let deliveryFee = dictionary["deliveryFee"] as? Double,
+            let status = dictionary["status"] as? Status,
+            let userId = dictionary["userId"] as? String,
+            let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
+            let dateInfo = dictionary["dateInfo"] as? [String : Date],
+            let pointStatement = dictionary["pointStatement"] as? PointStatement,
+            let remark = dictionary["remark"] as? String,
+            let cancelReason = dictionary["cancelReason"] as? String else { return nil }
+        
+        self.orderNumber = orderNumber
+        self.trackingNumber = trackingNumber
+        //        self.dateOfPurchase = dateOfPurchase
+        self.scheduledDeliveryDate = scheduledDeliveryDate
+        self.totalPrice = totalPrice
+        self.shippingAddress = shippingAddress
+        self.deliveryFee = deliveryFee
+        self.status = status // not sure.....
+        self.cancelReason = cancelReason
+        self.userId = userId
+        self.orderDetail = orderDetail
+        self.dateInfo = dateInfo
+        self.pointStatement = pointStatement
+        self.remark = remark
+    }
+    
     var dictionary: [String: Any] {
         return [
 //            "dateOfPurchase": dateOfPurchase,

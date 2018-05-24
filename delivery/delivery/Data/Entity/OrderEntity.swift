@@ -46,11 +46,10 @@ struct OrderEntity {
             let userId = dictionary["userId"] as? String,
             let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
             let dateInfo = dictionary["dateInfo"] as? [String : Date],
-            let pointStatement = dictionary["pointStatement"] as? PointStatement else { return nil }
-        
-        
-        let remark = dictionary["remark"] as? String ?? ""
-        let cancelReason = dictionary["cancelReason"] as? String ?? ""
+            let pointStatement = dictionary["pointStatement"] as? PointStatement,
+            let remark = dictionary["remark"] as? String,
+            let cancelReason = dictionary["cancelReason"] as? String else { return nil }
+
         
         self.orderNumber = orderNumber
         self.trackingNumber = trackingNumber

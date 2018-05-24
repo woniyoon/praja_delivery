@@ -15,10 +15,11 @@ protocol ShoppingCartUseCaseProtocol {
     func updateProductShoppingCart(shoppingCart: ShoppingCart)
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
     func deleteProductFromShoppingCart(with primaryKey: String)
+    func productAlreadyInCart(with primaryKey: String) -> Bool
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
-
+    
     internal let repository: ShoppingCartRepositoryProtocol
     internal let translator: ShoppingCartTranslator
     
@@ -51,6 +52,10 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
     
     func deleteProductFromShoppingCart(with primaryKey: String){
         repository.deleteProductFromShoppingCart(with: primaryKey)
+    }
+    
+    func productAlreadyInCart(with primaryKey: String) -> Bool {
+        return repository.productAlreadyInCart(with: primaryKey)
     }
     
 }

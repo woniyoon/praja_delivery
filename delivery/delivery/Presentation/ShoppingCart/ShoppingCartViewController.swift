@@ -155,12 +155,12 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func close(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func checkoutPurchase(_ sender: Any) {
         let next = resolver.resolve(CheckoutViewController.self)!
-        present(next, animated:true, completion:nil)
+        navigationController?.pushViewController(next, animated: true)
     }
     
     func changeQuantityDidTap(sender: UIButton) -> Void {

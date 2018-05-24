@@ -11,7 +11,26 @@ import Firebase
 import RxSwift
 
 class OrderFirebaseDataStore: OrderDataStoreProtocol {
+    
     let db = Firestore.firestore()
+
+    func saveOrder(_ order: OrderEntity) -> Completable {
+        guard let user = Auth.auth().currentUser else {
+            return Completable.empty()
+        }
+        
+        return Completable.create { observer in
+            self.db.collection(ORDER_COLLECTION)
+                .addDocument(data: order.dictionary) { err in
+                    if let err = err {
+                        observer(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
+                    } else {
+                        observer(.completed)
+                    }
+            }
+            return Disposables.create()
+        }
+    }
     
     func fetchOrder(_ id: String) -> Single<OrderEntity>{
         

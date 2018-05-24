@@ -114,7 +114,7 @@
                         <viewLayoutGuide key="safeArea" id="43k-di-oTV"/>
                     </view>
                     <connections>
-                        <outlet property="checkOrderButton" destination="QLj-8R-Htw" id="NlX-Jd-9gE"/>
+                        <outlet property="checkOrderButton" destination="QLj-8R-Htw" id="X0w-4H-Akb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlS-AY-MYF" userLabel="First Responder" sceneMemberID="firstResponder"/>

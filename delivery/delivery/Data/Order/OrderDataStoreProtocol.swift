@@ -11,4 +11,5 @@ import RxSwift
 
 protocol OrderDataStoreProtocol {
     func fetchOrder(_ id: String) -> Single<OrderEntity> //OrderEntity
+    func saveOrder(_ order: OrderEntity) -> Completable //OrderEntity
 }

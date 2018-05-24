@@ -52,6 +52,16 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
         realm.updateData(object: shoppingCart)
     }
     
+    func productAlreadyInCart(with primaryKey: String) -> Bool {
+        var result = false
+        let realm = try! Realm()
+        let shoppingCartExist = realm.objects(ShoppingCartEntity.self).filter("idProducts = '\(primaryKey)'")
+        if shoppingCartExist.first != nil {
+            result = true
+        }
+        return result
+    }
+    
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
         let realm = RealmManager.sharedInstance
         

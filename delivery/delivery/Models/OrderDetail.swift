@@ -26,4 +26,14 @@ struct OrderDetail{
             "productId": productId
         ]
     }
+    
+    init?(dictionary: [String: Any]) {
+        guard let pricePerItem = dictionary["pricePerItem"] as? Double,
+            let quantity = dictionary["quantity"] as? Int,
+            let productId = dictionary["productId"] as? String else { return nil }
+        
+        self.pricePerItem = pricePerItem
+        self.quantity = quantity
+        self.productId = productId
+    }
 }

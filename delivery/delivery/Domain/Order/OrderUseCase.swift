@@ -11,6 +11,7 @@ import RxSwift
 
 protocol OrderUseCaseProtocol {
     func fetchOrder(_ id: String) -> Single<Order>
+    func saveOrder(_ order: Order) -> Completable
 }
 
 class OrderUseCase: OrderUseCaseProtocol {
@@ -29,4 +30,9 @@ class OrderUseCase: OrderUseCaseProtocol {
                 self.translator.translate(entity)
             })
     }
+    
+    func saveOrder(_ order: Order) -> Completable {
+        return repository.saveOrder(translator.translateToEntity(order))
+    }
+    
 }

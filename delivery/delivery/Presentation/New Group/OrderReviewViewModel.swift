@@ -15,6 +15,7 @@ import RxCocoa
 class OrderReviewViewModel: BaseViewModel {
     private var useCaseShoppingCart: ShoppingCartUseCaseProtocol
     private var useCaseUserAccount: UserUseCaseProtocol
+    private var useCaseOrder: OrderUseCaseProtocol
     
     var user = BehaviorRelay<[User]>(value: [])
     var fullName = BehaviorRelay(value: "")
@@ -31,16 +32,21 @@ class OrderReviewViewModel: BaseViewModel {
     var expiryDate = BehaviorRelay(value: "")
     
     var productsShoppingCart = BehaviorRelay<[ProductShoppingCart]>(value: [])
-    var subTotal = BehaviorRelay<String>(value: "0.0")
-    var discount = BehaviorRelay<String>(value: "0.0")
-    var hsttax = BehaviorRelay<String>(value: "0.0")
+    var shippingFee = BehaviorRelay<String>(value: "$ 3.00")
+    var totalBeforeShippingFee = BehaviorRelay<String>(value: "0.0")
     var total = BehaviorRelay<String>(value: "0.0")
+    
+    var totalPurchase: Double = 0.0
+    let shippingFeeValue = 3.0
+    
+    var orderDetail = [OrderDetail]()
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(useCaseShoppingCart: ShoppingCartUseCaseProtocol, useCaseUserAccount: UserUseCaseProtocol ) {
+    init(useCaseShoppingCart: ShoppingCartUseCaseProtocol, useCaseUserAccount: UserUseCaseProtocol, useCaseOrder: OrderUseCaseProtocol ) {
         self.useCaseShoppingCart = useCaseShoppingCart
         self.useCaseUserAccount = useCaseUserAccount
+        self.useCaseOrder = useCaseOrder
     }
     
     func fetchUser() {
@@ -82,6 +88,8 @@ class OrderReviewViewModel: BaseViewModel {
             .subscribe(
                 onSuccess: { (productsList) in
                     
+                    self.orderDetail = self.generateOrderDetail(productsList: productsList)
+                    
                     self.productsShoppingCart.accept(productsList)
                     
                     self.calculateSubTotal()
@@ -99,11 +107,61 @@ class OrderReviewViewModel: BaseViewModel {
         for item in shoppingCart {
             preSubTotal = preSubTotal + item.total
         }
-        subTotal.accept("$ \(String(format:"%.2f", preSubTotal))")
         
-        discount.accept("$ \(String(format:"%.2f", 0))")
-        hsttax.accept("$ \(String(format:"%.2f", 0))")
-        
+        totalBeforeShippingFee.accept("$ \(String(format:"%.2f", preSubTotal))")
+    
+        preSubTotal = preSubTotal + shippingFeeValue
+        totalPurchase = preSubTotal
         total.accept("$ \(String(format:"%.2f", preSubTotal))")
+    }
+    
+    func generateOrderDetail(productsList: [ProductShoppingCart]) -> [OrderDetail] {
+        
+        var orderDetailList = [OrderDetail]()
+        
+        for item in productsList {
+            
+            let orderDetail = OrderDetail(dictionary: ["pricePerItem": item.total,
+                                                             "quantity": item.quantity,
+                                                             "productId": item.product.productId])
+            orderDetailList.append(orderDetail!)
+        }
+        
+        return orderDetailList
+        
+    }
+    
+    func saveOrder() -> Completable {
+        
+        let shippingAddress = Address(receiver: "", address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
+//        let shippingAddress = "\(address.value), \(postalCode.value) "
+        let pointStatement = PointStatement(earnedPoints: 0, consumedPoints: 0)
+        
+        let date = Date()
+        let calender = Calendar.current
+        var dateComponent = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+        
+        dateComponent.day = 2
+        let scheduledDeliveryDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+        
+        let orderNumber = "ORD\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)\(dateComponent.hour!)\(dateComponent.minute!)\(dateComponent.second!)"
+    
+        let orderReview = Order(dictionary: ["remark": "",
+                                            "pointStatement": pointStatement,
+                                            "userId": "",
+                                            "orderDetail": orderDetail,
+                                            "scheduledDeliveryDate": scheduledDeliveryDate,
+                                            "cancelReason": "",
+                                            "status": Status.ordered,
+                                            "deliveryFee": shippingFeeValue,
+                                            "shippingAddress": shippingAddress,
+                                            "totalPrice": totalPurchase,
+                                            "orderNumber": orderNumber,
+                                            "trackingNumber": "",
+                                            "dateInfo": ["Info": Date()]])
+        
+        
+        return useCaseOrder.saveOrder(orderReview!)
+        
     }
 }
