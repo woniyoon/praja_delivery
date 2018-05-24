@@ -23,13 +23,13 @@ class UserTranslator {
     }
 
     func translate(fromModel model: User) -> UserEntity {
-        return UserEntity(firstName: model.firstName != nil ? model.firstName! : nil,
-                          lastName: model.lastName != nil ? model.lastName! : nil,
-                          mobileNumber: model.mobileNumber != nil ? model.mobileNumber! : nil,
-                          dateOfBirth: model.dateOfBirth != nil ? model.dateOfBirth! : nil,
+        return UserEntity(firstName: model.firstName,
+                          lastName: model.lastName,
+                          mobileNumber: model.mobileNumber,
+                          dateOfBirth: model.dateOfBirth,
                           isMember: model.isMember,
                           totalPoint: model.totalPoint,
-                          email: model.email != nil ? model.email! : nil,
+                          email: model.email,
                           address: model.address?.map({translateAddress(from: $0)}),
                           payment: model.payment?.map({translatePaymentModel(from: $0)}) ,
                           coupon: model.coupon)
