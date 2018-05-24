@@ -109,13 +109,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
 // MARK: - CollectionView
 
     private func registerCell() {
-        let nib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
-        topSalesCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-        youMayLikeCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-        newProductsCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        let productCellNib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
+        topSalesCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        youMayLikeCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        newProductsCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         
-        let nib2 = UINib(nibName: TrendsCell.Identifier, bundle: nil)
-        trendsCollectionView.register(nib2, forCellWithReuseIdentifier: TrendsCell.Identifier)
+        let trendCellNib = UINib(nibName: TrendsCell.Identifier, bundle: nil)
+        trendsCollectionView.register(trendCellNib, forCellWithReuseIdentifier: TrendsCell.Identifier)
         
         topSalesCollectionView.delegate = self
         youMayLikeCollectionView.delegate = self
