@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vyz-OW-em0">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -51,10 +51,10 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAo-F9-GSR">
-                                                                <rect key="frame" x="334" y="6" width="26" height="15"/>
+                                                                <rect key="frame" x="340" y="6" width="15" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="J9U-HQ-dG0"/>
-                                                                    <constraint firstAttribute="width" constant="26" id="P1a-ag-687"/>
+                                                                    <constraint firstAttribute="width" constant="15" id="P1a-ag-687"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.38823529410000002" green="0.68627450980000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +70,7 @@
                                                             <constraint firstItem="Qh5-Ep-yGo" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="15" id="b68-zb-qO6"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="LVH-Vn-j5t" secondAttribute="bottom" constant="16" id="bdi-15-ZgX"/>
                                                             <constraint firstAttribute="bottom" secondItem="b4w-vC-hea" secondAttribute="bottom" id="edr-9w-vzK"/>
-                                                            <constraint firstAttribute="trailing" secondItem="kAo-F9-GSR" secondAttribute="trailing" constant="15" id="fMw-Qd-pwd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kAo-F9-GSR" secondAttribute="trailing" constant="20" id="fMw-Qd-pwd"/>
                                                             <constraint firstAttribute="height" constant="100" id="h31-zq-u5b"/>
                                                             <constraint firstItem="LVH-Vn-j5t" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="15" id="mvO-Gi-Ef4"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="leading" secondItem="hIY-s0-7h0" secondAttribute="leading" id="n7r-fi-miD"/>

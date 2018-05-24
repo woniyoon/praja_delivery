@@ -49,7 +49,7 @@ class AddressListViewModel: BaseViewModel {
     func deleteAddressAtSelectedIndex(index: Int) {
         var newAddressList = addressList.value
         newAddressList.remove(at: index)
-        addressList.accept(newAddressList)
+        addressList.accept(newAddressList)        
     }
 }
 
