@@ -40,7 +40,8 @@ class OrderReviewViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.title = "Confirm"
     }
     
     override func viewDidLoad() {
@@ -107,14 +108,12 @@ class OrderReviewViewController: BaseViewController {
     
     
     @IBAction func didTapPayNow(_ sender: Any) {
-//        let addCardViewController = STPAddCardViewController()
-//        addCardViewController.delegate = self
-//        let navigationController = UINavigationController(rootViewController: addCardViewController)
-//        present(navigationController, animated: true)
-//        navigationController?.pushViewController(addCardViewController, animated: true)
-
-        viewModel.saveOrder()
-        viewModel.deleteShoppingCart()
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        navigationController?.pushViewController(addCardViewController, animated: true)
+//
+//        viewModel.saveOrder()
+//        viewModel.deleteShoppingCart()
         
 
     }
@@ -206,13 +205,13 @@ extension OrderReviewViewController: STPAddCardViewControllerDelegate {
                     self.navigationController?.popViewController(animated: true)
                 })
                 alertController.addAction(alertAction)
-//                self.present(alertController, animated: true)
-//                self.navigationController?.popViewController(animated: true)
-                //
-                let next = resolver.resolve(HomeViewController.self)!
-                self.present(next, animated: true)
+
                 self.viewModel.saveOrder()
-//                self.navigationController?.pushViewController(next, animated: true)
+                self.viewModel.deleteShoppingCart()
+                
+//                let next = resolver.resolve(HomeViewController.self)!
+//                self.present(next, animated: true)
+
             // 2
             case .failure(let error):
                 completion(error)

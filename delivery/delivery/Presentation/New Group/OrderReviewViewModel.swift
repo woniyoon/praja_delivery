@@ -26,6 +26,9 @@ class OrderReviewViewModel: BaseViewModel {
     var receiver = BehaviorRelay(value: "")
     var address = BehaviorRelay(value: "")
     var postalCode = BehaviorRelay(value: "")
+    var city = BehaviorRelay(value: "")
+    var country = BehaviorRelay(value: "")
+    var province = BehaviorRelay(value: "")
     
     var cardholder = BehaviorRelay(value: "")
     var cardNumber = BehaviorRelay(value: "")
@@ -70,6 +73,9 @@ class OrderReviewViewModel: BaseViewModel {
                 self.address.accept("\((defaultAddress.first?.address1)!) \((defaultAddress.first?.address2)!)")
                 self.receiver.accept((defaultAddress.first?.receiver)!)
                 self.postalCode.accept((defaultAddress.first?.postalCode)!)
+                self.city.accept((defaultAddress.first?.city)!)
+                self.province.accept((defaultAddress.first?.province)!)
+                self.country.accept((defaultAddress.first?.country)!)
             }
             
             if let payment = user.payment {
@@ -146,7 +152,7 @@ class OrderReviewViewModel: BaseViewModel {
     
     func saveOrder() -> Completable {
         
-        let shippingAddress = AddressEntity(receiver: receiver.value, address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
+        let shippingAddress = AddressEntity(receiver: receiver.value, address1: address.value, address2: "", city: city.value, province: province.value, postalCode: postalCode.value, country: country.value, isDefault: true, phoneNumber: mobileNumber.value)
 
         let pointStatement = PointStatement(dictionary: ["earnedPoints" : 0,
                                                          "consumedPoints": 0])
