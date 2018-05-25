@@ -21,6 +21,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         viewModel.fetchUser()
         checkoutTableView.reloadData()
     }
@@ -78,9 +79,9 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-           self.viewModel.dataForSection.asObservable()
-                .bind(to: checkoutTableView.rx.items(dataSource: dataSource))
-                .disposed(by: disposeBag)
+        self.viewModel.dataForSection.asObservable()
+            .bind(to: checkoutTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 
     
@@ -105,31 +106,34 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         
         self.navigationController?.pushViewController(next, animated: true)
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let next = resolver.resolve(CheckoutViewController.self)!
         tableView.deselectRow(at: indexPath, animated: false)
 
-        var isMember: Bool
         
         if indexPath.section == 0 {
-            if viewModel.user.value.count > 0 {
-                isMember = true
-            } else {
-                isMember = false
-            }
             let userInfoEditVC = resolver.resolve(UserInfoEditViewController.self)!
-            userInfoEditVC.isMember = isMember
+            userInfoEditVC.isMember = viewModel.isMember.value
             userInfoEditVC.title = "User Information"
             self.navigationController?.pushViewController(userInfoEditVC, animated: true)
-
         } else if indexPath.section == 1 {
-            if viewModel.user.value.first?.address != nil {
-                let addressListVC = resolver.resolve(AddressListViewController.self)!
-                addressListVC.title = "Shipping"
-                self.navigationController?.pushViewController(addressListVC, animated: true)
+            guard let isMember = viewModel.user.value.first?.isMember else { return }
+            
+            if isMember {
+                if viewModel.user.value.first?.address?.count == 0 {
+                    let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+                    self.navigationController?.pushViewController(addressEditVC, animated: true)
+                } else {
+                    let addressListVC = resolver.resolve(AddressListViewController.self)!
+                    addressListVC.title = "Shipping"
+                    self.navigationController?.pushViewController(addressListVC, animated: true)
+                }
             } else {
                 let addressEditVC = resolver.resolve(AddressEditViewController.self)!
+
+                if viewModel.user.value.first?.address != nil {
+                    addressEditVC.indexNumberOfAddress = 0
+                } 
                 addressEditVC.title = "Shipping"
                 self.navigationController?.pushViewController(addressEditVC, animated: true)
             }

@@ -55,6 +55,10 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
@@ -160,7 +164,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     
     @IBAction func checkoutPurchase(_ sender: Any) {
         let next = resolver.resolve(CheckoutViewController.self)!
-        navigationController?.pushViewController(next, animated: true)
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     func changeQuantityDidTap(sender: UIButton) -> Void {

@@ -18,6 +18,8 @@ class UserInfoEditViewModel: BaseViewModel {
     var phoneNumber = BehaviorRelay(value: "")
     var user = BehaviorRelay<[User]>(value: [])
     
+    var isSaved = BehaviorRelay<Bool?>(value: nil)
+    
     private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -27,25 +29,33 @@ class UserInfoEditViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
-            self.firstName.accept(user.firstName)
-            self.lastName.accept(user.lastName)
-            self.email.accept(user.email)
-            self.phoneNumber.accept(user.mobileNumber)
-//            let arr: [User] = [user]
+            self.firstName.accept(user.firstName ?? "")
+            self.lastName.accept(user.lastName ?? "")
+            self.email.accept(user.email ?? "")
+            self.phoneNumber.accept(user.mobileNumber ?? "")
             self.user.accept([user])
-            print(user.firstName)
         }) { (err) in
             print(err)
         }.disposed(by: disposeBag)
     }
     
-    func updateUser() -> Completable {
+    func updateUser(firstName: String, lastName: String, email: String, mobileNumber: String) {
+        var updatedUser: User
         if user.value.count > 0 {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: user.value.first?.dateOfBirth, email: email.value, totalPoint: (user.value.first?.totalPoint)!, address: user.value.first?.address, payment: user.value.first?.payment, coupon: user.value.first?.coupon)
-            return useCase.updateUser(user: updatedUser)
+            updatedUser = User(firstName: firstName, lastName: lastName, mobileNumber: mobileNumber, dateOfBirth: user.value.first?.dateOfBirth, isMember: true, email: email, totalPoint: (user.value.first?.totalPoint)!, address: user.value.first?.address, payment: user.value.first?.payment, coupon: user.value.first?.coupon)
         } else {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
-            return useCase.updateUser(user: updatedUser)
+            updatedUser = User(firstName: firstName, lastName: lastName, mobileNumber: mobileNumber, dateOfBirth: nil, isMember: true, email: email, totalPoint: 0, address: nil, payment: nil, coupon: nil)
+        }
+        useCase.updateUser(user: updatedUser).subscribe(onCompleted: {
+            self.isSaved.accept(true)
+        }) { (error) in
+            switch (error) {
+                case NomnomError.invalidInput :
+                    self.isSaved.accept(false)
+                break;
+                default :
+                    print(error)
+            }
         }
     }
 }

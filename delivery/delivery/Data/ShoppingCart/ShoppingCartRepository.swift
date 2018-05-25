@@ -9,39 +9,40 @@ import Foundation
 import RxSwift
 
 protocol ShoppingCartRepositoryProtocol{
-    func deleteShoppingCart()
-    func addProductShoppingCart(shoppingCart: ShoppingCartEntity)
-    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity)
+    func deleteShoppingCart() -> Completable
+    func addProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
-    func deleteProductFromShoppingCart(with primaryKey: String)
-    func productAlreadyInCart(with primaryKey: String) -> Bool
+    func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
+    func productAlreadyInCart(with primaryKey: String)-> Bool
 }
 
 class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
+    
     private let dataStore: ShoppingCartDataStoreProtocol
     
     init(dataStore: ShoppingCartDataStoreProtocol) {
         self.dataStore = dataStore
     }
-        
-    func addProductShoppingCart(shoppingCart: ShoppingCartEntity) {
-        dataStore.addProductShoppingCart(shoppingCart: shoppingCart)
+    
+    func addProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable {
+        return dataStore.addProductShoppingCart(shoppingCart: shoppingCart)
     }
     
-    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) {
-        dataStore.updateProductShoppingCart(shoppingCart: shoppingCart)
+    func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable {
+        return dataStore.updateProductShoppingCart(shoppingCart: shoppingCart)
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {
         return dataStore.fetchShoppingCart()
     }
     
-    func deleteShoppingCart() {
-        dataStore.deleteShoppingCart()
+    func deleteShoppingCart() -> Completable {
+        return dataStore.deleteShoppingCart()
     }
     
-    func deleteProductFromShoppingCart(with primaryKey: String){
-        dataStore.deleteProductFromShoppingCart(with: primaryKey)
+    func deleteProductFromShoppingCart(with primaryKey: String) -> Completable{
+        return dataStore.deleteProductFromShoppingCart(with: primaryKey)
     }
     
     func productAlreadyInCart(with primaryKey: String) -> Bool {

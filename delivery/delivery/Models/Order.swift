@@ -9,69 +9,38 @@
 import Foundation
 
 struct Order {
-//    public let dateOfPurchase: Date
-    public let remark: String
-    public let pointStatement: PointStatement
-    public let userId: String
-    public let orderDetail: [OrderDetail]
-    public let scheduledDeliveryDate: Date
-    public let cancelReason: String?
-    public let status: Status
+    public let orderNumber: String
+    public let cancelReason: String
     public let deliveryFee: Double
-    public let shippingAddress: Address
+    public let deliveryInfo: [String : Date?]
+    public let orderDetail: [OrderDetail]
+    public let pointStatement: PointStatement
+    public let remark: String
+    public let scheduledDeliveryDate: Date?
+    public let shippingAddress: AddressEntity
+    public let status: String
     public let totalPrice: Double
-    public let orderNumber: String?
-    public let trackingNumber: String?
-    public let deliveryInfo: [String : Date]
-
-    init?(dictionary: [String: Any]) {
-        guard let orderNumber = dictionary["orderNumber"] as? String,
-            let trackingNumber = dictionary["trackingNumber"] as? String,
-            //            let dateOfPurchase = dictionary["dateOfPurchase"] as? Date,
-            let scheduledDeliveryDate = dictionary["scheduledDeliveryDate"] as? Date,
-            let totalPrice = dictionary["totalPrice"] as? Double,
-            let shippingAddress = dictionary["shippingAddress"] as? Address,
-            let deliveryFee = dictionary["deliveryFee"] as? Double,
-            let status = dictionary["status"] as? Status,
-            let userId = dictionary["userId"] as? String,
-            let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
-            let deliveryInfo = dictionary["deliveryInfo"] as? [String : Date],
-            let pointStatement = dictionary["pointStatement"] as? PointStatement,
-            let remark = dictionary["remark"] as? String,
-            let cancelReason = dictionary["cancelReason"] as? String else { return nil }
-        
-        self.orderNumber = orderNumber
-        self.trackingNumber = trackingNumber
-        //        self.dateOfPurchase = dateOfPurchase
-        self.scheduledDeliveryDate = scheduledDeliveryDate
-        self.totalPrice = totalPrice
-        self.shippingAddress = shippingAddress
-        self.deliveryFee = deliveryFee
-        self.status = status // not sure.....
-        self.cancelReason = cancelReason
-        self.userId = userId
-        self.orderDetail = orderDetail
-        self.deliveryInfo = deliveryInfo
-        self.pointStatement = pointStatement
-        self.remark = remark
-    }
+    public let trackingNumber: String
+    public let userId: String
+    public let couponDiscount: Double
+    public let orderId: String
     
     var dictionary: [String: Any] {
         return [
-//            "dateOfPurchase": dateOfPurchase,
-            "remark": remark,
-            "pointStatement": pointStatement,
-            "userId": userId,
-            "orderDetail": orderDetail,
-            "scheduledDeliveryDate": scheduledDeliveryDate,
-            "cancelReason": cancelReason as Any,
-            "status": status,
+            "orderNumber": orderNumber,
+            "cancelReason": cancelReason,
             "deliveryFee": deliveryFee,
+            "deliveryInfo": deliveryInfo,
+            "orderDetail": orderDetail,
+            "pointStatement": pointStatement,
+            "remark": remark,
+            "scheduledDeliveryDate": scheduledDeliveryDate as Any,
             "shippingAddress": shippingAddress,
+            "status": status,
             "totalPrice": totalPrice,
-            "orderNumber": orderNumber ?? "",
-            "trackingNumber": trackingNumber ?? "",
-            "deliveryInfo": deliveryInfo
+            "trackingNumber": trackingNumber,
+            "userId": userId,
+            "couponDiscount": couponDiscount,
         ]
     }
 }

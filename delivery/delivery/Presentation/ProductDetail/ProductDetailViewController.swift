@@ -100,6 +100,12 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         review2.isHidden = true
         reviewViewMoreButton.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        
+        viewModel.fetchShoppingCartQty()
+    }
 
     // MARK: - Private Fuctions
     private func fetch() {
@@ -123,6 +129,15 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         relatedCollection.delegate = self
         
         registerCell()
+        
+        navigationItem.addShoppingCart()
+            .addTarget(self, action: #selector(shoppingCartButtonTapped), for: .touchUpInside)
+        
+        // Make the background of NavigationController transparent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
     }
     
     private func bindView() {
@@ -227,6 +242,19 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             .bind(to: numOfProduct.rx.text)
             .disposed(by: disposeBag)
         
+        // ShoppingCart
+        viewModel.numOfProducntInShoppingCart.asObservable()
+            .subscribe(
+                onNext: { num in self.navigationItem.updateShoppingCart(num: num) }
+            ).disposed(by: disposeBag)
+        viewModel.onCompleteAddingMessage.asObservable()
+            .subscribe(
+                onNext: { msg in
+                    self.showAlert(message: msg)
+                    self.viewModel.fetchShoppingCartQty()
+            }
+            ).disposed(by: disposeBag)
+        
         // Alert Message
         viewModel.alertMessage.asObservable()
             .subscribe(
@@ -242,6 +270,11 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         frequentlyCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         relatedCollection.register(productNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
     }
+    
+    @objc private func shoppingCartButtonTapped(_ sender: Any) {
+        let next = resolver.resolve(ShoppingCartViewController.self)!
+        self.navigationController?.pushViewController(next, animated: true)
+    }
 
     // MARK: - Collection Delegate
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -249,22 +282,14 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CollectionViewCell else { return }
         
         let next = resolver.resolve(ProductDetailViewController.self)!
         next.productId = cell.item!.productId
-        present(next, animated: true, completion: nil)
+        self.navigationController?.pushViewController(next, animated: true)
     }
 
     // MARK: - IBAction
-    @IBAction func closeButtonPressed(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    @IBAction func buttonPressed(_ sender: Any) {
-        viewModel.fetchProductDetail(productId)
-    }
-    
     @IBAction func writeReviewButtonPressed(_ sender: Any) {
         let next = resolver.resolve(ReviewPostViewController.self)!
         next.productId = productId
@@ -287,6 +312,6 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
-        viewModel.addToCart()
+        viewModel.addToCart(productId)
     }
 }

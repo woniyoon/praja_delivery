@@ -39,6 +39,10 @@ class OrderReviewViewController: BaseViewController {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         bindOrderReview()
         applyZigZagEffect(givenView: layerBox)
@@ -73,7 +77,21 @@ class OrderReviewViewController: BaseViewController {
             .bind(to: totalPurchase.rx.text)
             .disposed(by: disposeBag)
 
+        viewModel.isPaymentConfirmed.asObservable()
+            .subscribe(onNext: { (isPaymentConfirmed) in
+                if isPaymentConfirmed {
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "OrderConfirmation", bundle: nil)
+                    let next = storyBoard.instantiateViewController(withIdentifier: "OrderConfirmation") as! OrderConfirmationViewController
+                    
+                    self.navigationController?.pushViewController(next, animated: true)
+                }
+            }).disposed(by: disposeBag)
 
+        viewModel.alertMessage.asObservable()
+            .subscribe(onNext: { (alertError) in
+                self.showAlert(alertError)
+            })
+            .disposed(by: disposeBag)
     }
     
     
@@ -98,11 +116,7 @@ class OrderReviewViewController: BaseViewController {
         viewModel.saveOrder()
         viewModel.deleteShoppingCart()
         
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "OrderConfirmation", bundle: nil)
-        let next = storyBoard.instantiateViewController(withIdentifier: "OrderConfirmation") as! OrderConfirmationViewController
-        
-        self.navigationController?.pushViewController(next, animated: true)
+
     }
     
     func pathZigZagForView(givenView: UIView) ->UIBezierPath
@@ -162,34 +176,6 @@ class OrderReviewViewController: BaseViewController {
         givenView.layer.addSublayer(shadowSubLayer)
     }
     
-}
-@IBDesignable
-class LineView: UIView {
-    
-    @IBInspectable var lineWidth: CGFloat = 1.0
-    @IBInspectable var lineColor: UIColor? {
-        didSet {
-            lineCGColor = lineColor?.cgColor
-        }
-    }
-    var lineCGColor: CGColor?
-    
-    override func draw(_ rect: CGRect) {
-        // Draw a line from the left to the right at the midpoint of the view's rect height.
-        let midpoint = self.bounds.size.height / 2.0
-        if let context = UIGraphicsGetCurrentContext() {
-            context.setLineWidth(lineWidth)
-            if let lineCGColor = self.lineCGColor {
-                context.setStrokeColor(lineCGColor)
-            }
-            else {
-                context.setStrokeColor(UIColor.black.cgColor)
-            }
-            context.move(to: CGPoint(x: 0.0, y: midpoint))
-            context.addLine(to: CGPoint(x: self.bounds.size.width, y: midpoint))
-            context.strokePath()
-        }
-    }
 }
 
 extension OrderReviewViewController: STPAddCardViewControllerDelegate {

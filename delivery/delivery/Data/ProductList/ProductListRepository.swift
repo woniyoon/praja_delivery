@@ -11,8 +11,6 @@ import RxSwift
 
 protocol ProductListRepositoryProtocol{
     func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]>
-    
-//    func productAlreadyInCart(with primaryKey: String)-> Bool
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
@@ -25,9 +23,6 @@ class ProductListRepository: ProductListRepositoryProtocol {
     func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]> {
         return dataStore.fetchProductList(with: keyword, by: orderby, descending, filters: filters)
     }
-    
-//    func productAlreadyInCart(with primaryKey: String) -> Bool {
-//        return dataStore.productAlreadyInCart(with: primaryKey)
-//    }
-//
+
+
 }

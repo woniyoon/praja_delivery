@@ -9,33 +9,37 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-class OrderViewModel {
+class OrderViewModel : BaseViewModel{
+    public var arrOfOrder = BehaviorRelay<[SectionModel<String, Order>]>(value: [])
     
-    var name = BehaviorRelay(value: "")
-    var price = BehaviorRelay(value: "")
-    var originalPrice = BehaviorRelay(value: "")
-    var image = BehaviorRelay(value: "")
-    
+    private var useCase: OrderUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
-    
-    private let useCase: OrderUseCaseProtocol
     
     init(useCase: OrderUseCaseProtocol) {
         self.useCase = useCase
     }
     
-    func fetchOrder(_ id: String) {
-        useCase.fetchOrder(id)
+    func fetchOrder(with userId: String) {
+        useCase.fetchOrder(with: userId)
             .subscribe(
                 onSuccess: { model in
-                    self.name.accept(model.remark)
-                    self.price.accept("$\(model.deliveryFee)")
-                    self.originalPrice.accept("$\(model.totalPrice)")
-            },
-                onError: { error in
-                    print(error.localizedDescription) }
-            )
-            .disposed(by: disposeBag)
+                    var currentOrder: [Order] = []
+                    var pastOrder: [Order] = []
+                    model.forEach({ (order) in
+                        if (order.deliveryInfo["deliveredDate"] == nil) {
+                            currentOrder.append(order)
+                        } else {
+                            pastOrder.append(order)
+                        }
+                    })
+                    self.arrOfOrder.accept([
+                        SectionModel(model: "Current Order", items:currentOrder),
+                        SectionModel(model: "Past Order", items: pastOrder)])
+            }, onError: { (error) in
+                print(error.localizedDescription)}
+            ).disposed(by: disposeBag)
     }
 }
+

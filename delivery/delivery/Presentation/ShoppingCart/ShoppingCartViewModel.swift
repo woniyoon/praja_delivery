@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import RealmSwift
 import RxCocoa
 
 class ShoppingCartViewModel: BaseViewModel {
@@ -43,10 +42,18 @@ class ShoppingCartViewModel: BaseViewModel {
     
     func deleteShoppingCart() {
         useCase.deleteShoppingCart()
+            .subscribe(
+                onCompleted: { },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
     }
     
     func deleteProductFromShoppingCart(with primaryKey: String){
         useCase.deleteProductFromShoppingCart(with: primaryKey)
+            .subscribe(
+                onCompleted: { },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
     }
     
     func calculateSubTotal(){
@@ -67,6 +74,10 @@ class ShoppingCartViewModel: BaseViewModel {
     
     func updateProductShoppingCart(with shoppingCart: ShoppingCart){
         useCase.updateProductShoppingCart(shoppingCart: shoppingCart)
+            .subscribe(
+                onCompleted: { },
+                onError: { error in self.setError(error) }
+            ).disposed(by: disposeBag)
     }
         
 }

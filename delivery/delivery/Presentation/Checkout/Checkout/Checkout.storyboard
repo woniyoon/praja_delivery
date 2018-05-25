@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GS8-oP-Rfc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GS8-oP-Rfc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,51 +19,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5V4-Ta-2eL">
-                                <rect key="frame" x="16" y="46" width="343" height="508"/>
+                                <rect key="frame" x="16" y="36" width="343" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <sections/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-iE-1LL">
-                                <rect key="frame" x="11" y="562" width="353" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or Continue Shopping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLj-yA-TNe">
-                                        <rect key="frame" x="93" y="5" width="167" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="GLj-yA-TNe" firstAttribute="centerY" secondItem="fEu-iE-1LL" secondAttribute="centerY" id="LWE-eb-qf8"/>
-                                    <constraint firstItem="GLj-yA-TNe" firstAttribute="centerX" secondItem="fEu-iE-1LL" secondAttribute="centerX" id="WVC-R5-YHX"/>
-                                    <constraint firstAttribute="height" constant="30" id="vUU-Ga-EPX"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phg-O6-8fE">
-                                <rect key="frame" x="11" y="604" width="353" height="51"/>
+                                <rect key="frame" x="11" y="605" width="353" height="50"/>
                                 <color key="backgroundColor" red="0.38823529410000002" green="0.68627450980000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Paz-to-ja6"/>
+                                </constraints>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirmButtonTapped:" destination="GS8-oP-Rfc" eventType="touchUpInside" id="CA8-4b-sL5"/>
+                                    <action selector="confirmPayment:" destination="GS8-oP-Rfc" eventType="touchUpInside" id="bqy-QG-N8s"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="deG-40-Az2" firstAttribute="bottom" secondItem="phg-O6-8fE" secondAttribute="bottom" constant="12" id="3L4-b2-1QX"/>
-                            <constraint firstItem="fEu-iE-1LL" firstAttribute="top" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="8" id="7xj-nd-MKJ"/>
-                            <constraint firstItem="phg-O6-8fE" firstAttribute="top" secondItem="fEu-iE-1LL" secondAttribute="bottom" constant="12" id="Al2-2T-fbX"/>
                             <constraint firstItem="5V4-Ta-2eL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="16" id="Arz-Cb-ZVy"/>
-                            <constraint firstItem="fEu-iE-1LL" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="11" id="TM7-9P-quC"/>
+                            <constraint firstItem="phg-O6-8fE" firstAttribute="top" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="16" id="Mvy-bY-Lj3"/>
                             <constraint firstItem="5V4-Ta-2eL" firstAttribute="trailing" secondItem="deG-40-Az2" secondAttribute="trailing" constant="-16" id="b1Y-Fi-6nV"/>
-                            <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="fEu-iE-1LL" secondAttribute="trailing" constant="11" id="ctx-IK-Rzj"/>
-                            <constraint firstItem="deG-40-Az2" firstAttribute="bottom" secondItem="5V4-Ta-2eL" secondAttribute="bottom" constant="113" id="mEz-KZ-mxF"/>
-                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" constant="26" id="nhT-in-Oo4"/>
+                            <constraint firstItem="5V4-Ta-2eL" firstAttribute="top" secondItem="deG-40-Az2" secondAttribute="top" constant="16" id="nhT-in-Oo4"/>
                             <constraint firstItem="deG-40-Az2" firstAttribute="trailing" secondItem="phg-O6-8fE" secondAttribute="trailing" constant="11" id="q9z-sJ-GjC"/>
                             <constraint firstItem="phg-O6-8fE" firstAttribute="leading" secondItem="deG-40-Az2" secondAttribute="leading" constant="11" id="rnp-hQ-FhN"/>
                         </constraints>

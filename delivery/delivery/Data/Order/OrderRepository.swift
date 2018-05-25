@@ -10,23 +10,28 @@ import Foundation
 import RxSwift
 
 protocol OrderRepositoryProtocol{
-    func fetchOrder(_ id : String) -> Single<OrderEntity>
+    func fetchOrder(with orderId: String) -> Single<[OrderEntity]>
     func saveOrder(_ order: OrderEntity) -> Completable
+    func fetchOrderDetail(with orderId: String) -> Single<OrderEntity>
 }
 
 class OrderRepository : OrderRepositoryProtocol{
     func saveOrder(_ order: OrderEntity) -> Completable{
-       return dataStore.saveOrder(order)
+        return dataStore.saveOrder(order)
     }
     
     private let dataStore: OrderDataStoreProtocol
-
+    
     init(dataStore: OrderDataStoreProtocol) {
         self.dataStore = dataStore
     }
-
-    func fetchOrder(_ id: String) -> Single<OrderEntity> {
-        return dataStore.fetchOrder(id)
+    
+    func fetchOrder(with orderId: String) -> Single<[OrderEntity]> {
+        return dataStore.fetchOrder(with: orderId)
+    }
+    
+    func fetchOrderDetail(with orderId: String) -> Single<OrderEntity>{
+        return dataStore.fetchOrderDetail(with: orderId)
     }
 }
 

@@ -50,6 +50,11 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        viewModel.fetchShoppingCartQty()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -67,11 +72,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         collectionView.reloadData()
         dropDownShadow()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.fetchShoppingCartQty()
-    }
-    
+
     private func bindCartQty(){
         viewModel.qtyProductsCart.asObservable()
             .bind(to: self.cartQty.rx.text)

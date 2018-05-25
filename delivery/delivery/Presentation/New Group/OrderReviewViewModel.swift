@@ -36,6 +36,8 @@ class OrderReviewViewModel: BaseViewModel {
     var totalBeforeShippingFee = BehaviorRelay<String>(value: "0.0")
     var total = BehaviorRelay<String>(value: "0.0")
     
+    var isPaymentConfirmed = BehaviorRelay(value: false)
+    
     var totalPurchase: Double = 0.0
     let shippingFeeValue = 3.0
     
@@ -54,13 +56,13 @@ class OrderReviewViewModel: BaseViewModel {
             self.user.accept([user])
             
             self.fullName.accept("\(user.firstName) \(user.lastName)")
-            self.email.accept(user.email)
+            self.email.accept(user.email!)
             if let dateOfBirth = user.dateOfBirth {
                 let birthDateString = DateFormatter.birthDateInFormat(birthDate: dateOfBirth)
                 self.dateOfBirth.accept(birthDateString)
             }
             
-            self.mobileNumber.accept(user.mobileNumber)
+            self.mobileNumber.accept(user.mobileNumber!)
             
             if let address = user.address {
                 let defaultAddress = address.filter({ $0.isDefault })
@@ -101,7 +103,11 @@ class OrderReviewViewModel: BaseViewModel {
     
     
     func deleteShoppingCart() {
-        useCaseShoppingCart.deleteShoppingCart()
+        useCaseShoppingCart.deleteShoppingCart().subscribe(onCompleted: {
+            self.isPaymentConfirmed.accept(true)
+        }) { (error) in
+            self.setError(error)
+        }
     }
     
     func calculateSubTotal(){
@@ -140,9 +146,10 @@ class OrderReviewViewModel: BaseViewModel {
     
     func saveOrder() -> Completable {
         
-        let shippingAddress = Address(receiver: receiver.value, address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
+        let shippingAddress = AddressEntity(receiver: receiver.value, address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
 
-        let pointStatement = PointStatement(earnedPoints: 0, consumedPoints: 0)
+        let pointStatement = PointStatement(dictionary: ["earnedPoints" : 0,
+                                                         "consumedPoints": 0])
         
         let date = Date()
         let calender = Calendar.current
@@ -153,22 +160,24 @@ class OrderReviewViewModel: BaseViewModel {
         
         let orderNumber = "ORD\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)\(dateComponent.hour!)\(dateComponent.minute!)\(dateComponent.second!)"
     
-        let orderReview = Order(dictionary: ["remark": "",
-                                            "pointStatement": pointStatement,
-                                            "userId": "",
-                                            "orderDetail": orderDetail,
-                                            "scheduledDeliveryDate": scheduledDeliveryDate,
-                                            "cancelReason": "",
-                                            "status": Status.ordered,
-                                            "deliveryFee": shippingFeeValue,
-                                            "shippingAddress": shippingAddress,
-                                            "totalPrice": totalPurchase,
-                                            "orderNumber": orderNumber,
-                                            "trackingNumber": "",
-                                            "deliveryInfo": ["purchaseDate": Date()]])
+        let orderReview = Order(orderNumber: orderNumber,
+                                cancelReason: "",
+                                deliveryFee: shippingFeeValue,
+                                deliveryInfo: ["purchasedDate": Date()],
+                                orderDetail: orderDetail,
+                                pointStatement: pointStatement!,
+                                remark: "",
+                                scheduledDeliveryDate: scheduledDeliveryDate,
+                                shippingAddress: shippingAddress,
+                                status: "Received Order",
+                                totalPrice: totalPurchase,
+                                trackingNumber: "",
+                                userId: "",
+                                couponDiscount: 0,
+                                orderId: orderNumber)
         
         
-        return useCaseOrder.saveOrder(orderReview!)
+        return useCaseOrder.saveOrder(orderReview)
         
     }
 }
