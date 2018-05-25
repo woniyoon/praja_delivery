@@ -42,6 +42,11 @@ class ViewController: UITabBarController{
         
         self.addChildViewController(navigationVCforAccount)
 
+        let image = UIImage(named: "backward_arrow")?.withRenderingMode(.alwaysOriginal)
+        UINavigationBar.appearance().backIndicatorImage = image
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = image
+        
+//        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

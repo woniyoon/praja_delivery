@@ -35,7 +35,7 @@ class AccountEditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        doneButtonItem.tintColor = .black
+        doneButtonItem.tintColor = #colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1)
         self.navigationItem.rightBarButtonItem = doneButtonItem
         viewModel.fetchUser()
     }
