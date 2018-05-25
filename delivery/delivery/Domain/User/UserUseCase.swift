@@ -21,6 +21,7 @@ protocol UserUseCaseProtocol {
     func signIn(email: String, password: String) -> Completable
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable
+    func updateUser(user: User, password: String) -> Completable
 }
 
 class UserUseCase: UserUseCaseProtocol {
@@ -109,6 +110,15 @@ class UserUseCase: UserUseCaseProtocol {
     
     func signOut() -> Completable {
         return repository.signOut()
+    }
+    
+    func updateUser(user: User, password: String) -> Completable {
+        if !Validation.validatePassword(password: password) {
+            Completable.error(NomnomError.alert(message: "wrong password!"))
+        }
+        
+        let updatedUser = translator.translate(fromModel: user)
+        return repository.updateUser(user: updatedUser, password: password)
     }
 }
 

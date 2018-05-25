@@ -65,6 +65,19 @@ class AccountEditViewModel: BaseViewModel {
         }
     }
     
+    func updateUser(password: String) -> Completable {
+        if user.value.count > 0 {
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: birthDate.value != "" ? DateFormatter.toDateFromString(date: birthDate.value)! : nil,
+                                   email: email.value, totalPoint: (user.value.first?.totalPoint)!,
+                                   address: user.value.first?.address, payment:
+                user.value.first?.payment, coupon: user.value.first?.coupon)
+            return useCase.updateUser(user: updatedUser, password: password)
+        } else {
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
+            return useCase.updateUser(user: updatedUser, password: password)
+        }
+    }
+    
     func changePassword() {
         
     }

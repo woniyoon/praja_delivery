@@ -92,7 +92,8 @@ class AccountEditViewController: UIViewController {
         if !(firstNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
-            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
+            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(passwordLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
             viewModel.firstName.accept(firstNameLabel.text!)
             viewModel.lastName.accept(lastNameLabel.text!)
             viewModel.email.accept(emailLabel.text!)
@@ -102,13 +103,13 @@ class AccountEditViewController: UIViewController {
                 viewModel.birthDate.accept(birthDateString)
             }
             
-            viewModel.updateUser().subscribe(onCompleted: {
+            viewModel.updateUser(password: passwordLabel.text!).subscribe(onCompleted: {
                 self.navigationController?.popViewController(animated: true)})
             { (err) in
-                print(err)
+                self.showAlert(message: "Invalid Password!")
             }
         } else {
-            print("all fields are mandatory!")
+            self.showAlert(message: "All fields are mandatory!")
         }
     }
 }
