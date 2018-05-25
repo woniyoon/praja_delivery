@@ -22,7 +22,7 @@ struct Order {
     public let totalPrice: Double
     public let orderNumber: String?
     public let trackingNumber: String?
-    public let dateInfo: [String : Date]
+    public let deliveryInfo: [String : Date]
 
     init?(dictionary: [String: Any]) {
         guard let orderNumber = dictionary["orderNumber"] as? String,
@@ -35,7 +35,7 @@ struct Order {
             let status = dictionary["status"] as? Status,
             let userId = dictionary["userId"] as? String,
             let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
-            let dateInfo = dictionary["dateInfo"] as? [String : Date],
+            let deliveryInfo = dictionary["deliveryInfo"] as? [String : Date],
             let pointStatement = dictionary["pointStatement"] as? PointStatement,
             let remark = dictionary["remark"] as? String,
             let cancelReason = dictionary["cancelReason"] as? String else { return nil }
@@ -51,7 +51,7 @@ struct Order {
         self.cancelReason = cancelReason
         self.userId = userId
         self.orderDetail = orderDetail
-        self.dateInfo = dateInfo
+        self.deliveryInfo = deliveryInfo
         self.pointStatement = pointStatement
         self.remark = remark
     }
@@ -71,7 +71,7 @@ struct Order {
             "totalPrice": totalPrice,
             "orderNumber": orderNumber ?? "",
             "trackingNumber": trackingNumber ?? "",
-            "dateInfo": dateInfo
+            "deliveryInfo": deliveryInfo
         ]
     }
 }

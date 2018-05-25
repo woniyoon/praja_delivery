@@ -99,6 +99,11 @@ class OrderReviewViewModel: BaseViewModel {
             ) .disposed(by: disposeBag)
     }
     
+    
+    func deleteShoppingCart() {
+        useCaseShoppingCart.deleteShoppingCart()
+    }
+    
     func calculateSubTotal(){
         let shoppingCart = productsShoppingCart.value
         
@@ -123,7 +128,9 @@ class OrderReviewViewModel: BaseViewModel {
             
             let orderDetail = OrderDetail(dictionary: ["pricePerItem": item.total,
                                                              "quantity": item.quantity,
-                                                             "productId": item.product.productId])
+                                                             "productId": item.product.productId,
+                                                             "productImage": "https://images-na.ssl-images-amazon.com/images/I/61JPeeObrUL._SL1500_.jpg",
+                                                             "productName": item.product.name])
             orderDetailList.append(orderDetail!)
         }
         
@@ -133,8 +140,8 @@ class OrderReviewViewModel: BaseViewModel {
     
     func saveOrder() -> Completable {
         
-        let shippingAddress = Address(receiver: "", address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
-//        let shippingAddress = "\(address.value), \(postalCode.value) "
+        let shippingAddress = Address(receiver: receiver.value, address1: address.value, address2: "", city: "Vancouver", province: "BC", postalCode: postalCode.value, country: "Canada", isDefault: true, phoneNumber: "555-555-5555")
+
         let pointStatement = PointStatement(earnedPoints: 0, consumedPoints: 0)
         
         let date = Date()
@@ -158,7 +165,7 @@ class OrderReviewViewModel: BaseViewModel {
                                             "totalPrice": totalPurchase,
                                             "orderNumber": orderNumber,
                                             "trackingNumber": "",
-                                            "dateInfo": ["Info": Date()]])
+                                            "deliveryInfo": ["purchaseDate": Date()]])
         
         
         return useCaseOrder.saveOrder(orderReview!)

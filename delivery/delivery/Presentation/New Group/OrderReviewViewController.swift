@@ -89,11 +89,20 @@ class OrderReviewViewController: BaseViewController {
     
     
     @IBAction func didTapPayNow(_ sender: Any) {
-        let addCardViewController = STPAddCardViewController()
-        addCardViewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: addCardViewController)
-        present(navigationController, animated: true)
-        //        navigationController?.pushViewController(addCardViewController, animated: true)
+//        let addCardViewController = STPAddCardViewController()
+//        addCardViewController.delegate = self
+//        let navigationController = UINavigationController(rootViewController: addCardViewController)
+//        present(navigationController, animated: true)
+//        navigationController?.pushViewController(addCardViewController, animated: true)
+
+        viewModel.saveOrder()
+        viewModel.deleteShoppingCart()
+        
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "OrderConfirmation", bundle: nil)
+        let next = storyBoard.instantiateViewController(withIdentifier: "OrderConfirmation") as! OrderConfirmationViewController
+        
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
     func pathZigZagForView(givenView: UIView) ->UIBezierPath

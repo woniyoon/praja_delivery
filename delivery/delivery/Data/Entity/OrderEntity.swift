@@ -29,7 +29,7 @@ struct OrderEntity {
     public let cancelReason: String
     public let userId: String
     public let orderDetail: [OrderDetail] //not sure...
-    public let dateInfo: [String : Date] //not sure..
+    public let deliveryInfo: [String : Date] //not sure..
     public let pointStatement: PointStatement
     public let remark: String
 
@@ -42,10 +42,10 @@ struct OrderEntity {
             let totalPrice = dictionary["totalPrice"] as? Double,
             let shippingAddress = dictionary["shippingAddress"] as? Address,
             let deliveryFee = dictionary["deliveryFee"] as? Double,
-            let status = dictionary["status"] as? String,
+            let status = dictionary["status"] as? Status,
             let userId = dictionary["userId"] as? String,
             let orderDetail = dictionary["orderDetail"] as? [OrderDetail],
-            let dateInfo = dictionary["dateInfo"] as? [String : Date],
+            let deliveryInfo = dictionary["deliveryInfo"] as? [String : Date],
             let pointStatement = dictionary["pointStatement"] as? PointStatement,
             let remark = dictionary["remark"] as? String,
             let cancelReason = dictionary["cancelReason"] as? String else { return nil }
@@ -58,11 +58,11 @@ struct OrderEntity {
         self.totalPrice = totalPrice
         self.shippingAddress = shippingAddress
         self.deliveryFee = deliveryFee
-        self.status = Status.init(rawValue: status)! // not sure.....
+        self.status = status // not sure.....
         self.cancelReason = cancelReason
         self.userId = userId
         self.orderDetail = orderDetail
-        self.dateInfo = dateInfo
+        self.deliveryInfo = deliveryInfo
         self.pointStatement = pointStatement
         self.remark = remark
     }
@@ -80,7 +80,7 @@ struct OrderEntity {
             "cancelReason": cancelReason,
             "userId": userId,
             "orderDetail": orderDetail,
-            "dateInfo": dateInfo,
+            "deliveryInfo": deliveryInfo,
             "pointStatement": pointStatement,
             "remark": remark
         ]

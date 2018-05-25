@@ -23,7 +23,7 @@ class OrderTranslator: TranslatorProtocol {
                                         "totalPrice": entity.totalPrice,
                                         "orderNumber": entity.orderNumber,
                                         "trackingNumber": entity.trackingNumber,
-                                        "dateInfo": entity.dateInfo])!
+                                        "dateInfo": entity.deliveryInfo])!
         
     }
     
@@ -41,6 +41,6 @@ class OrderTranslator: TranslatorProtocol {
                            "totalPrice": model.totalPrice,
                            "orderNumber": model.orderNumber,
                            "trackingNumber": model.trackingNumber,
-                           "dateInfo": model.dateInfo])!
+                           "deliveryInfo": model.deliveryInfo])!
     }
 }
