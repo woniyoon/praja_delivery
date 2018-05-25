@@ -18,10 +18,11 @@ class AccountEditViewModel: BaseViewModel {
     var email = BehaviorRelay(value: "")
     var birthDate = BehaviorRelay(value: "")
     var user = BehaviorRelay<[User]>(value: [])
+    var isSaved = BehaviorRelay(value: false)
     
     private let useCase: UserUseCaseProtocol
     private let disposeBag: DisposeBag = DisposeBag()
-        
+    
     init(useCase: UserUseCaseProtocol) {
         self.useCase = useCase
     }
@@ -56,8 +57,12 @@ class AccountEditViewModel: BaseViewModel {
             return useCase.updateUser(user: updatedUser, password: password)
         }
     }
-    
-    func changePassword(currentPW: String, confirmedPW: String, newPW: String) -> Completable {
-        return useCase.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW)
+
+    func changePassword(currentPW: String, confirmedPW: String, newPW: String) {
+        useCase.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW).subscribe(onCompleted: {
+            self.isSaved.accept(true)
+        }, onError: { (err) in
+            self.setError(err)
+        })
     }
 }

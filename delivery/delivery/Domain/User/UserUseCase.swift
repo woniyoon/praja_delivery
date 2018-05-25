@@ -127,12 +127,26 @@ class UserUseCase: UserUseCaseProtocol {
     }
     
     func changePassword(currentPW: String, confirmedPW: String, newPW: String) -> Completable {
-        if !Validation.validatePassword(password: newPW) {
-            return Completable.error(NomnomError.invalidPassword(message: "password should contain at least 1 capital letter and number"))
-        }
+//        if !Validation.validatePassword(password: newPW) {
+//            return Completable.error(NomnomError.invalidPassword(message: "password should contain at least 1 capital letter and number"))
+//        }
+//
+//        if currentPW != confirmedPW {
+//            return Completable.error(NomnomError.alert(message: "Please confirm your password again!"))
+//        }
+//
         
+        var messageArray: [String] = []
+
+        if !Validation.validatePassword(password: newPW) {
+            messageArray.append("Password is invalid")
+        }
         if currentPW != confirmedPW {
-            return Completable.error(NomnomError.alert(message: "Please confirm your password again!"))
+            messageArray.append("Confirm password is differnt from Password")
+        }
+        if messageArray.count > 0 {
+            let message = messageArray.joined(separator: "\n")
+            return Completable.error(NomnomError.alert(message: message))
         }
         
         return repository.changePassword(currentPW: currentPW, newPW: newPW)

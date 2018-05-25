@@ -98,6 +98,11 @@ class AccountViewController: BaseViewController {
                     self.navigationController?.pushViewController(signInVC, animated: false)
                 }
             }).disposed(by: disposeBag)
+        
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
     }
     
     @IBAction func toEditProfile(_ sender: Any) {

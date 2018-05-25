@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class AccountEditViewController: UIViewController {
+class AccountEditViewController: BaseViewController {
 
     private var viewModel: AccountEditViewModel!
     private let disposeBag: DisposeBag = DisposeBag()
@@ -61,6 +61,20 @@ class AccountEditViewController: UIViewController {
             .disposed(by: disposeBag)
         viewModel.birthDate.asObservable()
             .bind(to: birthDateLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
+        
+        viewModel.isSaved.asObservable()
+            .subscribe(
+                onNext: { isSaved in
+                    if isSaved {
+                    self.showAlert(message: "Successfully Changed!")
+                    }
+                })
             .disposed(by: disposeBag)
     }
     
@@ -114,12 +128,6 @@ class AccountEditViewController: UIViewController {
             
             if let currentPW = currentPW, let confirmedPW = confirmedPW, let newPW = newPW {
             self.viewModel.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW)
-                .subscribe(onCompleted: {
-                    self.showAlert(message: "Successfully Changed!")
-                },
-                           onError: { (error) in
-                            self.showAlert(message: error.localizedDescription)
-                            })
             }
         }
     }
