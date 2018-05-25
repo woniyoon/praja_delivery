@@ -41,11 +41,21 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         //-------------------------------------
         tableView.separatorStyle = .none //境界線消す
         self.navigationItem.title="Your Order"
+//        let backImage = UIBarButtonItem(image: #imageLiteral(resourceName: "backward_arrow"), style: .plain, target: nil, action: nil)
+//        backImage.title = ""
+//        self.navigationItem.backBarButtonItem = backImage
+        let image = UIImage(named: "backward_arrow")?.withRenderingMode(.alwaysOriginal)
+        UINavigationBar.appearance().backIndicatorImage = image
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = image
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         //-------------------------------------
         bindView()
         configureTableView()
         viewModel.fetchOrder(with: "Ljk5vGaGSMkYzviKx68B") //userId
     }
+    
     
     private func registerCell(){
         tableView.register(UINib(nibName: CurrentOrderCell.Identifier, bundle: nil), forCellReuseIdentifier: CurrentOrderCell.Identifier)
@@ -57,6 +67,8 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         registerCell()
 //        tableView.estimatedRowHeight = 300
         tableView.allowsSelection = true
+        
+
     }
 
     //-------------------------------------
@@ -71,11 +83,12 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
                     let element = element
                     cell.order = element
                     cell.contentView.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1) //Color literal - 247.247.247
+                    cell.selectionStyle = UITableViewCellSelectionStyle.none //disable highlights
                     return cell
                 } else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PastOrderCell.Identifier) as! PastOrderCell
                     cell.order = element
-//                    cell.contentView.backgroundColor = UIColor.green
+                    cell.selectionStyle = UITableViewCellSelectionStyle.none //disable highlights
                     return cell
                 }
             }
@@ -96,13 +109,19 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
 
     //Action : Show Detail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! CurrentOrderCell
-//        let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
-        
-        let next = resolver.resolve(OrderDetailViewController.self)!
-        next.orderId = currentCell.order?.orderId
-//        next.orderId = pastCell.order?.orderId
-        navigationController?.pushViewController(next, animated: true)
+        if indexPath.section == 0 {
+            let currentCell = tableView.cellForRow(at: indexPath) as! CurrentOrderCell
+            let next = resolver.resolve(OrderDetailViewController.self)!
+            next.orderId = currentCell.order?.orderId
+            navigationController?.pushViewController(next, animated: true)
+//            navigationController?.popViewController(animated: true)
+        } else {
+            let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
+            let next = resolver.resolve(OrderDetailViewController.self)!
+            next.orderId = pastCell.order?.orderId
+            navigationController?.pushViewController(next, animated: true)
+            
+        }
     }
     
     //TableView : Header section's detail
@@ -110,7 +129,7 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         
         if(section==1) //Title of "Past Order"
         {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 327, height: 28))
+            let label = UILabel(frame: CGRect(x: 16, y: 0, width: 327, height: 28))
             label.textAlignment = NSTextAlignment.left
             label.text = "Past Orders"
             label.textColor = #colorLiteral(red: 0.5764705882, green: 0.5764705882, blue: 0.5764705882, alpha: 1)
@@ -148,19 +167,6 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         return 2
     }
 
-    //TableView : Number of cell for each section
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section==0) //CurrentOrder
-        {
-            return 1
-        }
-        else //PastOrder
-        {
-            return 4
-        }
-
-    }
-    
     //TableView : Cell's height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.section==0)

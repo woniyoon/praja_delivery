@@ -12,7 +12,8 @@ final class ViewControllerAssembly: Assembly {
     func assemble(container: Container) {
         container.register(SignUpViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(SignUpViewModel.self, argument: usecase!)
@@ -60,7 +61,8 @@ final class ViewControllerAssembly: Assembly {
 
         container.register(AccountViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AccountViewModel.self, argument: usecase!)
@@ -123,9 +125,11 @@ final class ViewControllerAssembly: Assembly {
 
         container.register(CheckoutViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            
             let viewModel  = container.resolve(CheckoutViewModel.self, argument: usecase!)
             let vc         = CheckoutViewController.createInstance(viewModel: viewModel!)
             return vc!
@@ -133,7 +137,8 @@ final class ViewControllerAssembly: Assembly {
         
         container.register(AddressEditViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AddressEditViewModel.self, argument: usecase!)
@@ -143,7 +148,8 @@ final class ViewControllerAssembly: Assembly {
         
         container.register(AddressListViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AddressListViewModel.self, argument: usecase!)
@@ -153,9 +159,11 @@ final class ViewControllerAssembly: Assembly {
         
         container.register(UserInfoEditViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
+            
             let viewModel  = container.resolve(UserInfoEditViewModel.self, argument: usecase!)
             let vc         = UserInfoEditViewController.createInstance(viewModel: viewModel!)
             return vc!
@@ -173,7 +181,8 @@ final class ViewControllerAssembly: Assembly {
         
         container.register(AccountEditViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(AccountEditViewModel.self, argument: usecase!)
@@ -183,7 +192,8 @@ final class ViewControllerAssembly: Assembly {
         
         container.register(SignInViewController.self) { _ in
             let dataStore  = container.resolve(UserDataStoreProtocol.self)
-            let repository = container.resolve(UserRepositoryProtocol.self, argument: dataStore!)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repository = container.resolve(UserRepositoryProtocol.self, arguments: dataStore!, dataStoreGuest!)
             let translator = container.resolve(UserTranslator.self)
             let usecase    = container.resolve(UserUseCaseProtocol.self, arguments: repository!, translator!)
             let viewModel  = container.resolve(SignInViewModel.self, argument: usecase!)

@@ -28,10 +28,10 @@ class AccountEditViewModel: BaseViewModel {
     
     func fetchUser() {
         useCase.fetchUser().subscribe(onSuccess: { (user) in
-            self.firstName.accept(user.firstName)
-            self.lastName.accept(user.lastName)
-            self.phoneNumber.accept(user.mobileNumber)
-            self.email.accept(user.email)
+            self.firstName.accept(user.firstName ?? "")
+            self.lastName.accept(user.lastName ?? "")
+            self.phoneNumber.accept(user.mobileNumber ?? "")
+            self.email.accept(user.email ?? "")
             self.user.accept([user])
             
             print(self.user.value)
@@ -53,14 +53,14 @@ class AccountEditViewModel: BaseViewModel {
         print("test")
         
         if user.value.count > 0 {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: birthDate.value != "" ? DateFormatter.toDateFromString(date: birthDate.value)! : nil,
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: birthDate.value != "" ? DateFormatter.toDateFromString(date: birthDate.value)! : nil, isMember: true,
                 email: email.value, totalPoint: (user.value.first?.totalPoint)!,
                 address: user.value.first?.address, payment:
                 user.value.first?.payment, coupon: user.value.first?.coupon)
             print(updatedUser)
             return useCase.updateUser(user: updatedUser)
         } else {
-            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
+            let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, isMember: true, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
             return useCase.updateUser(user: updatedUser)
         }
     }

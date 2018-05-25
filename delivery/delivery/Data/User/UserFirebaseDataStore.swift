@@ -15,7 +15,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     func fetchUser() -> Single<UserEntity> {
         guard let user = Auth.auth().currentUser else {
-            return Single.error(NomnomError.alert(message: "sign in is required"))
+            return Single.error(NomnomError.noData(message: "It's guest!"))
         }
         
         return Single<UserEntity>.create { observer -> Disposable in
@@ -57,7 +57,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
     
     func updateUser(updatedUser: UserEntity) -> Completable {
         guard let currentUser = Auth.auth().currentUser else {
-            return Completable.error(NomnomError.alert(message: "SignIn is required!"))
+            return Completable.error(NomnomError.noData(message: "signIn is required"))
         }
         
         return Completable.create { observer in

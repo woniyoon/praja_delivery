@@ -57,7 +57,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func fetchNewProducts() {
-        useCase.fetchProductList(with: "", by: "brand", false, filters: [String:Any]())
+        useCase.fetchProductList(with: "", by: "brand", true, filters: [String:Any]())
             .subscribe(onSuccess: { (product) in
                 self.arrOfNewProducts.accept(product)
             }

@@ -31,5 +31,8 @@ final class DataStoreAssembly: Assembly {
         container.register(ShoppingCartDataStoreProtocol.self) { _ in
             ShoppingCartDataStore()
         }
+        container.register(GuestDataStoreProtocol.self) { _ in
+            GuestDataStore()
+        }
     }
 }

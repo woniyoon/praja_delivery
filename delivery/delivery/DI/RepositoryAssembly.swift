@@ -16,11 +16,11 @@ final class RepositoryAssembly: Assembly {
         container.register(OrderRepositoryProtocol.self) { (_, dataStore: OrderDataStoreProtocol) in
             OrderRepository(dataStore: dataStore)
         }
-        container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
-            UserRepository(dataStore: dataStore)
-        }
-        container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
-            UserRepository(dataStore: dataStore)
+//        container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol) in
+//            UserRepository(dataStore: dataStore)
+//        }
+        container.register(UserRepositoryProtocol.self) { (_, dataStore: UserDataStoreProtocol, guestDataStore: GuestDataStoreProtocol) in
+            UserRepository(dataStore: dataStore, guestDataStore: guestDataStore)
         }
         container.register(ProductListRepositoryProtocol.self) { (_, dataStore: ProductListDataStoreProtocol) in
             ProductListRepository(dataStore: dataStore)
@@ -34,5 +34,8 @@ final class RepositoryAssembly: Assembly {
         container.register(ShoppingCartRepositoryProtocol.self) { (_, dataStore: ShoppingCartDataStoreProtocol) in
             ShoppingCartRepository(dataStore: dataStore)
         }
+//        container.register(GuestRepositoryProtocol.self) { (_, dataStore: GuestDataStoreProtocol) in
+//            GuestRepository(dataStore: dataStore)
+//        }
     }
 }

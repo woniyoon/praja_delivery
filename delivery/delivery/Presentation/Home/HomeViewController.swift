@@ -54,6 +54,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         bindView(viewModel: viewModel)
         configureCollectionView()
+        configureBadgeOnButton()
         viewModel.fetchTopSales()
         viewModel.fetchProductYouMayLike()
         viewModel.fetchNewProducts()
@@ -108,13 +109,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
 // MARK: - CollectionView
 
     private func registerCell() {
-        let nib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
-        topSalesCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-        youMayLikeCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
-        newProductsCollectionView.register(nib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        let productCellNib = UINib(nibName: CollectionViewCell.Identifier, bundle: nil)
+        topSalesCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        youMayLikeCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
+        newProductsCollectionView.register(productCellNib, forCellWithReuseIdentifier: CollectionViewCell.Identifier)
         
-        let nib2 = UINib(nibName: TrendsCell.Identifier, bundle: nil)
-        trendsCollectionView.register(nib2, forCellWithReuseIdentifier: TrendsCell.Identifier)
+        let trendCellNib = UINib(nibName: TrendsCell.Identifier, bundle: nil)
+        trendsCollectionView.register(trendCellNib, forCellWithReuseIdentifier: TrendsCell.Identifier)
         
         topSalesCollectionView.delegate = self
         youMayLikeCollectionView.delegate = self
@@ -141,12 +142,26 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         newProductsCollectionView.reloadData()
     }
     
+    private func configureBadgeOnButton() {
+        cartQty.layer.borderColor = UIColor.clear.cgColor
+        cartQty.layer.borderWidth = 2
+        cartQty.layer.cornerRadius = cartQty.bounds.size.height / 2
+        cartQty.textAlignment = .center
+        cartQty.layer.masksToBounds = true
+        cartQty.font = cartQty.font.withSize(10)
+        cartQty.textColor = .white
+        cartQty.backgroundColor = UIColor(displayP3Red: 99/255, green: 175/255, blue: 113/255, alpha: 1)
+        cartQty.tag = 1001
+    }
+    
+    
     @IBAction func goToShoppingCart(_ sender: Any) {
         if Int(viewModel.qtyProductsCart.value) == 0 {
             self.showAlert(title: "projectName.uppercased()", message: "Shopping Cart is empty !")
         } else {
             let next = resolver.resolve(ShoppingCartViewController.self)!
-            self.present(next, animated: true, completion: nil)
+//            self.present(next, animated: true, completion: nil)
+            self.navigationController?.pushViewController(next, animated: true)
         }
     }
     
@@ -223,7 +238,7 @@ extension HomeViewController: UISearchBarDelegate{
             self.navigationController?.pushViewController(next, animated: true)
         }
      
-        categoryVC.modalTransitionStyle = .flipHorizontal
+        categoryVC.modalTransitionStyle = .coverVertical
         categoryVC.modalPresentationStyle = .overFullScreen
         
         present(categoryVC, animated: true, completion: nil)

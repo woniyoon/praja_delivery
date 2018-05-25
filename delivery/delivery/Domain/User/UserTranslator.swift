@@ -14,18 +14,20 @@ class UserTranslator {
                         lastName: entity.lastName,
                         mobileNumber: entity.mobileNumber,
                         dateOfBirth: entity.dateOfBirth,
+                        isMember: entity.isMember,
                         email: entity.email,
                         totalPoint: entity.totalPoint,
                         address: entity.address != nil ? translateAddress(from: entity.address!) : nil,
                         payment: entity.payment != nil ? translatePayment(from: entity.payment!) : nil,
-                        coupon: entity.coupon!)
+                        coupon: entity.coupon)
     }
 
     func translate(fromModel model: User) -> UserEntity {
         return UserEntity(firstName: model.firstName,
                           lastName: model.lastName,
                           mobileNumber: model.mobileNumber,
-                          dateOfBirth: model.dateOfBirth != nil ? model.dateOfBirth! : nil,
+                          dateOfBirth: model.dateOfBirth,
+                          isMember: model.isMember,
                           totalPoint: model.totalPoint,
                           email: model.email,
                           address: model.address?.map({translateAddress(from: $0)}),

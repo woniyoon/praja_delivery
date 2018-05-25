@@ -76,6 +76,11 @@
 		911F9E10209ABDEB004970E8 /* AddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F9E0D209ABDEB004970E8 /* AddressEditViewController.swift */; };
 		912153E12075DBBE0057B146 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912153DF2075DBBE0057B146 /* UserInfoCell.swift */; };
 		912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912153E02075DBBE0057B146 /* UserInfoCell.xib */; };
+		91221B0020B2672F00A8C624 /* GuestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221AFF20B2672F00A8C624 /* GuestInfo.swift */; };
+		91221B0220B268E800A8C624 /* GuestInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0120B268E800A8C624 /* GuestInfoEntity.swift */; };
+		91221B0D20B2810300A8C624 /* GuestDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */; };
+		91221B0F20B2813600A8C624 /* GuestDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B0E20B2813600A8C624 /* GuestDataStore.swift */; };
+		91221B1520B37DF100A8C624 /* GuestAddressEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */; };
 		913A3EA9208D51DF00411FDD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA6208D51DE00411FDD /* UserRepository.swift */; };
 		913A3EAA208D51DF00411FDD /* UserFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA7208D51DE00411FDD /* UserFirebaseDataStore.swift */; };
 		913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */; };
@@ -281,6 +286,11 @@
 		911F9E0D209ABDEB004970E8 /* AddressEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressEditViewController.swift; sourceTree = "<group>"; };
 		912153DF2075DBBE0057B146 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
 		912153E02075DBBE0057B146 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
+		91221AFF20B2672F00A8C624 /* GuestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfo.swift; sourceTree = "<group>"; };
+		91221B0120B268E800A8C624 /* GuestInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoEntity.swift; sourceTree = "<group>"; };
+		91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestDataStoreProtocol.swift; sourceTree = "<group>"; };
+		91221B0E20B2813600A8C624 /* GuestDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestDataStore.swift; sourceTree = "<group>"; };
+		91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestAddressEntity.swift; sourceTree = "<group>"; };
 		913A3EA6208D51DE00411FDD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		913A3EA7208D51DE00411FDD /* UserFirebaseDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirebaseDataStore.swift; sourceTree = "<group>"; };
 		913A3EA8208D51DE00411FDD /* UserDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStoreProtocol.swift; sourceTree = "<group>"; };
@@ -480,9 +490,9 @@
 			isa = PBXGroup;
 			children = (
 				2C3D5A2520B3862F0066AE37 /* PastOrderCell.xib */,
-				2C3D5A2620B3862F0066AE37 /* CurrentOrderCell.swift */,
-				2C3D5A2820B3862F0066AE37 /* CurrentOrderCell.xib */,
 				2C3D5A2720B3862F0066AE37 /* PastOrderCell.swift */,
+				2C3D5A2820B3862F0066AE37 /* CurrentOrderCell.xib */,
+				2C3D5A2620B3862F0066AE37 /* CurrentOrderCell.swift */,
 			);
 			name = Cell;
 			path = delivery/Presentation/Order/Cell;
@@ -515,6 +525,7 @@
 				528E9882203E8C1100E8338C /* Review.swift */,
 				522B6291203D2974004B3560 /* ShoppingCart.swift */,
 				911B2D482063494200E2ACC6 /* Coordinate.swift */,
+				91221AFF20B2672F00A8C624 /* GuestInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -604,6 +615,15 @@
 				91512C942086E1FC00E80B08 /* PaymentCell.xib */,
 			);
 			path = CheckoutCell;
+			sourceTree = "<group>";
+		};
+		91221B0320B27F7C00A8C624 /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				91221B0C20B2810300A8C624 /* GuestDataStoreProtocol.swift */,
+				91221B0E20B2813600A8C624 /* GuestDataStore.swift */,
+			);
+			path = Guest;
 			sourceTree = "<group>";
 		};
 		913A3EA5208D51DE00411FDD /* User */ = {
@@ -1003,6 +1023,7 @@
 		D7AAD0AA2041943100D2971C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				91221B0320B27F7C00A8C624 /* Guest */,
 				915AC3E020A54F82007069C8 /* ShoppingCart */,
 				913A3EA5208D51DE00411FDD /* User */,
 				D7E238C52054ED9000BA973F /* Entity */,
@@ -1083,6 +1104,8 @@
 				D7AAD0BB204235BE00D2971C /* ProductEntity.swift */,
 				D7E238CA205556A100BA973F /* ReviewEntity.swift */,
 				911B2D46206348E600E2ACC6 /* CoordinateEntity.swift */,
+				91221B0120B268E800A8C624 /* GuestInfoEntity.swift */,
+				91221B1420B37DF100A8C624 /* GuestAddressEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1134,6 +1157,7 @@
 				BBA54AB6203D178D00D69954 /* Resources */,
 				9E2F5453A9076437F8AC0949 /* [CP] Embed Pods Frameworks */,
 				346FFB3F5227B8E7D89C67BC /* [CP] Copy Pods Resources */,
+				A1AB60E0454B48004A0A4201 /* [CP] Copy Pods Resources */,
 				EFC75D537F3EA855030141BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1155,6 +1179,7 @@
 				BBA54ACA203D178D00D69954 /* Resources */,
 				939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */,
 				34758B716E1C2ED0483ACE62 /* [CP] Copy Pods Resources */,
+				8D868197ABA1D8F652578EC0 /* [CP] Copy Pods Resources */,
 				CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1179,7 +1204,6 @@
 				TargetAttributes = {
 					BBA54AB7203D178D00D69954 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = WXA6Q3K753;
 						ProvisioningStyle = Automatic;
 					};
 					BBA54ACB203D178D00D69954 = {
@@ -1263,36 +1287,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		346FFB3F5227B8E7D89C67BC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		34758B716E1C2ED0483ACE62 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1327,6 +1321,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		346FFB3F5227B8E7D89C67BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34758B716E1C2ED0483ACE62 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D868197ABA1D8F652578EC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		939098825586AB9C7093099A /* [CP] Embed Pods Frameworks */ = {
@@ -1433,6 +1472,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A1AB60E0454B48004A0A4201 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1475,6 +1529,7 @@
 				911E267B205E4CC300FB3639 /* CouponEntity.swift in Sources */,
 				915AC3DA20A54F17007069C8 /* QuantityPopUpController.swift in Sources */,
 				911E26992060984F00FB3639 /* OrderDetailEntity.swift in Sources */,
+				91221B0220B268E800A8C624 /* GuestInfoEntity.swift in Sources */,
 				523D3A93204FA25B00B63193 /* ProductListRepository.swift in Sources */,
 				D72D29DD20A690CF006D5101 /* ReviewPostDataStoreProtocol.swift in Sources */,
 				5281FD5D205780E900412663 /* ProductListViewController.swift in Sources */,
@@ -1485,11 +1540,13 @@
 				9167CC362091C9D6009CC5D5 /* UserInfoEditViewModel.swift in Sources */,
 				D7213D3C20AD32F700142E5C /* SignUpViewModel.swift in Sources */,
 				915AC3DD20A54F17007069C8 /* ShoppingCartViewController.swift in Sources */,
+				91221B1520B37DF100A8C624 /* GuestAddressEntity.swift in Sources */,
 				D7AAD0B32041943100D2971C /* ProductDetailTranslator.swift in Sources */,
 				91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */,
 				2C3D5A3620B387880066AE37 /* OrderUseCase.swift in Sources */,
 				D775FF872065AF30002180F7 /* ReviewListUseCase.swift in Sources */,
 				911F9E0F209ABDEB004970E8 /* AddressEditViewModel.swift in Sources */,
+				91221B0020B2672F00A8C624 /* GuestInfo.swift in Sources */,
 				913A3EA9208D51DF00411FDD /* UserRepository.swift in Sources */,
 				915AC3EE20A54FA5007069C8 /* ShoppingCartTranslator.swift in Sources */,
 				D72D29D520A66BE7006D5101 /* ReviewPostViewModel.swift in Sources */,
@@ -1531,6 +1588,7 @@
 				9183196B20731893002DF8AA /* TrendsCell.swift in Sources */,
 				2C3BA6C52057881700C438C0 /* OrderModel.swift in Sources */,
 				D70359302063B5A700787198 /* BaseViewController.swift in Sources */,
+				91221B0F20B2813600A8C624 /* GuestDataStore.swift in Sources */,
 				2C3D5A3B20B387B90066AE37 /* OrderRepository.swift in Sources */,
 				915AC3FE20A570AE007069C8 /* CollectionName.swift in Sources */,
 				523D3A8F204F9DF600B63193 /* ProductListDataStoreProtocol.swift in Sources */,
@@ -1596,6 +1654,7 @@
 				BA190ECE20AFD46B00342FF2 /* Constants.swift in Sources */,
 				D7213D3E20AD41FB00142E5C /* Binding.swift in Sources */,
 				D775FF892065AFD0002180F7 /* ReviewListRepository.swift in Sources */,
+				91221B0D20B2810300A8C624 /* GuestDataStoreProtocol.swift in Sources */,
 				911A4AFA203D321600D03889 /* Address.swift in Sources */,
 				D7AAD0B72041943100D2971C /* ProductDetailFirebaseDataStore.swift in Sources */,
 				913A3EAB208D51DF00411FDD /* UserDataStoreProtocol.swift in Sources */,
@@ -1767,7 +1826,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WXA6Q3K753;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Core/Sources",
@@ -1794,7 +1853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WXA6Q3K753;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/Core/Sources",

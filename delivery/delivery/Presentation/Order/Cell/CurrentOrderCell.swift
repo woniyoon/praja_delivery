@@ -12,12 +12,9 @@ import Kingfisher
 class CurrentOrderCell: UITableViewCell {
     
     static var Identifier = "CurrentOrderCell"
-
-    @IBOutlet weak var whiteView: UIView!
     
     @IBOutlet weak var scheduledDeliveryDate: UILabel!
     @IBOutlet weak var statusImage: UIImageView!
-    @IBOutlet weak var line: BorderLabel!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -25,15 +22,17 @@ class CurrentOrderCell: UITableViewCell {
     @IBOutlet weak var purchasedDate: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var currentBox: UIView!
+    @IBOutlet weak var layerBox: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         //Shadow Effect
-        currentBox.layer.shadowOffset = CGSize(width: 0, height: 1)
-        currentBox.layer.shadowColor = UIColor.black.cgColor
-        currentBox.layer.shadowRadius = 2.0
-        currentBox.layer.shadowOpacity = 0.40
+        applyZigZagEffect(givenView: layerBox)
+//        whiteView.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        whiteView.layer.shadowColor = UIColor.black.cgColor
+//        whiteView.layer.shadowRadius = 2.0
+//        whiteView.layer.shadowOpacity = 0.40
     }
     
     override func prepareForReuse() {
@@ -70,6 +69,7 @@ class CurrentOrderCell: UITableViewCell {
             self.productName.text = order?.orderDetail[0].productName
             self.quantity.text = String(order!.orderDetail.count)
             self.purchasedDate.text = DateFormatter.purchasedDateInFormat(purchasedDate: ((order?.deliveryInfo["purchasedDate"])!)!)
+            
             self.totalPrice.text = String(format:"%.2f", (order?.totalPrice)! - (order?.couponDiscount)!)
             
         }
@@ -90,6 +90,79 @@ class CurrentOrderCell: UITableViewCell {
         }
     }
     
+    func pathZigZagForView(givenView: UIView) ->UIBezierPath
+    {
+        let width = givenView.frame.size.width
+        let height = givenView.frame.size.height
+        
+        let zigZagWidth = CGFloat(7)
+        let zigZagHeight = CGFloat(5)
+        let yInitial = height-zigZagHeight
+        
+        let zigZagPath = UIBezierPath()
+        zigZagPath.move(to: CGPoint(x:0, y:0))
+        zigZagPath.addLine(to: CGPoint(x:0, y:yInitial))
+        
+        var slope = -1
+        var x = CGFloat(0)
+        var i = 0
+        while x < width {
+            x = zigZagWidth * CGFloat(i)
+            let p = zigZagHeight * CGFloat(slope) - 5
+            let y = yInitial + p
+            let point = CGPoint(x: x, y: y)
+            zigZagPath.addLine(to: point)
+            slope = slope*(-1)
+            i += 1
+        }
+        zigZagPath.addLine(to: CGPoint(x:width,y: 0))
+        zigZagPath.addLine(to: CGPoint(x:0,y: 0))
+        zigZagPath.close()
+        return zigZagPath
+    }
+    
+    func createShadowLayer() -> CALayer {
+        let shadowLayer = CALayer()
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowLayer.shadowRadius = 2.0
+        shadowLayer.shadowOpacity = 0.4
+        shadowLayer.backgroundColor = UIColor.clear.cgColor
+        return shadowLayer
+    }
+    
+//    let line = CAShapeLayer()
+//    let path = UIBezierPath()
+//    path.move(to: CGPoint(x: 0, y: 0))
+//    path.addLine(to: CGPoint(x: 50, y: 100))
+//    path.addLine(to: CGPoint(x: 100, y: 50))
+//    line.path = path.cgPath
+//    line.strokeColor = UIColor.blue.cgColor
+//    line.fillColor = UIColor.clear.cgColor
+//    line.lineWidth = 2.0
+//    view.layer.addSublayer(line)
+//
+//    let shadowSubLayer = createShadowLayer()
+//    shadowSubLayer.insertSublayer(line, at: 0)
+//    view.layer.addSublayer(shadowSubLayer)
+    
+    func applyZigZagEffect(givenView: UIView) {
+        let shapeLayer = CAShapeLayer(layer: givenView.layer)
+        shapeLayer.path = self.pathZigZagForView(givenView: givenView).cgPath
+        shapeLayer.frame = givenView.bounds
+        shapeLayer.masksToBounds = true
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.lineWidth = 0.1
+        givenView.layer.addSublayer(shapeLayer)
+        
+        let shadowSubLayer = createShadowLayer()
+        shadowSubLayer.insertSublayer(shapeLayer, at: 0)
+        givenView.layer.addSublayer(shadowSubLayer)
+//        givenView.layer.mask = shapeLayer
+        
+        
+    }
 }
 
 @IBDesignable

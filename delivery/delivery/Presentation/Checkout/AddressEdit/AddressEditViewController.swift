@@ -123,14 +123,19 @@ class AddressEditViewController: BaseViewController {
             
             if let indexNo = self.indexNumberOfAddress {
                 viewModel.indexOfAddressOnEdit = indexNo
+        
+                viewModel.updateAddress().subscribe(onCompleted: {
+                    self.navigationController?.popViewController(animated: true)
+                }) { (err) in
+                    print(err)
+                    }.disposed(by: disposeBag)
+            } else {
+                viewModel.updateAddress().subscribe(onCompleted: {
+                    self.navigationController?.popViewController(animated: true)
+                }) { (err) in
+                    print(err)
+                    }.disposed(by: disposeBag)
             }
-            
-            viewModel.updateAddress().subscribe(onCompleted: {
-                let next = resolver.resolve(AddressListViewController.self)!
-                self.navigationController?.popViewController(animated: true)
-            }) { (err) in
-                print(err)
-            }.disposed(by: disposeBag)
             
         } else {
             self.showAlert(title: "Reminder", message: "Please fille out every field!")
@@ -156,6 +161,7 @@ class AddressEditViewController: BaseViewController {
     }
     
     func setAddressFields() {
+        print(viewModel.address.value)
         if let index = self.indexNumberOfAddress {
             viewModel.fetchAddress(index: index)
             viewModel.address.asObservable().bind { (add) in
