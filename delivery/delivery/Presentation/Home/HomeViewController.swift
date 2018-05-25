@@ -48,6 +48,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.fetchShoppingCartQty()
         self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewDidLoad() {
@@ -150,7 +151,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         cartQty.layer.masksToBounds = true
         cartQty.font = cartQty.font.withSize(10)
         cartQty.textColor = .white
-        cartQty.backgroundColor = UIColor(displayP3Red: 99/255, green: 175/255, blue: 113/255, alpha: 1)
+        cartQty.backgroundColor = #colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1)
         cartQty.tag = 1001
     }
     
@@ -197,6 +198,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
             viewModel.addProductShoppingCart(with: shoppingCart)
         }
     }
+    
+    
+    @IBAction func isLogoTapped(_ sender: Any) {
+        self.showAlert(message: "Ta-da! We did it, guys! Congratulations to all of us!🎉")
+    }
 }
 
 
@@ -209,8 +215,9 @@ extension HomeViewController: UISearchBarDelegate{
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !self.keyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            let next = resolver.resolve(CheckoutViewController.self)!
-            present(next, animated: true, completion: nil)
+            let productListVC = resolver.resolve(ProductListViewController.self)!
+            productListVC.keyword = self.keyword!
+            present(productListVC, animated: true, completion: nil)
         } else {
             searchBar.endEditing(true)
         }
@@ -243,6 +250,8 @@ extension HomeViewController: UISearchBarDelegate{
         
         present(categoryVC, animated: true, completion: nil)
     }
+    
+    
 }
 
 

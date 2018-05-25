@@ -145,7 +145,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkp-nY-TA3">
-                                                                <rect key="frame" x="27" y="311" width="226" height="30"/>
+                                                                <rect key="frame" x="27" y="311" width="214" height="30"/>
                                                                 <state key="normal" title="wanna create a new password?">
                                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
@@ -161,12 +161,10 @@
                                                             <constraint firstItem="3x1-lu-vnD" firstAttribute="top" secondItem="gWB-OI-tqX" secondAttribute="bottom" constant="-1" id="AqK-xr-zaO"/>
                                                             <constraint firstItem="d6i-vF-DP9" firstAttribute="top" secondItem="rCg-Zz-NXg" secondAttribute="bottom" constant="-1" id="CtG-fU-YMw"/>
                                                             <constraint firstItem="ijE-4g-pZl" firstAttribute="trailing" secondItem="WMe-Pz-dag" secondAttribute="trailing" id="Eus-iX-QWX"/>
-                                                            <constraint firstAttribute="trailing" secondItem="mkp-nY-TA3" secondAttribute="trailing" constant="122" id="GAV-kg-aWF"/>
                                                             <constraint firstAttribute="height" constant="400" id="Gbh-86-3WW"/>
                                                             <constraint firstItem="mkp-nY-TA3" firstAttribute="top" secondItem="uvF-KN-DrQ" secondAttribute="bottom" constant="8" id="HmK-QW-0NW"/>
                                                             <constraint firstItem="AI7-Lg-OzN" firstAttribute="leading" secondItem="ijE-4g-pZl" secondAttribute="leading" id="Jw4-nS-hNm"/>
                                                             <constraint firstItem="AI7-Lg-OzN" firstAttribute="trailing" secondItem="vSM-fP-UfI" secondAttribute="trailing" id="OF1-Tb-5Fv"/>
-                                                            <constraint firstItem="mkp-nY-TA3" firstAttribute="leading" secondItem="ULm-ur-ucc" secondAttribute="leading" constant="27" id="PzU-UI-UoC"/>
                                                             <constraint firstItem="3x1-lu-vnD" firstAttribute="leading" secondItem="d6i-vF-DP9" secondAttribute="leading" id="Q3X-WZ-D8t"/>
                                                             <constraint firstItem="AI7-Lg-OzN" firstAttribute="leading" secondItem="iM7-mf-Uua" secondAttribute="leading" id="RKm-Wi-FUi"/>
                                                             <constraint firstItem="ijE-4g-pZl" firstAttribute="top" secondItem="WMe-Pz-dag" secondAttribute="bottom" constant="-1" id="SYS-Dr-Rr2"/>
@@ -181,6 +179,7 @@
                                                             <constraint firstItem="WQz-ri-NST" firstAttribute="top" secondItem="uvF-KN-DrQ" secondAttribute="bottom" constant="-1" id="Vbi-1s-79J"/>
                                                             <constraint firstItem="d6i-vF-DP9" firstAttribute="leading" secondItem="ULm-ur-ucc" secondAttribute="leading" constant="27" id="W37-bA-Sxm"/>
                                                             <constraint firstItem="3x1-lu-vnD" firstAttribute="trailing" secondItem="d6i-vF-DP9" secondAttribute="trailing" id="XQO-8q-1V3"/>
+                                                            <constraint firstItem="mkp-nY-TA3" firstAttribute="leading" secondItem="uvF-KN-DrQ" secondAttribute="leading" id="YNG-KR-HuX"/>
                                                             <constraint firstItem="uvF-KN-DrQ" firstAttribute="trailing" secondItem="AI7-Lg-OzN" secondAttribute="trailing" id="ZWS-yx-Yuz"/>
                                                             <constraint firstItem="ijE-4g-pZl" firstAttribute="leading" secondItem="WMe-Pz-dag" secondAttribute="leading" id="aDn-wy-OMR"/>
                                                             <constraint firstItem="ijE-4g-pZl" firstAttribute="top" secondItem="gWB-OI-tqX" secondAttribute="bottom" constant="44" id="dSX-a4-Hiz"/>

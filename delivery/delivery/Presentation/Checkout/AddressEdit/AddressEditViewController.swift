@@ -148,14 +148,14 @@ class AddressEditViewController: BaseViewController {
     
     func configureTextFields() {
         textFields.forEach { (textField) in
-            textField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+            textField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             textField.layer.borderWidth = 1
         }
         
-        self.provinceField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+        self.provinceField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.provinceField.layer.borderWidth = 1
         
-        self.countryField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+        self.countryField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.countryField.layer.borderWidth = 1
 
     }

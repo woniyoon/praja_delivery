@@ -60,10 +60,19 @@
                                                                 <color key="textColor" red="0.38823529410000002" green="0.68627450980000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdY-OW-4G6">
+                                                                <rect key="frame" x="131" y="15" width="113" height="30"/>
+                                                                <state key="normal" image="logo_horizontal_small"/>
+                                                                <connections>
+                                                                    <action selector="isLogoTapped:" destination="Vyz-OW-em0" eventType="touchUpInside" id="uAB-zR-GN6"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.1058823529" green="0.13725490200000001" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
+                                                            <constraint firstItem="WdY-OW-4G6" firstAttribute="centerX" secondItem="hIY-s0-7h0" secondAttribute="centerX" id="0Cq-rO-NyP"/>
                                                             <constraint firstAttribute="trailing" secondItem="b4w-vC-hea" secondAttribute="trailing" id="8O1-co-eqg"/>
+                                                            <constraint firstItem="WdY-OW-4G6" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="15" id="DAM-zz-5UP"/>
                                                             <constraint firstItem="b4w-vC-hea" firstAttribute="top" secondItem="Qh5-Ep-yGo" secondAttribute="bottom" constant="16" id="GDu-7G-eZP"/>
                                                             <constraint firstItem="kAo-F9-GSR" firstAttribute="top" secondItem="hIY-s0-7h0" secondAttribute="top" constant="6" id="X2E-vy-BpN"/>
                                                             <constraint firstAttribute="trailing" secondItem="LVH-Vn-j5t" secondAttribute="trailing" constant="20" id="b3l-QO-1Ad"/>
@@ -315,12 +324,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fq9-KB-7FD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="26.086956521739133"/>
+            <point key="canvasLocation" x="523.5" y="26"/>
         </scene>
     </scenes>
     <resources>
         <image name="banner" width="358" height="84"/>
         <image name="cart_w" width="23" height="20"/>
+        <image name="logo_horizontal_small" width="113" height="30"/>
         <image name="menu_w" width="20" height="20"/>
     </resources>
 </document>

@@ -47,7 +47,7 @@ class UserInfoEditViewController: UIViewController {
     
     func setTextFields() {
         userInfoTextFields.forEach { (textField) in
-            textField.layer.borderColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 0.4).cgColor
+            textField.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             textField.layer.borderWidth = 1
         }
     }
