@@ -50,8 +50,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNi-Mi-Bkq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="132.5"/>
                                         <subviews>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="recentSearch" translatesAutoresizingMaskIntoConstraints="NO" id="mSA-od-CEI">
-                                                <rect key="frame" x="24" y="16" width="28" height="28"/>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="recentSearch" translatesAutoresizingMaskIntoConstraints="NO" id="mSA-od-CEI">
+                                                <rect key="frame" x="14" y="16" width="28" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="bAt-wZ-FEO"/>
                                                     <constraint firstAttribute="width" constant="28" id="fvd-Ez-VM8"/>
@@ -108,13 +108,13 @@ CA 95673</string>
                                             <constraint firstItem="VhG-zw-GVD" firstAttribute="leading" secondItem="bVr-GX-lx6" secondAttribute="leading" id="4jf-2Y-zAh"/>
                                             <constraint firstItem="VhG-zw-GVD" firstAttribute="leading" secondItem="EG2-pe-xVY" secondAttribute="leading" id="7l7-Lm-fPa"/>
                                             <constraint firstItem="VhG-zw-GVD" firstAttribute="leading" secondItem="iNi-Mi-Bkq" secondAttribute="leading" constant="64" id="DF9-2I-rjB"/>
-                                            <constraint firstItem="DgA-pJ-0if" firstAttribute="leading" secondItem="mSA-od-CEI" secondAttribute="trailing" constant="12" id="Ooj-d6-yIh"/>
+                                            <constraint firstItem="DgA-pJ-0if" firstAttribute="leading" secondItem="mSA-od-CEI" secondAttribute="trailing" constant="22" id="Ooj-d6-yIh"/>
                                             <constraint firstItem="bVr-GX-lx6" firstAttribute="top" secondItem="DgA-pJ-0if" secondAttribute="bottom" constant="4" id="UNH-FD-tRa"/>
                                             <constraint firstItem="VhG-zw-GVD" firstAttribute="top" secondItem="bVr-GX-lx6" secondAttribute="bottom" constant="4" id="aqM-Px-dio"/>
                                             <constraint firstItem="EG2-pe-xVY" firstAttribute="top" secondItem="dL2-cv-KnT" secondAttribute="bottom" constant="8" symbolic="YES" id="hYj-G3-QPM"/>
                                             <constraint firstItem="mSA-od-CEI" firstAttribute="top" secondItem="iNi-Mi-Bkq" secondAttribute="top" constant="16" id="v2q-3z-2na"/>
                                             <constraint firstItem="VhG-zw-GVD" firstAttribute="leading" secondItem="dL2-cv-KnT" secondAttribute="leading" id="wG9-wY-POa"/>
-                                            <constraint firstItem="bVr-GX-lx6" firstAttribute="leading" secondItem="mSA-od-CEI" secondAttribute="trailing" constant="12" id="x1Y-cz-RVx"/>
+                                            <constraint firstItem="bVr-GX-lx6" firstAttribute="leading" secondItem="mSA-od-CEI" secondAttribute="trailing" constant="22" id="x1Y-cz-RVx"/>
                                             <constraint firstItem="dL2-cv-KnT" firstAttribute="top" secondItem="VhG-zw-GVD" secondAttribute="bottom" constant="12" id="z2C-qU-Hmw"/>
                                         </constraints>
                                     </view>
