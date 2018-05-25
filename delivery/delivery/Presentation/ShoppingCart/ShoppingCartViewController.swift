@@ -29,6 +29,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var binButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var subTotal: UILabel!
+    @IBOutlet weak var checkoutButton: BaseButton!
     
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var hsttax: UILabel!
@@ -54,6 +55,10 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindTableView()
@@ -62,6 +67,12 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
         viewModel.fetchShoppingCartList()
+        setup()
+    }
+    
+    func setup(){
+        checkoutButton.layer.cornerRadius = 5.0
+        checkoutButton.clipsToBounds = true
     }
     
     private func bindTableView() {
@@ -148,7 +159,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func close(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func checkoutPurchase(_ sender: Any) {

@@ -31,6 +31,7 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
     }
     
     func deleteShoppingCart() -> Completable {
+        let realm = RealmManager.sharedInstance
         return Completable.create { observer in
             let realm = RealmManager.sharedInstance
             realm.deleteAllFromDatabase()
@@ -65,6 +66,16 @@ class ShoppingCartDataStore: ShoppingCartDataStoreProtocol {
             observer(.completed)
             return Disposables.create()
         }
+    }
+    
+    func productAlreadyInCart(with primaryKey: String) -> Bool {
+        var result = false
+        let realm = try! Realm()
+        let shoppingCartExist = realm.objects(ShoppingCartEntity.self).filter("idProducts = '\(primaryKey)'")
+        if shoppingCartExist.first != nil {
+            result = true
+        }
+        return result
     }
     
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]> {

@@ -44,7 +44,7 @@ class ProductListFirebaseDataStore: ProductListDataStoreProtocol {
                             }
                             
                             if (filters["rating"] != nil){
-                                if rating > (filters["rating"] as! Double) {continue}
+                                if rating >= (filters["rating"] as! Double) {continue}
                             }
                             
                             if (filters["discount"] != nil){

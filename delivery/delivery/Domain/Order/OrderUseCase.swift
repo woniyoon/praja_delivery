@@ -11,8 +11,10 @@ import RxSwift
 
 protocol OrderUseCaseProtocol {
     func fetchOrder(with userId: String) -> Single<[Order]>
+    func saveOrder(_ order: Order) -> Completable
     func fetchOrderDetail(with orderId : String) -> Single<Order>
 //    func fetchOrderProduct(with productId: String) -> Single<Product>
+
 }
 
 class OrderUseCase: OrderUseCaseProtocol {
@@ -33,6 +35,10 @@ class OrderUseCase: OrderUseCaseProtocol {
             })
     }
     
+    func saveOrder(_ order: Order) -> Completable {
+        return repository.saveOrder(translator.translateToEntity(order))
+    }
+
     func fetchOrderDetail(with orderId: String) -> Single<Order> {
         return repository.fetchOrderDetail(with: orderId)
             .map { entity in
@@ -44,6 +50,5 @@ class OrderUseCase: OrderUseCaseProtocol {
 //            .map({ entity in
 //                self.translator.translate2(entity)
 //            })
-//    }
-    
+//    }    
 }

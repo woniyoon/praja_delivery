@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderReviewViewController: UIViewController {
+class OrderConfirmationViewController: UIViewController {
 
     @IBOutlet weak var checkOrderButton: UIButton!
     

@@ -45,3 +45,4 @@ struct OrderDetail{
         self.productName = productName
     }
 }
+

@@ -15,5 +15,7 @@ protocol ShoppingCartDataStoreProtocol {
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
     func deleteShoppingCart() -> Completable
     func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
-    
+    func productAlreadyInCart(with primaryKey: String) -> Bool
 }
+
+

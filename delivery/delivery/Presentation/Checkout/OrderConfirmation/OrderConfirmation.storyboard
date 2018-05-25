@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="caK-hC-RpM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="caK-hC-RpM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Order Review View Controller-->
+        <!--Order Confirmation View Controller-->
         <scene sceneID="N2f-wj-8UZ">
             <objects>
-                <viewController storyboardIdentifier="OrderReview" id="caK-hC-RpM" customClass="OrderReviewViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderConfirmation" id="caK-hC-RpM" customClass="OrderConfirmationViewController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RKn-UW-n5y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +114,7 @@
                         <viewLayoutGuide key="safeArea" id="43k-di-oTV"/>
                     </view>
                     <connections>
-                        <outlet property="checkOrderButton" destination="QLj-8R-Htw" id="NlX-Jd-9gE"/>
+                        <outlet property="checkOrderButton" destination="QLj-8R-Htw" id="X0w-4H-Akb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlS-AY-MYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
