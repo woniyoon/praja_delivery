@@ -21,6 +21,8 @@ protocol UserRepositoryProtocol {
     func signIn(email: String, password: String) -> Completable
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable
+    func updateUser(user: UserEntity, password: String) -> Completable
+    func changePassword(currentPW: String, newPW: String) -> Completable
 }
 
 class UserRepository: UserRepositoryProtocol {    
@@ -162,6 +164,14 @@ class UserRepository: UserRepositoryProtocol {
     
     func signOut() -> Completable {
         return dataStore.signOut()
+    }
+    
+    func updateUser(user: UserEntity, password: String) -> Completable {
+        return dataStore.updateUser(user: user, password: password)
+    }
+    
+    func changePassword(currentPW: String, newPW: String) -> Completable {
+        return dataStore.changePassword(currentPW: currentPW, newPW: newPW)
     }
 }
 

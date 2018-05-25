@@ -18,10 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9h-UJ-hih">
-                                <rect key="frame" x="15" y="30" width="30" height="35"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
-                                <state key="normal" title="X">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9h-UJ-hih">
+                                <rect key="frame" x="15" y="43" width="17" height="22"/>
+                                <state key="normal" image="close">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -34,7 +33,7 @@
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGU-41-F8B">
-                                <rect key="frame" x="63" y="37" width="75" height="22"/>
+                                <rect key="frame" x="50" y="43" width="75" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.02242623731" green="0.02125097657" blue="0.02082559543" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -62,4 +61,7 @@
             <point key="canvasLocation" x="21.600000000000001" y="-7.6461769115442282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="17" height="17"/>
+    </resources>
 </document>

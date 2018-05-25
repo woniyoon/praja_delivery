@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "coupon@3x-2.png",
+      "filename" : "coupon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "coupon@3x-1.png",
+      "filename" : "coupon@2x.png",
       "scale" : "2x"
     },
     {

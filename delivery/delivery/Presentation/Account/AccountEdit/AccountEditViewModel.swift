@@ -34,8 +34,6 @@ class AccountEditViewModel: BaseViewModel {
             self.email.accept(user.email ?? "")
             self.user.accept([user])
             
-            print(self.user.value)
-
             if let birthDate = user.dateOfBirth {
                 print(birthDate)
                 let birthDateString = DateFormatter.birthDateInFormat(birthDate: birthDate)
@@ -45,27 +43,21 @@ class AccountEditViewModel: BaseViewModel {
             print(err)
         })
     }
-    
-    func updateUser() -> Completable {
-        
-        print(birthDate.value)
-        print(DateFormatter.toDateFromString(date: birthDate.value)!)
-        print("test")
-        
+
+    func updateUser(password: String) -> Completable {
         if user.value.count > 0 {
             let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: birthDate.value != "" ? DateFormatter.toDateFromString(date: birthDate.value)! : nil, isMember: true,
-                email: email.value, totalPoint: (user.value.first?.totalPoint)!,
-                address: user.value.first?.address, payment:
+                                   email: email.value, totalPoint: (user.value.first?.totalPoint)!,
+                                   address: user.value.first?.address, payment:
                 user.value.first?.payment, coupon: user.value.first?.coupon)
-            print(updatedUser)
-            return useCase.updateUser(user: updatedUser)
+            return useCase.updateUser(user: updatedUser, password: password)
         } else {
             let updatedUser = User(firstName: firstName.value, lastName: lastName.value, mobileNumber: phoneNumber.value, dateOfBirth: nil, isMember: true, email: email.value, totalPoint: 0, address: nil, payment: nil, coupon: nil)
-            return useCase.updateUser(user: updatedUser)
+            return useCase.updateUser(user: updatedUser, password: password)
         }
     }
     
-    func changePassword() {
-        
+    func changePassword(currentPW: String, confirmedPW: String, newPW: String) -> Completable {
+        return useCase.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW)
     }
 }

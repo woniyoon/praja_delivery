@@ -35,7 +35,7 @@ class AccountEditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        doneButtonItem.tintColor = .black
+        doneButtonItem.tintColor = #colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1)
         self.navigationItem.rightBarButtonItem = doneButtonItem
         viewModel.fetchUser()
     }
@@ -83,16 +83,12 @@ class AccountEditViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func updatePassword(_ sender: Any) {
-        
-    }
-    
     func doneButtonTapped() {
-        print(birthDateLabel.text)
         if !(firstNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
-            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
+            !(phoneNumberLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
+            !(passwordLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
             viewModel.firstName.accept(firstNameLabel.text!)
             viewModel.lastName.accept(lastNameLabel.text!)
             viewModel.email.accept(emailLabel.text!)
@@ -102,13 +98,29 @@ class AccountEditViewController: UIViewController {
                 viewModel.birthDate.accept(birthDateString)
             }
             
-            viewModel.updateUser().subscribe(onCompleted: {
+            viewModel.updateUser(password: passwordLabel.text!).subscribe(onCompleted: {
                 self.navigationController?.popViewController(animated: true)})
             { (err) in
-                print(err)
+                self.showAlert(message: err.localizedDescription)
             }
         } else {
-            print("all fields are mandatory!")
+            self.showAlert(message: "All fields are mandatory!")
+        }
+    }
+    
+    
+    @IBAction func changePassword(_ sender: Any) {
+        self.showPasswordInput() { currentPW, confirmedPW, newPW in
+            
+            if let currentPW = currentPW, let confirmedPW = confirmedPW, let newPW = newPW {
+            self.viewModel.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW)
+                .subscribe(onCompleted: {
+                    self.showAlert(message: "Successfully Changed!")
+                },
+                           onError: { (error) in
+                            self.showAlert(message: error.localizedDescription)
+                            })
+            }
         }
     }
 }

@@ -462,7 +462,6 @@
 				2C3D5A2D20B3874C0066AE37 /* OrderViewModel.swift */,
 			);
 			name = Order;
-			path = ../../../../../../Desktop/deliveryciccc/delivery/delivery/Presentation/Order;
 			sourceTree = "<group>";
 		};
 		2C3D5A0F20B373EF0066AE37 /* Order */ = {

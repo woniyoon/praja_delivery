@@ -66,7 +66,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
     }
     
     func imageTapped(sender: UIImageView) {
-        print("Banner clicked!")
+        self.showAlert(message: "Upcoming feature!")
     }
     
 // MARK: - Binding
