@@ -18,4 +18,5 @@ protocol UserDataStoreProtocol {
     func forgotPassword(email: String) -> Completable
     func signOut() -> Completable
     func updateUser(user: UserEntity, password: String) -> Completable
+    func changePassword(currentPW: String, newPW: String) -> Completable
 }

@@ -13,4 +13,5 @@ enum NomnomError : Error {
     case network(code: String, message: String, log: String)
     case noData(message: String)
     case invalidInput(message: String)
+    case invalidPassword(message: String)
 }

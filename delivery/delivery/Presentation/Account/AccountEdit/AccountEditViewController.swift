@@ -83,12 +83,7 @@ class AccountEditViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func updatePassword(_ sender: Any) {
-        
-    }
-    
     func doneButtonTapped() {
-        print(birthDateLabel.text)
         if !(firstNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(lastNameLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
             !(emailLabel.text?.trimmingCharacters(in: .whitespaces).isEmpty)! &&
@@ -106,10 +101,26 @@ class AccountEditViewController: UIViewController {
             viewModel.updateUser(password: passwordLabel.text!).subscribe(onCompleted: {
                 self.navigationController?.popViewController(animated: true)})
             { (err) in
-                self.showAlert(message: "Invalid Password!")
+                self.showAlert(message: err.localizedDescription)
             }
         } else {
             self.showAlert(message: "All fields are mandatory!")
+        }
+    }
+    
+    
+    @IBAction func changePassword(_ sender: Any) {
+        self.showPasswordInput() { currentPW, confirmedPW, newPW in
+            
+            if let currentPW = currentPW, let confirmedPW = confirmedPW, let newPW = newPW {
+            self.viewModel.changePassword(currentPW: currentPW, confirmedPW: confirmedPW, newPW: newPW)
+                .subscribe(onCompleted: {
+                    self.showAlert(message: "Successfully Changed!")
+                },
+                           onError: { (error) in
+                            self.showAlert(message: error.localizedDescription)
+                            })
+            }
         }
     }
 }

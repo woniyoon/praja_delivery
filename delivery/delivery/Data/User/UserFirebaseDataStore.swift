@@ -148,7 +148,7 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                 return Completable.error(NomnomError.alert(message: "SignIn is required!"))
             }
     
-        let credential = EmailAuthProvider.credential(withEmail: user.email, password: password)
+        let credential = EmailAuthProvider.credential(withEmail: user.email!, password: password)
 
         return Completable.create { observer in
             Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (error) in
@@ -167,6 +167,31 @@ class UserFirebaseDataStore: UserDataStoreProtocol {
                 }
             })
             
+            return Disposables.create()
+        }
+    }
+    
+    func changePassword(currentPW: String, newPW: String) -> Completable {
+        guard let currentUser = Auth.auth().currentUser else {
+            return Completable.error(NomnomError.alert(message: "SignIn is required!"))
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: currentPW)
+        
+        return Completable.create { observer in
+            Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (error) in
+                if let error = error {
+                    observer(.error(NomnomError.alert(message: error.localizedDescription)))
+                } else {
+                    Auth.auth().currentUser?.updatePassword(to: newPW, completion: { (error) in
+                        if let error = error {
+                            observer(.error(NomnomError.alert(message: error.localizedDescription)))
+                        } else {
+                            observer(.completed)
+                        }
+                    })
+                }
+            })
             return Disposables.create()
         }
     }

@@ -69,7 +69,7 @@ extension UIViewController {
                          cancelTitle:String? = "Cancel",
                          inputPlaceholder:String? = nil,
                          inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         cancelHandler: ((UIAlertAction) -> Void)? = nil,
                          actionHandler: ((_ text: String?) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
@@ -95,6 +95,36 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showPasswordInput(cancelHandler: ((UIAlertAction) -> Void)? = nil,
+                           actionHandler: ((_ currentPW: String?, _ confirmedPW: String?, _ newPW: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: "Change Password", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter current password"
+            textField.isSecureTextEntry = true
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Confirm your password"
+            textField.isSecureTextEntry = true
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter the new password"
+            textField.isSecureTextEntry = true
+        }
+        
+        alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { (action:UIAlertAction) in
+            guard let textFields =  alert.textFields else {
+                actionHandler?(nil, nil, nil)
+                return
+            }
+            actionHandler?(textFields[0].text, textFields[1].text, textFields[2].text)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: cancelHandler))
         
         self.present(alert, animated: true, completion: nil)
     }
