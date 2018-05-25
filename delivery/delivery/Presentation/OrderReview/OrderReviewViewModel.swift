@@ -11,7 +11,6 @@ import RxSwift
 import RealmSwift
 import RxCocoa
 
-
 class OrderReviewViewModel: BaseViewModel {
     private var useCaseShoppingCart: ShoppingCartUseCaseProtocol
     private var useCaseUserAccount: UserUseCaseProtocol
@@ -116,7 +115,7 @@ class OrderReviewViewModel: BaseViewModel {
         }
     }
     
-    func calculateSubTotal(){
+    private func calculateSubTotal(){
         let shoppingCart = productsShoppingCart.value
         
         var preSubTotal = 0.0
@@ -132,7 +131,7 @@ class OrderReviewViewModel: BaseViewModel {
         total.accept("$ \(String(format:"%.2f", preSubTotal))")
     }
     
-    func generateOrderDetail(productsList: [ProductShoppingCart]) -> [OrderDetail] {
+    private func generateOrderDetail(productsList: [ProductShoppingCart]) -> [OrderDetail] {
         
         var orderDetailList = [OrderDetail]()
         
@@ -150,22 +149,22 @@ class OrderReviewViewModel: BaseViewModel {
         
     }
     
-    func saveOrder() -> Completable {
+    func saveOrder() {
         
         let shippingAddress = AddressEntity(receiver: receiver.value, address1: address.value, address2: "", city: city.value, province: province.value, postalCode: postalCode.value, country: country.value, isDefault: true, phoneNumber: mobileNumber.value)
 
         let pointStatement = PointStatement(dictionary: ["earnedPoints" : 0,
                                                          "consumedPoints": 0])
-        
+
         let date = Date()
         let calender = Calendar.current
         var dateComponent = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
-        
+
         dateComponent.day = 2
         let scheduledDeliveryDate = Calendar.current.date(byAdding: dateComponent, to: Date())
-        
+
         let orderNumber = "ORD\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)\(dateComponent.hour!)\(dateComponent.minute!)\(dateComponent.second!)"
-    
+
         let orderReview = Order(orderNumber: orderNumber,
                                 cancelReason: "",
                                 deliveryFee: shippingFeeValue,
@@ -181,9 +180,12 @@ class OrderReviewViewModel: BaseViewModel {
                                 userId: "",
                                 couponDiscount: 0,
                                 orderId: orderNumber)
-        
-        
-        return useCaseOrder.saveOrder(orderReview)
+
+        useCaseOrder.saveOrder(orderReview)
+            .subscribe(
+                onCompleted: { self.isPaymentConfirmed.accept(true) },
+                onError: { error in self.setError(error) }
+        ).disposed(by: disposeBag)
         
     }
 }

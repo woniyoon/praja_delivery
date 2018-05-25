@@ -56,32 +56,19 @@ class OrderFirebaseDataStore: OrderDataStoreProtocol {
                                        "trackingNumber": order.trackingNumber,
                                        "userId": user.uid,
                                        "deliveryInfo": order.deliveryInfo]
-        
-        // TODO: CHECK WITH KENTO WHY COMPLETABLE IS NOT WORKING
-        
-         self.db.collection(ORDER_COLLECTION)
-            .addDocument(data: orderData) { err in
-                if let err = err {
-                    print(err)
-                } else {
-                    print("Completed")
-                }
-        }
-        
-        
-        
+
         return Completable.create { completable in
 
-//            self.db.collection(ORDER_COLLECTION)
-//                .addDocument(data: orderData) { err in
-//                    if let err = err {
-//                        print("error")
-//                        completable(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
-//                    } else {
-//                        print("completed")
-//                        completable(.completed)
-//                    }
-//            }
+            self.db.collection(ORDER_COLLECTION)
+                .addDocument(data: orderData) { err in
+                    if let err = err {
+                        print("error")
+                        completable(.error(NomnomError.alert(message: "Failed for some reasons!\n\(err.localizedDescription)")))
+                    } else {
+                        print("completed")
+                        completable(.completed)
+                    }
+            }
             return Disposables.create()
         }
     }

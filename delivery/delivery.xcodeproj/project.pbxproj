@@ -21,9 +21,6 @@
 		2C3D5A3020B3874D0066AE37 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D5A2D20B3874C0066AE37 /* OrderViewModel.swift */; };
 		2C3D5A3120B3874D0066AE37 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D5A2E20B3874C0066AE37 /* OrderViewController.swift */; };
 		2C3D5A3220B3874D0066AE37 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3D5A2F20B3874D0066AE37 /* Order.storyboard */; };
-		527CE63F20B370F30000DD2D /* OrderReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */; };
-		527CE64320B377260000DD2D /* OrderReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CE64220B377260000DD2D /* OrderReviewViewModel.swift */; };
-		527CE64520B3AFB00000DD2D /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527CE64420B3AFB00000DD2D /* OrderReview.storyboard */; };
 		2C3D5A3520B387880066AE37 /* OrderTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D5A3320B387880066AE37 /* OrderTranslator.swift */; };
 		2C3D5A3620B387880066AE37 /* OrderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D5A3420B387880066AE37 /* OrderUseCase.swift */; };
 		2C3D5A3A20B387B90066AE37 /* OrderFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D5A3720B387B80066AE37 /* OrderFirebaseDataStore.swift */; };
@@ -164,6 +161,9 @@
 		D72D29DB20A68855006D5101 /* ReviewPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D29DA20A68855006D5101 /* ReviewPostRepository.swift */; };
 		D72D29DD20A690CF006D5101 /* ReviewPostDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D29DC20A690CF006D5101 /* ReviewPostDataStoreProtocol.swift */; };
 		D72D29DF20A69128006D5101 /* ReviewPostFirebaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72D29DE20A69128006D5101 /* ReviewPostFirebaseDataStore.swift */; };
+		D730957320B80EBA009B00C1 /* OrderReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D730957020B80EBA009B00C1 /* OrderReviewViewController.swift */; };
+		D730957420B80EBA009B00C1 /* OrderReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D730957120B80EBA009B00C1 /* OrderReviewViewModel.swift */; };
+		D730957520B80EBA009B00C1 /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D730957220B80EBA009B00C1 /* OrderReview.storyboard */; };
 		D7529E1E205D05BC003CFD5A /* SampleProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */; };
 		D7529E20205D0662003CFD5A /* SampleProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7529E1F205D0662003CFD5A /* SampleProductModel.swift */; };
 		D7569D302052B08400C6D6E4 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7569D2F2052B08400C6D6E4 /* Container.swift */; };
@@ -219,9 +219,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewViewController.swift; sourceTree = "<group>"; };
-		527CE64220B377260000DD2D /* OrderReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewViewModel.swift; sourceTree = "<group>"; };
-		527CE64420B3AFB00000DD2D /* OrderReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
 		07BACBD27F916067F27B3822 /* Pods_deliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_deliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3BA6BF2057863F00C438C0 /* OrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEntity.swift; sourceTree = "<group>"; };
 		2C3BA6C42057881700C438C0 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -382,6 +379,9 @@
 		D72D29DA20A68855006D5101 /* ReviewPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostRepository.swift; sourceTree = "<group>"; };
 		D72D29DC20A690CF006D5101 /* ReviewPostDataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostDataStoreProtocol.swift; sourceTree = "<group>"; };
 		D72D29DE20A69128006D5101 /* ReviewPostFirebaseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostFirebaseDataStore.swift; sourceTree = "<group>"; };
+		D730957020B80EBA009B00C1 /* OrderReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderReviewViewController.swift; sourceTree = "<group>"; };
+		D730957120B80EBA009B00C1 /* OrderReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderReviewViewModel.swift; sourceTree = "<group>"; };
+		D730957220B80EBA009B00C1 /* OrderReview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
 		D7529E1D205D05BC003CFD5A /* SampleProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductEntity.swift; sourceTree = "<group>"; };
 		D7529E1F205D0662003CFD5A /* SampleProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProductModel.swift; sourceTree = "<group>"; };
 		D7569D2F2052B08400C6D6E4 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -447,17 +447,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		527CE63D20B370AD0000DD2D /* OrderReview */ = {
-			isa = PBXGroup;
-			children = (
-				527CE63E20B370F30000DD2D /* OrderReviewViewController.swift */,
-				527CE64220B377260000DD2D /* OrderReviewViewModel.swift */,
-				527CE64420B3AFB00000DD2D /* OrderReview.storyboard */,
-			);
-			name = OrderReview;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		2C3D59F020B3739D0066AE37 /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,9 +484,9 @@
 		2C3D5A1420B374190066AE37 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				2C3D5A3820B387B90066AE37 /* OrderRepository.swift */,
 				2C3D5A3920B387B90066AE37 /* OrderDataStoreProtocol.swift */,
 				2C3D5A3720B387B80066AE37 /* OrderFirebaseDataStore.swift */,
-				2C3D5A3820B387B90066AE37 /* OrderRepository.swift */,
 			);
 			name = Order;
 			path = ../../../../../../Desktop/deliveryciccc/delivery/delivery/Data/Order;
@@ -915,6 +904,16 @@
 			path = ReviewPost;
 			sourceTree = "<group>";
 		};
+		D730956F20B80EBA009B00C1 /* OrderReview */ = {
+			isa = PBXGroup;
+			children = (
+				D730957220B80EBA009B00C1 /* OrderReview.storyboard */,
+				D730957020B80EBA009B00C1 /* OrderReviewViewController.swift */,
+				D730957120B80EBA009B00C1 /* OrderReviewViewModel.swift */,
+			);
+			path = OrderReview;
+			sourceTree = "<group>";
+		};
 		D7569D2E2052B04400C6D6E4 /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,7 +983,7 @@
 		D7AAD09F2041943100D2971C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				527CE63D20B370AD0000DD2D /* OrderReview */,
+				D730956F20B80EBA009B00C1 /* OrderReview */,
 				D7213D3820AD329900142E5C /* SignUp */,
 				9149074320AD0EFD001092D7 /* SignIn */,
 				915AC3D020A54F16007069C8 /* ShoppingCart */,
@@ -1284,12 +1283,12 @@
 				915AC3DC20A54F17007069C8 /* ShoppingCart.storyboard in Resources */,
 				D78F2E72204DE5DF0017AA05 /* ProductDetail.storyboard in Resources */,
 				2C3D5A3220B3874D0066AE37 /* Order.storyboard in Resources */,
-				527CE64520B3AFB00000DD2D /* OrderReview.storyboard in Resources */,
 				914F082220A400A9003D5B23 /* AccountEdit.storyboard in Resources */,
 				910E994720AA65D4001AF396 /* OrderConfirmation.storyboard in Resources */,
 				912153E22075DBBE0057B146 /* UserInfoCell.xib in Resources */,
 				D775FF912065B86F002180F7 /* ReviewList.storyboard in Resources */,
 				913C148B2069DABC001C2A9B /* CollectionViewCell.xib in Resources */,
+				D730957520B80EBA009B00C1 /* OrderReview.storyboard in Resources */,
 				9183196C20731893002DF8AA /* TrendsCell.xib in Resources */,
 				9149074520AD0F4A001092D7 /* SignIn.storyboard in Resources */,
 				915817D92091C434009BE66A /* UserInfoEdit.storyboard in Resources */,
@@ -1308,36 +1307,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A83C53C77D1C0DCEBF5B1E35 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3E44FB313B58F67537CAA0E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		00D52586E9D560499C36EE7C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1538,6 +1507,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A83C53C77D1C0DCEBF5B1E35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-delivery/Pods-delivery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3E44FB313B58F67537CAA0E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-deliveryTests/Pods-deliveryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA3F2A0EE61CB667F9A440E7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1591,7 +1590,6 @@
 				9167CC362091C9D6009CC5D5 /* UserInfoEditViewModel.swift in Sources */,
 				D7213D3C20AD32F700142E5C /* SignUpViewModel.swift in Sources */,
 				915AC3DD20A54F17007069C8 /* ShoppingCartViewController.swift in Sources */,
-				527CE64320B377260000DD2D /* OrderReviewViewModel.swift in Sources */,
 				91221B1520B37DF100A8C624 /* GuestAddressEntity.swift in Sources */,
 				D7AAD0B32041943100D2971C /* ProductDetailTranslator.swift in Sources */,
 				91512C952086E1FC00E80B08 /* PaymentCell.swift in Sources */,
@@ -1639,10 +1637,10 @@
 				911E2679205E4C3A00FB3639 /* EventEntity.swift in Sources */,
 				9183196B20731893002DF8AA /* TrendsCell.swift in Sources */,
 				2C3BA6C52057881700C438C0 /* OrderModel.swift in Sources */,
+				D730957420B80EBA009B00C1 /* OrderReviewViewModel.swift in Sources */,
 				D70359302063B5A700787198 /* BaseViewController.swift in Sources */,
 				91221B0F20B2813600A8C624 /* GuestDataStore.swift in Sources */,
 				2C3D5A3B20B387B90066AE37 /* OrderRepository.swift in Sources */,
-				527CE63F20B370F30000DD2D /* OrderReviewViewController.swift in Sources */,
 				915AC3FE20A570AE007069C8 /* CollectionName.swift in Sources */,
 				523D3A8F204F9DF600B63193 /* ProductListDataStoreProtocol.swift in Sources */,
 				915817DB2091C44D009BE66A /* UserInfoEditViewController.swift in Sources */,
@@ -1725,6 +1723,7 @@
 				911A281F205779A8007B8084 /* HomeViewModel.swift in Sources */,
 				915AC3F720A55F19007069C8 /* ProductImageViewController.swift in Sources */,
 				2C3D59FA20B3739D0066AE37 /* OrderDetailCell.swift in Sources */,
+				D730957320B80EBA009B00C1 /* OrderReviewViewController.swift in Sources */,
 				D7AAD0C32042396200D2971C /* Extention.swift in Sources */,
 				BA190ED020AFD49E00342FF2 /* StripeClient.swift in Sources */,
 				D775FF8B2065AFEA002180F7 /* ReviewListDataStoreProtocol.swift in Sources */,

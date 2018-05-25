@@ -25,14 +25,14 @@ class OrderReviewViewController: BaseViewController {
     @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var layerBox: UIView!
     
-    
-    private let disposeBag: DisposeBag = DisposeBag()
-    
     @IBOutlet weak var totalBeforeShippingFee: UILabel!
     @IBOutlet weak var shippingFee: UILabel!
     @IBOutlet weak var totalPurchase: UILabel!
+
     public var viewModel: OrderReviewViewModel!
-    
+
+    private let disposeBag: DisposeBag = DisposeBag()
+
     static func createInstance(viewModel: OrderReviewViewModel) -> OrderReviewViewController? {
         let instance = UIViewController.initialViewControllerFromStoryBoard(OrderReviewViewController.self)
         instance?.viewModel = viewModel
@@ -94,32 +94,27 @@ class OrderReviewViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
     }
-    
-    
+
     @IBAction func close(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-   
+
     @IBAction func continueShopping(_ sender: Any) {
         let next = resolver.resolve(ProductListViewController.self)!
         next.keyword = ""
         self.navigationController?.pushViewController(next, animated: true)
     }
-    
-    
+
     @IBAction func didTapPayNow(_ sender: Any) {
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
         navigationController?.pushViewController(addCardViewController, animated: true)
-//
+
 //        viewModel.saveOrder()
 //        viewModel.deleteShoppingCart()
-        
-
     }
     
-    func pathZigZagForView(givenView: UIView) ->UIBezierPath
-    {
+    func pathZigZagForView(givenView: UIView) -> UIBezierPath {
                 
         let width = givenView.frame.size.width
         let height = givenView.frame.size.height
