@@ -58,5 +58,9 @@ final class ViewModelAssembly: Assembly {
         container.register(SignInViewModel.self) { (_, useCase: UserUseCaseProtocol) in
             SignInViewModel(useCase: useCase)
         }
+        
+        container.register(OrderReviewViewModel.self) { (_, useCaseShoppingCart: ShoppingCartUseCaseProtocol, useCaseUserAccount: UserUseCaseProtocol, useCaseOrder: OrderUseCaseProtocol) in
+            OrderReviewViewModel(useCaseShoppingCart: useCaseShoppingCart, useCaseUserAccount: useCaseUserAccount, useCaseOrder: useCaseOrder)
+        }
     }
 }

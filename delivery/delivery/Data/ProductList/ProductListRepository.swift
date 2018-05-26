@@ -14,7 +14,6 @@ protocol ProductListRepositoryProtocol{
 }
 
 class ProductListRepository: ProductListRepositoryProtocol {
-
     private let dataStore: ProductListDataStoreProtocol
     
     init(dataStore: ProductListDataStoreProtocol) {
@@ -24,4 +23,6 @@ class ProductListRepository: ProductListRepositoryProtocol {
     func fetchProductList(with keyword: String, by orderby: String, _ descending: Bool, filters: [String:Any]) -> Single<[ProductEntity]> {
         return dataStore.fetchProductList(with: keyword, by: orderby, descending, filters: filters)
     }
+
+
 }

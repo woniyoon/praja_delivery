@@ -200,5 +200,28 @@ final class ViewControllerAssembly: Assembly {
             let vc         = SignInViewController.createInstance(viewModel: viewModel!)
             return vc!
         }
+        
+        
+        container.register(OrderReviewViewController.self) { _ in
+            let dataStoreUser  = container.resolve(UserDataStoreProtocol.self)
+            let dataStoreGuest  = container.resolve(GuestDataStoreProtocol.self)
+            let repositoryUser = container.resolve(UserRepositoryProtocol.self, arguments: dataStoreUser!,dataStoreGuest!)
+            let translatorUser = container.resolve(UserTranslator.self)
+            let usecaseUser    = container.resolve(UserUseCaseProtocol.self, arguments: repositoryUser!, translatorUser!)
+            
+            let dataStoreCart  = container.resolve(ShoppingCartDataStoreProtocol.self)
+            let repositoryCart = container.resolve(ShoppingCartRepositoryProtocol.self, argument: dataStoreCart!)
+            let translatorCart = container.resolve(ShoppingCartTranslator.self)
+            let usecaseCart    = container.resolve(ShoppingCartUseCaseProtocol.self, arguments: repositoryCart!, translatorCart!)
+            
+            let dataStoreOrder  = container.resolve(OrderDataStoreProtocol.self)
+            let repositoryOrder = container.resolve(OrderRepositoryProtocol.self, argument: dataStoreOrder!)
+            let translatorOrder = container.resolve(OrderTranslator.self)
+            let usecaseOrder    = container.resolve(OrderUseCaseProtocol.self, arguments: repositoryOrder!, translatorOrder!)
+            
+            let viewModel  = container.resolve(OrderReviewViewModel.self, arguments: usecaseCart!,usecaseUser!, usecaseOrder!)
+            let vc         = OrderReviewViewController.createInstance(viewModel: viewModel!)
+            return vc!
+        }
     }
 }

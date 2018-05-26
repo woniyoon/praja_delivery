@@ -30,6 +30,26 @@ struct OrderEntity {
     //        guard let
     //    }
     
+    init(orderNumber: String,cancelReason: String,deliveryFee: Double,deliveryInfo: [String : Date?],orderDetail: [OrderDetail],pointStatement: PointStatement,remark: String,scheduledDeliveryDate: Date?,shippingAddress: AddressEntity,status: String,totalPrice: Double,trackingNumber: String,userId: String,couponDiscount: Double,
+        orderId: String) {
+        
+        self.orderNumber = orderNumber
+        self.cancelReason = cancelReason
+        self.deliveryFee = deliveryFee
+        self.deliveryInfo = deliveryInfo
+        self.orderDetail = orderDetail
+        self.pointStatement = pointStatement
+        self.remark = remark
+        self.scheduledDeliveryDate = scheduledDeliveryDate
+        self.shippingAddress = shippingAddress
+        self.status = status
+        self.totalPrice = totalPrice
+        self.trackingNumber = trackingNumber
+        self.userId = userId
+        self.couponDiscount = couponDiscount
+        self.orderId = orderId
+    }
+    
     init?(docId: String, dictionary: [String: Any]) {
         guard let orderNumber = dictionary["orderNumber"] as? String,
             let cancelReason = dictionary["cancelReason"] as? String,

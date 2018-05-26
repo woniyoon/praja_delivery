@@ -12,24 +12,45 @@ class OrderTranslator: TranslatorProtocol {
     func translate(_ entities: [OrderEntity]) -> [Order] {
         var orders = [Order]()
         
-       for entity in entities {
-        orders.append(Order(orderNumber: entity.orderNumber,
-                            cancelReason: entity.cancelReason,
-                            deliveryFee: entity.deliveryFee,
-                            deliveryInfo: entity.deliveryInfo,
-                            orderDetail: entity.orderDetail,
-                            pointStatement: entity.pointStatement,
-                            remark: entity.remark,
-                            scheduledDeliveryDate: entity.scheduledDeliveryDate,
-                            shippingAddress: entity.shippingAddress,
-                            status: entity.status,
-                            totalPrice: entity.totalPrice,
-                            trackingNumber: entity.trackingNumber,
-                            userId: entity.userId,
-                            couponDiscount: entity.couponDiscount,
-                            orderId: entity.orderId))
+        for entity in entities {
+            orders.append(Order(orderNumber: entity.orderNumber,
+                                cancelReason: entity.cancelReason,
+                                deliveryFee: entity.deliveryFee,
+                                deliveryInfo: entity.deliveryInfo,
+                                orderDetail: entity.orderDetail,
+                                pointStatement: entity.pointStatement,
+                                remark: entity.remark,
+                                scheduledDeliveryDate: entity.scheduledDeliveryDate,
+                                shippingAddress: entity.shippingAddress,
+                                status: entity.status,
+                                totalPrice: entity.totalPrice,
+                                trackingNumber: entity.trackingNumber,
+                                userId: entity.userId,
+                                couponDiscount: entity.couponDiscount,
+                                orderId: entity.orderId))
         }
-    return orders
+        return orders
+    }
+
+
+    
+    func translateToEntity(_ model: Order) -> OrderEntity {
+        
+        return OrderEntity(orderNumber: model.orderNumber,
+                           cancelReason: model.cancelReason,
+                           deliveryFee: model.deliveryFee,
+                           deliveryInfo: model.deliveryInfo,
+                           orderDetail: model.orderDetail,
+                           pointStatement: model.pointStatement,
+                           remark: model.remark,
+                           scheduledDeliveryDate: model.scheduledDeliveryDate,
+                           shippingAddress: model.shippingAddress,
+                           status: model.status,
+                           totalPrice: model.totalPrice,
+                           trackingNumber: model.trackingNumber,
+                           userId: model.userId,
+                           couponDiscount: model.couponDiscount,
+                           orderId: model.orderId)
     }
     
     func translate2(_ entity: OrderEntity) -> Order {

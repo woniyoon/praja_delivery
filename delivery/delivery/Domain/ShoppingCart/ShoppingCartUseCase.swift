@@ -15,6 +15,7 @@ protocol ShoppingCartUseCaseProtocol {
     func updateProductShoppingCart(shoppingCart: ShoppingCart) -> Completable
     func fetchShoppingCart() -> Single<[ProductShoppingCart]>
     func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
+    func productAlreadyInCart(with primaryKey: String) -> Bool
 }
 
 class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
@@ -49,5 +50,9 @@ class ShoppingCartUseCase: ShoppingCartUseCaseProtocol {
 
     func deleteProductFromShoppingCart(with primaryKey: String) -> Completable {
         return repository.deleteProductFromShoppingCart(with: primaryKey)
+    }
+
+    func productAlreadyInCart(with primaryKey: String) -> Bool {
+        return repository.productAlreadyInCart(with: primaryKey)
     }
 }

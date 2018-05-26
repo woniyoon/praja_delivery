@@ -50,6 +50,11 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        viewModel.fetchShoppingCartQty()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -67,11 +72,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         collectionView.reloadData()
         dropDownShadow()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.fetchShoppingCartQty()
-    }
-    
+
     private func bindCartQty(){
         viewModel.qtyProductsCart.asObservable()
             .bind(to: self.cartQty.rx.text)
@@ -115,7 +116,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         
         let next = resolver.resolve(ProductDetailViewController.self)!
         next.productId = cell.product?.productId
-        present(next, animated: true, completion: nil)
+        navigationController?.pushViewController(next, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -168,7 +169,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         } else {
         
             let next = resolver.resolve(ShoppingCartViewController.self)!
-            present(next, animated: true, completion: nil)
+            navigationController?.pushViewController(next, animated: true)
         }
     }
 
@@ -275,7 +276,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         viewController.modalTransitionStyle = .flipHorizontal
         viewController.modalPresentationStyle = .overFullScreen
         
-        present(viewController, animated: true, completion: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

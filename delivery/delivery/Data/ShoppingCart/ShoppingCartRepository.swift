@@ -14,15 +14,17 @@ protocol ShoppingCartRepositoryProtocol{
     func updateProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable
     func fetchShoppingCart() -> Single<[ProductShoppingCartEntity]>
     func deleteProductFromShoppingCart(with primaryKey: String) -> Completable
+    func productAlreadyInCart(with primaryKey: String)-> Bool
 }
 
 class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
+    
     private let dataStore: ShoppingCartDataStoreProtocol
     
     init(dataStore: ShoppingCartDataStoreProtocol) {
         self.dataStore = dataStore
     }
-        
+    
     func addProductShoppingCart(shoppingCart: ShoppingCartEntity) -> Completable {
         return dataStore.addProductShoppingCart(shoppingCart: shoppingCart)
     }
@@ -43,5 +45,7 @@ class ShoppingCartRepository: ShoppingCartRepositoryProtocol {
         return dataStore.deleteProductFromShoppingCart(with: primaryKey)
     }
     
-    
+    func productAlreadyInCart(with primaryKey: String) -> Bool {
+        return dataStore.productAlreadyInCart(with: primaryKey)
+    }
 }
