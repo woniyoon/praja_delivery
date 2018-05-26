@@ -68,6 +68,7 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
         collectionView.reloadData()
         viewModel.fetchShoppingCartList()
         setup()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func setup(){
@@ -163,8 +164,11 @@ class ShoppingCartViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func checkoutPurchase(_ sender: Any) {
-        let next = resolver.resolve(CheckoutViewController.self)!
-        self.navigationController?.pushViewController(next, animated: true)
+        
+        if viewModel.productsShoppingCart.value.count > 0 {
+            let next = resolver.resolve(CheckoutViewController.self)!
+            self.navigationController?.pushViewController(next, animated: true)
+        }
     }
     
     func changeQuantityDidTap(sender: UIButton) -> Void {

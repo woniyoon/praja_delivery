@@ -99,6 +99,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
         review1.isHidden = true
         review2.isHidden = true
         reviewViewMoreButton.isHidden = true
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

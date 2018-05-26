@@ -55,6 +55,7 @@ class OrderReviewViewController: BaseViewController {
         viewModel.fetchShoppingCartList()
         viewModel.fetchUser()
         self.view.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func bindOrderReview() {
@@ -89,10 +90,22 @@ class OrderReviewViewController: BaseViewController {
                     let storyBoard: UIStoryboard = UIStoryboard(name: "OrderConfirmation", bundle: nil)
                     let next = storyBoard.instantiateViewController(withIdentifier: "OrderConfirmation") as! OrderConfirmationViewController
                     
+                    next.checkOrderButton.backgroundColor = #colorLiteral(red: 0.3882352941, green: 0.6862745098, blue: 0.4431372549, alpha: 1)
                     self.navigationController?.pushViewController(next, animated: true)
                 }
             }).disposed(by: disposeBag)
 
+        
+        viewModel.isCartDeleted.asObservable()
+            .subscribe(onNext: { (isCartDeleted) in
+                if isCartDeleted {
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "OrderConfirmation", bundle: nil)
+                    let next = storyBoard.instantiateViewController(withIdentifier: "OrderConfirmation") as! OrderConfirmationViewController
+                    
+                    self.navigationController?.pushViewController(next, animated: true)
+                }
+            }).disposed(by: disposeBag)
+        
         viewModel.alertMessage.asObservable()
             .subscribe(onNext: { (alertError) in
                 self.showAlert(alertError)
