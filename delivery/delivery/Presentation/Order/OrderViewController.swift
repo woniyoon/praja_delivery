@@ -36,25 +36,33 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         return instance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        viewModel.fetchOrder(with: "Ljk5vGaGSMkYzviKx68B")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //-------------------------------------
         tableView.separatorStyle = .none //境界線消す
         self.navigationItem.title="Your Order"
-//        let backImage = UIBarButtonItem(image: #imageLiteral(resourceName: "backward_arrow"), style: .plain, target: nil, action: nil)
-//        backImage.title = ""
-//        self.navigationItem.backBarButtonItem = backImage
-        let image = UIImage(named: "backward_arrow")?.withRenderingMode(.alwaysOriginal)
-        UINavigationBar.appearance().backIndicatorImage = image
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = image
+        tableView.showsVerticalScrollIndicator = false
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backward_arrow")?.withRenderingMode(.alwaysOriginal)
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backward_arrow")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
         //-------------------------------------
         bindView()
-        configureTableView()
-        viewModel.fetchOrder(with: "Ljk5vGaGSMkYzviKx68B") //userId
+        configureTableView() //userId
     }
+    
+    //    userId/Kento/No order  "RZJ5HOFsMRSbTqFbazPysEvJi7O2"
+    //    userId/J1/ 1 currentorder, 1 pastorder "Ljk5vGaGSMkYzviKx68B"
+    //    userId/Bruno/ test "PCcK4enUNuhZsafqncWKZMRdrUP2"
+
     
     
     private func registerCell(){
@@ -73,6 +81,19 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
 
     //-------------------------------------
     // MARK : DataSource
+    
+    func emptyMessage(viewController:UITableView) {
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let messageLabel = UILabel(frame: rect)
+        messageLabel.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        messageLabel.text = "You haven't placed any orders yet."
+        messageLabel.textColor = #colorLiteral(red: 0.1058823529, green: 0.137254902, blue: 0.2431372549, alpha: 1)
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont.systemFont(ofSize : 14.0)
+        messageLabel.sizeToFit()
+        tableView.backgroundView = messageLabel
+    }
 
     //when you use table section, you can use "RxTableViewSectionedReloadDataSource"
     func bindView(){
@@ -101,6 +122,12 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
         self.viewModel.arrOfOrder.asObservable()
             .bind(to:tableView.rx.items(dataSource: dataSource))
             .disposed(by:disposeBag)
+        
+        self.viewModel.isEmpty.asObservable().subscribe(onNext: { (isEmpty) in
+            if isEmpty {
+                self.emptyMessage(viewController: self.tableView)
+            }
+        }).disposed(by: disposeBag)
     }
     
     //-------------------------------------
@@ -114,7 +141,6 @@ class OrderViewController: BaseViewController ,UITableViewDelegate {
             let next = resolver.resolve(OrderDetailViewController.self)!
             next.orderId = currentCell.order?.orderId
             navigationController?.pushViewController(next, animated: true)
-//            navigationController?.popViewController(animated: true)
         } else {
             let pastCell = tableView.cellForRow(at: indexPath) as! PastOrderCell
             let next = resolver.resolve(OrderDetailViewController.self)!
