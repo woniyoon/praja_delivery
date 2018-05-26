@@ -18,11 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-37-VD8">
-                                <rect key="frame" x="67.5" y="77" width="240" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blur" translatesAutoresizingMaskIntoConstraints="NO" id="lOD-7y-nwp" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_horizontal" translatesAutoresizingMaskIntoConstraints="NO" id="Ch7-37-VD8">
+                                <rect key="frame" x="41" y="56" width="292" height="123"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="NUv-2W-0mb"/>
-                                    <constraint firstAttribute="width" constant="240" id="gL1-pv-ceN"/>
+                                    <constraint firstAttribute="height" constant="123" id="NUv-2W-0mb"/>
+                                    <constraint firstAttribute="width" constant="292" id="gL1-pv-ceN"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MKP-13-fVq" customClass="WhiteLineTextField" customModule="delivery" customModuleProvider="target">
@@ -77,16 +80,20 @@
                             <constraint firstItem="YAd-YP-pcK" firstAttribute="leading" secondItem="OnW-G3-aIv" secondAttribute="leading" constant="32" id="6OI-M5-Gpp"/>
                             <constraint firstItem="YAd-YP-pcK" firstAttribute="top" secondItem="ecP-0m-AJq" secondAttribute="bottom" constant="32" id="6gh-s7-HC8"/>
                             <constraint firstItem="MKP-13-fVq" firstAttribute="leading" secondItem="OnW-G3-aIv" secondAttribute="leading" constant="32" id="Asl-qn-Kbz"/>
+                            <constraint firstItem="lOD-7y-nwp" firstAttribute="trailing" secondItem="OnW-G3-aIv" secondAttribute="trailing" id="KVa-f2-F2v"/>
                             <constraint firstItem="OnW-G3-aIv" firstAttribute="trailing" secondItem="dOq-ff-G4R" secondAttribute="trailing" constant="32" id="Kqg-id-7Zf"/>
                             <constraint firstItem="OnW-G3-aIv" firstAttribute="trailing" secondItem="YAd-YP-pcK" secondAttribute="trailing" constant="32" id="NnA-j8-4lH"/>
-                            <constraint firstItem="MKP-13-fVq" firstAttribute="top" secondItem="Ch7-37-VD8" secondAttribute="bottom" constant="38" id="WGA-PB-A9Y"/>
+                            <constraint firstItem="lOD-7y-nwp" firstAttribute="leading" secondItem="OnW-G3-aIv" secondAttribute="leading" id="Pq4-nq-VCw"/>
+                            <constraint firstItem="lOD-7y-nwp" firstAttribute="bottom" secondItem="OnW-G3-aIv" secondAttribute="bottom" id="QOw-zu-Hl1"/>
+                            <constraint firstItem="MKP-13-fVq" firstAttribute="top" secondItem="Ch7-37-VD8" secondAttribute="bottom" constant="36" id="WGA-PB-A9Y"/>
                             <constraint firstItem="ecP-0m-AJq" firstAttribute="leading" secondItem="OnW-G3-aIv" secondAttribute="leading" constant="32" id="WSh-sP-Ny2"/>
                             <constraint firstItem="Ch7-37-VD8" firstAttribute="centerX" secondItem="OnW-G3-aIv" secondAttribute="centerX" id="Ws0-F1-5LL"/>
                             <constraint firstItem="OnW-G3-aIv" firstAttribute="trailing" secondItem="MKP-13-fVq" secondAttribute="trailing" constant="32" id="Wsv-7s-g7e"/>
-                            <constraint firstItem="Ch7-37-VD8" firstAttribute="top" secondItem="OnW-G3-aIv" secondAttribute="top" constant="57" id="ZaG-SE-Xnd"/>
+                            <constraint firstItem="Ch7-37-VD8" firstAttribute="top" secondItem="OnW-G3-aIv" secondAttribute="top" constant="36" id="ZaG-SE-Xnd"/>
                             <constraint firstItem="OnW-G3-aIv" firstAttribute="trailing" secondItem="ecP-0m-AJq" secondAttribute="trailing" constant="32" id="aBB-xS-6yc"/>
                             <constraint firstItem="dOq-ff-G4R" firstAttribute="top" secondItem="YAd-YP-pcK" secondAttribute="bottom" constant="40" id="aJy-F5-TPl"/>
                             <constraint firstItem="ecP-0m-AJq" firstAttribute="top" secondItem="MKP-13-fVq" secondAttribute="bottom" constant="32" id="mSW-Ey-HoF"/>
+                            <constraint firstItem="lOD-7y-nwp" firstAttribute="top" secondItem="sce-e4-Qg3" secondAttribute="top" id="te4-I0-hRh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OnW-G3-aIv"/>
                     </view>
@@ -101,4 +108,8 @@
             <point key="canvasLocation" x="-586.39999999999998" y="64.31784107946028"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background_blur" width="376" height="812"/>
+        <image name="logo_horizontal" width="375" height="124"/>
+    </resources>
 </document>
