@@ -39,6 +39,7 @@ class OrderReviewViewModel: BaseViewModel {
     var total = BehaviorRelay<String>(value: "0.0")
     
     var isPaymentConfirmed = BehaviorRelay(value: false)
+    var isCartDeleted = BehaviorRelay(value: false)
     
     var totalPurchase: Double = 0.0
     let shippingFeeValue = 3.0
@@ -109,7 +110,7 @@ class OrderReviewViewModel: BaseViewModel {
     
     func deleteShoppingCart() {
         useCaseShoppingCart.deleteShoppingCart().subscribe(onCompleted: {
-            self.isPaymentConfirmed.accept(true)
+            self.isCartDeleted.accept(true)
         }) { (error) in
             self.setError(error)
         }

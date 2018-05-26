@@ -71,6 +71,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         collectionView.collectionViewLayout = gridLayout
         collectionView.reloadData()
         dropDownShadow()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     private func bindCartQty(){
@@ -253,7 +254,7 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
     
     @IBAction func sideMenuTapped(_ sender: Any) {
         
-        let viewController = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
+        let categoryVC = UIStoryboard(name: "Category", bundle: nil).instantiateInitialViewController() as! CategoryViewController
         
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -261,22 +262,22 @@ class ProductListViewController: BaseViewController, UICollectionViewDelegate {
         
         view.addSubview(blurEffectView)
         
-        viewController.userTappedCloseButtonClosure = { [weak blurEffectView] in
+        categoryVC.userTappedCloseButtonClosure = { [weak blurEffectView] in
             blurEffectView?.removeFromSuperview()
         }
         
         //this part needs fix
-        viewController.userSelectedCategory = { [weak blurEffectView] in
+        categoryVC.userSelectedCategory = { [weak blurEffectView] in
             blurEffectView?.removeFromSuperview()
             let next = resolver.resolve(ProductListViewController.self)!
             next.keyword = ""
             self.navigationController?.pushViewController(next, animated: true)
         }
         
-        viewController.modalTransitionStyle = .flipHorizontal
-        viewController.modalPresentationStyle = .overFullScreen
+        categoryVC.modalTransitionStyle = .coverVertical
+        categoryVC.modalPresentationStyle = .overFullScreen
         
-        navigationController?.pushViewController(viewController, animated: true)
+        present(categoryVC, animated: true, completion: nil)
     }
 }
 

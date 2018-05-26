@@ -64,6 +64,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate {
         banner.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         banner.addGestureRecognizer(tapRecognizer)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func imageTapped(sender: UIImageView) {

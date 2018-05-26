@@ -30,6 +30,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         bindView()
         configureTableView()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     

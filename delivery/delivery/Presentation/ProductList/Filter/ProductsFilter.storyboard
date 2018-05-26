@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,22 +15,22 @@
             <objects>
                 <viewController storyboardIdentifier="FilterPopUp" id="ejn-nW-555" customClass="ProductsFilterController" customModule="delivery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hrr-4r-Nn5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRg-Nk-8u7">
-                                <rect key="frame" x="0.0" y="100" width="375" height="361"/>
+                                <rect key="frame" x="0.0" y="124" width="375" height="361"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2p-VE-u9T">
                                         <rect key="frame" x="8" y="69" width="359" height="54"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrJ-OQ-bRw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MrJ-OQ-bRw">
                                                 <rect key="frame" x="8" y="16" width="92" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2og-En-owX">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2og-En-owX">
                                                 <rect key="frame" x="150" y="16" width="201" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="201" id="6Yg-iK-fc8"/>
@@ -83,7 +83,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNQ-Aa-kpO">
                                         <rect key="frame" x="8" y="178" width="359" height="55"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-NZ-XRr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-NZ-XRr">
                                                 <rect key="frame" x="8" y="12" width="68" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -110,7 +110,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-od-ZtW">
                                         <rect key="frame" x="8" y="12" width="359" height="49"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlI-Dd-HLr">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MlI-Dd-HLr">
                                                 <rect key="frame" x="8" y="13" width="49" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -179,6 +179,7 @@
                                     <constraint firstAttribute="bottom" secondItem="gLj-mE-V1j" secondAttribute="bottom" constant="12" id="42U-18-CVl"/>
                                     <constraint firstItem="Lhb-FV-Edf" firstAttribute="top" secondItem="p2p-VE-u9T" secondAttribute="bottom" constant="8" id="5Gq-LK-rez"/>
                                     <constraint firstAttribute="trailing" secondItem="gLj-mE-V1j" secondAttribute="trailing" constant="8" id="5MC-3S-xhi"/>
+                                    <constraint firstAttribute="height" constant="361" id="7gN-0t-xQB"/>
                                     <constraint firstAttribute="trailing" secondItem="hd2-od-ZtW" secondAttribute="trailing" constant="8" id="Jjp-15-u05"/>
                                     <constraint firstItem="NNQ-Aa-kpO" firstAttribute="trailing" secondItem="Lhb-FV-Edf" secondAttribute="trailing" id="LZ4-LE-Wr0"/>
                                     <constraint firstItem="Lhb-FV-Edf" firstAttribute="leading" secondItem="lRg-Nk-8u7" secondAttribute="leading" constant="8" id="OS0-tG-TYp"/>
@@ -200,7 +201,6 @@
                             <constraint firstAttribute="trailing" secondItem="lRg-Nk-8u7" secondAttribute="trailing" id="Kvn-L7-IlG"/>
                             <constraint firstItem="lRg-Nk-8u7" firstAttribute="leading" secondItem="hrr-4r-Nn5" secondAttribute="leading" id="Ool-H6-SaI"/>
                             <constraint firstItem="lRg-Nk-8u7" firstAttribute="top" secondItem="Xga-K8-mPB" secondAttribute="top" constant="80" id="hUK-gh-10V"/>
-                            <constraint firstItem="Xga-K8-mPB" firstAttribute="bottom" secondItem="lRg-Nk-8u7" secondAttribute="bottom" constant="206" id="kJc-6x-NGH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xga-K8-mPB"/>
                     </view>

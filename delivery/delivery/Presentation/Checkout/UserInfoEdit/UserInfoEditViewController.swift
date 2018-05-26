@@ -52,6 +52,10 @@ class UserInfoEditViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     func bindView() {
         viewModel.firstName.asObservable().bind(to: self.firstNameLabel.rx.text).disposed(by: disposeBag)
         viewModel.lastName.asObservable().bind(to: self.lastNameLabel.rx.text).disposed(by: disposeBag)
