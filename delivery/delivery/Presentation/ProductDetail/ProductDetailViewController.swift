@@ -221,7 +221,7 @@ class ProductDetailViewController: BaseViewController, UICollectionViewDelegate 
             ).disposed(by: disposeBag)
         
         // Recommended Products
-        viewModel.frequentlyPurchasedWith.asObservable()
+        viewModel.relatedTo.asObservable() // TODO: It is supposed to bind frequentlyPurchasedWith
             .bind(to: frequentlyCollection.rx.items(
                 cellIdentifier: CollectionViewCell.Identifier,
                 cellType: CollectionViewCell.self))
