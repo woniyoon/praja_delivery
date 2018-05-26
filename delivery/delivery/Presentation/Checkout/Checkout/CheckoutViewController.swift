@@ -34,13 +34,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
     
     
     @IBAction func confirmPayment(_ sender: Any) {
-        let next = resolver.resolve(OrderReviewViewController.self)!
-        navigationController?.pushViewController(next, animated: true)
-
-        
-//        let addCardViewController = STPAddCardViewController()
-//        addCardViewController.delegate = self
-//        navigationController?.pushViewController(addCardViewController, animated: true)
+        viewModel.goToPayment()
     }
     
     
@@ -61,16 +55,19 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
                     cell.item = element
                 
                     return cell
-                } else if indexPath.section == 1 {
+                }
+                else if indexPath.section == 1 {
                     let cell = tv.dequeueReusableCell(withIdentifier: AddressCell.Identifier) as! AddressCell
                     if element.address != nil {
                         cell.item = element.address!
                         return cell
                     }
                     return cell
-                } else {
+                }
+                else {
                     let cell = tv.dequeueReusableCell(withIdentifier: PaymentCell.Identifier) as! PaymentCell
                     cell.item = element.payment
+                    cell.isHidden = true
                     return cell
                 }
         })
@@ -79,9 +76,22 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-        self.viewModel.dataForSection.asObservable()
+        viewModel.dataForSection.asObservable()
             .bind(to: checkoutTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        self.viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
+        
+        viewModel.isNonEmpty.asObservable()
+            .subscribe(onNext: { isNonEmpty in
+                if isNonEmpty {
+                    let next = resolver.resolve(OrderReviewViewController.self)!
+                    self.navigationController?.pushViewController(next, animated: true)
+                }
+            }).disposed(by: disposeBag)
     }
 
     
@@ -99,13 +109,6 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
         checkoutTableView.estimatedRowHeight = 300
         checkoutTableView.allowsSelection = true
     }
-    
-    @IBAction func confirmButtonTapped(_ sender: Any) {
-        let next = resolver.resolve(OrderReviewViewController.self)!
-//        let orderReviewVC = UIStoryboard(name: "OrderReview", bundle: nil).instantiateInitialViewController() as! OrderConfirmationViewController
-        
-        self.navigationController?.pushViewController(next, animated: true)
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -120,7 +123,7 @@ class CheckoutViewController: BaseViewController, UITableViewDelegate {
             guard let isMember = viewModel.user.value.first?.isMember else { return }
             
             if isMember {
-                if viewModel.user.value.first?.address?.count == 0 {
+                if viewModel.user.value.first?.address?.count == 0 || viewModel.user.value.first?.address == nil {
                     let addressEditVC = resolver.resolve(AddressEditViewController.self)!
                     self.navigationController?.pushViewController(addressEditVC, animated: true)
                 } else {
