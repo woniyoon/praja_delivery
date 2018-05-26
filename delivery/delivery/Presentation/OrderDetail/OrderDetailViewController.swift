@@ -15,8 +15,9 @@ class OrderDetailViewController: BaseViewController {
     
     // MARK : IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var whiteview: UIView!
+    @IBOutlet weak var layerView: UIView!
     @IBOutlet weak var scheduledDeliveryDate: UILabel!
     
     @IBOutlet weak var address1: UILabel!
@@ -31,9 +32,6 @@ class OrderDetailViewController: BaseViewController {
     @IBOutlet weak var deliveryFee: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
     
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
-    }
     //-------------------------------------
     // MARK : Public Properties
     
@@ -60,17 +58,9 @@ class OrderDetailViewController: BaseViewController {
         tableView.backgroundColor = .none
         bindView()
         viewModel.fetchOrderDetail(with: orderId)
-        
-        applyZigZagEffect(givenView: whiteview)
-        
-        //MARK : doesn't work shadow effect so far...
-        //        whiteview.layer.shadowOffset = CGSize(width: 0, height: 1)
-        //        whiteview.layer.shadowColor = UIColor.black.cgColor
-        //        whiteview.layer.shadowRadius = 2.0
-        //        whiteview.layer.shadowOpacity = 0.40
-        //        whiteview.layer.masksToBounds = false
-        //        self.view.addSubview(whiteview)
-        
+        scrollView.showsVerticalScrollIndicator = false
+        //zigzag and Shadow Effect
+        applyZigZagEffect(givenView: layerView)
         self.view.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
     }
     
@@ -130,8 +120,8 @@ class OrderDetailViewController: BaseViewController {
     }
     
     
-    func pathZigZagForView(givenView: UIView) ->UIBezierPath
-    {
+    func pathZigZagForView(givenView: UIView) -> UIBezierPath {
+        
         let width = givenView.frame.size.width
         let height = givenView.frame.size.height
         
@@ -161,63 +151,29 @@ class OrderDetailViewController: BaseViewController {
         return zigZagPath
     }
     
+    func createShadowLayer() -> CALayer {
+        let shadowLayer = CALayer()
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowLayer.shadowRadius = 2.0
+        shadowLayer.shadowOpacity = 0.4
+        shadowLayer.backgroundColor = UIColor.clear.cgColor
+        return shadowLayer
+    }
+    
     func applyZigZagEffect(givenView: UIView) {
         let shapeLayer = CAShapeLayer(layer: givenView.layer)
         shapeLayer.path = self.pathZigZagForView(givenView: givenView).cgPath
         shapeLayer.frame = givenView.bounds
         shapeLayer.masksToBounds = true
-        shapeLayer.shadowColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-        shapeLayer.shadowOffset = CGSize(width: 0, height: 1)
-        givenView.layer.mask = shapeLayer
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.lineWidth = 0.1
+        givenView.layer.addSublayer(shapeLayer)
+        
+        let shadowSubLayer = createShadowLayer()
+        shadowSubLayer.insertSublayer(shapeLayer, at: 0)
+        givenView.layer.addSublayer(shadowSubLayer)
     }
-}
 
-//MARK : doesn't work shadow effect so far...
-@IBDesignable
-class Shadow: UIView {
-    
-    @IBInspectable var shadowColor: UIColor? {
-        set {
-            layer.shadowColor = newValue!.cgColor
-        }
-        get {
-            if layer.shadowColor != nil {
-                return UIColor.clear
-            }
-            else {
-                return nil
-            }
-        }
-    }
-    
-    /* The opacity of the shadow. Defaults to 0. Specifying a value outside the
-     * [0,1] range will give undefined results. Animatable. */
-    @IBInspectable var shadowOpacity: Float {
-        set {
-            layer.shadowOpacity = newValue
-        }
-        get {
-            return layer.shadowOpacity
-        }
-    }
-    
-    /* The shadow offset. Defaults to (0, -3). Animatable. */
-    @IBInspectable var shadowOffset: CGPoint {
-        set {
-            layer.shadowOffset = CGSize(width: newValue.x, height: newValue.y)
-        }
-        get {
-            return CGPoint(x: layer.shadowOffset.width, y:layer.shadowOffset.height)
-        }
-    }
-    
-    /* The blur radius used to create the shadow. Defaults to 3. Animatable. */
-    @IBInspectable var shadowRadius: CGFloat {
-        set {
-            layer.shadowRadius = newValue
-        }
-        get {
-            return layer.shadowRadius
-        }
-    }
 }

@@ -74,10 +74,13 @@ class OrderFirebaseDataStore: OrderDataStoreProtocol {
     }
 
     func fetchOrder(with userId: String) -> Single<[OrderEntity]>{
+        guard let user = Auth.auth().currentUser else {
+            return Single.error(NomnomError.noData(message: "Not Sign In"))
+        }
         var arr = [OrderEntity]()
         return Single<[OrderEntity]>.create { observer -> Disposable in
                 self.db.collection("order")
-                    .whereField("userId", isEqualTo: userId)
+                    .whereField("userId", isEqualTo: user.uid)
                     .getDocuments{(documents, error) in
                 if let error = error {
                     observer(.error(error))
