@@ -78,7 +78,10 @@
                         <outlet property="firstNameLabel" destination="dxb-pw-Tmc" id="SBX-38-IZt"/>
                         <outlet property="lastNameLabel" destination="xV9-lO-kFb" id="rrP-ad-cJ8"/>
                         <outlet property="phoneNumberLabel" destination="sDe-oE-VHa" id="CJg-M1-zO0"/>
-                        <outletCollection property="userInfoTextFields" destination="F8q-Ot-IiF" collectionClass="NSMutableArray" id="HjG-fn-DTf"/>
+                        <outletCollection property="userInfoTextFields" destination="sDe-oE-VHa" collectionClass="NSMutableArray" id="0yA-3e-aXb"/>
+                        <outletCollection property="userInfoTextFields" destination="F8q-Ot-IiF" collectionClass="NSMutableArray" id="aLD-Db-MKJ"/>
+                        <outletCollection property="userInfoTextFields" destination="xV9-lO-kFb" collectionClass="NSMutableArray" id="LB0-pT-WGC"/>
+                        <outletCollection property="userInfoTextFields" destination="dxb-pw-Tmc" collectionClass="NSMutableArray" id="rjQ-Wa-ZAA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-OE-fqy" userLabel="First Responder" sceneMemberID="firstResponder"/>

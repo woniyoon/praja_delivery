@@ -23,6 +23,7 @@ protocol UserRepositoryProtocol {
     func signOut() -> Completable
     func updateUser(user: UserEntity, password: String) -> Completable
     func changePassword(currentPW: String, newPW: String) -> Completable
+    func goToPayment() -> Completable
 }
 
 class UserRepository: UserRepositoryProtocol {    
@@ -172,6 +173,17 @@ class UserRepository: UserRepositoryProtocol {
     
     func changePassword(currentPW: String, newPW: String) -> Completable {
         return dataStore.changePassword(currentPW: currentPW, newPW: newPW)
+    }
+    
+    func goToPayment() -> Completable {
+        if UserRepository.user?.address != nil && !(UserRepository.user?.mobileNumber?.isEmpty)! && !(UserRepository.user?.firstName?.isEmpty)! && !(UserRepository.user?.lastName?.isEmpty)! {
+            return Completable.create { observer in
+                observer(.completed)
+                return Disposables.create()
+            }
+        } else {
+            return Completable.error(NomnomError.alert(message: "Please enter all the required information!"))
+        }
     }
 }
 

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blur" translatesAutoresizingMaskIntoConstraints="NO" id="3qe-wB-rkz">
-                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <rect key="frame" x="-1" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-3c-1Ba">
                                 <rect key="frame" x="0.0" y="20" width="373" height="647"/>
@@ -27,14 +27,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gB-G2-pEc" userLabel="Logo">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="160"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_horizontal_small" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-WW-29Q">
-                                                <rect key="frame" x="86" y="49" width="200" height="104"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_horizontal_small" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-WW-29Q">
+                                                <rect key="frame" x="86" y="50" width="200" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="0UF-nA-eoj"/>
+                                                    <constraint firstAttribute="height" constant="80" id="kwB-9A-nrb"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="hqt-WW-29Q" firstAttribute="top" secondItem="6gB-G2-pEc" secondAttribute="top" constant="50" id="6eh-Ao-1jb"/>
                                             <constraint firstAttribute="height" constant="160" id="Cdj-PS-pID"/>
                                             <constraint firstItem="hqt-WW-29Q" firstAttribute="centerX" secondItem="6gB-G2-pEc" secondAttribute="centerX" id="TjU-Eo-Tt2"/>
-                                            <constraint firstItem="hqt-WW-29Q" firstAttribute="centerY" secondItem="6gB-G2-pEc" secondAttribute="centerY" constant="11" id="kYI-PA-D4c"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMa-Yz-3oq" userLabel="TextFields">

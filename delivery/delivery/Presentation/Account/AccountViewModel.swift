@@ -81,7 +81,8 @@ class AccountViewModel: BaseViewModel {
                 self.isMember.accept(false)
                 break
             default:
-                print(err)
+                self.setError(err)
+//                print(err)
             }
         }
     }

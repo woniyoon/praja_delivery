@@ -52,6 +52,7 @@ class AccountViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         viewModel.fetchUser()
     }
 
@@ -98,6 +99,11 @@ class AccountViewController: BaseViewController {
                     self.navigationController?.pushViewController(signInVC, animated: false)
                 }
             }).disposed(by: disposeBag)
+        
+        viewModel.alertMessage.asObservable()
+            .subscribe(
+                onNext: { alertError in self.showAlert(alertError) }
+            ).disposed(by: disposeBag)
     }
     
     @IBAction func toEditProfile(_ sender: Any) {

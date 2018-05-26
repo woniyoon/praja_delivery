@@ -23,6 +23,8 @@ protocol UserUseCaseProtocol {
     func signOut() -> Completable
     func updateUser(user: User, password: String) -> Completable
     func changePassword(currentPW: String, confirmedPW: String, newPW: String) -> Completable
+    func goToPayment() -> Completable
+
 }
 
 class UserUseCase: UserUseCaseProtocol {
@@ -127,15 +129,24 @@ class UserUseCase: UserUseCaseProtocol {
     }
     
     func changePassword(currentPW: String, confirmedPW: String, newPW: String) -> Completable {
+        var messageArray: [String] = []
+
         if !Validation.validatePassword(password: newPW) {
-            return Completable.error(NomnomError.invalidPassword(message: "password should contain at least 1 capital letter and number"))
+            messageArray.append("Password is invalid")
         }
-        
         if currentPW != confirmedPW {
-            return Completable.error(NomnomError.alert(message: "Please confirm your password again!"))
+            messageArray.append("Confirm password is differnt from Password")
+        }
+        if messageArray.count > 0 {
+            let message = messageArray.joined(separator: "\n")
+            return Completable.error(NomnomError.alert(message: message))
         }
         
         return repository.changePassword(currentPW: currentPW, newPW: newPW)
+    }
+    
+    func goToPayment() -> Completable {
+        return repository.goToPayment()
     }
 }
 
