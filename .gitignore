@@ -177,3 +177,8 @@ playground.xcworkspace
 
 ### Kingfisher ###
 Carthage/
+
+Podfile.lock
+xcuserdata/
+*.xcworkspace/
+GoogleService-Info.plist
