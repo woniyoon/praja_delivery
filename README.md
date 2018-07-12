@@ -1,8 +1,11 @@
 # praja_delivery
 
-__logoImg__
+<img width="150" alt="logo" src="https://user-images.githubusercontent.com/33106403/42664604-7760a716-85f0-11e8-9b8b-d8d947910149.png">
 
 An iOS App for Grocery Shopping
+
+
+<img width="500" alt="main" src="https://user-images.githubusercontent.com/33106403/42664605-7774994c-85f0-11e8-9b3f-a98da1151d5d.png">
 
 ## Introduction
 - This is an iOS app created as a team project in the school. My team decided to develop a grocery shopping application using Swift in Xcode. Nobody had any experience in terms of iOS development. We've spent approximately 5 months including brainstorming, making a wireframe, UI/UX design and coding. My team consisted of the followings in alphabetical order :
@@ -65,7 +68,9 @@ An iOS App for Grocery Shopping
 
 
 ## More About My Tasks
- __img__
+ 
+ <img width="500" alt="jaewon design" src="https://user-images.githubusercontent.com/33106403/42664736-28290ed0-85f1-11e8-8a55-21783ee391d9.png">
+
 - I contributed to make a wireframe as well as design even though my design wasn't fully adopted. I used Sketch.
 - I did a research about using multiple Storyboards to avoid having many conflicts and applied it to our project.
 - I worked on __Home__/__SignIn__/__Account__/__Checkout__ screens. 
@@ -73,6 +78,30 @@ An iOS App for Grocery Shopping
 - I made an effort to define data structure and dabbled in google apps script.
 - I devoted myself to help the others whenever they need.
 - I sometimes led a daily meeting when our project manager was absent.
+
+
+## How it looks like?
+
+
+![home](https://user-images.githubusercontent.com/33106403/42664602-7730bb1e-85f0-11e8-8677-f5f4c67220e6.gif)
+
+
+- This is the first screen of the application, you can scroll up and down, check items and see the detail of an item.
+  We decided to use Tabbar so that a user can easily check its order history and its account.
+
+
+
+
+![category](https://user-images.githubusercontent.com/33106403/42664600-771b7e7a-85f0-11e8-98d9-98bda31f63fd.gif)
+- It leads you to Category list by tapping on the button on the top left side on Home screen. This gif shows the transition
+  from Category list to Product Detail page.
+
+![login](https://user-images.githubusercontent.com/33106403/42664603-7743fd32-85f0-11e8-8ca2-2a50419ffcc9.gif)
+- We used Firebase Authentication API, with which user can sign up, sign in and reset a password. This gif describes the progress of sign-in and account page.
+
+![makeorder](https://user-images.githubusercontent.com/33106403/42664606-7786e0c0-85f0-11e8-948a-e0f828d420e2.gif)
+- This gif illustrates adding products, editing the amount, choosing an address from the registered ones, and making a payment through Stripe.
+
 
 ## After The Project
 
