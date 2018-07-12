@@ -99,7 +99,7 @@ An iOS App for Grocery Shopping
 ![login](https://user-images.githubusercontent.com/33106403/42664603-7743fd32-85f0-11e8-8ca2-2a50419ffcc9.gif)
 - We used Firebase Authentication API, with which user can sign up, sign in and reset a password. This gif describes the progress of sign-in and account page.
 
-![makeorder](https://user-images.githubusercontent.com/33106403/42664606-7786e0c0-85f0-11e8-948a-e0f828d420e2.gif)
+![makeorder](https://user-images.githubusercontent.com/33106403/42665313-f2819952-85f3-11e8-9bc3-9b9926f76b8b.gif)
 - This gif illustrates adding products, editing the amount, choosing an address from the registered ones, and making a payment through Stripe.
 
 
