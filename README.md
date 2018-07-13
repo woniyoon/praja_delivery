@@ -31,7 +31,7 @@ An iOS App for Grocery Shopping
 
 - __Trello__ to manage the project
 - __Slack__ to communicate, share some tips, update with a progress and chit-chat :)
-- __Google SpreadSheet__ to visualize data structure, which is more appropriate for NoSQL DB 
+- __Google SpreadSheet__ to visualize data structure, which is more appropriate for NoSQL DB. We also updated our master data through script 
 
 
 ## Frameworks We Used
